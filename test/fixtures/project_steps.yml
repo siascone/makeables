@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: project_steps
+#
+#  id         :bigint           not null, primary key
+#  project_id :integer          not null
+#  heading    :string           not null
+#  body       :text             not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  project_id: 1
+  heading: MyString
+  body: MyText
+
+two:
+  project_id: 1
+  heading: MyString
+  body: MyText

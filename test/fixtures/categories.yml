@@ -1,0 +1,15 @@
+# == Schema Information
+#
+# Table name: categories
+#
+#  id         :bigint           not null, primary key
+#  type_name  :string           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  type_name: MyString
+
+two:
+  type_name: MyString
