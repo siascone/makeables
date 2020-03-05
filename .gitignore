@@ -2,7 +2,6 @@
 node_modules/
 
 # Ignore bundler config.
-/.bundle
 bundle.js
 bundle.js.map
 package-lock.json
