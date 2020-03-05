@@ -1,0 +1,38 @@
+ .greeting {
+    display: flex;
+    justify-content: space-between;
+ }
+
+.login-signup {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     width: 100px;
+     /* padding: 5px; */
+ }
+
+ .login-signup * {
+     font-size: 12px;
+ }
+ 
+ .login-signup :first-child {
+     margin: 5px, 0px, 5px, 5px;
+ }
+
+ .login-signup :last-child {
+     border-left: 1px solid white;
+     padding-left: 5px;
+     margin: 5px;
+ }
+
+ .login-signup > a {
+     text-decoration: none;
+ }
+ .login-signup > a:hover {
+     text-decoration: underline;
+ }
+
+  .login-signup-image {
+     z-index: -1;
+    
+ }

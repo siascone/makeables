@@ -7,9 +7,9 @@ class Footer extends React.Component {
                 <div className='footer-row1'>
                     <div className='find-us'>
                         <img src="https://www.instructables.com/assets/img/instructables-logo-v2.png" alt="" />
-                        <a>Find Us</a>
+                        {/* <a>Find Us</a> */}
                     </div>
-                    <div className='categories'>
+                    {/* <div className='categories'>
                         <ul>
                             <a>Circuts</a>
                             <a>Workshop</a>
@@ -33,14 +33,14 @@ class Footer extends React.Component {
                             <a>Help</a>
                             <a>Contact</a>
                         </ul>
-                    </div>
+                    </div> */}
                 </div>
-                <div className='footer-row1'>
+                {/* <div className='footer-row1'>
                     <a>Terms of Service</a>
                     <a>Privacy Statement</a>
                     <a>Privacy Settings</a>
                     <a>Legal Notices and Trademarks</a>
-                </div>
+                </div> */}
             </div>
         )
     }

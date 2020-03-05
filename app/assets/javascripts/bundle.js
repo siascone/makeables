@@ -268,15 +268,7 @@ var Footer = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "https://www.instructables.com/assets/img/instructables-logo-v2.png",
         alt: ""
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Find Us")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "categories"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Circuts"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Workshop"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Craft"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Cooking"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Living"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Outside"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Teachers"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "about-us"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Who We Are"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Why Publish"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Jobs"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "resources"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Sitemap"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Help"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Contact")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "footer-row1"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Terms of Service"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Privacy Statement"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Privacy Settings"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Legal Notices and Trademarks")));
+      }))));
     }
   }]);
 

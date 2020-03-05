@@ -15,7 +15,7 @@ class UserDropdwon extends React.Component {
     }
 
     render() {
-        let cName = this.state.cName ? 'hide-user-dropdown' : 'show-user-dropdown'
+        let cName = this.state.cName ? 'hide-user-dropdown' : 'show-user-dropdown';
         return (
             <div>
                 <a  onClick={this.click}>
@@ -24,9 +24,7 @@ class UserDropdwon extends React.Component {
                 <div className={cName}>
                     <div className='links-logout'>
                         <div className='user-links'>
-                            
-                                <li>Profile</li>
-                            
+                            <li>Profile</li>
                         </div>
                         <button className='logout-button' onClick={this.props.logout}>Log Out</button>
                     </div>
