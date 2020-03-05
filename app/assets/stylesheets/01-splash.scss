@@ -1,0 +1,62 @@
+.splash {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.splash-image {
+    height: 475px;
+    width: 100%;
+    background-image: url(https://smallbiztrends.com/wp-content/uploads/2018/12/shutterstock_669923785-1.png);
+    background-size: cover;
+    background-position: bottom;
+    position: relative;
+}
+
+.image-text {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    width: 500px;
+    margin-top: 125px;
+    margin-bottom: 100px;
+    left: 50px;
+    color: white;
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+}
+
+.image-text > h1 {
+    font-size: 39.5px;
+    font-weight: 700;
+    margin-top: 75px;
+    margin-bottom: 40px;
+}
+.image-text > p {
+    line-height: 1.6;
+    font-size: 18px;
+}
+
+
+.splash-about {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    // border-bottom: 1px gray solid;
+}
+
+.splash-about > div {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 200px;
+    padding-bottom: 40px;
+}
+
+.splash-about * p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #555
+}
+

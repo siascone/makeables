@@ -26,27 +26,28 @@ class SessionForm extends React.Component {
 
     renderErrors() {
         return (
-            <ul className='errors'>
+            <div className='errors'>
                 {this.props.errors.map((error, i) => (
                     <li key={`error ${i}`}>{error}</li>
                 ))}
-            </ul>
+            </div>
         );
     }
 
     render() {
         let message;
+        let wrapper;
         if (this.props.formType === 'Login') {
-            message = <div>
-                        New to Makeables? {this.props.link}
-                      </div>
+            message = <div>New to Makeables? {this.props.link}</div>;
+            wrapper = "wrapper-login"
         } else {
-            message = <div>
-                        Already a maker? {this.props.link}
-                      </div>
+            message = <div>Already a maker? {this.props.link}</div>;
+            wrapper = "wrapper-signup"
         }
+
+    
         return (
-            <div className='wrapper-login'>
+            <div className={wrapper}>
                 <form className='login-form'>
                     <div className='input-fields'>
                         <label id='username'>
@@ -74,10 +75,10 @@ class SessionForm extends React.Component {
                     <br/>
                     <button className='demo' onClick={this.props.loginDemoUser}>Demo Login</button>
                     <br/>
-                    {message}
+                    <div className='message'>{message}</div>
                     {/* {this.props.formType} or {this.props.link} */}
+                    {this.renderErrors()}
                 </form>
-                {this.renderErrors()}
             </div>
         );
     }

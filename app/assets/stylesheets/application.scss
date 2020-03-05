@@ -14,10 +14,14 @@
  *= require_self
  */
 
+
  .main {
-     display: flex;
+     display: flex;   
      flex-direction: column;
  }
+
+
+
 
  .header-1 {
      display: flex;
@@ -28,6 +32,11 @@
      padding: 5px, 15px, 5px, 10px;
  }
 
+ .footer {
+    color: white;
+    background: #555;
+    // z-index: 1;
+ }
  
  .nav-links {
      display: flex;
@@ -36,6 +45,7 @@
      font-size: 12px;
      margin: 0px, 15px, 0px, 0px;
  }
+
  .nav-links > a {
      text-decoration: none;
  }
@@ -154,24 +164,34 @@
      /* background-color: blue; */
      /* padding-left: 75px; */
      display: flex;
+     background-image: url(https://farmerbrown.com/wp-content/uploads/2018/11/carpentry-business.jpg);
+ }
+
+ .wrapper-signup {
+     display: flex;
+     background-image: url(https://www.abc27.com/wp-content/uploads/sites/55/2020/03/2b47b963157c4692a24fa7f6b1aa0b18.jpg?w=2560&h=1440&crop=1);
  }
 
  .login-form {
-    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 400px;
-    height: 100%;
+    width: 350px;
+    height: 1000px;
     margin-left: 75px;
     padding: 20px;
     background: rgba(34, 34, 34, 0.25);
-    background-attachment: scroll;
-    background-clip: border-box;
-    background-size: auto;
     color: rgb(51, 51, 51);
-    position: absolute;
  }
+ .login-signup-image {
+     z-index: -1;
+    
+ }
+
+ .message {
+     color: white;
+ }
+
 
 
  .login-form > button {
@@ -186,6 +206,7 @@
     background-color: #FAAC18;
     border: 1px solid black;
  }
+
  .demo {
     border-radius: 6px;
     background-color: #FAAC18;
@@ -229,6 +250,7 @@
  .user-links > li {
      color: gray;
  }
+
  .user-links > li:hover {
      color: black;
  }
@@ -243,6 +265,7 @@
  .user-makables > a:hover {
      color: black;
  }
+
  .user-makables > button:hover {
     background-color: #e5991e;
  }
@@ -283,26 +306,18 @@
  }
 
  .errors {
-     display: flex;
-     justify-content: center;
-     flex-direction: column;
-     align-items: center;
+    //  display: flex;
+    //  justify-content: center;
+    //  flex-direction: column;
+    //  align-items: center;
      /* flex-direction: column; */
-     background: white;
-     width: 440px;
-     height: 20px;
-     border-radius: 6px;
-     margin-left: 75px;
-     margin-top: 300px;
+    //  background: white;
+    //  width: 440px;
+    //  height: 20px;
+    //  border-radius: 6px;
+    //  margin-left: 75px;
+    //  margin-top: 300px;
      color: red;
      /* z-index: 3; */
-     padding: 0;
- }
-
- .home {
-     z-index: -1;
-     /* position: fixed; */
- }
- .home-image {
-     width: 100%;
+    //  padding: 0;
  }
