@@ -10,7 +10,7 @@
 #  updated_at :datetime         not null
 #
 class ProjectStep < ApplicationRecord
-    validates :project_id, :heading, :body presence:true
+    validates :project_id, :heading, :body, presence:true
 
     belongs_to :project,
         foreign_key: :project_id,
