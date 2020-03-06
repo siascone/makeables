@@ -22,6 +22,7 @@ def create
   
   def show
     @user = selected_user
+    render :show
   end
   
   # def index
