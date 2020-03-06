@@ -14,3 +14,4 @@ nemo = User.create!(username: 'nemo', password: 'password')
 demo = User.create!(username: 'demo', password: 'password')
 alec = User.create!(username: 'alec', password: 'password')
 marshall = User.create!(username: 'marshall', password: 'password')
+
