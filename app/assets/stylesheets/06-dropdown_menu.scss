@@ -9,13 +9,12 @@
     position: relative;
     padding: 0;
  }
-
- .projects {
-     height: 25px;
-     width: 75px;
-     border-radius: 5px;
-     margin-top: 24.5px;
- }
+//  .profile-icon {
+// }
+// .profile-icon > a {
+//     height: 38px;
+//     padding-left: 10px;
+//  }
 
   .hide-user-dropdown {
      display: none;
@@ -40,6 +39,7 @@
      display: flex;
      justify-content: space-between;
      border-bottom: 1px solid gray;
+     
  }
 
  .user-links {
@@ -53,6 +53,7 @@
  
  .user-links > li {
      color: gray;
+     margin-left: 5px;
  }
 
  .user-links > li:hover {
@@ -87,9 +88,10 @@
     color: rgb(51, 51, 51);
     height: 34px;
     width: 92px;
+    // margin-right: 5px;
     border-radius: 6px;
     padding: 6px, 12px;
-    margin: 5px;
+    margin: 10px;
     z-index: 1;
  }
  .logout-button:hover {
@@ -100,7 +102,7 @@
  .new-project {
     border-radius: 6px;
     background-color: #FAAC18;
-    border: 1px solid gray;
+    border: none;
     width: 100%;
     height: 44px;
     margin-top: 10px;

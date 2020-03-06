@@ -16,14 +16,14 @@ const Splash = () => (
         <br/>
         <div className="splash-about">
             <div className="step-by-step">
-                <h3>STEP-BY-STEP</h3>
+                <li>STEP-BY-STEP</li>
                 <p>We make it easy to learn how to make anything, one step at a 
                     time. From the stovetop to the workshop, you are sure to be 
                     inspired by the awesome projects that are shared everyday.
                 </p>
             </div>
             <div>
-                <h3>MADE BY YOU</h3>
+                <li>MADE BY YOU</li>
                 <p>Instructables are created by you. No matter who you are, we 
                     all have secret skills to share. Come join our community of 
                     curious makers, innovators, teachers, and life long learners 
@@ -31,7 +31,7 @@ const Splash = () => (
                 </p>
             </div>
             <div>
-                <h3>A HAPPY PLACE</h3>
+                <li>A HAPPY PLACE</li>
                 <p>Making things makes people happy. We can't prove it, but we 
                     know it to be true. Find your happy place, and join one of 
                     the friendliest online communities anywhere.

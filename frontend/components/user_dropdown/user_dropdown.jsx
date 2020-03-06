@@ -17,7 +17,7 @@ class UserDropdwon extends React.Component {
     render() {
         let cName = this.state.cName ? 'hide-user-dropdown' : 'show-user-dropdown';
         return (
-            <div>
+            <div className='profile-icon'>
                 <a  onClick={this.click}>
                     <img className='user-menu-button' src="https://www.instructables.com/assets/img/default/user.TINY.png" width="28px" height="28px"/>
                 </a>

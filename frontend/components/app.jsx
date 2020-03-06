@@ -13,12 +13,12 @@ const App = () => (
     
     <div className="main">
         <div>
-            <header className="header-1">
+            <div className="header-1">
                 <div className='nav-links'>
-                    <Link to="/" className='header-link'>Home</Link>
+                    <Link to="/" className='header-link'><i class="fa fa-home fa-lg"></i></Link>
                 </div>
                 <GreetingContainer />
-            </header>
+            </div>
             <header className='header-2'>
                 <SubHeader />
             </header>
