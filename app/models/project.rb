@@ -4,10 +4,11 @@
 #
 #  id          :bigint           not null, primary key
 #  user_id     :integer          not null
-#  category_id :integer          not null
 #  title       :string           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  description :text             not null
+#  category_id :integer
 #
 class Project < ApplicationRecord
     validates :user_id, :category_id, :title, presence:true
@@ -27,10 +28,5 @@ class Project < ApplicationRecord
     has_many :comments,
         foreign_key: :project_id,
         class_name: :Comment
-
-    
-
-
-
 
 end
