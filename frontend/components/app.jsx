@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Redirect } from 'react-router-dom';
 import LoginFormContainer from './session_form/login_form_container';
 import SignupFormContainer from './session_form/signup_form_container';
 import GreetingContainer from '../components/greeting/greeting_container';
@@ -22,6 +22,7 @@ const App = () => (
             <header className='header-2'>
                 <SubHeader />
             </header>
+            <Route path="*" component={Splash} />
             <Route exact path='/' component={Splash} />
             <AuthRoute path="/login" component={LoginFormContainer} />
             <AuthRoute path="/signup" component={SignupFormContainer} />

@@ -12,6 +12,17 @@ spencer = User.create!(username: 'spencer', password: 'password')
 alice = User.create!(username: 'alice', password: 'password')
 nemo = User.create!(username: 'nemo', password: 'password')
 demo = User.create!(username: 'demo', password: 'password')
+lizzy = User.create!(username: 'lizzy', password: 'password')
 alec = User.create!(username: 'alec', password: 'password')
-marshall = User.create!(username: 'marshall', password: 'password')
+larry = User.create!(username: 'larry', password: 'password')
+joe = User.create!(username: 'joe', password: 'password')
+scott = User.create!(username: 'scott', password: 'password')
+jane = User.create!(username: 'jane', password: 'password')
+beno = User.create!(username: 'beno', password: 'password')
+hayden = User.create!(username: 'hayden', password: 'password')
+ryan = User.create!(username: 'ryan', password: 'password')
+christopher = User.create!(username: 'christopher', password: 'password')
+mary = User.create!(username: 'mary', password: 'password')
+
+
 
