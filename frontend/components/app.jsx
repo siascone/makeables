@@ -22,7 +22,6 @@ const App = () => (
             <header className='header-2'>
                 <SubHeader />
             </header>
-            <Route path="*" component={Splash} />
             <Route exact path='/' component={Splash} />
             <AuthRoute path="/login" component={LoginFormContainer} />
             <AuthRoute path="/signup" component={SignupFormContainer} />
