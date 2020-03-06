@@ -25,6 +25,7 @@ class SessionForm extends React.Component {
     }
 
     renderErrors() {
+        
         return (
             <div className='errors'>
                 {this.props.errors.map((error, i) => (
@@ -32,6 +33,10 @@ class SessionForm extends React.Component {
                 ))}
             </div>
         );
+    }
+
+    componentWillUnmount() {
+        this.props.clearErrors()
     }
 
     render() {
