@@ -24,5 +24,6 @@ ryan = User.create!(username: 'ryan', password: 'password')
 christopher = User.create!(username: 'christopher', password: 'password')
 mary = User.create!(username: 'mary', password: 'password')
 
+Project.destroy_all
 
-
+scalloped_frets = Project.create!(user_id: , title: , description: , category_id: )

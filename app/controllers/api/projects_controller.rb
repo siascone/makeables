@@ -21,7 +21,12 @@ class Api::ProjectsController < ApplicationController
     end
 
     def update
-        
+        @project = selected_project
+        if @project.update(project_params)
+            render :show
+        else
+            render json: @project.errors.full_messages, status: 422
+        end
     end
 
     def destroy
