@@ -1,4 +1,5 @@
 import React from 'react';
+import ProjectsIndex from '../projects/projects_index';
 
 const Splash = () => (
     <div>
@@ -42,13 +43,7 @@ const Splash = () => (
         {/* <div className='exp-projs'>
             <h3>Explore projects</h3>
             <div>
-                <a><li>Here is a project</li></a>
-                <a><li>Here is a project</li></a>
-                <a><li>Here is a project</li></a>
-                <a><li>Here is a project</li></a>
-                <a><li>Here is a project</li></a>
-                <a><li>Here is a project</li></a>
-                <a><li>we are to be flexwrapped</li></a>
+        
             </div>
         </div> */}
         

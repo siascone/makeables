@@ -1,4 +1,5 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom'
 
 class UserDropdwon extends React.Component {
     constructor(props) {
@@ -8,6 +9,8 @@ class UserDropdwon extends React.Component {
         };
         this.click = this.click.bind(this);
     }
+
+    
 
     click(e) {
         e.preventDefault();
@@ -31,8 +34,9 @@ class UserDropdwon extends React.Component {
                     <div className='user-makables'>
                         
                             <a>Makables <li className='project-count'>0</li></a>
-                        
-                        <button className='new-project'>New Makeable</button>
+                        <a href="/?#/projects/new">
+                            <button className='new-project'>New Makeable</button>
+                        </a>
                     </div>
                 </div>
             </div>

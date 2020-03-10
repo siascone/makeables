@@ -1,5 +1,5 @@
 {
-  "name": "Makable",
+  "name": "Makeables",
   "private": true,
   "dependencies": {
     "@babel/core": "^7.8.6",

@@ -29,4 +29,6 @@ class Project < ApplicationRecord
         foreign_key: :project_id,
         class_name: :Comment
 
+    has_one_attached :project_photo
+
 end
