@@ -11,9 +11,12 @@ class Api::ProjectsController < ApplicationController
     end
     
     def create 
+
         @project = Project.new(project_params)
-        @project.user_id = params[:user_id]
+        @project.user_id = current_user.id
+        debugger
         if @project.save
+            debugger
             render :show
         else
             render json: @project.errors.full_messages, status: 401
@@ -46,6 +49,6 @@ class Api::ProjectsController < ApplicationController
     end
 
     def project_params
-        params.require(:user).permit(:title, :description)
+        params.require(:project).permit(:title, :description, :project_photo)
     end
 end

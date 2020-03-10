@@ -3,7 +3,7 @@ import { Route, Link, Redirect, Switch } from 'react-router-dom';
 import LoginFormContainer from './session_form/login_form_container';
 import SignupFormContainer from './session_form/signup_form_container';
 import GreetingContainer from '../components/greeting/greeting_container';
-import { AuthRoute } from '../util/route_util';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import SubHeader from '../components/sub_header/sub_header';
 import Splash from './splash/splash';
 import Footer from './footer/footer';
@@ -30,9 +30,9 @@ const App = () => (
                 <AuthRoute path="/login" component={LoginFormContainer} />
                 <AuthRoute path="/signup" component={SignupFormContainer} />
                 <Route exact path='/projects/' component={ProjectsIndexContainer}/>
-                <Route exact path='/projects/new' component={CreateProjectFormContainer} />
+                <ProtectedRoute exact path='/projects/new' component={CreateProjectFormContainer} />
                 <Route exact path='/projects/:id' component={ProjectShowContainer} />
-                <Route exact path='/projects/:id/edit' component={EditProjectFormContainer} />
+                <ProtectedRoute exact path='/projects/:id/edit' component={EditProjectFormContainer} />
                 <Route exact path='/' component={Splash} />
                 <Redirect to='/'/>
             </Switch>

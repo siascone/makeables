@@ -334,7 +334,7 @@ var App = function App() {
     exact: true,
     path: "/projects/",
     component: _components_projects_projects_index_container__WEBPACK_IMPORTED_MODULE_9__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
     exact: true,
     path: "/projects/new",
     component: _components_projects_create_project_form_container__WEBPACK_IMPORTED_MODULE_12__["default"]
@@ -342,7 +342,7 @@ var App = function App() {
     exact: true,
     path: "/projects/:id",
     component: _components_projects_project_show_container__WEBPACK_IMPORTED_MODULE_10__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
     exact: true,
     path: "/projects/:id/edit",
     component: _components_projects_edit_project_form_container__WEBPACK_IMPORTED_MODULE_11__["default"]
@@ -680,7 +680,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-
+ // import {FormData} from 'react-router-dom'
 
 var ProjectForm = /*#__PURE__*/function (_React$Component) {
   _inherits(ProjectForm, _React$Component);
@@ -692,17 +692,13 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ProjectForm).call(this, props));
     _this.state = _this.props.project;
+    _this.state["photoFile"] = null;
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.previewFile = _this.previewFile.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(ProjectForm, [{
-    key: "handleSubmit",
-    value: function handleSubmit(e) {
-      e.preventDefault();
-      this.props.action(this.state);
-    }
-  }, {
     key: "update",
     value: function update(field) {
       var _this2 = this;
@@ -710,10 +706,48 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
       return function (e) {
         return _this2.setState(_defineProperty({}, field, e.currentTarget.value));
       };
-    } // componentWillUnmount() {
-    //     this.props.clearErrors();
-    // }
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      var formData = new FormData();
+      formData.append('project[title]', this.state.title);
+      formData.append('project[description]', this.state.description);
 
+      if (this.state.photoFile) {
+        formData.append('project[project_photo]', this.state.photoFile);
+      }
+
+      this.props.createProject(formData);
+    }
+  }, {
+    key: "previewFile",
+    value: function previewFile(e) {
+      var _this3 = this;
+
+      var file = e.currentTarget.files[0];
+      var preview = document.querySelector('.img_preview');
+      var reader = new FileReader();
+
+      reader.onloadend = function () {
+        preview.src = reader.result;
+
+        _this3.setState({
+          photoFile: file,
+          photoUrl: reader.result
+        });
+      };
+
+      if (file) {
+        reader.readAsDataURL(file);
+      } else {
+        this.setState({
+          photoUrl: "",
+          photoFile: null
+        });
+      }
+    }
   }, {
     key: "render",
     value: function render() {
@@ -726,6 +760,16 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         placeholder: "Project Description",
         value: this.state.description,
         onChange: this.update('description')
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Add a photo", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "file" // placeholder="Add a Photo"
+        ,
+        value: this.state.project_photo,
+        onChange: this.previewFile
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "",
+        height: "200",
+        alt: "Image Preview",
+        className: "img_preview"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleSubmit
       }, "Publish Makeable")));
@@ -1841,9 +1885,9 @@ var createProject = function createProject(project) {
   return $.ajax({
     url: '/api/projects',
     method: 'POST',
-    data: {
-      project: project
-    }
+    data: project,
+    contentType: false,
+    processData: false
   });
 };
 var updateProject = function updateProject(project) {
@@ -1871,12 +1915,13 @@ var deleteProject = function deleteProject(projectId) {
 /*!**************************************!*\
   !*** ./frontend/util/route_util.jsx ***!
   \**************************************/
-/*! exports provided: AuthRoute */
+/*! exports provided: AuthRoute, ProtectedRoute */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthRoute", function() { return AuthRoute; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProtectedRoute", function() { return ProtectedRoute; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
@@ -1905,6 +1950,22 @@ var Auth = function Auth(_ref) {
   });
 };
 
+var Protected = function Protected(_ref2) {
+  var Component = _ref2.component,
+      path = _ref2.path,
+      loggedIn = _ref2.loggedIn,
+      exact = _ref2.exact;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: path,
+    exact: exact,
+    render: function render(props) {
+      return loggedIn ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, props) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
+        to: "/login"
+      });
+    }
+  });
+};
+
 var mapStateToProps = function mapStateToProps(state) {
   return {
     loggedIn: Boolean(state.session.id)
@@ -1912,6 +1973,7 @@ var mapStateToProps = function mapStateToProps(state) {
 };
 
 var AuthRoute = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, null)(Auth));
+var ProtectedRoute = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, null)(Protected));
 
 /***/ }),
 
