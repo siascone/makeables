@@ -26,7 +26,7 @@ class ProjectForm extends React.Component {
         return (
             <div>
                 <h2>{this.props.formType}</h2>
-                <form onSubmit={this.handleSubmit}>
+                <form>
                     <label>Project Title:
                         <input type="text"
                             placeholder="Project Title"
@@ -41,6 +41,7 @@ class ProjectForm extends React.Component {
                             onChange={this.update('description')}
                         />
                     </label>
+                    <button onClick={this.handleSubmit}>Publish Makeable</button>
                 </form>
             </div>
         )

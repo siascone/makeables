@@ -1,5 +1,5 @@
 import React from 'react';
-import {Redirect} from 'react-router-dom'
+import {Redirect, withRouter} from 'react-router-dom';
 
 class UserDropdwon extends React.Component {
     constructor(props) {
@@ -8,9 +8,19 @@ class UserDropdwon extends React.Component {
             cName: true,
         };
         this.click = this.click.bind(this);
+        this.newProject = this.newProject.bind(this);
     }
 
-    
+    newProject(e) {
+        e.preventDefault();
+        // debugger
+        
+        this.setState({ cName: !this.state.cName }, 
+            () => {
+                // debugger
+                this.props.history.push('/projects/new');
+            });
+    }
 
     click(e) {
         e.preventDefault();
@@ -32,11 +42,8 @@ class UserDropdwon extends React.Component {
                         <button className='logout-button' onClick={this.props.logout}>Log Out</button>
                     </div>
                     <div className='user-makables'>
-                        
                             <a>Makables <li className='project-count'>0</li></a>
-                        <a href="/?#/projects/new">
-                            <button className='new-project'>New Makeable</button>
-                        </a>
+                        <button onClick={this.newProject} className='new-project'>New Makeable</button>
                     </div>
                 </div>
             </div>
@@ -44,4 +51,4 @@ class UserDropdwon extends React.Component {
     }
 }
 
-export default UserDropdwon;
+export default withRouter(UserDropdwon);

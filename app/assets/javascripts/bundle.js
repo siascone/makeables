@@ -717,9 +717,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, this.props.formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Project Title:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, this.props.formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Project Title:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "Project Title",
         value: this.state.title,
@@ -728,7 +726,9 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         placeholder: "Project Description",
         value: this.state.description,
         onChange: this.update('description')
-      }))));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleSubmit
+      }, "Publish Makeable")));
     }
   }]);
 
@@ -1409,10 +1409,25 @@ var UserDropdwon = /*#__PURE__*/function (_React$Component) {
       cName: true
     };
     _this.click = _this.click.bind(_assertThisInitialized(_this));
+    _this.newProject = _this.newProject.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(UserDropdwon, [{
+    key: "newProject",
+    value: function newProject(e) {
+      var _this2 = this;
+
+      e.preventDefault(); // debugger
+
+      this.setState({
+        cName: !this.state.cName
+      }, function () {
+        // debugger
+        _this2.props.history.push('/projects/new');
+      });
+    }
+  }, {
     key: "click",
     value: function click(e) {
       e.preventDefault();
@@ -1446,18 +1461,17 @@ var UserDropdwon = /*#__PURE__*/function (_React$Component) {
         className: "user-makables"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Makables ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "project-count"
-      }, "0")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "/?#/projects/new"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "0")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.newProject,
         className: "new-project"
-      }, "New Makeable")))));
+      }, "New Makeable"))));
     }
   }]);
 
   return UserDropdwon;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (UserDropdwon);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(UserDropdwon));
 
 /***/ }),
 
