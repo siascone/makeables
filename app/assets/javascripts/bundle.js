@@ -970,13 +970,12 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         className: "image-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Click to Add an Image"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-nav"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "project-add"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Add"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "add-drop"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "project-button",
         onClick: this.handleSubmit
-      }, "Publish")));
+      }, "Publish")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "steps-box"
+      }, "---steps component will go here---"));
     }
   }]);
 

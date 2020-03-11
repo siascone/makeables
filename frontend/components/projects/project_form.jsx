@@ -73,16 +73,15 @@ class ProjectForm extends React.Component {
                     </div>
                 </div>
                 <div className='project-nav'>
-                    <div className='project-add'>
-                        <button>Add</button>
-                        <div className='add-drop'>
-                            
-                        </div>
-                    </div>
+                    <div></div>
                     <button
+                        className='project-button'
                         onClick={this.handleSubmit}>
                         Publish
                     </button>
+                </div>
+                <div className='steps-box'>
+                    ---steps component will go here---
                 </div>
             </div>
         )
