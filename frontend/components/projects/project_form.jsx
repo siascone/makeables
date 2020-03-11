@@ -19,7 +19,7 @@ class ProjectForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const formData = new FormData();
-        formData.append('project[description]', this.state.description)
+        // formData.append('project[description]', this.state.description)
         if (this.state.photoFile) {
             formData.append('project[project_photo]', this.state.photoFile);
         }
@@ -54,66 +54,35 @@ class ProjectForm extends React.Component {
 
 
     render() {
-        let deleteButton;
-        if (this.props.formType === 'Update Makeable') {
-            deleteButton = 'show-delete-button';
-        } else {
-            deleteButton = 'hide-delete-button';
-        }
-        let inputs = this.cName ? "show-inputs" : "hide-inputs";
 
         return (
             <div className='project-main'>
-                <div>
-                    <form className='project-form'>
-                        <div className='project-form-photo'>
-                            <label>Click to Add an Image
-                                <img src=""
-                                    alt="Image Preview" 
-                                    className='img_preview'
-                                />
-                                <input type="file"
-                                    className='file-field'
-                                    value={this.state.project_photo}
-                                    onChange={this.previewFile}
-
-                                />
-                            </label>
+                <div className='image-input'>
+                    <div className='image-box'>
+                        <label>Click to Add an Image
+                            {/* <img src=""
+                                alt="Image Preview"
+                                className='img_preview'
+                            />
+                            <input type="file"
+                                className='file-field'
+                                value={this.state.project_photo}
+                                onChange={this.previewFile}
+                            /> */}
+                        </label>
+                    </div>
+                </div>
+                <div className='project-nav'>
+                    <div className='project-add'>
+                        <button>Add</button>
+                        <div className='add-drop'>
+                            
                         </div>
-                        <div className='project-form-input'>
-                            {/* <button onClick={this.click} 
-                                className='input-drop'>
-                                Edit
-                            </button>
-                            <div className={inputs}>
-                                <label>
-                                    <input type="text"
-                                        placeholder="Project Title"
-                                        value={this.state.title}
-                                        onChange={this.update('title')}
-                                    />
-                                </label>
-                                <label>
-                                    <input type='text'
-                                        placeholder="Project Description"
-                                        value={this.state.description}
-                                        onChange={this.update('description')}
-                                    />
-                                </label>
-                            </div> */}
-                            <div className='project-submit-buttons'>
-                                <button  
-                                    onClick={this.handleSubmit}>
-                                    {this.props.formType}
-                                </button>
-                                <button className={deleteButton} 
-                                    onClick={() => this.props.deleteProject}>
-                                    Delete Makeable
-                                </button>
-                            </div>
-                        </div>
-                        <div className='steps-container'>steps go here</div>
-                    </form>
+                    </div>
+                    <button
+                        onClick={this.handleSubmit}>
+                        Publish
+                    </button>
                 </div>
             </div>
         )
@@ -121,3 +90,70 @@ class ProjectForm extends React.Component {
 }
 
 export default ProjectForm;
+
+// render() {
+//     let deleteButton;
+//     if (this.props.formType === 'Update Makeable') {
+//         deleteButton = 'show-delete-button';
+//     } else {
+//         deleteButton = 'hide-delete-button';
+//     }
+//     let inputs = this.cName ? "show-inputs" : "hide-inputs";
+
+//     return (
+//         <div className='project-main'>
+//             <div>
+//                 <form className='project-form'>
+//                     <div className='project-form-photo'>
+//                         <label>Click to Add an Image
+//                                     <img src=""
+//                                 alt="Image Preview"
+//                                 className='img_preview'
+//                             />
+//                             <input type="file"
+//                                 className='file-field'
+//                                 value={this.state.project_photo}
+//                                 onChange={this.previewFile}
+
+//                             />
+//                         </label>
+//                     </div>
+//                     <div className='project-form-input'>
+//                         <button onClick={this.click}
+//                             className='input-drop'>
+//                             Edit
+//                                 </button>
+//                         <div className={inputs}>
+//                             <label>
+//                                 <input type="text"
+//                                     placeholder="Project Title"
+//                                     value={this.state.title}
+//                                     onChange={this.update('title')}
+//                                 />
+//                             </label>
+//                             <label>
+//                                 <input type='text'
+//                                     placeholder="Project Description"
+//                                     value={this.state.description}
+//                                     onChange={this.update('description')}
+//                                 />
+//                             </label>
+//                         </div>
+//                         <div className='project-submit-buttons'>
+//                             <button
+//                                 onClick={this.handleSubmit}>
+//                                 {this.props.formType}
+//                             </button>
+//                             <button className={deleteButton}
+//                                 onClick={() => this.props.deleteProject}>
+//                                 Delete Makeable
+//                                     </button>
+//                         </div>
+//                     </div>
+//                     <div className='steps-container'>steps go here</div>
+//                 </form>
+//             </div>
+//         </div>
+//     )
+
+// }

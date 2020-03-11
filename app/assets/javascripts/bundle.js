@@ -914,8 +914,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
-      var formData = new FormData();
-      formData.append('project[description]', this.state.description);
+      var formData = new FormData(); // formData.append('project[description]', this.state.description)
 
       if (this.state.photoFile) {
         formData.append('project[project_photo]', this.state.photoFile);
@@ -963,53 +962,90 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
-
-      var deleteButton;
-
-      if (this.props.formType === 'Update Makeable') {
-        deleteButton = 'show-delete-button';
-      } else {
-        deleteButton = 'hide-delete-button';
-      }
-
-      var inputs = this.cName ? "show-inputs" : "hide-inputs";
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-main"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "project-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "project-form-photo"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Click to Add an Image", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "",
-        alt: "Image Preview",
-        className: "img_preview"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "file",
-        className: "file-field",
-        value: this.state.project_photo,
-        onChange: this.previewFile
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "project-form-input"
+        className: "image-input"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "project-submit-buttons"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "image-box"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Click to Add an Image"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "project-nav"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "project-add"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Add"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "add-drop"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleSubmit
-      }, this.props.formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: deleteButton,
-        onClick: function onClick() {
-          return _this4.props.deleteProject;
-        }
-      }, "Delete Makeable"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "steps-container"
-      }, "steps go here"))));
+      }, "Publish")));
     }
   }]);
 
   return ProjectForm;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (ProjectForm);
+/* harmony default export */ __webpack_exports__["default"] = (ProjectForm); // render() {
+//     let deleteButton;
+//     if (this.props.formType === 'Update Makeable') {
+//         deleteButton = 'show-delete-button';
+//     } else {
+//         deleteButton = 'hide-delete-button';
+//     }
+//     let inputs = this.cName ? "show-inputs" : "hide-inputs";
+//     return (
+//         <div className='project-main'>
+//             <div>
+//                 <form className='project-form'>
+//                     <div className='project-form-photo'>
+//                         <label>Click to Add an Image
+//                                     <img src=""
+//                                 alt="Image Preview"
+//                                 className='img_preview'
+//                             />
+//                             <input type="file"
+//                                 className='file-field'
+//                                 value={this.state.project_photo}
+//                                 onChange={this.previewFile}
+//                             />
+//                         </label>
+//                     </div>
+//                     <div className='project-form-input'>
+//                         <button onClick={this.click}
+//                             className='input-drop'>
+//                             Edit
+//                                 </button>
+//                         <div className={inputs}>
+//                             <label>
+//                                 <input type="text"
+//                                     placeholder="Project Title"
+//                                     value={this.state.title}
+//                                     onChange={this.update('title')}
+//                                 />
+//                             </label>
+//                             <label>
+//                                 <input type='text'
+//                                     placeholder="Project Description"
+//                                     value={this.state.description}
+//                                     onChange={this.update('description')}
+//                                 />
+//                             </label>
+//                         </div>
+//                         <div className='project-submit-buttons'>
+//                             <button
+//                                 onClick={this.handleSubmit}>
+//                                 {this.props.formType}
+//                             </button>
+//                             <button className={deleteButton}
+//                                 onClick={() => this.props.deleteProject}>
+//                                 Delete Makeable
+//                                     </button>
+//                         </div>
+//                     </div>
+//                     <div className='steps-container'>steps go here</div>
+//                 </form>
+//             </div>
+//         </div>
+//     )
+// }
 
 /***/ }),
 
