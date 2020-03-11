@@ -11,11 +11,12 @@ import ProjectsIndexContainer from '../components/projects/projects_index_contai
 import ProjectShowContainer from '../components/projects/project_show_container';
 import EditProjectFormContainer from '../components/projects/edit_project_form_container';
 import CreateProjectFormContainer from '../components/projects/create_project_form_container';
-
+import Modal from './modal/modal';
 
 const App = () => (
     
     <div className="main">
+        <Modal />
         <div>
             <div className="header-1">
                 <div className='nav-links'>

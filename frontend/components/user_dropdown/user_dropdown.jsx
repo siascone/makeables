@@ -8,18 +8,13 @@ class UserDropdwon extends React.Component {
             cName: true,
         };
         this.click = this.click.bind(this);
-        this.newProject = this.newProject.bind(this);
+        this.handleModal = this.handleModal.bind(this);
     }
 
-    newProject(e) {
+    handleModal(e) {
         e.preventDefault();
-        // debugger
-        
-        this.setState({ cName: !this.state.cName }, 
-            () => {
-                // debugger
-                this.props.history.push('/projects/new');
-            });
+        this.props.history.push('/projects/new');
+        this.props.openModal() 
     }
 
     click(e) {
@@ -43,7 +38,7 @@ class UserDropdwon extends React.Component {
                     </div>
                     <div className='user-makables'>
                             <a>Makables <li className='project-count'>0</li></a>
-                        <button onClick={this.newProject} className='new-project'>New Makeable</button>
+                        <button onClick={this.handleModal} className='new-project'>New Makeable</button>
                     </div>
                 </div>
             </div>
