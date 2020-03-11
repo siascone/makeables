@@ -9,12 +9,10 @@
     position: relative;
     padding: 0;
  }
-//  .profile-icon {
-// }
-// .profile-icon > a {
-//     height: 38px;
-//     padding-left: 10px;
-//  }
+ .profile-icon:hover {
+     cursor: pointer;
+}
+
 
   .hide-user-dropdown {
      display: none;

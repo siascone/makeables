@@ -3,8 +3,15 @@ import ProjectShow from './project_show';
 import {fetchProject} from '../../actions/project_actions';
 
 const mapStateToProps = (state, ownProps) => {
+    let project = state.entities.projects[ownProps.match.params.id]
+    let username = null;
+    if (project) {
+        username = state.entities.users[project.user_id].username
+    }
+
     return {
-    project: state.entities.projects[ownProps.match.params.id]
+    project: project,
+    username: username
     };
 };
 

@@ -32,12 +32,12 @@ class UserDropdwon extends React.Component {
                 <div className={cName}>
                     <div className='links-logout'>
                         <div className='user-links'>
-                            <li>Profile</li>
+                            {/* <li>Profile</li> */}
                         </div>
                         <button className='logout-button' onClick={this.props.logout}>Log Out</button>
                     </div>
                     <div className='user-makables'>
-                            <a>Makables <li className='project-count'>0</li></a>
+                            {/* <a>Makables <li className='project-count'>0</li></a> */}
                         <button onClick={this.handleModal} className='new-project'>New Makeable</button>
                     </div>
                 </div>

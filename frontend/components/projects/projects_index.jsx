@@ -9,9 +9,8 @@ class ProjectsIndex extends React.Component {
     render() {
         const { projects } = this.props;
         return (
-            <div>
-                <h1>Projects</h1>
-                <ul>
+            <div className='project-index-main'>
+                
                     {
                         projects.map((project, idx) => (
                             <ProjectIndexItem
@@ -20,7 +19,7 @@ class ProjectsIndex extends React.Component {
                                 />
                         ))
                     }
-                </ul>
+                
             </div>
         )
     }

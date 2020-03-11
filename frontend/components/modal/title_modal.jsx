@@ -3,8 +3,7 @@ import React from 'react';
 class TitleModal extends React.Component {
     constructor(props) {
         super(props)
-        this.state = this.props.project;
-
+        this.state = {title: ''}
         this.handleSubmit = this.handleSubmit.bind(this);
 
     }
@@ -15,9 +14,12 @@ class TitleModal extends React.Component {
     }
 
     handleSubmit(e) {
+        // debugger
         e.preventDefault();
-        this.setState({title: e.target.value})
-        this.props.closeModal
+        // debugger
+        localStorage.setItem('title', this.state.title)
+        // debugger
+        this.props.closeModal()
     }
 
 

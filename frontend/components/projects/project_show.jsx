@@ -7,19 +7,24 @@ class ProjectShow extends React.Component {
     }
 
     render() {
-        const {project} = this.props;
+        const {project, username} = this.props;
         
         if (!project) return null;
-        
         return (
-            <div>
-                <h1>{project.title}</h1>
-                <br/>
-                <img src={project.photoUrl} alt=""/>
-                <br />
-                <p>{project.description}</p>
-                <br />
-                <Link to='/projects'>Projects Index</Link>
+            <div className='project-show-main'>
+                <div className='project-show-title-by'>
+                    <h1>{project.title}</h1>
+                    <h2>by {username} </h2>
+                </div>
+                <div className='project-show-image'>
+                    <img src={project.photoUrl} alt=""/>
+                </div>
+                <div className='project-show-description'>
+                    <p>{project.description}</p>
+                </div>
+                <div className='project-show-steps'>
+                    ---steps will go here---
+                </div>
             </div>
         )
     }

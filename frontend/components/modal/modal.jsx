@@ -1,7 +1,7 @@
 import React from 'react';
 import {closeModal} from '../../actions/modal_actions';
 import {connect} from 'react-redux';
-import TitleModal from './title_modal';
+import TitleModalContainer from './title_modal_container';
 
 function Modal({modal, closeModal}) {
     if (!modal) {
@@ -10,7 +10,7 @@ function Modal({modal, closeModal}) {
     let component;
     switch (modal) {
         case "make_project":
-            component = <TitleModal />
+            component = <TitleModalContainer />
             break;
         default:
             return null;

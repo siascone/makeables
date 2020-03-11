@@ -7,7 +7,6 @@
 #  title       :string           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  description :text             not null
 #  category_id :integer
 #
 class Project < ApplicationRecord

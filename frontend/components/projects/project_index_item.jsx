@@ -2,19 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ProjectIndexItem = props => (
-    <div>
-        <br/>
-        <li>
-            <Link to={`/projects/${props.project.id}`}>{props.project.title}</Link>
-            <br/>
+    <div className='project-index-individual'>
+        <div className='project-index-image'>
             <img src={props.project.photoUrl} alt=""/>
-            <br/>
-            {props.project.description}
-            {/* <Link to={`/projects/${props.project.id}/edit`}>Edit</Link> */}
-            {/* <br/> */}
-            {/* <button onClick={() => props.deleteProject(props.projects.id)}>Delete Project</button> */}
-        </li>
-        <br/>
+        </div>
+        <div className='project-index-details'>
+            <Link to={`/projects/${props.project.id}`}>{props.project.title}</Link>
+            <p>by: username</p>
+        </div>
     </div>
 );
 

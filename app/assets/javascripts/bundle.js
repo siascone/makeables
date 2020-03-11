@@ -153,10 +153,10 @@ var receiveAllProjects = function receiveAllProjects(projects) {
   };
 };
 
-var receiveProject = function receiveProject(project) {
+var receiveProject = function receiveProject(payload) {
   return {
     type: RECEIVE_PROJECT,
-    project: project
+    payload: payload
   };
 };
 
@@ -187,8 +187,8 @@ var fetchAllProjects = function fetchAllProjects() {
 };
 var fetchProject = function fetchProject(projectId) {
   return function (dispatch) {
-    return _util_projects_api_util__WEBPACK_IMPORTED_MODULE_1__["fetchProject"](projectId).then(function (project) {
-      return dispatch(receiveProject(project));
+    return _util_projects_api_util__WEBPACK_IMPORTED_MODULE_1__["fetchProject"](projectId).then(function (payload) {
+      return dispatch(receiveProject(payload));
     });
   };
 };
@@ -554,7 +554,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _title_modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./title_modal */ "./frontend/components/modal/title_modal.jsx");
+/* harmony import */ var _title_modal_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./title_modal_container */ "./frontend/components/modal/title_modal_container.js");
 
 
 
@@ -572,7 +572,7 @@ function Modal(_ref) {
 
   switch (modal) {
     case "make_project":
-      component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_title_modal__WEBPACK_IMPORTED_MODULE_3__["default"], null);
+      component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_title_modal_container__WEBPACK_IMPORTED_MODULE_3__["default"], null);
       break;
 
     default:
@@ -650,7 +650,9 @@ var TitleModal = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, TitleModal);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(TitleModal).call(this, props));
-    _this.state = _this.props.project;
+    _this.state = {
+      title: ''
+    };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -667,11 +669,12 @@ var TitleModal = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      e.preventDefault();
-      this.setState({
-        title: e.target.value
-      });
-      this.props.closeModal;
+      // debugger
+      e.preventDefault(); // debugger
+
+      localStorage.setItem('title', this.state.title); // debugger
+
+      this.props.closeModal();
     }
   }, {
     key: "render",
@@ -700,6 +703,44 @@ var TitleModal = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (TitleModal);
+
+/***/ }),
+
+/***/ "./frontend/components/modal/title_modal_container.js":
+/*!************************************************************!*\
+  !*** ./frontend/components/modal/title_modal_container.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _title_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./title_modal */ "./frontend/components/modal/title_modal.jsx");
+
+
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    project: {
+      title: '',
+      description: ''
+    },
+    formType: "Publish Makeable"
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    closeModal: function closeModal() {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__["closeModal"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_title_modal__WEBPACK_IMPORTED_MODULE_2__["default"]));
 
 /***/ }),
 
@@ -914,7 +955,9 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
-      var formData = new FormData(); // formData.append('project[description]', this.state.description)
+      var formData = new FormData();
+      formData.append('project[title]', localStorage.getItem('title'));
+      localStorage.removeItem('title');
 
       if (this.state.photoFile) {
         formData.append('project[project_photo]', this.state.photoFile);
@@ -968,7 +1011,16 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         className: "image-input"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "image-box"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Click to Add an Image"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Click to Add an Image", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "",
+        alt: "Image Preview",
+        className: "img_preview"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "file",
+        className: "file-field",
+        value: this.state.project_photo,
+        onChange: this.previewFile
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-nav"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "project-button",
@@ -982,69 +1034,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
   return ProjectForm;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (ProjectForm); // render() {
-//     let deleteButton;
-//     if (this.props.formType === 'Update Makeable') {
-//         deleteButton = 'show-delete-button';
-//     } else {
-//         deleteButton = 'hide-delete-button';
-//     }
-//     let inputs = this.cName ? "show-inputs" : "hide-inputs";
-//     return (
-//         <div className='project-main'>
-//             <div>
-//                 <form className='project-form'>
-//                     <div className='project-form-photo'>
-//                         <label>Click to Add an Image
-//                                     <img src=""
-//                                 alt="Image Preview"
-//                                 className='img_preview'
-//                             />
-//                             <input type="file"
-//                                 className='file-field'
-//                                 value={this.state.project_photo}
-//                                 onChange={this.previewFile}
-//                             />
-//                         </label>
-//                     </div>
-//                     <div className='project-form-input'>
-//                         <button onClick={this.click}
-//                             className='input-drop'>
-//                             Edit
-//                                 </button>
-//                         <div className={inputs}>
-//                             <label>
-//                                 <input type="text"
-//                                     placeholder="Project Title"
-//                                     value={this.state.title}
-//                                     onChange={this.update('title')}
-//                                 />
-//                             </label>
-//                             <label>
-//                                 <input type='text'
-//                                     placeholder="Project Description"
-//                                     value={this.state.description}
-//                                     onChange={this.update('description')}
-//                                 />
-//                             </label>
-//                         </div>
-//                         <div className='project-submit-buttons'>
-//                             <button
-//                                 onClick={this.handleSubmit}>
-//                                 {this.props.formType}
-//                             </button>
-//                             <button className={deleteButton}
-//                                 onClick={() => this.props.deleteProject}>
-//                                 Delete Makeable
-//                                     </button>
-//                         </div>
-//                     </div>
-//                     <div className='steps-container'>steps go here</div>
-//                 </form>
-//             </div>
-//         </div>
-//     )
-// }
+/* harmony default export */ __webpack_exports__["default"] = (ProjectForm);
 
 /***/ }),
 
@@ -1064,12 +1054,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ProjectIndexItem = function ProjectIndexItem(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/projects/".concat(props.project.id)
-  }, props.project.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "project-index-individual"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "project-index-image"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: props.project.photoUrl,
     alt: ""
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), props.project.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "project-index-details"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/projects/".concat(props.project.id)
+  }, props.project.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "by: username")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ProjectIndexItem);
@@ -1126,14 +1122,24 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var project = this.props.project;
+      var _this$props = this.props,
+          project = _this$props.project,
+          username = _this$props.username;
       if (!project) return null;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, project.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "project-show-main"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "project-show-title-by"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, project.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "by ", username, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "project-show-image"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: project.photoUrl,
         alt: ""
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, project.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/projects"
-      }, "Projects Index"));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "project-show-description"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, project.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "project-show-steps"
+      }, "---steps will go here---"));
     }
   }]);
 
@@ -1161,8 +1167,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
+  var project = state.entities.projects[ownProps.match.params.id];
+  var username = null;
+
+  if (project) {
+    username = state.entities.users[project.user_id].username;
+  }
+
   return {
-    project: state.entities.projects[ownProps.match.params.id]
+    project: project,
+    username: username
   };
 };
 
@@ -1229,12 +1243,14 @@ var ProjectsIndex = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var projects = this.props.projects;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Projects"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, projects.map(function (project, idx) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "project-index-main"
+      }, projects.map(function (project, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           project: project,
           key: idx
         });
-      })));
+      }));
     }
   }]);
 
@@ -1755,14 +1771,12 @@ var UserDropdwon = /*#__PURE__*/function (_React$Component) {
         className: "links-logout"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-links"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Profile")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "logout-button",
         onClick: this.props.logout
       }, "Log Out")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-makables"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Makables ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "project-count"
-      }, "0")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleModal,
         className: "new-project"
       }, "New Makeable"))));
@@ -1955,7 +1969,7 @@ var projectsReducer = function projectsReducer() {
       return action.projects;
 
     case _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PROJECT"]:
-      return _defineProperty({}, action.project.id, action.project);
+      return _defineProperty({}, action.payload.project.id, action.payload.project);
 
     case _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_PROJECT"]:
       delete newState[action.projectId];
@@ -2102,7 +2116,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_project_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/project_actions */ "./frontend/actions/project_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -2114,6 +2130,9 @@ var usersReducer = function usersReducer() {
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
       return Object.assign({}, state, _defineProperty({}, action.currentUser.id, action.currentUser));
+
+    case _actions_project_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_PROJECT"]:
+      return _defineProperty({}, action.payload.user.id, action.payload.user);
 
     default:
       return state;

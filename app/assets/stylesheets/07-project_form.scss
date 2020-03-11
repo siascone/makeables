@@ -53,7 +53,19 @@
     background-color: rgb(240, 240, 240);
 }
 
-
+.steps-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 500px;
+    border: 1px solid lightgray;
+    border-radius: 0 0 6px 6px;
+    border-top: none;
+    background: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: gray;
+}
 
 
 
