@@ -19,7 +19,6 @@ class ProjectForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const formData = new FormData();
-        formData.append('project[title]', this.state.title);
         formData.append('project[description]', this.state.description)
         if (this.state.photoFile) {
             formData.append('project[project_photo]', this.state.photoFile);

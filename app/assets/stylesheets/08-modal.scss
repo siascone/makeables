@@ -14,3 +14,78 @@
    left: 50%;
    transform: translate(-50%, -50%);
  }
+
+ .title-modal-main {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 455px;
+   z-index: 20;
+  //  border: solid 1px gray;
+   border-radius: 6px;
+   overflow: hidden;
+ }
+
+ .title-modal-greeting {
+   display: block;
+   color: white;
+   width: 100%;
+   height: 140px;
+   font-size: 20px;
+   background: url(https://www.instructables.com/assets/editor/desktop/img/create-intro-header.png);
+
+
+ }
+
+ .title-modal-statement {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+   align-items: center;
+   width: 375px;
+   height: 170px;
+   background: white;
+   color: #333333;
+   font-size: 18px;
+   padding: 40px;
+ }
+
+ .title-modal-statement :first-child {
+   width: 375px;
+   height: 21px;
+   text-align: center;
+ }
+
+ .title-modal-input {
+  //  display: flex;
+  //  justify-content: center;
+  //  width: 80%;
+  //  height: 30px;
+  //  border-top: 1px solid gray;
+  //  border-bottom: 1px solid #333333;
+
+ }
+ .title-modal-input :first-child {
+   display: block;
+   text-align: center;
+   width: 370px;
+   height: 41px;
+   border: none;
+   margin-top: 20px 0px;
+   pad: 10px;
+    border-top: 1px solid lightgray;
+   border-bottom: 1px solid gray;
+ }
+
+ .title-modal-submit :first-child {
+   background-color: #e86c00;
+   border-color: #cf6000;
+   border-radius: 6px;
+   color: white;
+   height: 44px;
+   width: 188px;
+ }
+
+ .title-modal-submit :first-child:hover {
+   background-color: #cf6000;
+ }

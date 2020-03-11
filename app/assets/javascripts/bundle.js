@@ -671,16 +671,26 @@ var TitleModal = /*#__PURE__*/function (_React$Component) {
       this.setState({
         title: e.target.value
       });
-      this.props.closeModal();
+      this.props.closeModal;
     }
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "WHAT DO YOU WANT TO SHARE?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "I made a project called:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "title-modal-main"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "title-modal-greeting"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "title-modal-statement"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "I made a project called:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "title-modal-input"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         value: this.props.title,
         onChange: this.update('title')
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "title-modal-submit"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleSubmit
       }, "Start Makeable"))));
     }
@@ -905,7 +915,6 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       var formData = new FormData();
-      formData.append('project[title]', this.state.title);
       formData.append('project[description]', this.state.description);
 
       if (this.state.photoFile) {
