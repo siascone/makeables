@@ -1,0 +1,89 @@
+
+.project-main{
+    display: block;
+    position: relative;
+    margin: 40px 30px 36px;
+    min-height: 100px;
+    width: 1016;
+    background: #fff;
+    // border: 1 solid rgba(119,130,135,.4);
+    // border-radius: 6px;
+    padding: 5px;
+    color: #333;
+    font-size: 14px;
+    line-height: 20px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.project-main :first-child {
+    display: flex;
+    flex-direction: column;
+    // width: 100%;
+    // margin: 0;
+}
+
+.project-form-photo {
+    display: flex;
+    height: 140;
+    // width: 100%;
+    border: 1px solid gray;
+    border-bottom: none;
+    border-radius: 6px 6px 0px 0px;
+    // justify-content: center;
+}
+
+.project-form-input {
+    display: flex;
+    justify-content: space-between;
+    border: gray solid 1px;
+    border-top: none;
+    // border-radius: 0px 0px 6px 6px;
+}
+
+.file-field {
+    display: none;
+}
+
+.input-drop {
+    display: block;
+    position: relative;
+}
+.input-drop:hover .inputs {
+    display: block;
+}
+
+.show-inputs {
+    display: block;
+    position: absolute;
+}
+
+.hide-inputs {
+    display: none;
+    position: absolute;
+}
+
+.img_preview {
+    border: gray solid 1px;
+    border-radius: 6px;
+    margin: 5px;
+    height: 100px;
+    width: 100px;
+}
+
+.steps-container {
+    display: flex;
+    border: solid gray 1px;
+    border-top: none;
+    border-radius: 0px 0px 6px 6px;
+}
+
+.hide-delete-button {
+    display: none;
+}
+
+.show-delete-button {
+    display: flex;
+}

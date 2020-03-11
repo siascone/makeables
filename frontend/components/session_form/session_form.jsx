@@ -81,7 +81,6 @@ class SessionForm extends React.Component {
                     <button className='demo' onClick={this.props.loginDemoUser}>Demo Login</button>
                     <br/>
                     <div className='message'>{message}</div>
-                    {/* {this.props.formType} or {this.props.link} */}
                     {this.renderErrors()}
                 </form>
             </div>

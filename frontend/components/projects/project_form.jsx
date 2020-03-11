@@ -1,14 +1,14 @@
 import React from 'react';
-// import {FormData} from 'react-router-dom'
 
 class ProjectForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = this.props.project;
         this.state["photoFile"] = null;
-
+        this.cName = false;
         this.handleSubmit = this.handleSubmit.bind(this);
         this.previewFile = this.previewFile.bind(this);
+        this.click = this.click.bind(this);
     }
 
     update(field) {
@@ -24,7 +24,12 @@ class ProjectForm extends React.Component {
         if (this.state.photoFile) {
             formData.append('project[project_photo]', this.state.photoFile);
         }
-        this.props.createProject(formData);
+        if (this.props.formType === 'Publish Makeable') {
+            this.props.createProject(formData);
+        } else {
+            this.props.updateProject(formData);
+        }
+        
     }
 
     previewFile(e) {
@@ -43,37 +48,74 @@ class ProjectForm extends React.Component {
         }
     }
 
+    click(e) {
+        e.preventDefault();
+        this.cName = !this.cName;
+    }
+
 
     render() {
-        return (
-            <div>
-                <h2>{this.props.formType}</h2>
-                <form>
-                    <label>Project Title:
-                        <input type="text"
-                            placeholder="Project Title"
-                            value={this.state.title}
-                            onChange={this.update('title')}
-                        />
-                    </label>
-                    <label>Project Description
-                        <textarea
-                            placeholder="Project Description"
-                            value={this.state.description}
-                            onChange={this.update('description')}
-                        />
-                    </label>
-                    <label>Add a photo
-                        <input type="file"
-                            // placeholder="Add a Photo"
-                            value={this.state.project_photo}
-                            onChange={this.previewFile}
+        let deleteButton;
+        if (this.props.formType === 'Update Makeable') {
+            deleteButton = 'show-delete-button';
+        } else {
+            deleteButton = 'hide-delete-button';
+        }
+        let inputs = this.cName ? "show-inputs" : "hide-inputs";
 
-                        />
-                        <img src="" height='200' alt="Image Preview" className='img_preview'/>
-                    </label>
-                    <button onClick={this.handleSubmit}>Publish Makeable</button>
-                </form>
+        return (
+            <div className='project-main'>
+                <div>
+                    <form className='project-form'>
+                        <div className='project-form-photo'>
+                            <label>Click to Add an Image
+                                <img src=""
+                                    alt="Image Preview" 
+                                    className='img_preview'
+                                />
+                                <input type="file"
+                                    className='file-field'
+                                    value={this.state.project_photo}
+                                    onChange={this.previewFile}
+
+                                />
+                            </label>
+                        </div>
+                        <div className='project-form-input'>
+                            {/* <button onClick={this.click} 
+                                className='input-drop'>
+                                Edit
+                            </button>
+                            <div className={inputs}>
+                                <label>
+                                    <input type="text"
+                                        placeholder="Project Title"
+                                        value={this.state.title}
+                                        onChange={this.update('title')}
+                                    />
+                                </label>
+                                <label>
+                                    <input type='text'
+                                        placeholder="Project Description"
+                                        value={this.state.description}
+                                        onChange={this.update('description')}
+                                    />
+                                </label>
+                            </div> */}
+                            <div className='project-submit-buttons'>
+                                <button  
+                                    onClick={this.handleSubmit}>
+                                    {this.props.formType}
+                                </button>
+                                <button className={deleteButton} 
+                                    onClick={() => this.props.deleteProject}>
+                                    Delete Makeable
+                                </button>
+                            </div>
+                        </div>
+                        <div className='steps-container'>steps go here</div>
+                    </form>
+                </div>
             </div>
         )
     }

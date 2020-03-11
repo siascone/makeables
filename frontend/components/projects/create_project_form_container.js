@@ -10,7 +10,7 @@ const mapStateToProps = state => {
         title: '',
         description: '',
         },
-        formType: "Create Project"
+        formType: "Publish Makeable"
     });
 };
 

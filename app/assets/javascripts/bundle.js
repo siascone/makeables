@@ -535,7 +535,7 @@ var mapStateToProps = function mapStateToProps(state) {
       title: '',
       description: ''
     },
-    formType: "Create Project"
+    formType: "Publish Makeable"
   };
 };
 
@@ -627,7 +627,7 @@ var EditProjectForm = /*#__PURE__*/function (_React$Component) {
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     project: state.entities.projects[ownProps.match.params.id],
-    formType: 'Update Project'
+    formType: 'Update Makeable'
   };
 };
 
@@ -638,6 +638,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     updateProject: function updateProject(project) {
       return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_3__["updateProject"])(project));
+    },
+    deleteProject: function deleteProject(project) {
+      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_3__["deleteProject"])(project.id));
     },
     clearErrors: function clearErrors() {
       return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_3__["clearErrors"])());
@@ -680,7 +683,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
- // import {FormData} from 'react-router-dom'
+
 
 var ProjectForm = /*#__PURE__*/function (_React$Component) {
   _inherits(ProjectForm, _React$Component);
@@ -693,8 +696,10 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ProjectForm).call(this, props));
     _this.state = _this.props.project;
     _this.state["photoFile"] = null;
+    _this.cName = false;
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.previewFile = _this.previewFile.bind(_assertThisInitialized(_this));
+    _this.click = _this.click.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -719,7 +724,11 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         formData.append('project[project_photo]', this.state.photoFile);
       }
 
-      this.props.createProject(formData);
+      if (this.props.formType === 'Publish Makeable') {
+        this.props.createProject(formData);
+      } else {
+        this.props.updateProject(formData);
+      }
     }
   }, {
     key: "previewFile",
@@ -749,30 +758,54 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
       }
     }
   }, {
+    key: "click",
+    value: function click(e) {
+      e.preventDefault();
+      this.cName = !this.cName;
+    }
+  }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, this.props.formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Project Title:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        placeholder: "Project Title",
-        value: this.state.title,
-        onChange: this.update('title')
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Project Description", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
-        placeholder: "Project Description",
-        value: this.state.description,
-        onChange: this.update('description')
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Add a photo", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "file" // placeholder="Add a Photo"
-        ,
-        value: this.state.project_photo,
-        onChange: this.previewFile
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      var _this4 = this;
+
+      var deleteButton;
+
+      if (this.props.formType === 'Update Makeable') {
+        deleteButton = 'show-delete-button';
+      } else {
+        deleteButton = 'hide-delete-button';
+      }
+
+      var inputs = this.cName ? "show-inputs" : "hide-inputs";
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "project-main"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "project-form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "project-form-photo"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Click to Add an Image", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "",
-        height: "200",
         alt: "Image Preview",
         className: "img_preview"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "file",
+        className: "file-field",
+        value: this.state.project_photo,
+        onChange: this.previewFile
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "project-form-input"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "project-submit-buttons"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleSubmit
-      }, "Publish Makeable")));
+      }, this.props.formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: deleteButton,
+        onClick: function onClick() {
+          return _this4.props.deleteProject;
+        }
+      }, "Delete Makeable"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "steps-container"
+      }, "steps go here"))));
     }
   }]);
 
