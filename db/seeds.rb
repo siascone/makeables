@@ -45,9 +45,9 @@ halfpipe = Project.create!(user_id: joe.id, title: "Build a Backyard Halfpipe", 
 pergola = Project.create!(user_id: spencer.id, title: "The Perfect Pergola", category_id: outdoor.id)
 spool = Project.create!(user_id: mary.id, title: "How to Spool a Fishing Reel", category_id: outdoor.id)
 wood_trivits = Project.create!(user_id: hayden.id, title: "Make Your Own Trivits", category_id: craft.id)
-arduino_grow_box = Project.create!(user_id: jane.id , title: "Arduino Powered Cylindrical Aeroponics Growth System", category_id: arduino.id)
+arduino_grow_box = Project.create!(user_id: jane.id , title: "Arduino Aeroponics Growth System", category_id: arduino.id)
 led_shpere = Project.create!(user_id: nemo.id, title: "Freeform LED Sphere", category_id: arduino.id)
-nixie_clock = Project.create!(user_id: alec.id, title: "Make Your Own Retro Nixie Clock With an RTC!" , category_id: arduino.id)
+nixie_clock = Project.create!(user_id: alec.id, title: "Make Your Own Retro Nixie Clock!" , category_id: arduino.id)
 
 scalloped = File.open("/Users/spencer/Desktop/makeables_seed_photos/scalloped.jpg")
 solar = File.open("/Users/spencer/Desktop/makeables_seed_photos/solar.gif")

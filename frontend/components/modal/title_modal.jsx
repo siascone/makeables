@@ -14,11 +14,8 @@ class TitleModal extends React.Component {
     }
 
     handleSubmit(e) {
-        // debugger
         e.preventDefault();
-        // debugger
         localStorage.setItem('title', this.state.title)
-        // debugger
         this.props.closeModal()
     }
 

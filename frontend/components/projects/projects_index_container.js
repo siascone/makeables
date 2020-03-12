@@ -3,9 +3,12 @@ import { connect } from 'react-redux';
 import ProjectsIndex from './projects_index';
 import { fetchAllProjects } from '../../actions/project_actions';
 
-const mapStateToProps = ({ entities: { projects } }) => ({
-    projects: Object.values(projects)
-});
+const mapStateToProps = (state) => {
+    return {
+        projects: Object.values(state.entities.projects),
+        users: state.entities.users,
+    }
+};
 
 const mapDispatchToProps = dispatch => ({
     fetchAllProjects: (() => dispatch(fetchAllProjects()))

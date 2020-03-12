@@ -7,28 +7,31 @@ export const REMOVE_PROJECT = 'REMOVE_PROJECT';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
-const receiveAllProjects = (projects) => ({
+const receiveAllProjects = (payload) => ({
     type: RECEIVE_ALL_PROJECTS,
-    projects
+    payload
 });
 const receiveProject = (payload) => ({
     type: RECEIVE_PROJECT,
     payload
 });
-const removePorject = (projectId) => ({
+const removeProject = (projectId) => ({
     type: REMOVE_PROJECT,
     projectId
 });
-const receiveErrors = (errors) => ({
-    type: RECEIVE_ERRORS,
-});
+const receiveErrors = (errors) => {
+    return {
+        type: RECEIVE_ERRORS,
+        errors
+    }
+};
 export const clearErrors = () => ({
     type: CLEAR_ERRORS,
 });
 
 export const fetchAllProjects = () => dispatch => {
     return ProjectsApiUtil.fetchAllProjects()
-        .then((projects) => dispatch(receiveAllProjects(projects)));
+        .then((payload) => dispatch(receiveAllProjects(payload)));
 };
 
 export const fetchProject = (projectId) => dispatch => {
@@ -38,16 +41,21 @@ export const fetchProject = (projectId) => dispatch => {
 
 export const createProject = (project) => dispatch => {
     return ProjectsApiUtil.createProject(project)
-        .then((project) => dispatch(receiveProject(project)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
+        .then((payload) => {
+            dispatch(receiveProject(payload))
+            return payload.project
+        }, (errors) => {
+            dispatch(receiveErrors(errors.responseJSON))
+        });
 };
 
 export const updateProject = (project) => dispatch => {
     return ProjectsApiUtil.updateProject(project)
-    .then((project) => dispatch(receivePorject(project)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
+    .then((payload) => dispatch(receiveProject(payload)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
 };
 
 export const deleteProject = (projectId) => dispatch => {
     return ProjectsApiUtil.deleteProject(projectId)
-        .then((project) => dispatch(removePorject(project.id)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
+        .then((project) => dispatch(removeProject(project.id)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
 };
 

@@ -7,9 +7,11 @@ class ProjectForm extends React.Component {
         this.state["photoFile"] = null;
         this.cName = false;
         this.projectImage = false;
+
         this.handleSubmit = this.handleSubmit.bind(this);
         this.previewFile = this.previewFile.bind(this);
         this.click = this.click.bind(this);
+        this.renderErrors = this.renderErrors.bind(this);
     }
 
     update(field) {
@@ -26,11 +28,15 @@ class ProjectForm extends React.Component {
             formData.append('project[project_photo]', this.state.photoFile);
         }
         if (this.props.formType === 'Publish Makeable') {
-            this.props.createProject(formData);
-            this.props.history.push(`/projects`);
+            this.props.createProject(formData)
+                .then((project) => {
+                    this.props.history.push(`/projects/${project.id}`)
+                });
         } else {
-            this.props.updateProject(formData);
-            this.props.history.push(`/projects`);
+            this.props.updateProject(formData)
+                .then((project) => {
+                    this.props.history.push(`/projects/${project.id}`)
+                });
         }
     }
 
@@ -55,6 +61,19 @@ class ProjectForm extends React.Component {
         this.cName = !this.cName;
     }
 
+    renderErrors() {
+        return (
+            <div className='project-errors'>
+                {this.props.errors.map((error, i) => (
+                    <li key={`error ${i}`}>{error}</li>
+                ))}
+            </div>
+        )
+    }
+
+    componentWillUnmount() {
+        this.props.clearErrors()
+    }
 
     render() {
         let image = 'hide-project-image';
@@ -70,7 +89,9 @@ class ProjectForm extends React.Component {
                                 className='img_preview'
                             />
                         </div>
-                        <label className="file-field-label">✚ Click to Add a Photo</label>
+                        <label className="file-field-label">
+                            ✚ Click to Add a Photo
+                        </label>
                         <input type="file"
                             className='file-field'
                             value={this.state.project_photo}
@@ -86,8 +107,9 @@ class ProjectForm extends React.Component {
                         Publish
                     </button>
                 </div>
+                
                 <div className='steps-box'>
-                    ---steps component will go here---
+                    {this.renderErrors()}
                 </div>
             </div>
         )

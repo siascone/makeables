@@ -7,13 +7,17 @@ class ProjectsIndex extends React.Component {
     }
 
     render() {
-        const { projects } = this.props;
+        if (this.props.projects.length <= 1) {
+            return null;
+        }
+        const { projects, users } = this.props;
         return (
             <div className='project-index-main'>
                     {
                         projects.map((project, idx) => (
                             <ProjectIndexItem
                                 project={project}
+                                user={users[project.user_id]}
                                 key={idx}
                                 />
                         ))

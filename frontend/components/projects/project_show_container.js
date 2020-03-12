@@ -8,7 +8,6 @@ const mapStateToProps = (state, ownProps) => {
     if (project) {
         username = state.entities.users[project.user_id].username
     }
-
     return {
     project: project,
     username: username

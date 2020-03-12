@@ -146,10 +146,10 @@ var REMOVE_PROJECT = 'REMOVE_PROJECT';
 var RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 var CLEAR_ERRORS = 'CLEAR_ERRORS';
 
-var receiveAllProjects = function receiveAllProjects(projects) {
+var receiveAllProjects = function receiveAllProjects(payload) {
   return {
     type: RECEIVE_ALL_PROJECTS,
-    projects: projects
+    payload: payload
   };
 };
 
@@ -160,7 +160,7 @@ var receiveProject = function receiveProject(payload) {
   };
 };
 
-var removePorject = function removePorject(projectId) {
+var removeProject = function removeProject(projectId) {
   return {
     type: REMOVE_PROJECT,
     projectId: projectId
@@ -169,7 +169,8 @@ var removePorject = function removePorject(projectId) {
 
 var receiveErrors = function receiveErrors(errors) {
   return {
-    type: RECEIVE_ERRORS
+    type: RECEIVE_ERRORS,
+    errors: errors
   };
 };
 
@@ -180,8 +181,8 @@ var clearErrors = function clearErrors() {
 };
 var fetchAllProjects = function fetchAllProjects() {
   return function (dispatch) {
-    return _util_projects_api_util__WEBPACK_IMPORTED_MODULE_1__["fetchAllProjects"]().then(function (projects) {
-      return dispatch(receiveAllProjects(projects));
+    return _util_projects_api_util__WEBPACK_IMPORTED_MODULE_1__["fetchAllProjects"]().then(function (payload) {
+      return dispatch(receiveAllProjects(payload));
     });
   };
 };
@@ -194,17 +195,18 @@ var fetchProject = function fetchProject(projectId) {
 };
 var createProject = function createProject(project) {
   return function (dispatch) {
-    return _util_projects_api_util__WEBPACK_IMPORTED_MODULE_1__["createProject"](project).then(function (project) {
-      return dispatch(receiveProject(project));
+    return _util_projects_api_util__WEBPACK_IMPORTED_MODULE_1__["createProject"](project).then(function (payload) {
+      dispatch(receiveProject(payload));
+      return payload.project;
     }, function (errors) {
-      return dispatch(receiveErrors(errors.responseJSON));
+      dispatch(receiveErrors(errors.responseJSON));
     });
   };
 };
 var updateProject = function updateProject(project) {
   return function (dispatch) {
-    return _util_projects_api_util__WEBPACK_IMPORTED_MODULE_1__["updateProject"](project).then(function (project) {
-      return dispatch(receivePorject(project));
+    return _util_projects_api_util__WEBPACK_IMPORTED_MODULE_1__["updateProject"](project).then(function (payload) {
+      return dispatch(receiveProject(payload));
     }, function (errors) {
       return dispatch(receiveErrors(errors.responseJSON));
     });
@@ -213,7 +215,7 @@ var updateProject = function updateProject(project) {
 var deleteProject = function deleteProject(projectId) {
   return function (dispatch) {
     return _util_projects_api_util__WEBPACK_IMPORTED_MODULE_1__["deleteProject"](projectId).then(function (project) {
-      return dispatch(removePorject(project.id));
+      return dispatch(removeProject(project.id));
     }, function (errors) {
       return dispatch(receiveErrors(errors.responseJSON));
     });
@@ -525,7 +527,7 @@ var mapStateToProps = function mapStateToProps(_ref) {
   var session = _ref.session,
       users = _ref.entities.users;
   return {
-    currentUser: users[session.id]
+    currentUser: session.id
   };
 };
 
@@ -669,11 +671,8 @@ var TitleModal = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      // debugger
-      e.preventDefault(); // debugger
-
-      localStorage.setItem('title', this.state.title); // debugger
-
+      e.preventDefault();
+      localStorage.setItem('title', this.state.title);
       this.props.closeModal();
     }
   }, {
@@ -771,7 +770,8 @@ var mapStateToProps = function mapStateToProps(state) {
       title: '',
       description: ''
     },
-    formType: "Publish Makeable"
+    formType: "Publish Makeable",
+    errors: Object.values(state.errors.project)
   };
 };
 
@@ -940,6 +940,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.previewFile = _this.previewFile.bind(_assertThisInitialized(_this));
     _this.click = _this.click.bind(_assertThisInitialized(_this));
+    _this.renderErrors = _this.renderErrors.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -955,6 +956,8 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      var _this3 = this;
+
       e.preventDefault();
       var formData = new FormData();
       formData.append('project[title]', localStorage.getItem('title'));
@@ -965,17 +968,19 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
       }
 
       if (this.props.formType === 'Publish Makeable') {
-        this.props.createProject(formData);
-        this.props.history.push("/projects");
+        this.props.createProject(formData).then(function (project) {
+          _this3.props.history.push("/projects/".concat(project.id));
+        });
       } else {
-        this.props.updateProject(formData);
-        this.props.history.push("/projects");
+        this.props.updateProject(formData).then(function (project) {
+          _this3.props.history.push("/projects/".concat(project.id));
+        });
       }
     }
   }, {
     key: "previewFile",
     value: function previewFile(e) {
-      var _this3 = this;
+      var _this4 = this;
 
       var file = e.currentTarget.files[0];
       var preview = document.querySelector('.img_preview');
@@ -984,7 +989,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
       reader.onloadend = function () {
         preview.src = reader.result;
 
-        _this3.setState({
+        _this4.setState({
           photoFile: file,
           photoUrl: reader.result
         });
@@ -1006,6 +1011,22 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
     value: function click(e) {
       e.preventDefault();
       this.cName = !this.cName;
+    }
+  }, {
+    key: "renderErrors",
+    value: function renderErrors() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "project-errors"
+      }, this.props.errors.map(function (error, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: "error ".concat(i)
+        }, error);
+      }));
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.props.clearErrors();
     }
   }, {
     key: "render",
@@ -1041,7 +1062,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         onClick: this.handleSubmit
       }, "Publish")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "steps-box"
-      }, "---steps component will go here---"));
+      }, this.renderErrors()));
     }
   }]);
 
@@ -1079,7 +1100,7 @@ var ProjectIndexItem = function ProjectIndexItem(props) {
     className: "project-index-details"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/projects/".concat(props.project.id)
-  }, props.project.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "by: ", props.project.user.username)));
+  }, props.project.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "by: ", props.user.username)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ProjectIndexItem);
@@ -1256,12 +1277,19 @@ var ProjectsIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var projects = this.props.projects;
+      if (this.props.projects.length <= 1) {
+        return null;
+      }
+
+      var _this$props = this.props,
+          projects = _this$props.projects,
+          users = _this$props.users;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-index-main"
       }, projects.map(function (project, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           project: project,
+          user: users[project.user_id],
           key: idx
         });
       }));
@@ -1294,10 +1322,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(_ref) {
-  var projects = _ref.entities.projects;
+var mapStateToProps = function mapStateToProps(state) {
   return {
-    projects: Object.values(projects)
+    projects: Object.values(state.entities.projects),
+    users: state.entities.users
   };
 };
 
@@ -1918,10 +1946,13 @@ var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _sessions_errors_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./sessions_errors_reducer */ "./frontend/reducers/sessions_errors_reducer.js");
+/* harmony import */ var _project_errors_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./project_errors_reducer */ "./frontend/reducers/project_errors_reducer.js");
+
 
 
 var errorsReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  session: _sessions_errors_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  session: _sessions_errors_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  project: _project_errors_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (errorsReducer);
 
@@ -1957,6 +1988,42 @@ function modalReduccer() {
 
 /***/ }),
 
+/***/ "./frontend/reducers/project_errors_reducer.js":
+/*!*****************************************************!*\
+  !*** ./frontend/reducers/project_errors_reducer.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/project_actions */ "./frontend/actions/project_actions.js");
+
+
+var projectErrorsReducer = function projectErrorsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ERRORS"]:
+      return action.errors;
+
+    case _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PROJECT"]:
+      return [];
+
+    case _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__["CLEAR_ERRORS"]:
+      return {};
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (projectErrorsReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/projects_reducer.js":
 /*!***********************************************!*\
   !*** ./frontend/reducers/projects_reducer.js ***!
@@ -1979,7 +2046,7 @@ var projectsReducer = function projectsReducer() {
 
   switch (action.type) {
     case _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_PROJECTS"]:
-      return action.projects;
+      return action.payload.projects;
 
     case _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PROJECT"]:
       return _defineProperty({}, action.payload.project.id, action.payload.project);
@@ -2146,6 +2213,9 @@ var usersReducer = function usersReducer() {
 
     case _actions_project_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_PROJECT"]:
       return _defineProperty({}, action.payload.user.id, action.payload.user);
+
+    case _actions_project_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_ALL_PROJECTS"]:
+      return action.payload.users;
 
     default:
       return state;

@@ -16,8 +16,8 @@ const Greeting = ({ currentUser, logout }) => {
             </div>
         </div>
     );
-
     return currentUser ? greeting() : links()
 }
 
 export default Greeting;
+

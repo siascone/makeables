@@ -11,7 +11,8 @@ const mapStateToProps = state => {
         title: '',
         description: '',
         },
-        formType: "Publish Makeable"
+        formType: "Publish Makeable",
+        errors: Object.values(state.errors.project)
     });
 };
 

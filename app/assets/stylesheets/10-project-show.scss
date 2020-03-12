@@ -14,10 +14,13 @@
     align-items: center;
     
 }
-
+.project-show-image{
+    display: flex;
+    justify-content: center;
+}
 .project-show-image :first-child {
-    height:390px;
-    width: 550px;
+    // height:75%;
+    width: 75%;
     border-radius: 6px;
     overflow: hidden;
 }
