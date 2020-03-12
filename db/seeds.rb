@@ -31,9 +31,9 @@ science = Category.create!(type_name: "science")
 
 Project.destroy_all
 
-scalloped_frets = Project.create!(user_id: spencer.id, title: "Scallop your Guitar", description: "Scalloping a fretboard is when you remove wood from the fretboard so that when the guitar is played, the fingers only contact the string, not the wood underneath, eliminating massive amounts of friction. It is much easier to bend strings with a scalloped guitar, and many guitarists do claim that scalloped fretboards allow you to play faster, as minimal contact with the string is needed", category_id: instruments.id)
+scalloped_frets = Project.create!(user_id: spencer.id, title: "Scallop your Guitar", category_id: instruments.id)
 
-solar_balloon = Project.create!(user_id: alice.id, title: "Solar Balloon", description: "Let's make a solar balloon that floats with the power of hot air! This is the perfect backyard activity for a sunny day. A few common trash bags taped together can become a science experiment and entertaining way to spend an afternoon.", category_id: science.id)
+solar_balloon = Project.create!(user_id: alice.id, title: "Solar Balloon",  category_id: science.id)
 
 scalloped = File.open("/Users/spencer/Desktop/scalloped.jpg")
 solar = File.open("/Users/spencer/Desktop/solar.gif")

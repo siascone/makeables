@@ -19,17 +19,18 @@ class ProjectForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const formData = new FormData();
-        formData.append('project[title]', localStorage.getItem('title'))
-        localStorage.removeItem('title')
+        formData.append('project[title]', localStorage.getItem('title'));
+        localStorage.removeItem('title');
         if (this.state.photoFile) {
             formData.append('project[project_photo]', this.state.photoFile);
         }
         if (this.props.formType === 'Publish Makeable') {
-            this.props.createProject(formData);
+            this.props.createProject(formData)
+                // .then(this.props.history.push(`/projects`));
         } else {
-            this.props.updateProject(formData);
+            this.props.updateProject(formData)
+                // .then(this.props.history.push(`/projects`));
         }
-        
     }
 
     previewFile(e) {
@@ -46,8 +47,6 @@ class ProjectForm extends React.Component {
         } else {
             this.setState({ photoUrl: "", photoFile: null });
         }
-
-
     }
 
     click(e) {
@@ -62,17 +61,17 @@ class ProjectForm extends React.Component {
             <div className='project-main'>
                 <div className='image-input'>
                     <div className='image-box'>
-                        <label>Click to Add an Image
+                        <div className='project-image'>
                             <img src=""
-                                alt="Image Preview"
                                 className='img_preview'
                             />
-                            <input type="file"
-                                className='file-field'
-                                value={this.state.project_photo}
-                                onChange={this.previewFile}
-                            />
-                        </label>
+                        </div>
+                        <label className="file-field-label">✚ Click to Add a Photo</label>
+                        <input type="file"
+                            className='file-field'
+                            value={this.state.project_photo}
+                            onChange={this.previewFile}
+                        />
                     </div>
                 </div>
                 <div className='project-nav'>

@@ -8,7 +8,7 @@ const ProjectIndexItem = props => (
         </div>
         <div className='project-index-details'>
             <Link to={`/projects/${props.project.id}`}>{props.project.title}</Link>
-            <p>by: username</p>
+            <p>by: {props.project.user.username}</p>
         </div>
     </div>
 );

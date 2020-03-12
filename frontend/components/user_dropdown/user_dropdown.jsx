@@ -15,6 +15,7 @@ class UserDropdwon extends React.Component {
         e.preventDefault();
         this.props.history.push('/projects/new');
         this.props.openModal() 
+        this.setState({ cName: !this.state.cName })
     }
 
     click(e) {

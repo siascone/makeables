@@ -964,9 +964,9 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
       }
 
       if (this.props.formType === 'Publish Makeable') {
-        this.props.createProject(formData);
+        this.props.createProject(formData); // .then(this.props.history.push(`/projects`));
       } else {
-        this.props.updateProject(formData);
+        this.props.updateProject(formData); // .then(this.props.history.push(`/projects`));
       }
     }
   }, {
@@ -1011,16 +1011,19 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         className: "image-input"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "image-box"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Click to Add an Image", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "project-image"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "",
-        alt: "Image Preview",
         className: "img_preview"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "file-field-label"
+      }, "\u271A Click to Add a Photo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "file",
         className: "file-field",
         value: this.state.project_photo,
         onChange: this.previewFile
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-nav"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "project-button",
@@ -1065,7 +1068,7 @@ var ProjectIndexItem = function ProjectIndexItem(props) {
     className: "project-index-details"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/projects/".concat(props.project.id)
-  }, props.project.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "by: username")));
+  }, props.project.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "by: ", props.project.user.username)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ProjectIndexItem);
@@ -1672,11 +1675,7 @@ var SubHeader = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "projects",
         onClick: this.projs_page
-      }, "Projects"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        id: "search-field",
-        placeholder: "Let's make something..."
-      }));
+      }, "Projects"))));
     }
   }]);
 
@@ -1743,6 +1742,9 @@ var UserDropdwon = /*#__PURE__*/function (_React$Component) {
       e.preventDefault();
       this.props.history.push('/projects/new');
       this.props.openModal();
+      this.setState({
+        cName: !this.state.cName
+      });
     }
   }, {
     key: "click",

@@ -14,7 +14,7 @@ class SubHeader extends React.Component {
                         <button className='projects' onClick={this.projs_page}>Projects</button>
                     </a>
                 </div>
-                <input type="text" id="search-field" placeholder="Let's make something..."/>
+                {/* <input type="text" id="search-field" placeholder="Search coming soon..."/> */}
             </div>
 
         )
