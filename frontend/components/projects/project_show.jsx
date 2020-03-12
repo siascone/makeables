@@ -23,7 +23,7 @@ class ProjectShow extends React.Component {
                     <p>{project.description}</p>
                 </div>
                 <div className='project-show-steps'>
-                    ---steps will go here---
+                    {/* ---steps will go here--- */}
                 </div>
             </div>
         )
