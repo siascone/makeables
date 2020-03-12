@@ -20,7 +20,7 @@
 
 .image-box {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     height: 116px;
     min-width: 480px;
@@ -28,22 +28,51 @@
     border-radius: 6px;
     border: solid 1px lightgray;
     color: gray;
-    -webkit-box-shadow: inset 0 0 3px 3px #dfdfdf
+    -webkit-box-shadow: inset 0 0 3px 3px #dfdfdf;
 }
+
+.image-box :first-child {
+    align-self: flex-start;
+}
+
 .file-field-label {
     position: relative;
-  
 }
+
 
 .file-field:hover {
     cursor: pointer;
 }
+
 .file-field {
     display: hidden;
     opacity: 0;
     height: 116px;
     min-width: 500px;
     position: absolute;
+}
+
+.hide-project-image {
+    display: none;
+    
+}
+
+.show-project-image {
+    display: block;
+    height: 100px;
+    width: 100px;
+    border-radius: 6px;
+    border: none; 
+    padding-top: 8px;
+}
+
+
+.img_preview {
+    display: hidden;
+    height: 100px;
+    width: 100px;
+    border-radius: 6px;
+    border: none; 
 }
 
 .project-nav {
@@ -83,6 +112,8 @@
     padding-bottom: 40px;
     padding-top: 40px;
 }
+
+
 
 
 

@@ -10,7 +10,6 @@ class ProjectsIndex extends React.Component {
         const { projects } = this.props;
         return (
             <div className='project-index-main'>
-                
                     {
                         projects.map((project, idx) => (
                             <ProjectIndexItem

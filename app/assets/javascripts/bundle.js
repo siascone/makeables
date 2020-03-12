@@ -936,6 +936,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
     _this.state = _this.props.project;
     _this.state["photoFile"] = null;
     _this.cName = false;
+    _this.projectImage = false;
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.previewFile = _this.previewFile.bind(_assertThisInitialized(_this));
     _this.click = _this.click.bind(_assertThisInitialized(_this));
@@ -964,9 +965,11 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
       }
 
       if (this.props.formType === 'Publish Makeable') {
-        this.props.createProject(formData); // .then(this.props.history.push(`/projects`));
+        this.props.createProject(formData);
+        this.props.history.push("/projects");
       } else {
-        this.props.updateProject(formData); // .then(this.props.history.push(`/projects`));
+        this.props.updateProject(formData);
+        this.props.history.push("/projects");
       }
     }
   }, {
@@ -995,6 +998,8 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
           photoFile: null
         });
       }
+
+      this.projectImage = true;
     }
   }, {
     key: "click",
@@ -1005,6 +1010,12 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var image = 'hide-project-image';
+
+      if (this.projectImage === true) {
+        image = 'show-project-image';
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1012,7 +1023,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "image-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "project-image"
+        className: image
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "",
         className: "img_preview"

@@ -6,6 +6,7 @@ class ProjectForm extends React.Component {
         this.state = this.props.project;
         this.state["photoFile"] = null;
         this.cName = false;
+        this.projectImage = false;
         this.handleSubmit = this.handleSubmit.bind(this);
         this.previewFile = this.previewFile.bind(this);
         this.click = this.click.bind(this);
@@ -25,11 +26,11 @@ class ProjectForm extends React.Component {
             formData.append('project[project_photo]', this.state.photoFile);
         }
         if (this.props.formType === 'Publish Makeable') {
-            this.props.createProject(formData)
-                // .then(this.props.history.push(`/projects`));
+            this.props.createProject(formData);
+            this.props.history.push(`/projects`);
         } else {
-            this.props.updateProject(formData)
-                // .then(this.props.history.push(`/projects`));
+            this.props.updateProject(formData);
+            this.props.history.push(`/projects`);
         }
     }
 
@@ -41,12 +42,12 @@ class ProjectForm extends React.Component {
             preview.src = reader.result;
             this.setState({photoFile: file, photoUrl: reader.result});
         };
-
         if (file) {
             reader.readAsDataURL(file);
         } else {
             this.setState({ photoUrl: "", photoFile: null });
         }
+        this.projectImage = true;
     }
 
     click(e) {
@@ -56,12 +57,15 @@ class ProjectForm extends React.Component {
 
 
     render() {
-
+        let image = 'hide-project-image';
+        if (this.projectImage === true) {
+            image = 'show-project-image';
+        }
         return (
             <div className='project-main'>
                 <div className='image-input'>
                     <div className='image-box'>
-                        <div className='project-image'>
+                        <div className={image}>
                             <img src=""
                                 className='img_preview'
                             />
