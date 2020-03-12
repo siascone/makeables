@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require "open-uri"
 
 User.destroy_all
 
@@ -49,18 +50,18 @@ arduino_grow_box = Project.create!(user_id: jane.id , title: "Arduino Aeroponics
 led_shpere = Project.create!(user_id: nemo.id, title: "Freeform LED Sphere", category_id: arduino.id)
 nixie_clock = Project.create!(user_id: alec.id, title: "Make Your Own Retro Nixie Clock!" , category_id: arduino.id)
 
-scalloped = File.open("https://makeables-seeds.s3-us-west-1.amazonaws.com/scalloped.jpg")
-solar = File.open("https://makeables-seeds.s3-us-west-1.amazonaws.com/solar.gif")
-snorkel = File.open("https://makeables-seeds.s3-us-west-1.amazonaws.com/3d_printed_snorkel.jpg")
-chess = File.open("https://makeables-seeds.s3-us-west-1.amazonaws.com/chess_table.jpg")
-nosecone = File.open("https://makeables-seeds.s3-us-west-1.amazonaws.com/gopro_nose_cone.jpg")
-pipe = File.open("https://makeables-seeds.s3-us-west-1.amazonaws.com/halfpipe.jpg")
-perfect_pergola = File.open("https://makeables-seeds.s3-us-west-1.amazonaws.com/pergola.jpg")
-reel = File.open("https://makeables-seeds.s3-us-west-1.amazonaws.com/spool.jpg")
-trivits = File.open("https://makeables-seeds.s3-us-west-1.amazonaws.com/wood_trivits.jpg")
-grow_box = File.open("https://makeables-seeds.s3-us-west-1.amazonaws.com/arduino_grow_box.jpg")
-sphere = File.open("https://makeables-seeds.s3-us-west-1.amazonaws.com/led_sphere.jpg")
-clock = File.open("https://makeables-seeds.s3-us-west-1.amazonaws.com/nixie_clock.jpg")
+scalloped = open("https://makeables-seeds.s3-us-west-1.amazonaws.com/scalloped.jpg")
+solar = open("https://makeables-seeds.s3-us-west-1.amazonaws.com/solar.gif")
+snorkel = open("https://makeables-seeds.s3-us-west-1.amazonaws.com/3d_printed_snorkel.jpg")
+chess = open("https://makeables-seeds.s3-us-west-1.amazonaws.com/chess_table.jpg")
+nosecone = open("https://makeables-seeds.s3-us-west-1.amazonaws.com/gopro_nose_cone.jpg")
+pipe = open("https://makeables-seeds.s3-us-west-1.amazonaws.com/halfpipe.jpg")
+perfect_pergola = open("https://makeables-seeds.s3-us-west-1.amazonaws.com/pergola.jpg")
+reel = open("https://makeables-seeds.s3-us-west-1.amazonaws.com/spool.jpg")
+trivits = open("https://makeables-seeds.s3-us-west-1.amazonaws.com/wood_trivits.jpg")
+grow_box = open("https://makeables-seeds.s3-us-west-1.amazonaws.com/arduino_grow_box.jpg")
+sphere = open("https://makeables-seeds.s3-us-west-1.amazonaws.com/led_sphere.jpg")
+clock = open("https://makeables-seeds.s3-us-west-1.amazonaws.com/nixie_clock.jpg")
 
 scalloped_frets.project_photo.attach(io: scalloped, filename: "scalloped.jpg")
 solar_balloon.project_photo.attach(io: solar, filename: "solar.gif")
