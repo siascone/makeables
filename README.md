@@ -1,14 +1,18 @@
+# ![logo](app/assets/images/instructables-logo-v2.png) Makeables
+
+![webview](app/assets/images/)
+
 Makeables is a full stack web application, influenced by Instructables, that provides makers, builders, DIY'ers and the like an online space to share their creations and the process it took to make them. Users can also explore the community's ever growing collection of projects, learn from fellow makers and share tips, tricks and ideas.
 
 Check out the app here! [Makeables](https://makeables.herokuapp.com/#/)
 
 ## Technologies Used
----
+
 Makeables was constructed utilizing a combination of Ruby on Rails, Postgres, React, Redux, JavaScript, HTML, and CSS. 
 Ruby on Rails was used to create a Model-View-Controller Architecture with Postgres used as the database. React and Redux were then incorporated to dynamically connect the backend to the frontend. And the frontend was structured with HTML and styled with CSS. 
 
 ## Features
----
+
 ### Projects
 
 Users can easily publish titled personal projects along with a photo of the finished build. Prior to publication users can preview their photo and change it if need be. This temporary storage of the project's title and the previewing of a photo are handled on the frontend via local storage. Here's a snippet displaying the logic used to accomplish this: 
