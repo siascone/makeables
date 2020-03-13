@@ -1807,7 +1807,8 @@ var UserDropdwon = /*#__PURE__*/function (_React$Component) {
         width: "28px",
         height: "28px"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: cName
+        className: cName,
+        onMouseOut: this.click
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "links-logout"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
