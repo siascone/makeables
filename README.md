@@ -1,24 +1,16 @@
-# README
+(https://www.instructables.com/assets/img/instructables-logo-v2.png)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+Makeables is a full stack web application, influenced by Instructables, that provides makers, builders, DIY'ers and the like an online space to share their creations and the process it took to make them. Users can also explore the ever growing collection of projects, learn from fellow makers and share tips, tricks and ideas.
 
-* Ruby version
+Link to live app:(https://makeables.herokuapp.com/#/)
 
-* System dependencies
+##Technologies
 
-* Configuration
+##Planned Future Features
 
-* Database creation
+###Steps
 
-* Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
-
-* ...
