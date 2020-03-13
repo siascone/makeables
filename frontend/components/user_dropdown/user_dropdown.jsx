@@ -32,7 +32,7 @@ class UserDropdwon extends React.Component {
                 <a onClick={this.click}>
                     <img className='user-menu-button' src="https://www.instructables.com/assets/img/default/user.TINY.png" width="28px" height="28px"/>
                 </a>
-                <div className={cName} onMouseOut={this.click}>
+                <div className={cName} onMouseLeave={this.click}>
                     <div className='links-logout'>
                         <div className='user-links'>
                             {/* <li>Profile</li> */}
