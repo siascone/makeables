@@ -1,5 +1,5 @@
 
-Makeables is a full stack web application, influenced by Instructables, that provides makers, builders, DIY'ers and the like an online space to share their creations and the process it took to make them. Users can also explore the ever growing collection of projects, learn from fellow makers and share tips, tricks and ideas.
+Makeables is a full stack web application, influenced by Instructables, that provides makers, builders, DIY'ers and the like an online space to share their creations and the process it took to make them. Users can also explore the community's ever growing collection of projects, learn from fellow makers and share tips, tricks and ideas.
 
 Check out the app here! [Makeables](https://makeables.herokuapp.com/#/)
 
@@ -52,7 +52,7 @@ Users can easily publish titled personal projects along with a photo of the fini
     }
 
 
-Rails Active Storage is utilized to access and upload a user's photos which are in turn stored via Amazon's AWS S3 cloud storage system.
+Once a project is published Rails Active Storage is utilized to access and upload a user's photo which is in turn stored via Amazon's AWS S3 cloud storage system.
 
 ## Planned Future Features
 ---
