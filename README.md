@@ -56,7 +56,7 @@ Users can easily publish titled personal projects along with a photo of the fini
 Once a project is published Rails Active Storage is utilized to access and upload a user's photo which is in turn stored via Amazon's AWS S3 cloud storage system.
 
 ## Planned Future Features
----
+
 * Steps - Users can add step by step instructions and photos to their projects.
 * Comments - Users can comment on projects, ask and answer questions and provid feedback.
 * Categories - Users can classify their projects as well as browse projects by subject. 
