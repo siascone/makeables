@@ -1,5 +1,3 @@
-# ![logo](app/assets/images/instructables-logo-v2.png) Makeables
-
 ![home-page](app/assets/images/home-page.png)
 
 Makeables is a full stack web application, influenced by Instructables, that provides makers, builders, DIY'ers and the like an online space to share their creations and the process it took to make them. Users can also explore the community's ever growing collection of projects, learn from fellow makers and share tips, tricks and ideas.
@@ -63,9 +61,3 @@ Once a project is published Rails Active Storage is utilized to access and uploa
 * Comments - Users can comment on projects, asking/answering questions and providing feedback.
 * Categories - Users can classify their projects as well as browse projects by subject. 
 * Search - Users can search the site for projects. 
-
-
-
-
-
-
