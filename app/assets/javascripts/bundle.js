@@ -1781,9 +1781,6 @@ var UserDropdwon = /*#__PURE__*/function (_React$Component) {
       e.preventDefault();
       this.props.history.push('/projects/new');
       this.props.openModal();
-      this.setState({
-        cName: !this.state.cName
-      });
     }
   }, {
     key: "click",
@@ -1817,7 +1814,7 @@ var UserDropdwon = /*#__PURE__*/function (_React$Component) {
         className: "logout-button",
         onClick: this.props.logout
       }, "Log Out")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "user-makables"
+        className: "user-makeables"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleModal,
         className: "new-project"
