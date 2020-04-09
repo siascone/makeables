@@ -8,6 +8,8 @@ class ProjectShow extends React.Component {
 
     render() {
         const {project, username} = this.props;
+
+        
         
         if (!project) return null;
         return (

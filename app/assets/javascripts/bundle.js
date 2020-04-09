@@ -1202,6 +1202,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
+  debugger;
   var project = state.entities.projects[ownProps.match.params.id];
   var username = null;
 
@@ -1219,6 +1220,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchProject: function fetchProject(projectId) {
       return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_2__["fetchProject"])(projectId));
+    },
+    deleteProject: function deleteProject(project) {
+      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_2__["deleteProject"])(project));
     }
   };
 };
