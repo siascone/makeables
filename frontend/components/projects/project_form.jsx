@@ -1,4 +1,6 @@
 import React from 'react';
+import AddStepContainer from '../steps/add_step_container';
+
 
 class ProjectForm extends React.Component {
     constructor(props) {
@@ -80,6 +82,14 @@ class ProjectForm extends React.Component {
         if (this.projectImage === true) {
             image = 'show-project-image';
         }
+
+        let steps
+        if (this.props.formType === "Publish Makeable") {
+            steps = <div><AddStepContainer /></div>
+        } else {
+            steps = 'test'
+        }
+
         return (
             <div className='project-main'>
                 <div className='image-input'>
@@ -110,6 +120,12 @@ class ProjectForm extends React.Component {
                 
                 <div className='steps-box'>
                     {this.renderErrors()}
+                    <div className='steps'>
+                        <StepsIndexContainer />
+                    </div>
+                    <div className='add-step'>
+                        <AddStepContainer />
+                    </div>
                 </div>
             </div>
         )

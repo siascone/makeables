@@ -22,7 +22,6 @@ export const createProject = (project) => {
             contentType: false,
             processData: false
         })
-
     )
 };
 

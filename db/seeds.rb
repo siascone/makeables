@@ -62,7 +62,6 @@ tesla_coil = Project.create!(user_id: alice.id, title: "Tesla Coil", category_id
 stirling_engine = Project.create!(user_id: hayden.id, title: "Stirling Cycle Engine", category_id: science.id)
 theremin_organ_synth = Project.create!(user_id: nemo.id, title: "Theremin, Organ and APC Synths", category_id: instruments.id)
 
-
 scalloped = open("https://makeables-seeds.s3-us-west-1.amazonaws.com/scalloped.jpg")
 solar = open("https://makeables-seeds.s3-us-west-1.amazonaws.com/solar.gif")
 snorkel = open("https://makeables-seeds.s3-us-west-1.amazonaws.com/3d_printed_snorkel.jpg")

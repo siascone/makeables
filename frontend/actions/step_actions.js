@@ -19,12 +19,12 @@ const removeStep = (stepId) => ({
     type: REMOVE_STEP,
     stepId
 });
-const receiveErrors = (errors) => ({
+const receiveErrors = (errors) => {
     return {
         type: RECEIVE_ERRORS,
         errors
     }
-});
+};
 export const clearErrors = () => ({
     type: CLEAR_ERRORS
 });

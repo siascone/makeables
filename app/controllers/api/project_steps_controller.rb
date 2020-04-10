@@ -16,7 +16,7 @@ class Api::ProjectStepsController < ApplicationController
         if @step.save
             render :show
         else
-            render json: @step.errors.full_messages, status: 401
+            render json: ['test error message'], status: 401
         end
     end 
 
@@ -46,6 +46,6 @@ class Api::ProjectStepsController < ApplicationController
     end
 
     def project_step_params
-        params.require(:step).parmit(:heading, :body)
+        params.require(:step).permit(:heading, :body)
     end
 end
