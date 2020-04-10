@@ -3,7 +3,6 @@ import ProjectShow from './project_show';
 import {fetchProject, deleteProject} from '../../actions/project_actions';
 
 const mapStateToProps = (state, ownProps) => {
-    // debugger
     let project = state.entities.projects[ownProps.match.params.id]
     let username = null;
     if (project) {

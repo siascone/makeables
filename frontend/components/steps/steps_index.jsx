@@ -3,7 +3,7 @@ import StepsIndexItem from './steps_index_item';
 
 class StepsIndex extends React.Component {
     componentDidMount() {
-        this.props.fetchAllSteps();
+        this.props.fetchAllSteps(this.props.projectId);
     }
 
     render() {
@@ -14,6 +14,7 @@ class StepsIndex extends React.Component {
         const { steps } = this.props;
         return (
             <div>
+                test
                 {
                     steps.map((step, idx) => (
                         <StepsIndexItem

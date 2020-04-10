@@ -5,6 +5,7 @@ export const RECEIVE_ALL_STEPS = 'RECEIVE_ALL_STEPS'
 export const RECEIVE_STEP = 'RECEIVE_STEP'
 export const REMOVE_STEP = 'REMOVE_STEP'
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS'
+export const CLEAR_ERRORS = 'CLEAR_ERRORS'
 
 const receiveAllSteps = (steps) => ({
     type: RECEIVE_ALL_STEPS,
@@ -24,13 +25,14 @@ const receiveErrors = (errors) => {
         errors
     }
 };
-export const clearErrors = () => ({
-    type: CLEAR_ERRORS
-});
 
-export const fetchAllStpes = (projectId) => dispatch => {
+export const clearErrors = () => ({
+    tyep: CLEAR_ERRORS,
+})
+
+export const fetchAllSteps = (projectId) => dispatch => {
     return StepsApiUtil.fetchAllSteps(projectId)
-        .then((steps) = dispatch(receiveAllSteps(steps)));
+        .then((steps) => dispatch(receiveAllSteps(steps)));
 };
 
 export const fetchStep = (stepId) => dispatch => {

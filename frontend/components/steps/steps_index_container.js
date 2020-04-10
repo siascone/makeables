@@ -1,16 +1,17 @@
 import { connect } from 'react-redux'; 
 import StepsIndex from './steps_index';
-import { fetchAllStpes } from '../../actions/step_actions';
+import { fetchAllSteps } from '../../actions/step_actions';
+import { withRouter } from 'react-router-dom';
 
-const mSTP = (state) => {
+const mSTP = (state, ownProps) => {
     return {
         steps: Object.values(state.entities.steps),
-        projects: state.entities.projects
+        projectId: state.entities.projects[ownProps.match.params.id].id
     }
 };
 
 const mDTP = dispatch => ({
-    fetchAllStpes: ((projectId) => dispatch(fetchAllStpes(projectId)))
+    fetchAllSteps: ((projectId) => dispatch(fetchAllSteps(projectId)))
 });
 
-export default connect(mSTP, mDTP)(StepsIndex)
+export default withRouter(connect(mSTP, mDTP)(StepsIndex))

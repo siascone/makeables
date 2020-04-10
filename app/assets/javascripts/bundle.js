@@ -310,7 +310,7 @@ var logout = function logout() {
 /*!******************************************!*\
   !*** ./frontend/actions/step_actions.js ***!
   \******************************************/
-/*! exports provided: RECEIVE_ALL_STEPS, RECEIVE_STEP, REMOVE_STEP, RECEIVE_ERRORS, clearErrors, fetchAllStpes, fetchStep, createStep, updateStep, deleteStep */
+/*! exports provided: RECEIVE_ALL_STEPS, RECEIVE_STEP, REMOVE_STEP, RECEIVE_ERRORS, CLEAR_ERRORS, clearErrors, fetchAllSteps, fetchStep, createStep, updateStep, deleteStep */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -319,8 +319,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_STEP", function() { return RECEIVE_STEP; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_STEP", function() { return REMOVE_STEP; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ERRORS", function() { return RECEIVE_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_ERRORS", function() { return CLEAR_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearErrors", function() { return clearErrors; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllStpes", function() { return fetchAllStpes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllSteps", function() { return fetchAllSteps; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchStep", function() { return fetchStep; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createStep", function() { return createStep; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateStep", function() { return updateStep; });
@@ -334,6 +335,7 @@ var RECEIVE_ALL_STEPS = 'RECEIVE_ALL_STEPS';
 var RECEIVE_STEP = 'RECEIVE_STEP';
 var REMOVE_STEP = 'REMOVE_STEP';
 var RECEIVE_ERRORS = 'RECEIVE_ERRORS';
+var CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 var receiveAllSteps = function receiveAllSteps(steps) {
   return {
@@ -365,12 +367,14 @@ var receiveErrors = function receiveErrors(errors) {
 
 var clearErrors = function clearErrors() {
   return {
-    type: CLEAR_ERRORS
+    tyep: CLEAR_ERRORS
   };
 };
-var fetchAllStpes = function fetchAllStpes(projectId) {
+var fetchAllSteps = function fetchAllSteps(projectId) {
   return function (dispatch) {
-    return _util_steps_api_util__WEBPACK_IMPORTED_MODULE_1__["fetchAllSteps"](projectId).then(steps = dispatch(receiveAllSteps(steps)));
+    return _util_steps_api_util__WEBPACK_IMPORTED_MODULE_1__["fetchAllSteps"](projectId).then(function (steps) {
+      return dispatch(receiveAllSteps(steps));
+    });
   };
 };
 var fetchStep = function fetchStep(stepId) {
@@ -1003,6 +1007,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _steps_add_step_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../steps/add_step_container */ "./frontend/components/steps/add_step_container.js");
+/* harmony import */ var _steps_steps_index_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../steps/steps_index_container */ "./frontend/components/steps/steps_index_container.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -1022,6 +1027,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -1174,7 +1180,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         className: "steps-box"
       }, this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "steps"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StepsIndexContainer, null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_steps_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "add-step"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_add_step_container__WEBPACK_IMPORTED_MODULE_1__["default"], null))));
     }
@@ -1232,7 +1238,7 @@ var ProjectIndexItem = function ProjectIndexItem(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _steps_steps_index_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../steps/steps_index_container */ "./frontend/components/steps/steps_index_container.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1251,6 +1257,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+ // import { Link } from 'react-router-dom';
 
 
 
@@ -1288,7 +1295,7 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
         className: "project-show-description"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, project.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-show-steps"
-      }));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_steps_index_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
     }
   }]);
 
@@ -1316,7 +1323,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  // debugger
   var project = state.entities.projects[ownProps.match.params.id];
   var username = null;
 
@@ -1892,7 +1898,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state, ownProps) {
-  // debugger
   return {
     project_id: ownProps.match.params.id,
     errors: Object.values(state.errors.steps)
@@ -1911,6 +1916,136 @@ var mdp = function mdp(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp, mdp)(_add_step__WEBPACK_IMPORTED_MODULE_3__["default"])));
+
+/***/ }),
+
+/***/ "./frontend/components/steps/steps_index.jsx":
+/*!***************************************************!*\
+  !*** ./frontend/components/steps/steps_index.jsx ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _steps_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./steps_index_item */ "./frontend/components/steps/steps_index_item.jsx");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var StepsIndex = /*#__PURE__*/function (_React$Component) {
+  _inherits(StepsIndex, _React$Component);
+
+  function StepsIndex() {
+    _classCallCheck(this, StepsIndex);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(StepsIndex).apply(this, arguments));
+  }
+
+  _createClass(StepsIndex, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchAllSteps(this.props.projectId);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      if (this.props.steps.length <= 1) {
+        return null;
+      }
+
+      var steps = this.props.steps;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "test", steps.map(function (step, idx) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          step: step,
+          project: projects[step.project_id],
+          key: idx
+        });
+      }));
+    }
+  }]);
+
+  return StepsIndex;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (StepsIndex);
+
+/***/ }),
+
+/***/ "./frontend/components/steps/steps_index_container.js":
+/*!************************************************************!*\
+  !*** ./frontend/components/steps/steps_index_container.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _steps_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./steps_index */ "./frontend/components/steps/steps_index.jsx");
+/* harmony import */ var _actions_step_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/step_actions */ "./frontend/actions/step_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+
+
+var mSTP = function mSTP(state, ownProps) {
+  return {
+    steps: Object.values(state.entities.steps),
+    projectId: state.entities.projects[ownProps.match.params.id].id
+  };
+};
+
+var mDTP = function mDTP(dispatch) {
+  return {
+    fetchAllSteps: function fetchAllSteps(projectId) {
+      return dispatch(Object(_actions_step_actions__WEBPACK_IMPORTED_MODULE_2__["fetchAllSteps"])(projectId));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_steps_index__WEBPACK_IMPORTED_MODULE_1__["default"])));
+
+/***/ }),
+
+/***/ "./frontend/components/steps/steps_index_item.jsx":
+/*!********************************************************!*\
+  !*** ./frontend/components/steps/steps_index_item.jsx ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+ // import { Link } from 'react-router-dom';
+
+var StepsIndexItem = function StepsIndexItem(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, props.heading), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, props.body)));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (StepsIndexItem);
 
 /***/ }),
 
@@ -2779,25 +2914,25 @@ var logout = function logout() {
 /*!*****************************************!*\
   !*** ./frontend/util/steps_api_util.js ***!
   \*****************************************/
-/*! exports provided: fetchAllSteps, fecthStep, createStep, updateStep, deleteStep */
+/*! exports provided: fetchAllSteps, fetchStep, createStep, updateStep, deleteStep */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllSteps", function() { return fetchAllSteps; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fecthStep", function() { return fecthStep; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchStep", function() { return fetchStep; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createStep", function() { return createStep; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateStep", function() { return updateStep; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteStep", function() { return deleteStep; });
 var fetchAllSteps = function fetchAllSteps(projectId) {
   return $.ajax({
-    url: "/api/projects/".concat(projectId, "/steps"),
+    url: "/api/projects/".concat(projectId, "/project_steps"),
     method: 'GET'
   });
 };
-var fecthStep = function fecthStep(stepId) {
+var fetchStep = function fetchStep(stepId) {
   return $.ajax({
-    url: "/api/projects/:project_id/steps/".concat(stepId),
+    url: "/api/projects/:project_id/project_steps/".concat(stepId),
     method: 'GET',
     data: {
       stepId: stepId
@@ -2806,7 +2941,7 @@ var fecthStep = function fecthStep(stepId) {
 };
 var createStep = function createStep(step) {
   return $.ajax({
-    url: '/api/projects/:project_id/steps',
+    url: '/api/projects/:project_id/project_steps',
     method: 'POST',
     data: {
       step: step
@@ -2815,7 +2950,7 @@ var createStep = function createStep(step) {
 };
 var updateStep = function updateStep(step, info) {
   return $.ajax({
-    url: "/api/projecs/".concat(info.projectId, "/steps/").concat(info.id),
+    url: "/api/projecs/".concat(info.projectId, "/project_steps/").concat(info.id),
     method: 'PATCH',
     data: {
       step: step
@@ -2824,7 +2959,7 @@ var updateStep = function updateStep(step, info) {
 };
 var deleteStep = function deleteStep(stepId) {
   $.ajax({
-    url: "/api/projects/:project_id/steps/".concat(stepId),
+    url: "/api/projects/:project_id/project_steps/".concat(stepId),
     method: 'DELETE',
     data: {
       stepId: stepId

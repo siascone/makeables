@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :show]
     resources :projects, only: [:create, :show, :index, :update, :delete]
     resources :projects do
-      resources :steps, only: [:create, :show, :index, :update, :delete]
+      resources :project_steps, only: [:create, :show, :index, :update, :delete]
     end
     resource :session, only: [:create, :destroy]
 

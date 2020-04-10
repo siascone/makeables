@@ -5,7 +5,6 @@ import Step from './add_step';
 import { createStep, clearErrors } from '../../actions/step_actions';
 
 const msp = (state, ownProps) => {
-    // debugger
     return {
         project_id: ownProps.match.params.id,
         errors: Object.values(state.errors.steps)

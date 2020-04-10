@@ -1,5 +1,6 @@
 import React from 'react';
 import AddStepContainer from '../steps/add_step_container';
+import StepsIndexContainer from '../steps/steps_index_container';
 
 
 class ProjectForm extends React.Component {
