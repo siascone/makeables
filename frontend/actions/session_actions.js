@@ -34,4 +34,4 @@ export const login = (user) => dispatch => {
 export const logout = () => dispatch => SessionApiUtil.logout()
     .then((res) => {
         dispatch(logoutCurrentUser());
-    });
+});

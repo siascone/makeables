@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import StepsIndexContainer from '../steps/steps_index_container';
 
 class ProjectShow extends React.Component {
     componentDidMount() {
@@ -8,6 +9,8 @@ class ProjectShow extends React.Component {
 
     render() {
         const {project, username} = this.props;
+
+        
         
         if (!project) return null;
         return (
@@ -23,7 +26,7 @@ class ProjectShow extends React.Component {
                     <p>{project.description}</p>
                 </div>
                 <div className='project-show-steps'>
-                    {/* ---steps will go here--- */}
+                    <StepsIndexContainer />
                 </div>
             </div>
         )

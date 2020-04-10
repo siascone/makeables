@@ -62,7 +62,6 @@ tesla_coil = Project.create!(user_id: alice.id, title: "Tesla Coil", category_id
 stirling_engine = Project.create!(user_id: hayden.id, title: "Stirling Cycle Engine", category_id: science.id)
 theremin_organ_synth = Project.create!(user_id: nemo.id, title: "Theremin, Organ and APC Synths", category_id: instruments.id)
 
-
 scalloped = open("https://makeables-seeds.s3-us-west-1.amazonaws.com/scalloped.jpg")
 solar = open("https://makeables-seeds.s3-us-west-1.amazonaws.com/solar.gif")
 snorkel = open("https://makeables-seeds.s3-us-west-1.amazonaws.com/3d_printed_snorkel.jpg")
@@ -112,3 +111,10 @@ gas_turbine.project_photo.attach(io: turbine, filename: "turbine.jpg")
 tesla_coil.project_photo.attach(io: tesla, filename: "tesla.jpg")
 stirling_engine.project_photo.attach(io: stirling, filename: "stirling.jpg")
 theremin_organ_synth.project_photo.attach(io: synths, filename: "synths.jpg")
+
+ProjectStep.destroy_all
+
+step_1 = ProjectStep.create!(heading: 'Step 1', body: 'this is step 1', project_id: scalloped_frets.id )
+step_2 = ProjectStep.create!(heading: 'Step 2', body: 'this is step 2', project_id: scalloped_frets.id )
+step_3 = ProjectStep.create!(heading: 'Step 3', body: 'this is step 3', project_id: scalloped_frets.id )
+step_4 = ProjectStep.create!(heading: 'Step 4', body: 'this is step 4', project_id: scalloped_frets.id )

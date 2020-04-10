@@ -1,0 +1,43 @@
+export const fetchAllSteps = (projectId) => {
+    return(
+        $.ajax({
+            url: `/api/projects/${projectId}/project_steps`,
+            method: 'GET'
+        })
+
+    )
+};
+
+export const fetchStep = (stepId) => (
+    $.ajax({
+        url: `/api/projects/:project_id/project_steps/${stepId}`,
+        method: 'GET',
+        data: { stepId }
+    })
+);
+
+export const createStep = (step) => {
+    return(
+        $.ajax({
+            url: '/api/projects/:project_id/project_steps',
+            method: 'POST',
+            data: { step }
+        })
+    )
+};
+
+export const updateStep = (step, info) => (
+    $.ajax({
+        url: `/api/projecs/${info.projectId}/project_steps/${info.id}`,
+        method: 'PATCH',
+        data: { step }
+    })
+);
+
+export const deleteStep = (stepId) => {
+    $.ajax({
+        url: `/api/projects/:project_id/project_steps/${stepId}`,
+        method: 'DELETE',
+        data: { stepId }
+    })
+};

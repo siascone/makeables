@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import ProjectShow from './project_show';
-import {fetchProject} from '../../actions/project_actions';
+import {fetchProject, deleteProject} from '../../actions/project_actions';
 
 const mapStateToProps = (state, ownProps) => {
     let project = state.entities.projects[ownProps.match.params.id]
@@ -15,7 +15,8 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-    fetchProject: projectId => dispatch(fetchProject(projectId))
+    fetchProject: projectId => dispatch(fetchProject(projectId)),
+    deleteProject: project => dispatch(deleteProject(project))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProjectShow);

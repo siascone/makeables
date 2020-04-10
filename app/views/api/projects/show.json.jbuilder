@@ -7,6 +7,9 @@
             json.photoUrl ""
         end
     end
+
     json.user do 
         json.extract! @project.user, :id, :username
     end
+
+    
