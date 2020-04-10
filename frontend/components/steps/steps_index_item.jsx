@@ -5,9 +5,10 @@ const StepsIndexItem = props => {
     return (
         <div>
             <div>
-                <p>{props.heading}</p>
-                <p>{props.body}</p>
+                <p>{props.step.extract.heading}</p>
+                <p> - {props.step.extract.body}</p>
             </div>
+            <br />
         </div>
     )
 };

@@ -1964,20 +1964,21 @@ var StepsIndex = /*#__PURE__*/function (_React$Component) {
   _createClass(StepsIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchAllSteps(this.props.projectId);
+      return this.props.fetchAllSteps(this.props.projectId);
     }
   }, {
     key: "render",
     value: function render() {
+      var steps = this.props.steps;
+
       if (this.props.steps.length <= 1) {
         return null;
       }
 
-      var steps = this.props.steps;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "test", steps.map(function (step, idx) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, steps.map(function (step, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          step: step,
-          project: projects[step.project_id],
+          step: step // project={projects[step.project_id]}
+          ,
           key: idx
         });
       }));
@@ -2042,7 +2043,7 @@ __webpack_require__.r(__webpack_exports__);
  // import { Link } from 'react-router-dom';
 
 var StepsIndexItem = function StepsIndexItem(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, props.heading), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, props.body)));
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, props.step.extract.heading), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " - ", props.step.extract.body)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (StepsIndexItem);
@@ -2627,7 +2628,7 @@ var stepsReducer = function stepsReducer() {
 
   switch (action.type) {
     case _actions_step_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_STEPS"]:
-      return action.steps;
+      return action.steps.steps;
 
     case _actions_step_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_STEP"]:
       return _defineProperty({}, action.step.id, action.step);

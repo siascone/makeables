@@ -10,7 +10,7 @@ const stepsReducer = (state ={}, action) => {
 
     switch (action.type) {
         case RECEIVE_ALL_STEPS:
-            return action.steps;
+            return action.steps.steps;
         case RECEIVE_STEP:
             return {[action.step.id]: action.step};
         case REMOVE_STEP:
