@@ -6,12 +6,12 @@ class Api::ProjectStepsController < ApplicationController
     end
 
     def show
-        @step = selected_project_step
+        @step = selected_step
         render :show
     end
 
     def create
-        @step = ProjectStep.new(project_step_params)
+        @step = ProjectStep.new(step_params)
         @step.project_id = params[:project_id]
         if @step.save
             render :show
@@ -21,8 +21,8 @@ class Api::ProjectStepsController < ApplicationController
     end 
 
     def update
-        @step = selected_project_step
-        if @step.update(project_step_params)
+        @step = selected_step
+        if @step.update(step_params)
             render :show
         else
             render json: @step.errors.full_messages, status: 422
@@ -30,7 +30,7 @@ class Api::ProjectStepsController < ApplicationController
     end
 
     def destroy
-        @step = selected_project_step
+        @step = selected_step
         if @step
             @step.destroy
             render :index
@@ -41,11 +41,11 @@ class Api::ProjectStepsController < ApplicationController
 
     private
 
-    def selected_project_step
+    def selected_step
         ProjectStep.find(params[:id])
     end
 
-    def project_step_params
+    def step_params
         params.require(:step).permit(:heading, :body)
     end
 end

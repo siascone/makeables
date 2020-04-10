@@ -310,7 +310,7 @@ var logout = function logout() {
 /*!******************************************!*\
   !*** ./frontend/actions/step_actions.js ***!
   \******************************************/
-/*! exports provided: RECEIVE_ALL_STEPS, RECEIVE_STEP, REMOVE_STEP, RECEIVE_ERRORS, CLEAR_ERRORS, clearErrors, fetchAllStpes, fetchStep, createStep, updateStep, deleteStep */
+/*! exports provided: RECEIVE_ALL_STEPS, RECEIVE_STEP, REMOVE_STEP, RECEIVE_ERRORS, clearErrors, fetchAllStpes, fetchStep, createStep, updateStep, deleteStep */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -319,7 +319,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_STEP", function() { return RECEIVE_STEP; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_STEP", function() { return REMOVE_STEP; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ERRORS", function() { return RECEIVE_ERRORS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_ERRORS", function() { return CLEAR_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearErrors", function() { return clearErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllStpes", function() { return fetchAllStpes; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchStep", function() { return fetchStep; });
@@ -335,7 +334,6 @@ var RECEIVE_ALL_STEPS = 'RECEIVE_ALL_STEPS';
 var RECEIVE_STEP = 'RECEIVE_STEP';
 var REMOVE_STEP = 'REMOVE_STEP';
 var RECEIVE_ERRORS = 'RECEIVE_ERRORS';
-var CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 var receiveAllSteps = function receiveAllSteps(steps) {
   return {
@@ -370,9 +368,9 @@ var clearErrors = function clearErrors() {
     type: CLEAR_ERRORS
   };
 };
-var fetchAllStpes = function fetchAllStpes() {
+var fetchAllStpes = function fetchAllStpes(projectId) {
   return function (dispatch) {
-    return _util_steps_api_util__WEBPACK_IMPORTED_MODULE_1__["fetchAllSteps"]().then(steps = dispatch(receiveAllSteps(steps)));
+    return _util_steps_api_util__WEBPACK_IMPORTED_MODULE_1__["fetchAllSteps"](projectId).then(steps = dispatch(receiveAllSteps(steps)));
   };
 };
 var fetchStep = function fetchStep(stepId) {
@@ -2791,15 +2789,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createStep", function() { return createStep; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateStep", function() { return updateStep; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteStep", function() { return deleteStep; });
-var fetchAllSteps = function fetchAllSteps() {
+var fetchAllSteps = function fetchAllSteps(projectId) {
   return $.ajax({
-    url: '/api/project_steps',
+    url: "/api/projects/".concat(projectId, "/steps"),
     method: 'GET'
   });
 };
 var fecthStep = function fecthStep(stepId) {
   return $.ajax({
-    url: "/api/steps/".concat(stepId),
+    url: "/api/projects/:project_id/steps/".concat(stepId),
     method: 'GET',
     data: {
       stepId: stepId
@@ -2808,16 +2806,16 @@ var fecthStep = function fecthStep(stepId) {
 };
 var createStep = function createStep(step) {
   return $.ajax({
-    url: '/api/project_steps',
+    url: '/api/projects/:project_id/steps',
     method: 'POST',
     data: {
       step: step
     }
   });
 };
-var updateStep = function updateStep(step) {
+var updateStep = function updateStep(step, info) {
   return $.ajax({
-    url: "/api/project_steps/".concat(step.id),
+    url: "/api/projecs/".concat(info.projectId, "/steps/").concat(info.id),
     method: 'PATCH',
     data: {
       step: step
@@ -2826,7 +2824,7 @@ var updateStep = function updateStep(step) {
 };
 var deleteStep = function deleteStep(stepId) {
   $.ajax({
-    url: "/api/project_steps/".concat(stepId),
+    url: "/api/projects/:project_id/steps/".concat(stepId),
     method: 'DELETE',
     data: {
       stepId: stepId
