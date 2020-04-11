@@ -2043,7 +2043,18 @@ __webpack_require__.r(__webpack_exports__);
  // import { Link } from 'react-router-dom';
 
 var StepsIndexItem = function StepsIndexItem(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, props.step.extract.heading), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " - ", props.step.extract.body)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
+  var id = props.step.extract.id;
+  var numSteps = props.step.length; // debugger
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "step-box"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "step-item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "heading"
+  }, props.step.extract.heading), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "body"
+  }, props.step.extract.body)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (StepsIndexItem);
