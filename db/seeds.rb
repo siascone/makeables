@@ -114,7 +114,66 @@ theremin_organ_synth.project_photo.attach(io: synths, filename: "synths.jpg")
 
 ProjectStep.destroy_all
 
-step_1 = ProjectStep.create!(heading: 'Step 1', body: 'this is step 1', project_id: scalloped_frets.id )
-step_2 = ProjectStep.create!(heading: 'Step 2', body: 'this is step 2', project_id: scalloped_frets.id )
-step_3 = ProjectStep.create!(heading: 'Step 3', body: 'this is step 3', project_id: scalloped_frets.id )
-step_4 = ProjectStep.create!(heading: 'Step 4', body: 'this is step 4', project_id: scalloped_frets.id )
+scalloped_step_1 = ProjectStep.create!(heading: 'Step 1: Materials', body: '-A guitar
+-Some duct tape, or masking tape
+-A rounded metal file, meaning its round all around. Mine was about 5/16" in diameter at the widest section.
+-Murphy Oil - any wood cleaner can do I think
+-A toothbrush
+-Sandpaper of many variates of fine grit.
+-Dremel with a buffing wheel attachment, or a buffing wheel of some sorts. A rag can work too
+-Screwdriver
+-Wire clippers
+-New guitar strings', project_id: scalloped_frets.id )
+scalloped_step_2 = ProjectStep.create!(heading: 'Step 2: Starting Off...', body: 'Find a nice working area with a lot of space.
+
+Lay your guitar flat on the working table, and clip all your strings. I found it handy to scallop my frets right before I needed a string change.
+
+Remove all strings and turn the guitar over. Unscrew the screws that hold the body and neck of the guitar. Not all guitars have bolt on necks, I find removing the neck easier so that you have more control. It is alright to scallop the neck when it is attached, just be cautious.
+
+Recently people have asked me, Why did you not just untie the strings?. Yeah, you can unitie the strings and scallop your frets. My strings were getting old, and my guitar strings are tied so that I left little slack, which makes it very difficult to restring. Plus I restring my guitar about once to twice a month, so I just waited until it was convenient for me.', project_id: scalloped_frets.id  )
+scalloped_step_3 = ProjectStep.create!(heading: 'Step 3: Preparing the Neck', body: 'So now you are going to have your bare exposed guitar neck.
+Cover frets 1-13 with tape, to make sure if you slip you wont scratch another fret. Its just a precaution, and its recommended.
+
+Now I did not do this, but you probably should
+Cover each fret with a strip of tape, and trim the excess with a razor if you are worried about damaging your frets.
+My frets were not that damaged, and were slightly polished by the time I finish, but its an added form of security.', project_id: scalloped_frets.id)
+scalloped_step_4 = ProjectStep.create!(heading: 'Step 4: Starting to Remove the Wood', body: 'My guitar only has 21 frets so that is where I started.
+
+Basically you want to pass the file back and forth over the entire length of the fret, not one specific part, so that you are removing an even amount of wood.
+
+Since your fretboard is curved, you also want to make you cut slightly curved as well.
+
+You want to make multiple file passes, all next to each other, with different depths, to attain a curved effect.
+
+It is easier to get the curved effect on the higher frets because the width of the fret is about the same as the diameter of your file but as you get to wider frets, you will have to shape it using the multiple pass method.', project_id: scalloped_frets.id)
+scalloped_step_5 = ProjectStep.create!(heading: 'Step 5: Continuing the Process...', body: 'Some tips when removing the wood.
+As explained before, you will need multiple passes with the file when working on wider frets.
+
+I filed a general channel in the center of the fret to start off. Then I filed channels on each side.', project_id: scalloped_frets.id)
+scalloped_step_6 = ProjectStep.create!(heading: 'Step 6: Sanding!', body: 'When you have established the general shape, its time to move on to sanding.
+Remember, sanding shapes what you cannot do with filing.
+Filing just gets rid of the wood you cannot with sanding; you can but it would take forever.
+
+Sand with sandpaper starting at a low grit, and eventually make your way up to higher grits.
+I started at like 80 and wound up at 400. I would advise you to go up to maybe 800. I just did not have anything higher', project_id: scalloped_frets.id)
+scalloped_step_7 = ProjectStep.create!(heading: 'Step 7: Cleaning!', body: 'After sanding, you need to clean all the gunk thats stuck on your fingerboard.
+I used Murphy Oil, a great wood cleaner.
+
+Pour a thin line of oil on the fretboard, and use a toothbrush to scrub.
+Scrub for a good amount, as you want to get rid of the gunk.', project_id: scalloped_frets.id)
+scalloped_step_8 = ProjectStep.create!(heading: 'Step 8: Even More Sanding!', body: 'Now that your fretboard is cleaned of the gunk, run your hand across it.
+Feels rough right? All that sanding gunk stopped you from sanding all the way. We needed to clean the fretboard so we can sand AGAIN.
+
+Sand once more.', project_id: scalloped_frets.id)
+scalloped_step_9 = ProjectStep.create!(heading: 'Step 9: Even More Cleaning', body: 'We need to clean the fretboard again.
+Go through the same process.
+
+You should continue this cycle of sanding and cleaning until your fretboard is nice and smooth', project_id: scalloped_frets.id)
+scalloped_step_10 = ProjectStep.create!(heading: 'Step 10: Buffing', body: 'Get your dremel with that buffer attachment or even better, a buffing wheel and start polishing your fretboard.
+
+You could always use a cloth, but you would need massive arms for the amount of buffing you are about to do.
+
+Buff until shiny.', project_id: scalloped_frets.id)
+scalloped_step_11 = ProjectStep.create!(heading: 'Step 11: Admire', body: 'Pat yourself on the back if you managed to get this far.
+After this mod I scalloped all the way down to my 12th fret.
+Have fun playing your scalloped guitar!', project_id: scalloped_frets.id)
