@@ -1323,6 +1323,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
+  // debugger
   var project = state.entities.projects[ownProps.match.params.id];
   var username = null;
 
@@ -1969,11 +1970,14 @@ var StepsIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var steps = this.props.steps;
+      var _this$props = this.props,
+          steps = _this$props.steps,
+          projectId = _this$props.projectId;
 
       if (this.props.steps.length <= 1) {
         return null;
-      }
+      } // let proj_steps = steps.map(step, )
+
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, steps.map(function (step, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -2011,6 +2015,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mSTP = function mSTP(state, ownProps) {
+  debugger;
   return {
     steps: Object.values(state.entities.steps),
     projectId: state.entities.projects[ownProps.match.params.id].id
@@ -2045,6 +2050,7 @@ __webpack_require__.r(__webpack_exports__);
 var StepsIndexItem = function StepsIndexItem(props) {
   var id = props.step.extract.id;
   var numSteps = props.step.length; // debugger
+  // if (props.step.extract.project_id === props.projectId) {
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "step-box"
@@ -2054,7 +2060,9 @@ var StepsIndexItem = function StepsIndexItem(props) {
     className: "heading"
   }, props.step.extract.heading), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "body"
-  }, props.step.extract.body)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
+  }, props.step.extract.body)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)); // } else {
+  //     return null
+  // }
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (StepsIndexItem);

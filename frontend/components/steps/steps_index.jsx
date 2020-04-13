@@ -7,13 +7,16 @@ class StepsIndex extends React.Component {
     }
 
     render() {
-        const { steps } = this.props;
+        const { steps, projectId } = this.props;
 
         if (this.props.steps.length <= 1) {
             return null;
         }
 
+        // let proj_steps = steps.map(step, )
+
         return (
+
             <div>
                 {
                     steps.map((step, idx) => (

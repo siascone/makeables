@@ -38,7 +38,9 @@ arduino = Category.create!(type_name: 'arduino')
 Project.destroy_all
 
 scalloped_frets = Project.create!(user_id: spencer.id, title: "Scallop your Guitar", category_id: instruments.id)
-three_d_printed_snorkel = Project.create!(user_id: larry.id, title: "3D Printed Snorkel", category_id: three_d_printing.id) 
+three_d_printed_snorkel = Project.create!(user_id: larry.id, title: "3D Printed Snorkel", description: "Snorkeling is sublime. A cheap water activity that makes the incredible world of the ocean available to anyone. It is so wonderful to see young kids surface suddenly after realizing they have seen a fish under them for the first time. Its simplicity of breathing under the ocean surface with a tube masks some of its risks. Sudden Snorkel Death (SSD) -- the loss of life with this activity is surprisingly common. About one death every two weeks here in Hawaii. The common interpretation of why this happens is usually: Snorkeling While Old. But, how do explain a 30 y.o. snorkeling death that occurred last month here? The easiest way to get a feeling for the risks is to actually perform the experiment everyone things of--take a garden hose down as far as you can in the pool and take a breath. I have done this with a lot of people and none can breath in adequately in a little over a foot of water! This is naturally a curve of breathing that starts off normal at the surface and declines rapidly based on body shape and sucking abilities--the human body unlike a snorkeling elephant is very limited. The other obvious problem is the dead space involved in snorkel design. An average human breath is about 500cc. There is about 150 cc of dead space in each breath--the area of your respiratory system that has expired air still stuck in it and must be cleared before fresh air enters the lungs. The average snorkel adds about 180 cc of dead space to this stack and so way over half of your next breath is old stuff and not the oxygen you need. Your breaths get smaller as you go down and contain less oxygen and the urgency to exhale--because holding a breath in is so much harder--shortens the exhalation time, all causing you to breath much more rapidly. What could go wrong?
+
+Snorkels can be designed to get rid of this dead space by the use of valves that separate incoming from outgoing air. This was first mentioned in one of the original patents on a snorkel from 1941. Snorkels with valves are not common so if you want one and have a 3D printer I will show you how to build one. Disclaimer: Build and use at your own risk---if a simple tube can cause your demise imagine what this design could do.",category_id: three_d_printing.id) 
 chess_table = Project.create!(user_id: scott.id, title: "How to Make a Chess/Checkers Table", category_id: furnature.id)
 gopro_nosecone = Project.create!(user_id: lizzy.id, title: "Model Rocket With GoPro Nose Cone", category_id: science.id)
 halfpipe = Project.create!(user_id: joe.id, title: "Build a Backyard Halfpipe", category_id: outdoor.id)
@@ -178,4 +180,18 @@ scalloped_step_11 = ProjectStep.create!(heading: 'Step 11: Admire', body: 'Pat y
 After this mod I scalloped all the way down to my 12th fret.
 Have fun playing your scalloped guitar!', project_id: scalloped_frets.id)
 
-3d_step_1 = ProjectStep.create!
+three_d_step_1 = ProjectStep.create!(heading: 'Step 1: Gather Your Materials', body: "This build is pretty much a 3D printing project with a few extras. I have designed two separate ways of building the snorkels. One requires buying a cheap but good snorkel on Amazon and then 3D printing the important parts and adapting it into the purchased snorkel. This is the easiest method. The more involved but creative build is all the parts are 3D printed except for the air tube where we use a commercial CPAP hose. You don't need #2 and #4 if you are using the commercial snorkel.
+
+1. Aegend Dry Snorkel, Dive Mask Easy-Breath Free Diving Snorkel for Snorkeling about $16
+
+2. MALUAN 6 Pack Silicone Mouthpiece Diving Clear $9
+
+3. Silicone Film High Temp Thin Rubber Sheet Gasket Super Clear Flexible 12x19.7 x1/32 inch $16
+
+4. RespLabs CPAP Hose, Black-Out Tubing $9
+
+5. Loctite Super Glue
+
+6. E6000--best glue on earth
+
+7. Punch Hole Tool 3.5 mm", project_id: three_d_printed_snorkel.id)
