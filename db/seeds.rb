@@ -177,3 +177,5 @@ Buff until shiny.', project_id: scalloped_frets.id)
 scalloped_step_11 = ProjectStep.create!(heading: 'Step 11: Admire', body: 'Pat yourself on the back if you managed to get this far.
 After this mod I scalloped all the way down to my 12th fret.
 Have fun playing your scalloped guitar!', project_id: scalloped_frets.id)
+
+3d_step_1 = ProjectStep.create!
