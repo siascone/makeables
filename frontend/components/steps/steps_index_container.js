@@ -4,10 +4,18 @@ import { fetchAllSteps } from '../../actions/step_actions';
 import { withRouter } from 'react-router-dom';
 
 const mSTP = (state, ownProps) => {
-    // debugger
-    return {
-        steps: Object.values(state.entities.steps),
-        projectId: state.entities.projects[ownProps.match.params.id].id
+    let project = state.entities.projects[ownProps.match.params.id];
+
+    if (project === undefined) {
+        return {
+            steps: Object.values(state.entities.steps)
+        }
+    } else {
+        return {
+            steps: Object.values(state.entities.steps),
+            projectId: state.entities.projects[ownProps.match.params.id].id
+        }
+
     }
 };
 

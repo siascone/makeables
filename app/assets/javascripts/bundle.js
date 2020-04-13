@@ -2015,11 +2015,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mSTP = function mSTP(state, ownProps) {
-  // debugger
-  return {
-    steps: Object.values(state.entities.steps),
-    projectId: state.entities.projects[ownProps.match.params.id].id
-  };
+  var project = state.entities.projects[ownProps.match.params.id];
+
+  if (project === undefined) {
+    return {
+      steps: Object.values(state.entities.steps)
+    };
+  } else {
+    return {
+      steps: Object.values(state.entities.steps),
+      projectId: state.entities.projects[ownProps.match.params.id].id
+    };
+  }
 };
 
 var mDTP = function mDTP(dispatch) {
@@ -2050,8 +2057,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var StepsIndexItem = function StepsIndexItem(props) {
   var id = props.step.extract.id;
-  var numSteps = props.step.length;
-  debugger;
+  var numSteps = props.step.length; // debugger
 
   if (props.step.extract.project_id === props.projectId) {
     // debugger

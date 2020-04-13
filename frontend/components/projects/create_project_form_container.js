@@ -5,7 +5,7 @@ import { createProject, clearErrors } from '../../actions/project_actions';
 import {openModal} from '../../actions/modal_actions';
 
 const mapStateToProps = state => {
-
+    
     return ({
         project: {
         title: '',
