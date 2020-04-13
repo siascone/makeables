@@ -13,8 +13,6 @@ class StepsIndex extends React.Component {
             return null;
         }
 
-        // let proj_steps = steps.map(step, )
-
         return (
 
             <div>
@@ -22,7 +20,7 @@ class StepsIndex extends React.Component {
                     steps.map((step, idx) => (
                         <StepsIndexItem
                             step={step}
-                            // project={projects[step.project_id]}
+                            projectId={projectId}
                             key={idx}
                         />
                     ))

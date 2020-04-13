@@ -1280,7 +1280,8 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           project = _this$props.project,
-          username = _this$props.username;
+          username = _this$props.username; // debugger
+
       if (!project) return null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-show-main"
@@ -1976,13 +1977,12 @@ var StepsIndex = /*#__PURE__*/function (_React$Component) {
 
       if (this.props.steps.length <= 1) {
         return null;
-      } // let proj_steps = steps.map(step, )
-
+      }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, steps.map(function (step, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          step: step // project={projects[step.project_id]}
-          ,
+          step: step,
+          projectId: projectId,
           key: idx
         });
       }));
@@ -2015,7 +2015,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mSTP = function mSTP(state, ownProps) {
-  debugger;
+  // debugger
   return {
     steps: Object.values(state.entities.steps),
     projectId: state.entities.projects[ownProps.match.params.id].id
@@ -2045,24 +2045,29 @@ var mDTP = function mDTP(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
- // import { Link } from 'react-router-dom';
+ // import { debug } from 'webpack';
+// import { Link } from 'react-router-dom';
 
 var StepsIndexItem = function StepsIndexItem(props) {
   var id = props.step.extract.id;
-  var numSteps = props.step.length; // debugger
-  // if (props.step.extract.project_id === props.projectId) {
+  var numSteps = props.step.length;
+  debugger;
 
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "step-box"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "step-item"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "heading"
-  }, props.step.extract.heading), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "body"
-  }, props.step.extract.body)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)); // } else {
-  //     return null
-  // }
+  if (props.step.extract.project_id === props.projectId) {
+    // debugger
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "step-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "step-item"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "heading"
+    }, props.step.extract.heading), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "body"
+    }, props.step.extract.body)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
+  } else {
+    // debugger
+    return null;
+  }
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (StepsIndexItem);

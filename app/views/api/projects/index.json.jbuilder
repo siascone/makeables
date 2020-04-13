@@ -1,7 +1,7 @@
 json.projects do
     @projects.each do |project|
         json.set! project.id do 
-            json.extract! project, :id, :title, :user_id
+            json.extract! project, :id, :title, :user_id, :description
             if project.project_photo
                 json.photoUrl url_for(project.project_photo)
             else

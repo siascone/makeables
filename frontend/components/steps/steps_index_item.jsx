@@ -1,11 +1,13 @@
 import React from 'react';
+// import { debug } from 'webpack';
 // import { Link } from 'react-router-dom';
 
 const StepsIndexItem = props => {
     let id = props.step.extract.id
     let numSteps = props.step.length
-    // debugger
-    // if (props.step.extract.project_id === props.projectId) {
+    debugger
+    if (props.step.extract.project_id === props.projectId) {
+        // debugger
         return (
             <div className='step-box'>
                 <div className='step-item'>
@@ -15,9 +17,10 @@ const StepsIndexItem = props => {
                 <br />
             </div>
         )
-    // } else {
-    //     return null
-    // }
+    } else {
+        // debugger
+        return null
+    }
     
 };
 
