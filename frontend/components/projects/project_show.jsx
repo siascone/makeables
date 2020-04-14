@@ -17,8 +17,8 @@ class ProjectShow extends React.Component {
     remove(e) {
         e.preventDefault();
         this.props.deleteProject(this.props.project.id)
-            
-                <Redirect to="/?#/projects/" />
+        this.props.fetchAllProjects()
+        this.props.history.push('/projects/')
     }
 
     render() {
