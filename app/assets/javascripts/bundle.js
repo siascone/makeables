@@ -952,12 +952,14 @@ var EditProjectForm = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           action = _this$props.action,
           formType = _this$props.formType,
-          project = _this$props.project;
+          project = _this$props.project,
+          errors = _this$props.errors;
       if (!project) return null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
         action: action,
         formType: formType,
-        project: project
+        project: project,
+        errors: errors
       });
     }
   }]);
@@ -966,9 +968,11 @@ var EditProjectForm = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
+  debugger;
   return {
     project: state.entities.projects[ownProps.match.params.id],
-    formType: 'Update Makeable'
+    formType: 'Update Makeable',
+    errors: Object.values(state.errors.project)
   };
 };
 
@@ -1121,13 +1125,17 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "renderErrors",
     value: function renderErrors() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "project-errors"
-      }, this.props.errors.map(function (error, i) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: "error ".concat(i)
-        }, error);
-      }));
+      if (this.props.errors.length > 0) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "project-errors"
+        }, this.props.errors.map(function (error, i) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+            key: "error ".concat(i)
+          }, error);
+        }));
+      } else {
+        return null;
+      }
     }
   }, {
     key: "componentWillUnmount",
@@ -1141,13 +1149,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
 
       if (this.projectImage === true) {
         image = 'show-project-image';
-      } // let steps
-      // if (this.props.formType === "Publish Makeable") {
-      //     steps = <div><AddStepContainer /></div>
-      // } else {
-      //     steps = 'test'
-      // }
-
+      }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-main"
@@ -1297,7 +1299,9 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
       if (sessionId === userId) {
         links = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           onClick: this.remove
-        }, "Delete"));
+        }, "Delete"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/projects/".concat(project.id, "/edit")
+        }, "Edit"));
       }
 
       if (!project) return null;

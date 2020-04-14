@@ -27,6 +27,7 @@ class ProjectShow extends React.Component {
         if (sessionId === userId) {
             links = <div>
                 <button onClick={this.remove}>Delete</button>
+                <Link to={`/projects/${project.id}/edit`}>Edit</Link>
             </div>
         }
         

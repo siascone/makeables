@@ -65,13 +65,17 @@ class ProjectForm extends React.Component {
     }
 
     renderErrors() {
-        return (
-            <div className='project-errors'>
-                {this.props.errors.map((error, i) => (
-                    <li key={`error ${i}`}>{error}</li>
-                ))}
-            </div>
-        )
+        if (this.props.errors.length > 0) {
+            return (
+                <div className='project-errors'>
+                    {this.props.errors.map((error, i) => (
+                        <li key={`error ${i}`}>{error}</li>
+                    ))}
+                </div>
+            )
+        } else {
+            return null
+        }
     }
 
     componentWillUnmount() {
@@ -83,13 +87,6 @@ class ProjectForm extends React.Component {
         if (this.projectImage === true) {
             image = 'show-project-image';
         }
-
-        // let steps
-        // if (this.props.formType === "Publish Makeable") {
-        //     steps = <div><AddStepContainer /></div>
-        // } else {
-        //     steps = 'test'
-        // }
 
         return (
             <div className='project-main'>
@@ -125,7 +122,6 @@ class ProjectForm extends React.Component {
                         <StepsIndexContainer />
                     </div>
                     <div className='add-step'>
-                        {/* <AddStepContainer /> */}
                     </div>
                 </div>
             </div>
