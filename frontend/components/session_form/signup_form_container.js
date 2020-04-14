@@ -16,7 +16,7 @@ const mapStateToProps = ({ errors }) => {
 const mapDispatchToProps = dispatch => {
     return {
         processForm: (user) => dispatch(signup(user)),
-        loginDemoUser: () => dispatch(login({ username: "demo", password: 'password' })),
+        loginDemoUser: () => dispatch(login({ username: "sixstringsloud", password: 'password' })),
         clearErrors: () => dispatch(clearErrors())
 
     };

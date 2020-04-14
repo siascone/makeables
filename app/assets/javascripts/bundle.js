@@ -218,8 +218,6 @@ var deleteProject = function deleteProject(projectId) {
   return function (dispatch) {
     return _util_projects_api_util__WEBPACK_IMPORTED_MODULE_1__["deleteProject"](projectId).then(function (project) {
       return dispatch(removeProject(project.id));
-    }, function (errors) {
-      return dispatch(receiveErrors(errors.responseJSON));
     });
   };
 };
@@ -954,12 +952,14 @@ var EditProjectForm = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           action = _this$props.action,
           formType = _this$props.formType,
-          project = _this$props.project;
+          project = _this$props.project,
+          errors = _this$props.errors;
       if (!project) return null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
         action: action,
         formType: formType,
-        project: project
+        project: project,
+        errors: errors
       });
     }
   }]);
@@ -968,9 +968,11 @@ var EditProjectForm = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
+  debugger;
   return {
     project: state.entities.projects[ownProps.match.params.id],
-    formType: 'Update Makeable'
+    formType: 'Update Makeable',
+    errors: Object.values(state.errors.project)
   };
 };
 
@@ -1123,13 +1125,17 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "renderErrors",
     value: function renderErrors() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "project-errors"
-      }, this.props.errors.map(function (error, i) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: "error ".concat(i)
-        }, error);
-      }));
+      if (this.props.errors.length > 0) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "project-errors"
+        }, this.props.errors.map(function (error, i) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+            key: "error ".concat(i)
+          }, error);
+        }));
+      } else {
+        return null;
+      }
     }
   }, {
     key: "componentWillUnmount",
@@ -1143,14 +1149,6 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
 
       if (this.projectImage === true) {
         image = 'show-project-image';
-      }
-
-      var steps;
-
-      if (this.props.formType === "Publish Makeable") {
-        steps = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_add_step_container__WEBPACK_IMPORTED_MODULE_1__["default"], null));
-      } else {
-        steps = 'test';
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1182,7 +1180,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         className: "steps"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_steps_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "add-step"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_add_step_container__WEBPACK_IMPORTED_MODULE_1__["default"], null))));
+      })));
     }
   }]);
 
@@ -1238,7 +1236,8 @@ var ProjectIndexItem = function ProjectIndexItem(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _steps_steps_index_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../steps/steps_index_container */ "./frontend/components/steps/steps_index_container.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _steps_steps_index_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../steps/steps_index_container */ "./frontend/components/steps/steps_index_container.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1249,25 +1248,29 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
- // import { Link } from 'react-router-dom';
+
 
 
 
 var ProjectShow = /*#__PURE__*/function (_React$Component) {
   _inherits(ProjectShow, _React$Component);
 
-  function ProjectShow() {
+  function ProjectShow(props) {
+    var _this;
+
     _classCallCheck(this, ProjectShow);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(ProjectShow).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProjectShow).call(this, props));
+    _this.remove = _this.remove.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(ProjectShow, [{
@@ -1276,18 +1279,37 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
       this.props.fetchProject(this.props.match.params.id);
     }
   }, {
+    key: "remove",
+    value: function remove(e) {
+      e.preventDefault();
+      this.props.deleteProject(this.props.project.id);
+      this.props.fetchAllProjects();
+      this.props.history.push('/projects/');
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
           project = _this$props.project,
-          username = _this$props.username; // debugger
+          username = _this$props.username,
+          sessionId = _this$props.sessionId,
+          userId = _this$props.userId;
+      var links;
+
+      if (sessionId === userId) {
+        links = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onClick: this.remove
+        }, "Delete"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/projects/".concat(project.id, "/edit")
+        }, "Edit"));
+      }
 
       if (!project) return null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-show-main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-show-title-by"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, project.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "by ", username, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, project.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "by ", username, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, links)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-show-image"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: project.photoUrl,
@@ -1296,7 +1318,7 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
         className: "project-show-description"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, project.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-show-steps"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_steps_index_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_steps_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
     }
   }]);
 
@@ -1324,27 +1346,34 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  // debugger
   var project = state.entities.projects[ownProps.match.params.id];
   var username = null;
+  var userId = null;
+  var sessionId = null;
 
   if (project) {
     username = state.entities.users[project.user_id].username;
+    userId = project.user_id, sessionId = state.session.id;
   }
 
   return {
     project: project,
-    username: username
+    username: username,
+    userId: userId,
+    sessionId: sessionId
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
+    fetchAllProjects: function fetchAllProjects() {
+      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_2__["fetchAllProjects"])());
+    },
     fetchProject: function fetchProject(projectId) {
       return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_2__["fetchProject"])(projectId));
     },
-    deleteProject: function deleteProject(project) {
-      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_2__["deleteProject"])(project));
+    deleteProject: function deleteProject(projectId) {
+      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_2__["deleteProject"])(projectId));
     }
   };
 };
@@ -1536,7 +1565,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     loginDemoUser: function loginDemoUser() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["login"])({
-        username: "demo",
+        username: "sixstringsloud",
         password: 'password'
       }));
     },
@@ -1730,7 +1759,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     loginDemoUser: function loginDemoUser() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["login"])({
-        username: "demo",
+        username: "sixstringsloud",
         password: 'password'
       }));
     },
@@ -2057,10 +2086,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var StepsIndexItem = function StepsIndexItem(props) {
   var id = props.step.extract.id;
-  var numSteps = props.step.length; // debugger
+  var numSteps = props.step.length;
 
   if (props.step.extract.project_id === props.projectId) {
-    // debugger
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "step-box"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2071,7 +2099,6 @@ var StepsIndexItem = function StepsIndexItem(props) {
       className: "body"
     }, props.step.extract.body)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
   } else {
-    // debugger
     return null;
   }
 };
@@ -2485,6 +2512,7 @@ var projectsReducer = function projectsReducer() {
       return _defineProperty({}, action.payload.project.id, action.payload.project);
 
     case _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_PROJECT"]:
+      debugger;
       delete newState[action.projectId];
       return newState;
 

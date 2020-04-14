@@ -9,7 +9,7 @@ class EditProjectForm extends React.Component {
     }
 
     render() {
-        const {action, formType, project} = this.props
+        const {action, formType, project, errors} = this.props
 
         if(!project) return null;
 
@@ -18,15 +18,18 @@ class EditProjectForm extends React.Component {
                 action={action}
                 formType={formType}
                 project={project}
+                errors={errors}
             />
         );
     }
 }
 
 const mapStateToProps = (state, ownProps) => {
+    debugger
     return ({
         project: state.entities.projects[ownProps.match.params.id],
-        formType: 'Update Makeable'
+        formType: 'Update Makeable',
+        errors: Object.values(state.errors.project)
     });
 };
 
