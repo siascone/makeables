@@ -11,6 +11,7 @@ const projectsReducer = (state = {}, action) => {
         case RECEIVE_PROJECT:
             return {[action.payload.project.id]: action.payload.project};
         case REMOVE_PROJECT:
+            debugger
             delete newState[action.projectId];
             return newState;
         default:

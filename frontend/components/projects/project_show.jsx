@@ -1,16 +1,34 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import StepsIndexContainer from '../steps/steps_index_container';
 
+
 class ProjectShow extends React.Component {
+    constructor(props) {
+        super(props)
+
+        this.remove = this.remove.bind(this);
+    }
+
     componentDidMount() {
         this.props.fetchProject(this.props.match.params.id);
     }
 
-    render() {
-        const {project, username} = this.props;
+    remove(e) {
+        e.preventDefault();
+        this.props.deleteProject(this.props.project.id)
+            
+                <Redirect to="/?#/projects/" />
+    }
 
-        // debugger
+    render() {
+        const {project, username, sessionId, userId} = this.props;
+        let links
+        if (sessionId === userId) {
+            links = <div>
+                <button onClick={this.remove}>Delete</button>
+            </div>
+        }
         
         if (!project) return null;
         return (
@@ -18,6 +36,7 @@ class ProjectShow extends React.Component {
                 <div className='project-show-title-by'>
                     <h1>{project.title}</h1>
                     <h2>by {username} </h2>
+                    <div>{links}</div>
                 </div>
                 <div className='project-show-image'>
                     <img src={project.photoUrl} alt=""/>

@@ -218,8 +218,6 @@ var deleteProject = function deleteProject(projectId) {
   return function (dispatch) {
     return _util_projects_api_util__WEBPACK_IMPORTED_MODULE_1__["deleteProject"](projectId).then(function (project) {
       return dispatch(removeProject(project.id));
-    }, function (errors) {
-      return dispatch(receiveErrors(errors.responseJSON));
     });
   };
 };
@@ -1143,15 +1141,13 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
 
       if (this.projectImage === true) {
         image = 'show-project-image';
-      }
+      } // let steps
+      // if (this.props.formType === "Publish Makeable") {
+      //     steps = <div><AddStepContainer /></div>
+      // } else {
+      //     steps = 'test'
+      // }
 
-      var steps;
-
-      if (this.props.formType === "Publish Makeable") {
-        steps = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_add_step_container__WEBPACK_IMPORTED_MODULE_1__["default"], null));
-      } else {
-        steps = 'test';
-      }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-main"
@@ -1182,7 +1178,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         className: "steps"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_steps_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "add-step"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_add_step_container__WEBPACK_IMPORTED_MODULE_1__["default"], null))));
+      })));
     }
   }]);
 
@@ -1232,78 +1228,9 @@ var ProjectIndexItem = function ProjectIndexItem(props) {
   !*** ./frontend/components/projects/project_show.jsx ***!
   \*******************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _steps_steps_index_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../steps/steps_index_container */ "./frontend/components/steps/steps_index_container.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
- // import { Link } from 'react-router-dom';
-
-
-
-var ProjectShow = /*#__PURE__*/function (_React$Component) {
-  _inherits(ProjectShow, _React$Component);
-
-  function ProjectShow() {
-    _classCallCheck(this, ProjectShow);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(ProjectShow).apply(this, arguments));
-  }
-
-  _createClass(ProjectShow, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.props.fetchProject(this.props.match.params.id);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          project = _this$props.project,
-          username = _this$props.username; // debugger
-
-      if (!project) return null;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "project-show-main"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "project-show-title-by"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, project.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "by ", username, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "project-show-image"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: project.photoUrl,
-        alt: ""
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "project-show-description"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, project.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "project-show-steps"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_steps_index_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
-    }
-  }]);
-
-  return ProjectShow;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (ProjectShow);
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/siascone/Documents/app_academy/makeables/frontend/components/projects/project_show.jsx: Unexpected token, expected \";\" (21:26)\n\n\u001b[0m \u001b[90m 19 | \u001b[39m        \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mprops\u001b[33m.\u001b[39mdeleteProject(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mprops\u001b[33m.\u001b[39mproject\u001b[33m.\u001b[39mid)\u001b[0m\n\u001b[0m \u001b[90m 20 | \u001b[39m            \u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 21 | \u001b[39m                \u001b[33m<\u001b[39m\u001b[33mRedirect\u001b[39m to\u001b[33m=\u001b[39m\u001b[32m\"/?#/projects/\"\u001b[39m \u001b[33m/\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 22 | \u001b[39m    }\u001b[0m\n\u001b[0m \u001b[90m 23 | \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 24 | \u001b[39m    render() {\u001b[0m\n    at Object.raise (/Users/siascone/Documents/app_academy/makeables/node_modules/@babel/parser/lib/index.js:7044:17)\n    at Object.unexpected (/Users/siascone/Documents/app_academy/makeables/node_modules/@babel/parser/lib/index.js:8422:16)\n    at Object.semicolon (/Users/siascone/Documents/app_academy/makeables/node_modules/@babel/parser/lib/index.js:8404:40)\n    at Object.parseExpressionStatement (/Users/siascone/Documents/app_academy/makeables/node_modules/@babel/parser/lib/index.js:11257:10)\n    at Object.parseStatementContent (/Users/siascone/Documents/app_academy/makeables/node_modules/@babel/parser/lib/index.js:10858:19)\n    at Object.parseStatement (/Users/siascone/Documents/app_academy/makeables/node_modules/@babel/parser/lib/index.js:10724:17)\n    at Object.parseBlockOrModuleBlockBody (/Users/siascone/Documents/app_academy/makeables/node_modules/@babel/parser/lib/index.js:11298:25)\n    at Object.parseBlockBody (/Users/siascone/Documents/app_academy/makeables/node_modules/@babel/parser/lib/index.js:11285:10)\n    at Object.parseBlock (/Users/siascone/Documents/app_academy/makeables/node_modules/@babel/parser/lib/index.js:11269:10)\n    at Object.parseFunctionBody (/Users/siascone/Documents/app_academy/makeables/node_modules/@babel/parser/lib/index.js:10285:24)\n    at Object.parseFunctionBodyAndFinish (/Users/siascone/Documents/app_academy/makeables/node_modules/@babel/parser/lib/index.js:10254:10)\n    at Object.parseMethod (/Users/siascone/Documents/app_academy/makeables/node_modules/@babel/parser/lib/index.js:10216:10)\n    at Object.pushClassMethod (/Users/siascone/Documents/app_academy/makeables/node_modules/@babel/parser/lib/index.js:11704:30)\n    at Object.parseClassMemberWithIsStatic (/Users/siascone/Documents/app_academy/makeables/node_modules/@babel/parser/lib/index.js:11621:12)\n    at Object.parseClassMember (/Users/siascone/Documents/app_academy/makeables/node_modules/@babel/parser/lib/index.js:11563:10)\n    at withTopicForbiddingContext (/Users/siascone/Documents/app_academy/makeables/node_modules/@babel/parser/lib/index.js:11518:14)\n    at Object.withTopicForbiddingContext (/Users/siascone/Documents/app_academy/makeables/node_modules/@babel/parser/lib/index.js:10599:14)\n    at Object.parseClassBody (/Users/siascone/Documents/app_academy/makeables/node_modules/@babel/parser/lib/index.js:11495:10)\n    at Object.parseClass (/Users/siascone/Documents/app_academy/makeables/node_modules/@babel/parser/lib/index.js:11469:22)\n    at Object.parseStatementContent (/Users/siascone/Documents/app_academy/makeables/node_modules/@babel/parser/lib/index.js:10766:21)\n    at Object.parseStatement (/Users/siascone/Documents/app_academy/makeables/node_modules/@babel/parser/lib/index.js:10724:17)\n    at Object.parseBlockOrModuleBlockBody (/Users/siascone/Documents/app_academy/makeables/node_modules/@babel/parser/lib/index.js:11298:25)\n    at Object.parseBlockBody (/Users/siascone/Documents/app_academy/makeables/node_modules/@babel/parser/lib/index.js:11285:10)\n    at Object.parseTopLevel (/Users/siascone/Documents/app_academy/makeables/node_modules/@babel/parser/lib/index.js:10655:10)\n    at Object.parse (/Users/siascone/Documents/app_academy/makeables/node_modules/@babel/parser/lib/index.js:12264:10)\n    at parse (/Users/siascone/Documents/app_academy/makeables/node_modules/@babel/parser/lib/index.js:12315:38)\n    at parser (/Users/siascone/Documents/app_academy/makeables/node_modules/@babel/core/lib/parser/index.js:54:34)\n    at parser.next (<anonymous>)\n    at normalizeFile (/Users/siascone/Documents/app_academy/makeables/node_modules/@babel/core/lib/transformation/normalize-file.js:93:38)\n    at normalizeFile.next (<anonymous>)");
 
 /***/ }),
 
@@ -1324,17 +1251,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  // debugger
   var project = state.entities.projects[ownProps.match.params.id];
   var username = null;
+  var userId = null;
+  var sessionId = null;
 
   if (project) {
     username = state.entities.users[project.user_id].username;
+    userId = project.user_id, sessionId = state.session.id;
   }
 
   return {
     project: project,
-    username: username
+    username: username,
+    userId: userId,
+    sessionId: sessionId
   };
 };
 
@@ -1343,8 +1274,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     fetchProject: function fetchProject(projectId) {
       return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_2__["fetchProject"])(projectId));
     },
-    deleteProject: function deleteProject(project) {
-      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_2__["deleteProject"])(project));
+    deleteProject: function deleteProject(projectId) {
+      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_2__["deleteProject"])(projectId));
     }
   };
 };
@@ -1536,7 +1467,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     loginDemoUser: function loginDemoUser() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["login"])({
-        username: "demo",
+        username: "sixstringsloud",
         password: 'password'
       }));
     },
@@ -1730,7 +1661,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     loginDemoUser: function loginDemoUser() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["login"])({
-        username: "demo",
+        username: "sixstringsloud",
         password: 'password'
       }));
     },
@@ -2057,10 +1988,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var StepsIndexItem = function StepsIndexItem(props) {
   var id = props.step.extract.id;
-  var numSteps = props.step.length; // debugger
+  var numSteps = props.step.length;
 
   if (props.step.extract.project_id === props.projectId) {
-    // debugger
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "step-box"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2071,7 +2001,6 @@ var StepsIndexItem = function StepsIndexItem(props) {
       className: "body"
     }, props.step.extract.body)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
   } else {
-    // debugger
     return null;
   }
 };
@@ -2485,6 +2414,7 @@ var projectsReducer = function projectsReducer() {
       return _defineProperty({}, action.payload.project.id, action.payload.project);
 
     case _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_PROJECT"]:
+      debugger;
       delete newState[action.projectId];
       return newState;
 

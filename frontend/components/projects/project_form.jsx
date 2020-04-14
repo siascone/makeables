@@ -84,12 +84,12 @@ class ProjectForm extends React.Component {
             image = 'show-project-image';
         }
 
-        let steps
-        if (this.props.formType === "Publish Makeable") {
-            steps = <div><AddStepContainer /></div>
-        } else {
-            steps = 'test'
-        }
+        // let steps
+        // if (this.props.formType === "Publish Makeable") {
+        //     steps = <div><AddStepContainer /></div>
+        // } else {
+        //     steps = 'test'
+        // }
 
         return (
             <div className='project-main'>
@@ -125,7 +125,7 @@ class ProjectForm extends React.Component {
                         <StepsIndexContainer />
                     </div>
                     <div className='add-step'>
-                        <AddStepContainer />
+                        {/* <AddStepContainer /> */}
                     </div>
                 </div>
             </div>
