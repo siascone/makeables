@@ -23,7 +23,7 @@ export const createProject = (project) => {
             contentType: false,
             processData: false
         })
-    ).then(res => console.log(res))
+    )
 };
 
 export const updateProject = (project) => (

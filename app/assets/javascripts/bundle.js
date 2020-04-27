@@ -2862,8 +2862,6 @@ var createProject = function createProject(project) {
     data: project,
     contentType: false,
     processData: false
-  }).then(function (res) {
-    return console.log(res);
   });
 };
 var updateProject = function updateProject(project) {
