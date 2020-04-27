@@ -1,22 +1,32 @@
 import React from 'react';
 
+
 class TitleModal extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {title: ''}
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.state = this.props.project
 
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
 
     update(field) {
-        return e => this.setState({ [field]: e.currentTarget.value });
+        return e => this.setState({[field]: e.currentTarget.value });
     }
+
+    // handleSubmit(e) {
+    //     e.preventDefault();
+    //     localStorage.setItem('title', this.state.title)
+    //     this.props.closeModal()
+    // }
 
     handleSubmit(e) {
         e.preventDefault();
-        localStorage.setItem('title', this.state.title)
-        this.props.closeModal()
+        let project = {project: this.state}
+        debugger
+        this.props.createProject(project)
+            .then((project) => this.props.history.push(`/projects/${project.id}`))
+        this.props.closeModal();
     }
 
 

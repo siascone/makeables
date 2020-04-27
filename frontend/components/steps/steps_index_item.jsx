@@ -9,7 +9,9 @@ const StepsIndexItem = props => {
         return (
             <div className='step-box'>
                 <div className='step-item'>
-                    <div className="heading">{props.step.extract.heading}</div>
+                    <div className="heading-div">
+                        <div className="heading">{props.step.extract.heading}</div>
+                    </div>
                     <div className='body'>{props.step.extract.body}</div>
                 </div>
                 <br />

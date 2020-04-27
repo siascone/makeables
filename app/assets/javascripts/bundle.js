@@ -754,9 +754,7 @@ var TitleModal = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, TitleModal);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(TitleModal).call(this, props));
-    _this.state = {
-      title: ''
-    };
+    _this.state = _this.props.project;
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -769,12 +767,25 @@ var TitleModal = /*#__PURE__*/function (_React$Component) {
       return function (e) {
         return _this2.setState(_defineProperty({}, field, e.currentTarget.value));
       };
-    }
+    } // handleSubmit(e) {
+    //     e.preventDefault();
+    //     localStorage.setItem('title', this.state.title)
+    //     this.props.closeModal()
+    // }
+
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      var _this3 = this;
+
       e.preventDefault();
-      localStorage.setItem('title', this.state.title);
+      var project = {
+        project: this.state
+      };
+      debugger;
+      this.props.createProject(project).then(function (project) {
+        return _this3.props.history.push("/projects/".concat(project.id));
+      });
       this.props.closeModal();
     }
   }, {
@@ -818,7 +829,9 @@ var TitleModal = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
-/* harmony import */ var _title_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./title_modal */ "./frontend/components/modal/title_modal.jsx");
+/* harmony import */ var _actions_project_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/project_actions */ "./frontend/actions/project_actions.js");
+/* harmony import */ var _title_modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./title_modal */ "./frontend/components/modal/title_modal.jsx");
+
 
 
 
@@ -829,7 +842,8 @@ var mapStateToProps = function mapStateToProps(state) {
       title: '',
       description: ''
     },
-    formType: "Publish Makeable"
+    formType: "Publish Makeable",
+    errors: Object.values(state.errors.project)
   };
 };
 
@@ -837,11 +851,14 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     closeModal: function closeModal() {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__["closeModal"])());
+    },
+    createProject: function createProject(project) {
+      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_2__["createProject"])(project));
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_title_modal__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_title_modal__WEBPACK_IMPORTED_MODULE_3__["default"]));
 
 /***/ }),
 
@@ -2008,7 +2025,9 @@ var StepsIndex = /*#__PURE__*/function (_React$Component) {
         return null;
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, steps.map(function (step, idx) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "step-index-item"
+      }, steps.map(function (step, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           step: step,
           projectId: projectId,
@@ -2094,8 +2113,10 @@ var StepsIndexItem = function StepsIndexItem(props) {
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "step-item"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "heading-div"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "heading"
-    }, props.step.extract.heading), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, props.step.extract.heading)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "body"
     }, props.step.extract.body)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
   } else {
@@ -2234,8 +2255,8 @@ var UserDropdwon = /*#__PURE__*/function (_React$Component) {
   _createClass(UserDropdwon, [{
     key: "handleModal",
     value: function handleModal(e) {
-      e.preventDefault();
-      this.props.history.push('/projects/new');
+      e.preventDefault(); // this.props.history.push('/projects/new');
+
       this.props.openModal();
     }
   }, {
@@ -2512,7 +2533,6 @@ var projectsReducer = function projectsReducer() {
       return _defineProperty({}, action.payload.project.id, action.payload.project);
 
     case _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_PROJECT"]:
-      debugger;
       delete newState[action.projectId];
       return newState;
 
