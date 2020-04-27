@@ -15,13 +15,16 @@ class Api::ProjectsController < ApplicationController
         @project = Project.new(project_params)
         @project.user_id = current_user.id
         if @project.save
-            
+            render :show
         else
             render json: @project.errors.full_messages, status: 422
         end
     end
 
-
+    # def edit
+    #     @project = selected_project
+    #     render :edit
+    # end
     # def create 
     #     @project = Project.new(project_params)
     #     @project.user_id = current_user.id
