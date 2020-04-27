@@ -4,7 +4,8 @@ import React from 'react';
 class TitleModal extends React.Component {
     constructor(props) {
         super(props)
-        this.state = this.props.project
+        this.state = {title: ''}
+        this.state["photoFile"] = null;
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -14,19 +15,15 @@ class TitleModal extends React.Component {
         return e => this.setState({[field]: e.currentTarget.value });
     }
 
-    // handleSubmit(e) {
-    //     e.preventDefault();
-    //     localStorage.setItem('title', this.state.title)
-    //     this.props.closeModal()
-    // }
-
     handleSubmit(e) {
         e.preventDefault();
-        let project = {project: this.state}
+        const formData = new FormData();
+        formData.append('project[title]', this.state.title)
         debugger
-        this.props.createProject(project)
-            .then((project) => this.props.history.push(`/projects/${project.id}`))
-        this.props.closeModal();
+        this.props.createProject(formData)
+            .then(res => console.log(res))
+            .then((project) => this.props.history.push(`/projects/${project.id}/edit`))
+            .then(this.props.closeModal());
     }
 
 

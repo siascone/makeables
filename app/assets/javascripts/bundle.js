@@ -156,6 +156,7 @@ var receiveAllProjects = function receiveAllProjects(payload) {
 };
 
 var receiveProject = function receiveProject(payload) {
+  debugger;
   return {
     type: RECEIVE_PROJECT,
     payload: payload
@@ -197,6 +198,7 @@ var fetchProject = function fetchProject(projectId) {
 };
 var createProject = function createProject(project) {
   return function (dispatch) {
+    debugger;
     return _util_projects_api_util__WEBPACK_IMPORTED_MODULE_1__["createProject"](project).then(function (payload) {
       dispatch(receiveProject(payload));
       return payload.project;
@@ -754,7 +756,10 @@ var TitleModal = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, TitleModal);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(TitleModal).call(this, props));
-    _this.state = _this.props.project;
+    _this.state = {
+      title: ''
+    };
+    _this.state["photoFile"] = null;
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -767,26 +772,21 @@ var TitleModal = /*#__PURE__*/function (_React$Component) {
       return function (e) {
         return _this2.setState(_defineProperty({}, field, e.currentTarget.value));
       };
-    } // handleSubmit(e) {
-    //     e.preventDefault();
-    //     localStorage.setItem('title', this.state.title)
-    //     this.props.closeModal()
-    // }
-
+    }
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       var _this3 = this;
 
       e.preventDefault();
-      var project = {
-        project: this.state
-      };
+      var formData = new FormData();
+      formData.append('project[title]', this.state.title);
       debugger;
-      this.props.createProject(project).then(function (project) {
-        return _this3.props.history.push("/projects/".concat(project.id));
-      });
-      this.props.closeModal();
+      this.props.createProject(formData).then(function (res) {
+        return console.log(res);
+      }).then(function (project) {
+        return _this3.props.history.push("/projects/".concat(project.id, "/edit"));
+      }).then(this.props.closeModal());
     }
   }, {
     key: "render",
@@ -836,14 +836,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(state) {
+var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     project: {
       title: '',
       description: ''
     },
     formType: "Publish Makeable",
-    errors: Object.values(state.errors.project)
+    errors: Object.values(state.errors.project),
+    history: ownProps.history
   };
 };
 
@@ -985,7 +986,6 @@ var EditProjectForm = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  debugger;
   return {
     project: state.entities.projects[ownProps.match.params.id],
     formType: 'Update Makeable',
@@ -2855,12 +2855,15 @@ var fetchProject = function fetchProject(projectId) {
   });
 };
 var createProject = function createProject(project) {
+  debugger;
   return $.ajax({
     url: '/api/projects',
     method: 'POST',
     data: project,
     contentType: false,
     processData: false
+  }).then(function (res) {
+    return console.log(res);
   });
 };
 var updateProject = function updateProject(project) {

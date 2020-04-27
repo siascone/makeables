@@ -3,14 +3,15 @@ import {closeModal} from '../../actions/modal_actions';
 import { createProject } from '../../actions/project_actions';
 import TitleModal from './title_modal';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
     return({
         project: {
             title: '',
             description: ''
         },
         formType: "Publish Makeable",
-        errors: Object.values(state.errors.project)
+        errors: Object.values(state.errors.project),
+        history: ownProps.history
     });
 };
 
