@@ -198,8 +198,9 @@ var fetchProject = function fetchProject(projectId) {
 };
 var createProject = function createProject(project) {
   return function (dispatch) {
-    debugger;
-    return _util_projects_api_util__WEBPACK_IMPORTED_MODULE_1__["createProject"](project).then(function (payload) {
+    return _util_projects_api_util__WEBPACK_IMPORTED_MODULE_1__["createProject"](project).then(function (res) {
+      return console.log(res);
+    }).then(function (payload) {
       dispatch(receiveProject(payload));
       return payload.project;
     }, function (errors) {
@@ -725,6 +726,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -744,6 +746,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -776,17 +779,12 @@ var TitleModal = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      var _this3 = this;
-
       e.preventDefault();
       var formData = new FormData();
       formData.append('project[title]', this.state.title);
-      debugger;
-      this.props.createProject(formData).then(function (res) {
-        return console.log(res);
-      }).then(function (project) {
-        return _this3.props.history.push("/projects/".concat(project.id, "/edit"));
-      }).then(this.props.closeModal());
+      formData.append('project[project_photo]', this.state.photoFile);
+      this.props.createProject(formData) // .then((project) => Redirect `/projects/${project.id}/edit`) 
+      .then(this.props.closeModal());
     }
   }, {
     key: "render",
@@ -1224,14 +1222,22 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ProjectIndexItem = function ProjectIndexItem(props) {
+  var image;
+
+  if (props.project.photoUrl) {
+    image = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      src: props.project.photoUrl,
+      alt: ""
+    });
+  } else {
+    image = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "no image provided");
+  }
+
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "project-index-individual"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "project-index-image"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: props.project.photoUrl,
-    alt: ""
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, image), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "project-index-details"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/projects/".concat(props.project.id)
@@ -2855,7 +2861,6 @@ var fetchProject = function fetchProject(projectId) {
   });
 };
 var createProject = function createProject(project) {
-  debugger;
   return $.ajax({
     url: '/api/projects',
     method: 'POST',

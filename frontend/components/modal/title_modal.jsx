@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 
 class TitleModal extends React.Component {
@@ -19,10 +20,9 @@ class TitleModal extends React.Component {
         e.preventDefault();
         const formData = new FormData();
         formData.append('project[title]', this.state.title)
-        debugger
+        formData.append('project[project_photo]', this.state.photoFile)
         this.props.createProject(formData)
-            .then(res => console.log(res))
-            .then((project) => this.props.history.push(`/projects/${project.id}/edit`))
+            // .then((project) => Redirect `/projects/${project.id}/edit`) 
             .then(this.props.closeModal());
     }
 

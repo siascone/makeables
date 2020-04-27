@@ -5,7 +5,7 @@ json.projects do
             # if project.project_photo
             #     json.photoUrl url_for(project.project_photo)
             # else
-            #     json.photoUrl 
+            #     json.photoUrl  ""
             # end
         end
     end

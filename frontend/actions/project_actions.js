@@ -44,8 +44,8 @@ export const fetchProject = (projectId) => dispatch => {
 };
 
 export const createProject = (project) => dispatch => {
-    debugger
     return ProjectsApiUtil.createProject(project)
+    .then(res => console.log(res))
     .then((payload) => {
             dispatch(receiveProject(payload))
             return payload.project
