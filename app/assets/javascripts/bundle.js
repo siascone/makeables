@@ -197,6 +197,7 @@ var fetchProject = function fetchProject(projectId) {
 };
 var createProject = function createProject(project) {
   return function (dispatch) {
+    debugger;
     return _util_projects_api_util__WEBPACK_IMPORTED_MODULE_1__["createProject"](project).then(function (payload) {
       dispatch(receiveProject(payload));
       return payload.project;
@@ -1078,6 +1079,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
       }
 
       if (this.props.formType === 'Publish Makeable') {
+        debugger;
         this.props.createProject(formData).then(function (project) {
           _this3.props.history.push("/projects/".concat(project.id));
         });
@@ -2835,6 +2837,7 @@ var fetchProject = function fetchProject(projectId) {
   });
 };
 var createProject = function createProject(project) {
+  debugger;
   return $.ajax({
     url: '/api/projects',
     method: 'POST',
