@@ -13,7 +13,6 @@ const receiveAllProjects = (payload) => ({
     payload
 });
 const receiveProject = (payload) => {
-    debugger
     return {
         type: RECEIVE_PROJECT,
         payload
@@ -45,10 +44,9 @@ export const fetchProject = (projectId) => dispatch => {
 
 export const createProject = (project) => dispatch => {
     return ProjectsApiUtil.createProject(project)
-    .then(res => console.log(res))
-    .then((payload) => {
-            dispatch(receiveProject(payload))
-            return payload.project
+    .then(res => {
+            dispatch(receiveProject(res))
+            return res.project
         }, (errors) => {
             dispatch(receiveErrors(errors.responseJSON))
         });

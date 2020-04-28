@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
 import {closeModal} from '../../actions/modal_actions';
 import { createProject } from '../../actions/project_actions';
+import { withRouter } from 'react-router-dom'
 import TitleModal from './title_modal';
 
 const mapStateToProps = (state, ownProps) => {
@@ -20,4 +21,4 @@ const mapDispatchToProps = dispatch => ({
     createProject: project => dispatch(createProject(project))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(TitleModal)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TitleModal));

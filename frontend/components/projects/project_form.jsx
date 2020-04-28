@@ -90,6 +90,7 @@ class ProjectForm extends React.Component {
 
         return (
             <div className='project-main'>
+                <div>{this.props.project.title}</div>
                 <div className='image-input'>
                     <div className='image-box'>
                         <div className={image}>

@@ -156,7 +156,6 @@ var receiveAllProjects = function receiveAllProjects(payload) {
 };
 
 var receiveProject = function receiveProject(payload) {
-  debugger;
   return {
     type: RECEIVE_PROJECT,
     payload: payload
@@ -199,10 +198,8 @@ var fetchProject = function fetchProject(projectId) {
 var createProject = function createProject(project) {
   return function (dispatch) {
     return _util_projects_api_util__WEBPACK_IMPORTED_MODULE_1__["createProject"](project).then(function (res) {
-      return console.log(res);
-    }).then(function (payload) {
-      dispatch(receiveProject(payload));
-      return payload.project;
+      dispatch(receiveProject(res));
+      return res.project;
     }, function (errors) {
       dispatch(receiveErrors(errors.responseJSON));
     });
@@ -762,7 +759,6 @@ var TitleModal = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       title: ''
     };
-    _this.state["photoFile"] = null;
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -779,12 +775,14 @@ var TitleModal = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      var _this3 = this;
+
       e.preventDefault();
       var formData = new FormData();
       formData.append('project[title]', this.state.title);
-      formData.append('project[project_photo]', this.state.photoFile);
-      this.props.createProject(formData) // .then((project) => Redirect `/projects/${project.id}/edit`) 
-      .then(this.props.closeModal());
+      this.props.createProject(formData).then(function (project) {
+        _this3.props.history.push("/projects/".concat(project.id, "/edit"));
+      }).then(this.props.closeModal());
     }
   }, {
     key: "render",
@@ -828,7 +826,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
 /* harmony import */ var _actions_project_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/project_actions */ "./frontend/actions/project_actions.js");
-/* harmony import */ var _title_modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./title_modal */ "./frontend/components/modal/title_modal.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _title_modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./title_modal */ "./frontend/components/modal/title_modal.jsx");
+
 
 
 
@@ -857,7 +857,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_title_modal__WEBPACK_IMPORTED_MODULE_3__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_title_modal__WEBPACK_IMPORTED_MODULE_4__["default"])));
 
 /***/ }),
 
@@ -1168,7 +1168,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-main"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.project.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "image-input"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "image-box"

@@ -6,7 +6,6 @@ class TitleModal extends React.Component {
     constructor(props) {
         super(props)
         this.state = {title: ''}
-        this.state["photoFile"] = null;
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -20,13 +19,12 @@ class TitleModal extends React.Component {
         e.preventDefault();
         const formData = new FormData();
         formData.append('project[title]', this.state.title)
-        formData.append('project[project_photo]', this.state.photoFile)
         this.props.createProject(formData)
-            // .then((project) => Redirect `/projects/${project.id}/edit`) 
+            .then((project) => {
+                this.props.history.push(`/projects/${project.id}/edit`)
+            })
             .then(this.props.closeModal());
     }
-
-
 
     render() {
         return (
