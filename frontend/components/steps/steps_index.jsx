@@ -15,7 +15,7 @@ class StepsIndex extends React.Component {
 
         return (
 
-            <div>
+            <div className="step-index-item">
                 {
                     steps.map((step, idx) => (
                         <StepsIndexItem

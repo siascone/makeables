@@ -1,25 +1,30 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
+
 
 class TitleModal extends React.Component {
     constructor(props) {
         super(props)
         this.state = {title: ''}
-        this.handleSubmit = this.handleSubmit.bind(this);
 
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
 
     update(field) {
-        return e => this.setState({ [field]: e.currentTarget.value });
+        return e => this.setState({[field]: e.currentTarget.value });
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        localStorage.setItem('title', this.state.title)
-        this.props.closeModal()
+        const formData = new FormData();
+        formData.append('project[title]', this.state.title)
+        this.props.createProject(formData)
+            .then((project) => {
+                this.props.history.push(`/projects/${project.id}/edit`)
+            })
+            .then(this.props.closeModal());
     }
-
-
 
     render() {
         return (

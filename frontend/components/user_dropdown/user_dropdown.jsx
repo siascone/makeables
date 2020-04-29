@@ -13,7 +13,7 @@ class UserDropdwon extends React.Component {
 
     handleModal(e) {
         e.preventDefault();
-        this.props.history.push('/projects/new');
+        // this.props.history.push('/projects/new');
         this.props.openModal();
     }
 

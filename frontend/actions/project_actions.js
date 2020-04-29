@@ -12,10 +12,12 @@ const receiveAllProjects = (payload) => ({
     type: RECEIVE_ALL_PROJECTS,
     payload
 });
-const receiveProject = (payload) => ({
-    type: RECEIVE_PROJECT,
-    payload
-});
+const receiveProject = (payload) => {
+    return {
+        type: RECEIVE_PROJECT,
+        payload
+    }
+};
 const removeProject = (projectId) => ({
     type: REMOVE_PROJECT,
     projectId
@@ -42,9 +44,9 @@ export const fetchProject = (projectId) => dispatch => {
 
 export const createProject = (project) => dispatch => {
     return ProjectsApiUtil.createProject(project)
-        .then((payload) => {
-            dispatch(receiveProject(payload))
-            return payload.project
+    .then(res => {
+            dispatch(receiveProject(res))
+            return res.project
         }, (errors) => {
             dispatch(receiveErrors(errors.responseJSON))
         });
