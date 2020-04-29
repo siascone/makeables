@@ -8,15 +8,12 @@ class ProjectForm extends React.Component {
         super(props);
 
         this.state = {
-            project: {
                 title: this.props.project.title,
                 description: this.props.project.description,
                 project_photo: this.props.project.project_photo,
-                photoFile: null
+                id: this.props.project.id
             }
-        }
 
-        // this.state = this.props.project;
         this.state["photoFile"] = null;
         this.cName = false;
         this.projectImage = false;
@@ -28,35 +25,40 @@ class ProjectForm extends React.Component {
     }
 
     update(field) {
-        // return e => this.setState({['project']: {[field]: e.currentTarget.value}});
+        return e => {
+            this.setState({[field]: e.currentTarget.value});
+        }
     }
     
 
     handleSubmit(e) {
         e.preventDefault();
-        // const formData = new FormData();
-        // formData.append('project[title]', this.state.project.title);
-        // formData.append('project[description]', this.state.project.description)
+
         let project = {
-            title: this.state.project.title,
-            description: this.state.project.description,
-            project_photo: this.state.project.project_photo
+            project: { 
+            title: this.state.title,
+            description: this.state.description,
+            project_photo: this.state.project_photo,
+            id: this.state.id
         }
+    }
         
         if (this.state.photoFile) {
             project = {
-                title: this.state.project.title,
-                description: this.state.project.description,
-                project_photo: this.state.photoFile
+                project: {
+                    title: this.state.title,
+                    description: this.state.description,
+                    project_photo: this.state.photoFile,
+                    id: this.state.id
+              }
             }
-            // formData.append('project[project_photo]', this.state.photoFile);
-        }
+            }
+
         this.props.updateProject(project)
             .then((project) => {
                 debugger
                 this.props.history.push(`/projects/${project.id}`)
             });
-        
     }
 
     previewFile(e) {
@@ -127,7 +129,7 @@ class ProjectForm extends React.Component {
                 <div className="project-description">
                     <label>Project Description</label>
                     <input type='textbox'
-                        placeholder='What is this project?'
+                        placeholder={this.props.project.description}
                         onChange={this.update('description')}
                     ></input>
                 </div>

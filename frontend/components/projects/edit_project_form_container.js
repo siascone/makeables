@@ -6,7 +6,6 @@ import { updateProject, fetchProject, clearErrors, deleteProject } from '../../a
 
 
 const mapStateToProps = (state, ownProps) => {
-    debugger
     return ({
         project: state.entities.projects[ownProps.match.params.id],
         errors: Object.values(state.errors.project),

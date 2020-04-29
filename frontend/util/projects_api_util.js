@@ -25,13 +25,13 @@ export const createProject = (project) => {
     )
 };
 
-export const updateProject = (project) => {
+export const updateProject = (payload) => {
     debugger
     return (
         $.ajax({
-            url: `/api/projects/${project.id}`,
+            url: `/api/projects/${payload.project.id}`,
             method: "PATCH",
-            data: project
+            data: payload
         })
 
     )

@@ -938,7 +938,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  debugger;
   return {
     project: state.entities.projects[ownProps.match.params.id],
     errors: Object.values(state.errors.project),
@@ -982,6 +981,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _steps_steps_index_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../steps/steps_index_container */ "./frontend/components/steps/steps_index_container.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -1012,14 +1013,11 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ProjectForm).call(this, props));
     _this.state = {
-      project: {
-        title: _this.props.project.title,
-        description: _this.props.project.description,
-        project_photo: _this.props.project.project_photo,
-        photoFile: null
-      }
-    }; // this.state = this.props.project;
-
+      title: _this.props.project.title,
+      description: _this.props.project.description,
+      project_photo: _this.props.project.project_photo,
+      id: _this.props.project.id
+    };
     _this.state["photoFile"] = null;
     _this.cName = false;
     _this.projectImage = false;
@@ -1032,41 +1030,49 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
 
   _createClass(ProjectForm, [{
     key: "update",
-    value: function update(field) {// return e => this.setState({['project']: {[field]: e.currentTarget.value}});
+    value: function update(field) {
+      var _this2 = this;
+
+      return function (e) {
+        _this2.setState(_defineProperty({}, field, e.currentTarget.value));
+      };
     }
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      var _this2 = this;
+      var _this3 = this;
 
-      e.preventDefault(); // const formData = new FormData();
-      // formData.append('project[title]', this.state.project.title);
-      // formData.append('project[description]', this.state.project.description)
-
+      e.preventDefault();
       var project = {
-        title: this.state.project.title,
-        description: this.state.project.description,
-        project_photo: this.state.project.project_photo
+        project: {
+          title: this.state.title,
+          description: this.state.description,
+          project_photo: this.state.project_photo,
+          id: this.state.id
+        }
       };
 
       if (this.state.photoFile) {
         project = {
-          title: this.state.project.title,
-          description: this.state.project.description,
-          project_photo: this.state.photoFile
-        }; // formData.append('project[project_photo]', this.state.photoFile);
+          project: {
+            title: this.state.title,
+            description: this.state.description,
+            project_photo: this.state.photoFile,
+            id: this.state.id
+          }
+        };
       }
 
       this.props.updateProject(project).then(function (project) {
         debugger;
 
-        _this2.props.history.push("/projects/".concat(project.id));
+        _this3.props.history.push("/projects/".concat(project.id));
       });
     }
   }, {
     key: "previewFile",
     value: function previewFile(e) {
-      var _this3 = this;
+      var _this4 = this;
 
       var file = e.currentTarget.files[0];
       var preview = document.querySelector('.img_preview');
@@ -1075,7 +1081,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
       reader.onloadend = function () {
         preview.src = reader.result;
 
-        _this3.setState({
+        _this4.setState({
           photoFile: file,
           photoUrl: reader.result
         });
@@ -1149,7 +1155,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         className: "project-description"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Project Description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "textbox",
-        placeholder: "What is this project?",
+        placeholder: this.props.project.description,
         onChange: this.update('description')
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-nav"
@@ -1197,7 +1203,7 @@ var ProjectIndexItem = function ProjectIndexItem(props) {
       alt: ""
     });
   } else {
-    image = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "no image provided");
+    image = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Image not Rendered");
   }
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2836,12 +2842,12 @@ var createProject = function createProject(project) {
     processData: false
   });
 };
-var updateProject = function updateProject(project) {
+var updateProject = function updateProject(payload) {
   debugger;
   return $.ajax({
-    url: "/api/projects/".concat(project.id),
+    url: "/api/projects/".concat(payload.project.id),
     method: "PATCH",
-    data: project
+    data: payload
   });
 };
 var deleteProject = function deleteProject(projectId) {

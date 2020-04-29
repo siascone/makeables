@@ -6,7 +6,7 @@ const ProjectIndexItem = props => {
         if (props.project.photoUrl) {
             image = <img src={props.project.photoUrl} alt="" />
         } else {
-            image = <p>no image provided</p>
+            image = <p>Image not Rendered</p>
         }
     return (
         <div className='project-index-individual'>
