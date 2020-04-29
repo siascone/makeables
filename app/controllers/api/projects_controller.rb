@@ -9,7 +9,6 @@ class Api::ProjectsController < ApplicationController
         @project = selected_project
         render :show
     end
-
     
     def create
         @project = Project.new(project_params)
