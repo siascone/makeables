@@ -1,34 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
 import ProjectForm from './project_form';
 import { updateProject, fetchProject, clearErrors, deleteProject } from '../../actions/project_actions';
 
-class EditProjectForm extends React.Component {
-    componentDidMount() {
-        this.props.fetchProject(this.props.match.params.id);
-    }
-
-    render() {
-        const {action, formType, project, errors} = this.props
-
-        if(!project) return null;
-
-        return (
-            <ProjectForm
-                action={action}
-                formType={formType}
-                project={project}
-                errors={errors}
-            />
-        );
-    }
-}
 
 const mapStateToProps = (state, ownProps) => {
+    debugger
     return ({
         project: state.entities.projects[ownProps.match.params.id],
-        formType: 'Update Makeable',
-        errors: Object.values(state.errors.project)
+        errors: Object.values(state.errors.project),
+        history: ownProps.history
     });
 };
 
@@ -39,4 +21,4 @@ const mapDispatchToProps = dispatch => ({
     clearErrors: () => dispatch(clearErrors())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditProjectForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProjectForm));

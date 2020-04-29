@@ -207,10 +207,12 @@ var createProject = function createProject(project) {
 };
 var updateProject = function updateProject(project) {
   return function (dispatch) {
+    debugger;
     return _util_projects_api_util__WEBPACK_IMPORTED_MODULE_1__["updateProject"](project).then(function (payload) {
-      return dispatch(receiveProject(payload));
-    }, function (errors) {
-      return dispatch(receiveErrors(errors.responseJSON));
+      debugger;
+      dispatch(receiveProject(payload)), function (errors) {
+        return dispatch(receiveErrors(errors.responseJSON));
+      };
     });
   };
 };
@@ -757,7 +759,9 @@ var TitleModal = /*#__PURE__*/function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(TitleModal).call(this, props));
     _this.state = {
-      title: ''
+      title: '',
+      description: '',
+      project_photo: ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
@@ -780,6 +784,7 @@ var TitleModal = /*#__PURE__*/function (_React$Component) {
       e.preventDefault();
       var formData = new FormData();
       formData.append('project[title]', this.state.title);
+      formData.append('project[description]', this.state.description);
       this.props.createProject(formData).then(function (project) {
         _this3.props.history.push("/projects/".concat(project.id, "/edit"));
       }).then(this.props.closeModal());
@@ -923,92 +928,42 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _project_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./project_form */ "./frontend/components/projects/project_form.jsx");
-/* harmony import */ var _actions_project_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/project_actions */ "./frontend/actions/project_actions.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _project_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./project_form */ "./frontend/components/projects/project_form.jsx");
+/* harmony import */ var _actions_project_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/project_actions */ "./frontend/actions/project_actions.js");
 
 
 
 
 
-
-var EditProjectForm = /*#__PURE__*/function (_React$Component) {
-  _inherits(EditProjectForm, _React$Component);
-
-  function EditProjectForm() {
-    _classCallCheck(this, EditProjectForm);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(EditProjectForm).apply(this, arguments));
-  }
-
-  _createClass(EditProjectForm, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.props.fetchProject(this.props.match.params.id);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          action = _this$props.action,
-          formType = _this$props.formType,
-          project = _this$props.project,
-          errors = _this$props.errors;
-      if (!project) return null;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        action: action,
-        formType: formType,
-        project: project,
-        errors: errors
-      });
-    }
-  }]);
-
-  return EditProjectForm;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
+  debugger;
   return {
     project: state.entities.projects[ownProps.match.params.id],
-    formType: 'Update Makeable',
-    errors: Object.values(state.errors.project)
+    errors: Object.values(state.errors.project),
+    history: ownProps.history
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchProject: function fetchProject(projecctId) {
-      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_3__["fetchProject"])(projecctId));
+      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_4__["fetchProject"])(projecctId));
     },
     updateProject: function updateProject(project) {
-      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_3__["updateProject"])(project));
+      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_4__["updateProject"])(project));
     },
     deleteProject: function deleteProject(project) {
-      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_3__["deleteProject"])(project.id));
+      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_4__["deleteProject"])(project.id));
     },
     clearErrors: function clearErrors() {
-      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_3__["clearErrors"])());
+      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_4__["clearErrors"])());
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(EditProjectForm));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(_project_form__WEBPACK_IMPORTED_MODULE_3__["default"])));
 
 /***/ }),
 
@@ -1026,8 +981,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _steps_add_step_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../steps/add_step_container */ "./frontend/components/steps/add_step_container.js");
 /* harmony import */ var _steps_steps_index_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../steps/steps_index_container */ "./frontend/components/steps/steps_index_container.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1058,7 +1011,15 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, ProjectForm);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ProjectForm).call(this, props));
-    _this.state = _this.props.project;
+    _this.state = {
+      project: {
+        title: _this.props.project.title,
+        description: _this.props.project.description,
+        project_photo: _this.props.project.project_photo,
+        photoFile: null
+      }
+    }; // this.state = this.props.project;
+
     _this.state["photoFile"] = null;
     _this.cName = false;
     _this.projectImage = false;
@@ -1071,41 +1032,41 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
 
   _createClass(ProjectForm, [{
     key: "update",
-    value: function update(field) {
-      var _this2 = this;
-
-      return function (e) {
-        return _this2.setState(_defineProperty({}, field, e.currentTarget.value));
-      };
+    value: function update(field) {// return e => this.setState({['project']: {[field]: e.currentTarget.value}});
     }
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      var _this3 = this;
+      var _this2 = this;
 
-      e.preventDefault();
-      var formData = new FormData();
-      formData.append('project[title]', localStorage.getItem('title'));
-      localStorage.removeItem('title');
+      e.preventDefault(); // const formData = new FormData();
+      // formData.append('project[title]', this.state.project.title);
+      // formData.append('project[description]', this.state.project.description)
+
+      var project = {
+        title: this.state.project.title,
+        description: this.state.project.description,
+        project_photo: this.state.project.project_photo
+      };
 
       if (this.state.photoFile) {
-        formData.append('project[project_photo]', this.state.photoFile);
+        project = {
+          title: this.state.project.title,
+          description: this.state.project.description,
+          project_photo: this.state.photoFile
+        }; // formData.append('project[project_photo]', this.state.photoFile);
       }
 
-      if (this.props.formType === 'Publish Makeable') {
-        this.props.createProject(formData).then(function (project) {
-          _this3.props.history.push("/projects/".concat(project.id));
-        });
-      } else {
-        this.props.updateProject(formData).then(function (project) {
-          _this3.props.history.push("/projects/".concat(project.id));
-        });
-      }
+      this.props.updateProject(project).then(function (project) {
+        debugger;
+
+        _this2.props.history.push("/projects/".concat(project.id));
+      });
     }
   }, {
     key: "previewFile",
     value: function previewFile(e) {
-      var _this4 = this;
+      var _this3 = this;
 
       var file = e.currentTarget.files[0];
       var preview = document.querySelector('.img_preview');
@@ -1114,7 +1075,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
       reader.onloadend = function () {
         preview.src = reader.result;
 
-        _this4.setState({
+        _this3.setState({
           photoFile: file,
           photoUrl: reader.result
         });
@@ -1185,6 +1146,12 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         value: this.state.project_photo,
         onChange: this.previewFile
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "project-description"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Project Description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "textbox",
+        placeholder: "What is this project?",
+        onChange: this.update('description')
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-nav"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "project-button",
@@ -2870,12 +2837,11 @@ var createProject = function createProject(project) {
   });
 };
 var updateProject = function updateProject(project) {
+  debugger;
   return $.ajax({
     url: "/api/projects/".concat(project.id),
     method: "PATCH",
-    data: {
-      project: project
-    }
+    data: project
   });
 };
 var deleteProject = function deleteProject(projectId) {

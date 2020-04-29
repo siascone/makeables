@@ -6,7 +6,17 @@ import StepsIndexContainer from '../steps/steps_index_container';
 class ProjectForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = this.props.project;
+
+        this.state = {
+            project: {
+                title: this.props.project.title,
+                description: this.props.project.description,
+                project_photo: this.props.project.project_photo,
+                photoFile: null
+            }
+        }
+
+        // this.state = this.props.project;
         this.state["photoFile"] = null;
         this.cName = false;
         this.projectImage = false;
@@ -18,29 +28,35 @@ class ProjectForm extends React.Component {
     }
 
     update(field) {
-        return e => this.setState({[field]: e.currentTarget.value});
+        // return e => this.setState({['project']: {[field]: e.currentTarget.value}});
     }
     
 
     handleSubmit(e) {
         e.preventDefault();
-        const formData = new FormData();
-        formData.append('project[title]', localStorage.getItem('title'));
-        localStorage.removeItem('title');
+        // const formData = new FormData();
+        // formData.append('project[title]', this.state.project.title);
+        // formData.append('project[description]', this.state.project.description)
+        let project = {
+            title: this.state.project.title,
+            description: this.state.project.description,
+            project_photo: this.state.project.project_photo
+        }
+        
         if (this.state.photoFile) {
-            formData.append('project[project_photo]', this.state.photoFile);
+            project = {
+                title: this.state.project.title,
+                description: this.state.project.description,
+                project_photo: this.state.photoFile
+            }
+            // formData.append('project[project_photo]', this.state.photoFile);
         }
-        if (this.props.formType === 'Publish Makeable') {
-            this.props.createProject(formData)
-                .then((project) => {
-                    this.props.history.push(`/projects/${project.id}`)
-                });
-        } else {
-            this.props.updateProject(formData)
-                .then((project) => {
-                    this.props.history.push(`/projects/${project.id}`)
-                });
-        }
+        this.props.updateProject(project)
+            .then((project) => {
+                debugger
+                this.props.history.push(`/projects/${project.id}`)
+            });
+        
     }
 
     previewFile(e) {
@@ -107,6 +123,13 @@ class ProjectForm extends React.Component {
                             onChange={this.previewFile}
                         />
                     </div>
+                </div>
+                <div className="project-description">
+                    <label>Project Description</label>
+                    <input type='textbox'
+                        placeholder='What is this project?'
+                        onChange={this.update('description')}
+                    ></input>
                 </div>
                 <div className='project-nav'>
                     <div></div>

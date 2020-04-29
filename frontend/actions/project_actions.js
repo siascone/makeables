@@ -53,8 +53,12 @@ export const createProject = (project) => dispatch => {
 };
 
 export const updateProject = (project) => dispatch => {
+    debugger
     return ProjectsApiUtil.updateProject(project)
-    .then((payload) => dispatch(receiveProject(payload)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
+    .then((payload) => {
+        debugger
+        dispatch(receiveProject(payload)), (errors) => dispatch(receiveErrors(errors.responseJSON));
+    })
 };
 
 export const deleteProject = (projectId) => dispatch => {
