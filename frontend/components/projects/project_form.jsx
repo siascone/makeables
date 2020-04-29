@@ -31,7 +31,6 @@ class ProjectForm extends React.Component {
             formData.append('project[project_photo]', this.state.photoFile);
         }
         if (this.props.formType === 'Publish Makeable') {
-            debugger
             this.props.createProject(formData)
                 .then((project) => {
                     this.props.history.push(`/projects/${project.id}`)

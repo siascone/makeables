@@ -25,7 +25,6 @@ class EditProjectForm extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    debugger
     return ({
         project: state.entities.projects[ownProps.match.params.id],
         formType: 'Update Makeable',

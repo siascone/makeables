@@ -197,7 +197,6 @@ var fetchProject = function fetchProject(projectId) {
 };
 var createProject = function createProject(project) {
   return function (dispatch) {
-    debugger;
     return _util_projects_api_util__WEBPACK_IMPORTED_MODULE_1__["createProject"](project).then(function (payload) {
       dispatch(receiveProject(payload));
       return payload.project;
@@ -969,7 +968,6 @@ var EditProjectForm = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  debugger;
   return {
     project: state.entities.projects[ownProps.match.params.id],
     formType: 'Update Makeable',
@@ -1079,7 +1077,6 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
       }
 
       if (this.props.formType === 'Publish Makeable') {
-        debugger;
         this.props.createProject(formData).then(function (project) {
           _this3.props.history.push("/projects/".concat(project.id));
         });
@@ -2514,7 +2511,6 @@ var projectsReducer = function projectsReducer() {
       return _defineProperty({}, action.payload.project.id, action.payload.project);
 
     case _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_PROJECT"]:
-      debugger;
       delete newState[action.projectId];
       return newState;
 
@@ -2837,7 +2833,6 @@ var fetchProject = function fetchProject(projectId) {
   });
 };
 var createProject = function createProject(project) {
-  debugger;
   return $.ajax({
     url: '/api/projects',
     method: 'POST',

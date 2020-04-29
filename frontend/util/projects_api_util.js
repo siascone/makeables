@@ -14,7 +14,6 @@ export const fetchProject = (projectId) => (
 )
 
 export const createProject = (project) => {
-    debugger
     return(
         $.ajax({
             url: '/api/projects',
