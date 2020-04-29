@@ -57,6 +57,7 @@ export const updateProject = (project) => dispatch => {
     return ProjectsApiUtil.updateProject(project)
     .then((payload) => {
         debugger
+        return payload.project
         dispatch(receiveProject(payload)), (errors) => dispatch(receiveErrors(errors.responseJSON));
     })
 };

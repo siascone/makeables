@@ -210,6 +210,7 @@ var updateProject = function updateProject(project) {
     debugger;
     return _util_projects_api_util__WEBPACK_IMPORTED_MODULE_1__["updateProject"](project).then(function (payload) {
       debugger;
+      return payload.project;
       dispatch(receiveProject(payload)), function (errors) {
         return dispatch(receiveErrors(errors.responseJSON));
       };

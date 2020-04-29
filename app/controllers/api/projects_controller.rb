@@ -39,7 +39,7 @@ class Api::ProjectsController < ApplicationController
     # end
 
     def update
-        debugger
+        # debugger
         @project = selected_project
         # if params[:project][:project_photo]
             if @project.update(project_params)
