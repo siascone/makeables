@@ -210,10 +210,10 @@ var updateProject = function updateProject(project) {
     debugger;
     return _util_projects_api_util__WEBPACK_IMPORTED_MODULE_1__["updateProject"](project).then(function (payload) {
       debugger;
+      dispatch(receiveProject(payload));
       return payload.project;
-      dispatch(receiveProject(payload)), function (errors) {
-        return dispatch(receiveErrors(errors.responseJSON));
-      };
+    }, function (errors) {
+      dispatch(receiveErrors(errors.responseJSON));
     });
   };
 };
@@ -1020,6 +1020,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
       id: _this.props.project.id
     };
     _this.state["photoFile"] = null;
+    _this.state["photoUrl"] = '';
     _this.cName = false;
     _this.projectImage = false;
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
@@ -1058,7 +1059,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
           project: {
             title: this.state.title,
             description: this.state.description,
-            project_photo: this.state.photoFile,
+            project_photo: this.state.photoUrl,
             id: this.state.id
           }
         };
@@ -1078,8 +1079,10 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
       var file = e.currentTarget.files[0];
       var preview = document.querySelector('.img_preview');
       var reader = new FileReader();
+      debugger;
 
       reader.onloadend = function () {
+        debugger;
         preview.src = reader.result;
 
         _this4.setState({
@@ -1149,8 +1152,8 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         className: "file-field-label"
       }, "\u271A Click to Add a Photo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "file",
-        className: "file-field",
-        value: this.state.project_photo,
+        className: "file-field" // value={this.state.project_photo}
+        ,
         onChange: this.previewFile
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-description"

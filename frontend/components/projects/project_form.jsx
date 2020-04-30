@@ -15,6 +15,7 @@ class ProjectForm extends React.Component {
             }
 
         this.state["photoFile"] = null;
+        this.state["photoUrl"] = ''
         this.cName = false;
         this.projectImage = false;
 
@@ -48,7 +49,7 @@ class ProjectForm extends React.Component {
                 project: {
                     title: this.state.title,
                     description: this.state.description,
-                    project_photo: this.state.photoFile,
+                    project_photo: this.state.photoUrl,
                     id: this.state.id
               }
             }
@@ -65,7 +66,9 @@ class ProjectForm extends React.Component {
         const file = e.currentTarget.files[0];
         const preview = document.querySelector('.img_preview');
         const reader = new FileReader();
+        debugger
         reader.onloadend = () => {
+            debugger
             preview.src = reader.result;
             this.setState({photoFile: file, photoUrl: reader.result});
         };
@@ -121,7 +124,7 @@ class ProjectForm extends React.Component {
                         </label>
                         <input type="file"
                             className='file-field'
-                            value={this.state.project_photo}
+                            // value={this.state.project_photo}
                             onChange={this.previewFile}
                         />
                     </div>

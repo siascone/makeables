@@ -39,17 +39,17 @@ class Api::ProjectsController < ApplicationController
     # end
 
     def update
-        # debugger
+        debugger
         @project = selected_project
-        # if params[:project][:project_photo]
+        if params[:project][:project_photo]
             if @project.update(project_params)
                 render :show
             else
                 render json: @project.errors.full_messages, status: 422
             end
-        # else
-        #     render json: ["Please Include a Photo"], status: 401
-        # end
+        else
+            render json: ["Please Include a Photo"], status: 401
+        end
     end
 
     def destroy
