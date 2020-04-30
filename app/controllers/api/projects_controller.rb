@@ -9,40 +9,26 @@ class Api::ProjectsController < ApplicationController
         @project = selected_project
         render :show
     end
+
+    def start_project
+        @project = selected_project
+        render :start_project
+    end
     
     def create
         @project = Project.new(project_params)
         @project.user_id = current_user.id
         if @project.save
-            render :show
+            render :start_project
         else
             render json: @project.errors.full_messages, status: 422
         end
     end
 
-    # def edit
-    #     @project = selected_project
-    #     render :edit
-    # end
-    # def create 
-    #     @project = Project.new(project_params)
-    #     @project.user_id = current_user.id
-    #     if params[:project][:project_photo]
-    #         if @project.save
-    #             render :show
-    #         else
-    #             render json: @project.errors.full_messages, status: 401
-    #         end
-    #     else
-    #         render json: ["Please Include a Photo"], status: 401
-    #     end
-    # end
-
     def update
         @project = selected_project
         if params[:project][:project_photo]
             if @project.update(project_params)
-                debugger
                 render :show
             else
                 render json: @project.errors.full_messages, status: 422

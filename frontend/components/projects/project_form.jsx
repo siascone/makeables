@@ -7,13 +7,6 @@ class ProjectForm extends React.Component {
     constructor(props) {
         super(props);
 
-        // this.state = {
-        //         title: this.props.project.title,
-        //         description: this.props.project.description,
-        //         project_photo: this.props.project.project_photo,
-        //         id: this.props.project.id
-        //     }
-
         this.state = this.props.project
         this.state["photoFile"] = null;
         this.cName = false;
@@ -31,7 +24,6 @@ class ProjectForm extends React.Component {
         }
     }
     
-
     handleSubmit(e) {
         e.preventDefault();
         let projectId = this.state.id
@@ -40,29 +32,9 @@ class ProjectForm extends React.Component {
         if (this.state.photoFile) {
             formData.append('project[project_photo]', this.state.photoFile)
         }
-        // let project = {
-        //     project: { 
-        //     title: this.state.title,
-        //     description: this.state.description,
-        //     project_photo: this.state.project_photo,
-        //     id: this.state.id
-        //   }
-        // }
-        
-        // if (this.state.photoFile) {
-        //     project = {
-        //         project: {
-        //             title: this.state.title,
-        //             description: this.state.description,
-        //             project_photo: this.state.photoFile,
-        //             id: this.state.id
-        //         }
-        //       }
-        //     }
 
         this.props.updateProject(formData, projectId)
             .then((project) => {
-                debugger
                 this.props.history.push(`/projects/${projectId}`)
             });
     }

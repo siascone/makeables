@@ -1006,13 +1006,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
 
     _classCallCheck(this, ProjectForm);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProjectForm).call(this, props)); // this.state = {
-    //         title: this.props.project.title,
-    //         description: this.props.project.description,
-    //         project_photo: this.props.project.project_photo,
-    //         id: this.props.project.id
-    //     }
-
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProjectForm).call(this, props));
     _this.state = _this.props.project;
     _this.state["photoFile"] = null;
     _this.cName = false;
@@ -1045,29 +1039,9 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
 
       if (this.state.photoFile) {
         formData.append('project[project_photo]', this.state.photoFile);
-      } // let project = {
-      //     project: { 
-      //     title: this.state.title,
-      //     description: this.state.description,
-      //     project_photo: this.state.project_photo,
-      //     id: this.state.id
-      //   }
-      // }
-      // if (this.state.photoFile) {
-      //     project = {
-      //         project: {
-      //             title: this.state.title,
-      //             description: this.state.description,
-      //             project_photo: this.state.photoFile,
-      //             id: this.state.id
-      //         }
-      //       }
-      //     }
-
+      }
 
       this.props.updateProject(formData, projectId).then(function (project) {
-        debugger;
-
         _this3.props.history.push("/projects/".concat(projectId));
       });
     }
