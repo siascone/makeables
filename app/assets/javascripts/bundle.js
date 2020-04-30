@@ -1125,8 +1125,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         className: "file-field-label"
       }, "\u271A Click to Add a Photo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "file",
-        className: "file-field" // value={this.state.project_photo}
-        ,
+        className: "file-field",
         onChange: this.previewFile
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-description"
@@ -1139,9 +1138,9 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "project-button",
         onClick: this.handleSubmit
-      }, "Publish")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Publish")), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "steps-box"
-      }, this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "steps"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_steps_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_add_step_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)))));
     }
