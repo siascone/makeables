@@ -124,8 +124,9 @@ class ProjectForm extends React.Component {
                     {this.renderErrors()}
                     <div className='steps'>
                         <StepsIndexContainer />
-                    </div>
-                    <div className='add-step'>
+                        <div>
+                            <AddStepContainer />
+                        </div>
                     </div>
                 </div>
             </div>

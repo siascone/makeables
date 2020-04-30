@@ -30,9 +30,9 @@ class Step extends React.Component {
         
     }
 
-    componentWillUnmount() {
-        this.props.clearErrors()
-    }
+    // componentWillUnmount() {
+    //     this.props.clearErrors()
+    // }
 
     render() {
 

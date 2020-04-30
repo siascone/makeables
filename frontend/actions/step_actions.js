@@ -11,10 +11,12 @@ const receiveAllSteps = (steps) => ({
     type: RECEIVE_ALL_STEPS,
     steps
 });
-const receiveStep = (step) => ({
-    type: RECEIVE_STEP,
-    step
-});
+const receiveStep = (step) => {
+    return {
+        type: RECEIVE_STEP,
+        step
+    }
+};
 const removeStep = (stepId) => ({
     type: REMOVE_STEP,
     stepId
@@ -42,7 +44,10 @@ export const fetchStep = (stepId) => dispatch => {
 
 export const createStep = (step) => dispatch => {
     return StepsApiUtil.createStep(step)
-        .then((step) => dispatch(receiveStep(step)));
+        .then((res) => {
+            dispatch(receiveStep(res.step))
+            return res.step;
+        })
 };
 
 export const updateStep = (step) => dispatch => {
@@ -52,5 +57,5 @@ export const updateStep = (step) => dispatch => {
 
 export const deleteStep = (stepId) => dispatch => {
     return StepsApiUtil.deleteStep(stepId)
-        .then((step) => dispatch(receiveStep(step.id)));
+        .then((step) => dispatch(removeStep(step.id)));
 };

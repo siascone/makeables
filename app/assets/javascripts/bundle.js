@@ -385,8 +385,9 @@ var fetchStep = function fetchStep(stepId) {
 };
 var createStep = function createStep(step) {
   return function (dispatch) {
-    return _util_steps_api_util__WEBPACK_IMPORTED_MODULE_1__["createStep"](step).then(function (step) {
-      return dispatch(receiveStep(step));
+    return _util_steps_api_util__WEBPACK_IMPORTED_MODULE_1__["createStep"](step).then(function (res) {
+      dispatch(receiveStep(res.step));
+      return res.step;
     });
   };
 };
@@ -400,7 +401,7 @@ var updateStep = function updateStep(step) {
 var deleteStep = function deleteStep(stepId) {
   return function (dispatch) {
     return _util_steps_api_util__WEBPACK_IMPORTED_MODULE_1__["deleteStep"](stepId).then(function (step) {
-      return dispatch(receiveStep(step.id));
+      return dispatch(removeStep(step.id));
     });
   };
 };
@@ -1142,9 +1143,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         className: "steps-box"
       }, this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "steps"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_steps_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "add-step"
-      })));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_steps_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_add_step_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)))));
     }
   }]);
 
@@ -1849,12 +1848,10 @@ var Step = /*#__PURE__*/function (_React$Component) {
       this.props.createStep(step).then(function (res) {
         return console.log(res);
       });
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      this.props.clearErrors();
-    }
+    } // componentWillUnmount() {
+    //     this.props.clearErrors()
+    // }
+
   }, {
     key: "render",
     value: function render() {
