@@ -15,7 +15,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
     fetchProject: projecctId => dispatch(fetchProject(projecctId)),
-    updateProject: project => dispatch(updateProject(project)),
+    updateProject: (project, projectId) => dispatch(updateProject(project, projectId)),
     deleteProject: project => dispatch(deleteProject(project.id)),
     clearErrors: () => dispatch(clearErrors())
 });

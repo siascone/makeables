@@ -7,18 +7,18 @@ class ProjectForm extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-                title: this.props.project.title,
-                description: this.props.project.description,
-                project_photo: this.props.project.project_photo,
-                id: this.props.project.id
-            }
+        // this.state = {
+        //         title: this.props.project.title,
+        //         description: this.props.project.description,
+        //         project_photo: this.props.project.project_photo,
+        //         id: this.props.project.id
+        //     }
 
+        this.state = this.props.project
         this.state["photoFile"] = null;
-        this.state["photoUrl"] = ''
         this.cName = false;
         this.projectImage = false;
-
+    
         this.handleSubmit = this.handleSubmit.bind(this);
         this.previewFile = this.previewFile.bind(this);
         this.click = this.click.bind(this);
@@ -34,31 +34,36 @@ class ProjectForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-
-        let project = {
-            project: { 
-            title: this.state.title,
-            description: this.state.description,
-            project_photo: this.state.project_photo,
-            id: this.state.id
-        }
-    }
-        
+        let projectId = this.state.id
+        const formData = new FormData();
+        formData.append('project[description]', this.state.description)
         if (this.state.photoFile) {
-            project = {
-                project: {
-                    title: this.state.title,
-                    description: this.state.description,
-                    project_photo: this.state.photoUrl,
-                    id: this.state.id
-              }
-            }
-            }
+            formData.append('project[project_photo]', this.state.photoFile)
+        }
+        // let project = {
+        //     project: { 
+        //     title: this.state.title,
+        //     description: this.state.description,
+        //     project_photo: this.state.project_photo,
+        //     id: this.state.id
+        //   }
+        // }
+        
+        // if (this.state.photoFile) {
+        //     project = {
+        //         project: {
+        //             title: this.state.title,
+        //             description: this.state.description,
+        //             project_photo: this.state.photoFile,
+        //             id: this.state.id
+        //         }
+        //       }
+        //     }
 
-        this.props.updateProject(project)
+        this.props.updateProject(formData, projectId)
             .then((project) => {
                 debugger
-                this.props.history.push(`/projects/${project.id}`)
+                this.props.history.push(`/projects/${projectId}`)
             });
     }
 
@@ -66,9 +71,7 @@ class ProjectForm extends React.Component {
         const file = e.currentTarget.files[0];
         const preview = document.querySelector('.img_preview');
         const reader = new FileReader();
-        debugger
         reader.onloadend = () => {
-            debugger
             preview.src = reader.result;
             this.setState({photoFile: file, photoUrl: reader.result});
         };

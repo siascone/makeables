@@ -39,10 +39,10 @@ class Api::ProjectsController < ApplicationController
     # end
 
     def update
-        debugger
         @project = selected_project
         if params[:project][:project_photo]
             if @project.update(project_params)
+                debugger
                 render :show
             else
                 render json: @project.errors.full_messages, status: 422
@@ -69,6 +69,6 @@ class Api::ProjectsController < ApplicationController
     end
 
     def project_params
-        params.require(:project).permit(:title, :description, :id)
+        params.require(:project).permit(:title, :description, :id, :project_photo)
     end
 end

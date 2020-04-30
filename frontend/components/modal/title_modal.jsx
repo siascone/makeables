@@ -5,11 +5,7 @@ import { Redirect } from 'react-router-dom';
 class TitleModal extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            title: '',
-            description: '',
-            project_photo: ''
-        }
+        this.state = this.props.project
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }

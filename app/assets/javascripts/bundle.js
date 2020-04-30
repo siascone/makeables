@@ -205,13 +205,11 @@ var createProject = function createProject(project) {
     });
   };
 };
-var updateProject = function updateProject(project) {
+var updateProject = function updateProject(project, projectId) {
   return function (dispatch) {
-    debugger;
-    return _util_projects_api_util__WEBPACK_IMPORTED_MODULE_1__["updateProject"](project).then(function (payload) {
-      debugger;
-      dispatch(receiveProject(payload));
-      return payload.project;
+    return _util_projects_api_util__WEBPACK_IMPORTED_MODULE_1__["updateProject"](project, projectId).then(function (res) {
+      dispatch(receiveProject(res));
+      return res.project;
     }, function (errors) {
       dispatch(receiveErrors(errors.responseJSON));
     });
@@ -759,11 +757,7 @@ var TitleModal = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, TitleModal);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(TitleModal).call(this, props));
-    _this.state = {
-      title: '',
-      description: '',
-      project_photo: ''
-    };
+    _this.state = _this.props.project;
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -951,8 +945,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     fetchProject: function fetchProject(projecctId) {
       return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_4__["fetchProject"])(projecctId));
     },
-    updateProject: function updateProject(project) {
-      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_4__["updateProject"])(project));
+    updateProject: function updateProject(project, projectId) {
+      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_4__["updateProject"])(project, projectId));
     },
     deleteProject: function deleteProject(project) {
       return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_4__["deleteProject"])(project.id));
@@ -1012,15 +1006,15 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
 
     _classCallCheck(this, ProjectForm);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProjectForm).call(this, props));
-    _this.state = {
-      title: _this.props.project.title,
-      description: _this.props.project.description,
-      project_photo: _this.props.project.project_photo,
-      id: _this.props.project.id
-    };
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProjectForm).call(this, props)); // this.state = {
+    //         title: this.props.project.title,
+    //         description: this.props.project.description,
+    //         project_photo: this.props.project.project_photo,
+    //         id: this.props.project.id
+    //     }
+
+    _this.state = _this.props.project;
     _this.state["photoFile"] = null;
-    _this.state["photoUrl"] = '';
     _this.cName = false;
     _this.projectImage = false;
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
@@ -1045,30 +1039,36 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
       var _this3 = this;
 
       e.preventDefault();
-      var project = {
-        project: {
-          title: this.state.title,
-          description: this.state.description,
-          project_photo: this.state.project_photo,
-          id: this.state.id
-        }
-      };
+      var projectId = this.state.id;
+      var formData = new FormData();
+      formData.append('project[description]', this.state.description);
 
       if (this.state.photoFile) {
-        project = {
-          project: {
-            title: this.state.title,
-            description: this.state.description,
-            project_photo: this.state.photoUrl,
-            id: this.state.id
-          }
-        };
-      }
+        formData.append('project[project_photo]', this.state.photoFile);
+      } // let project = {
+      //     project: { 
+      //     title: this.state.title,
+      //     description: this.state.description,
+      //     project_photo: this.state.project_photo,
+      //     id: this.state.id
+      //   }
+      // }
+      // if (this.state.photoFile) {
+      //     project = {
+      //         project: {
+      //             title: this.state.title,
+      //             description: this.state.description,
+      //             project_photo: this.state.photoFile,
+      //             id: this.state.id
+      //         }
+      //       }
+      //     }
 
-      this.props.updateProject(project).then(function (project) {
+
+      this.props.updateProject(formData, projectId).then(function (project) {
         debugger;
 
-        _this3.props.history.push("/projects/".concat(project.id));
+        _this3.props.history.push("/projects/".concat(projectId));
       });
     }
   }, {
@@ -1079,10 +1079,8 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
       var file = e.currentTarget.files[0];
       var preview = document.querySelector('.img_preview');
       var reader = new FileReader();
-      debugger;
 
       reader.onloadend = function () {
-        debugger;
         preview.src = reader.result;
 
         _this4.setState({
@@ -2846,12 +2844,13 @@ var createProject = function createProject(project) {
     processData: false
   });
 };
-var updateProject = function updateProject(payload) {
-  debugger;
+var updateProject = function updateProject(formData, projectId) {
   return $.ajax({
-    url: "/api/projects/".concat(payload.project.id),
+    url: "/api/projects/".concat(projectId),
     method: "PATCH",
-    data: payload
+    data: formData,
+    processData: false,
+    contentType: false
   });
 };
 var deleteProject = function deleteProject(projectId) {

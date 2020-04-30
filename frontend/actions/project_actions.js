@@ -52,13 +52,11 @@ export const createProject = (project) => dispatch => {
         });
 };
 
-export const updateProject = (project) => dispatch => {
-    debugger
-    return ProjectsApiUtil.updateProject(project)
-    .then((payload) => {
-        debugger
-        dispatch(receiveProject(payload))
-        return payload.project
+export const updateProject = (project, projectId) => dispatch => {
+    return ProjectsApiUtil.updateProject(project, projectId)
+    .then((res) => {
+        dispatch(receiveProject(res))
+        return res.project
     }, (errors) => {
         dispatch(receiveErrors(errors.responseJSON));
     });
