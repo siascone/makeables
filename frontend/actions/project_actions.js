@@ -52,9 +52,14 @@ export const createProject = (project) => dispatch => {
         });
 };
 
-export const updateProject = (project) => dispatch => {
-    return ProjectsApiUtil.updateProject(project)
-    .then((payload) => dispatch(receiveProject(payload)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
+export const updateProject = (project, projectId) => dispatch => {
+    return ProjectsApiUtil.updateProject(project, projectId)
+    .then((res) => {
+        dispatch(receiveProject(res))
+        return res.project
+    }, (errors) => {
+        dispatch(receiveErrors(errors.responseJSON));
+    });
 };
 
 export const deleteProject = (projectId) => dispatch => {

@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 class TitleModal extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {title: ''}
+        this.state = this.props.project
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -19,6 +19,7 @@ class TitleModal extends React.Component {
         e.preventDefault();
         const formData = new FormData();
         formData.append('project[title]', this.state.title)
+        formData.append('project[description]', this.state.description)
         this.props.createProject(formData)
             .then((project) => {
                 this.props.history.push(`/projects/${project.id}/edit`)

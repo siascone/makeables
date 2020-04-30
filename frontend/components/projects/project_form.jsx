@@ -6,11 +6,12 @@ import StepsIndexContainer from '../steps/steps_index_container';
 class ProjectForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = this.props.project;
+
+        this.state = this.props.project
         this.state["photoFile"] = null;
         this.cName = false;
         this.projectImage = false;
-
+    
         this.handleSubmit = this.handleSubmit.bind(this);
         this.previewFile = this.previewFile.bind(this);
         this.click = this.click.bind(this);
@@ -18,29 +19,24 @@ class ProjectForm extends React.Component {
     }
 
     update(field) {
-        return e => this.setState({[field]: e.currentTarget.value});
+        return e => {
+            this.setState({[field]: e.currentTarget.value});
+        }
     }
     
-
     handleSubmit(e) {
         e.preventDefault();
+        let projectId = this.state.id
         const formData = new FormData();
-        formData.append('project[title]', localStorage.getItem('title'));
-        localStorage.removeItem('title');
+        formData.append('project[description]', this.state.description)
         if (this.state.photoFile) {
-            formData.append('project[project_photo]', this.state.photoFile);
+            formData.append('project[project_photo]', this.state.photoFile)
         }
-        if (this.props.formType === 'Publish Makeable') {
-            this.props.createProject(formData)
-                .then((project) => {
-                    this.props.history.push(`/projects/${project.id}`)
-                });
-        } else {
-            this.props.updateProject(formData)
-                .then((project) => {
-                    this.props.history.push(`/projects/${project.id}`)
-                });
-        }
+
+        this.props.updateProject(formData, projectId)
+            .then((project) => {
+                this.props.history.push(`/projects/${projectId}`)
+            });
     }
 
     previewFile(e) {
@@ -103,10 +99,17 @@ class ProjectForm extends React.Component {
                         </label>
                         <input type="file"
                             className='file-field'
-                            value={this.state.project_photo}
+                            // value={this.state.project_photo}
                             onChange={this.previewFile}
                         />
                     </div>
+                </div>
+                <div className="project-description">
+                    <label>Project Description</label>
+                    <input type='textbox'
+                        placeholder={this.props.project.description}
+                        onChange={this.update('description')}
+                    ></input>
                 </div>
                 <div className='project-nav'>
                     <div></div>

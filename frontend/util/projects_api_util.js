@@ -25,13 +25,18 @@ export const createProject = (project) => {
     )
 };
 
-export const updateProject = (project) => (
-    $.ajax({
-        url: `/api/projects/${project.id}`,
-        method: "PATCH",
-        data: {project}
-    })
-)
+export const updateProject = (formData, projectId) => {
+    return (
+        $.ajax({
+            url: `/api/projects/${projectId}`,
+            method: "PATCH",
+            data: formData,
+            processData: false,
+            contentType: false,
+        })
+
+    )
+}
 
 export const deleteProject = (projectId) => (
     $.ajax({
