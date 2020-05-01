@@ -1104,20 +1104,21 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var image = 'hide-project-image';
-
-      if (this.projectImage === true) {
-        image = 'show-project-image';
-      }
-
       var label;
       var input;
+      var button;
+      var photo;
 
-      if (this.project_photo) {
-        label = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-          className: "file-field-label"
-        }, "\u271A Click to Change a Photo");
+      if (this.props.project.photoUrl) {
+        label = null;
         input = null;
+        photo = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "img_preview",
+          src: this.state.photoUrl,
+          alt: ""
+        });
+        button = null;
+        this.projectImage = true;
       } else {
         label = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
           className: "file-field-label"
@@ -1127,6 +1128,20 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
           className: "file-field",
           onChange: this.previewFile
         });
+        photo = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: "",
+          className: "img_preview"
+        });
+        button = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "project-button",
+          onClick: this.handleSubmit
+        }, "Publish");
+      }
+
+      var image = 'hide-project-image';
+
+      if (this.projectImage === true) {
+        image = 'show-project-image';
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1137,16 +1152,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         className: "image-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: image
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "",
-        className: "img_preview"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "file-field-label"
-      }, "\u271A Click to Add a Photo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "file",
-        className: "file-field",
-        onChange: this.previewFile
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, photo), label, input)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-description"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Project Description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "textbox",
@@ -1154,10 +1160,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         onChange: this.update('description')
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-nav"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "project-button",
-        onClick: this.handleSubmit
-      }, "Publish")), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), button), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "steps-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "steps"

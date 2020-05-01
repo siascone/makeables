@@ -79,18 +79,17 @@ class ProjectForm extends React.Component {
     }
 
     render() {
-        let image = 'hide-project-image';
-        if (this.projectImage === true) {
-            image = 'show-project-image';
-        }
-
         let label
         let input
-        if (this.project_photo) {
-            label = <label className="file-field-label">
-                        ✚ Click to Change a Photo
-                    </label>
+        let button
+        let photo
+
+        if (this.props.project.photoUrl) {
+            label = null
             input = null
+            photo = <img className="img_preview" src={this.state.photoUrl} alt=""/>
+            button = null
+            this.projectImage = true
         } else {
             label = <label className="file-field-label">
                         ✚ Click to Add a Photo
@@ -99,6 +98,17 @@ class ProjectForm extends React.Component {
                         className='file-field'
                         onChange={this.previewFile}
                     />
+            photo = <img src="" className='img_preview' />
+            button = <button
+                        className='project-button'
+                        onClick={this.handleSubmit}>
+                        Publish
+                    </button>
+        }
+
+        let image = 'hide-project-image';
+        if (this.projectImage === true) {
+            image = 'show-project-image';
         }
         
         return (
@@ -107,17 +117,10 @@ class ProjectForm extends React.Component {
                 <div className='image-input'>
                     <div className='image-box'>
                         <div className={image}>
-                            <img src=""
-                                className='img_preview'
-                            />
+                            {photo}
                         </div>
-                        <label className="file-field-label">
-                            ✚ Click to Add a Photo
-                        </label>
-                        <input type="file"
-                            className='file-field'
-                            onChange={this.previewFile}
-                        />
+                        {label}
+                        {input}
                     </div>
                 </div>
                 <div className="project-description">
@@ -129,11 +132,7 @@ class ProjectForm extends React.Component {
                 </div>
                 <div className='project-nav'>
                     <div></div>
-                    <button
-                        className='project-button'
-                        onClick={this.handleSubmit}>
-                        Publish
-                    </button>
+                    {button}
                 </div>
                 
                 {this.renderErrors()}
