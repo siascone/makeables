@@ -12,7 +12,6 @@ class Api::ProjectStepsController < ApplicationController
 
     def create
         @step = ProjectStep.new(step_params)
-        @step.project_id = params[:project_id]
         if @step.save
             render :show
         else
@@ -23,6 +22,7 @@ class Api::ProjectStepsController < ApplicationController
     def update
         @step = selected_step
         if @step.update(step_params)
+            
             render :show
         else
             render json: @step.errors.full_messages, status: 422
@@ -46,6 +46,6 @@ class Api::ProjectStepsController < ApplicationController
     end
 
     def step_params
-        params.require(:step).permit(:heading, :body)
+        params.require(:step).permit(:heading, :body, :project_id)
     end
 end

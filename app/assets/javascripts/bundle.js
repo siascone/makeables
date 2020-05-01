@@ -385,8 +385,9 @@ var fetchStep = function fetchStep(stepId) {
 };
 var createStep = function createStep(step) {
   return function (dispatch) {
-    return _util_steps_api_util__WEBPACK_IMPORTED_MODULE_1__["createStep"](step).then(function (step) {
-      return dispatch(receiveStep(step));
+    return _util_steps_api_util__WEBPACK_IMPORTED_MODULE_1__["createStep"](step).then(function (res) {
+      dispatch(receiveStep(res.step));
+      return res.step;
     });
   };
 };
@@ -400,7 +401,7 @@ var updateStep = function updateStep(step) {
 var deleteStep = function deleteStep(stepId) {
   return function (dispatch) {
     return _util_steps_api_util__WEBPACK_IMPORTED_MODULE_1__["deleteStep"](stepId).then(function (step) {
-      return dispatch(receiveStep(step.id));
+      return dispatch(removeStep(step.id));
     });
   };
 };
@@ -1124,8 +1125,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         className: "file-field-label"
       }, "\u271A Click to Add a Photo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "file",
-        className: "file-field" // value={this.state.project_photo}
-        ,
+        className: "file-field",
         onChange: this.previewFile
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-description"
@@ -1138,13 +1138,11 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "project-button",
         onClick: this.handleSubmit
-      }, "Publish")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Publish")), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "steps-box"
-      }, this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "steps"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_steps_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "add-step"
-      })));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_steps_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_add_step_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)))));
     }
   }]);
 
@@ -1846,15 +1844,11 @@ var Step = /*#__PURE__*/function (_React$Component) {
         body: this.state.body,
         project_id: this.props.project_id
       };
-      this.props.createStep(step).then(function (res) {
-        return console.log(res);
-      });
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      this.props.clearErrors();
-    }
+      this.props.createStep(step);
+    } // componentWillUnmount() {
+    //     this.props.clearErrors()
+    // }
+
   }, {
     key: "render",
     value: function render() {
@@ -2059,10 +2053,10 @@ __webpack_require__.r(__webpack_exports__);
 // import { Link } from 'react-router-dom';
 
 var StepsIndexItem = function StepsIndexItem(props) {
-  var id = props.step.extract.id;
+  var id = props.step.id;
   var numSteps = props.step.length;
 
-  if (props.step.extract.project_id === props.projectId) {
+  if (props.step.project_id === props.projectId) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "step-box"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2071,9 +2065,9 @@ var StepsIndexItem = function StepsIndexItem(props) {
       className: "heading-div"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "heading"
-    }, props.step.extract.heading)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, props.step.heading)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "body"
-    }, props.step.extract.body)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
+    }, props.step.body)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
   } else {
     return null;
   }
@@ -2649,8 +2643,6 @@ var stepErrorsReduccer = function stepErrorsReduccer() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_step_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/step_actions */ "./frontend/actions/step_actions.js");
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 var stepsReducer = function stepsReducer() {
@@ -2664,7 +2656,8 @@ var stepsReducer = function stepsReducer() {
       return action.steps.steps;
 
     case _actions_step_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_STEP"]:
-      return _defineProperty({}, action.step.id, action.step);
+      newState[action.step.id] = action.step;
+      return newState;
 
     case _actions_step_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_STEP"]:
       delete newState[action.stepId];

@@ -26,13 +26,11 @@ class Step extends React.Component {
         }
 
         this.props.createStep(step)
-            .then(res => console.log(res))
-        
     }
 
-    componentWillUnmount() {
-        this.props.clearErrors()
-    }
+    // componentWillUnmount() {
+    //     this.props.clearErrors()
+    // }
 
     render() {
 

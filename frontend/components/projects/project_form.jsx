@@ -83,7 +83,7 @@ class ProjectForm extends React.Component {
         if (this.projectImage === true) {
             image = 'show-project-image';
         }
-
+        
         return (
             <div className='project-main'>
                 <div>{this.props.project.title}</div>
@@ -99,7 +99,6 @@ class ProjectForm extends React.Component {
                         </label>
                         <input type="file"
                             className='file-field'
-                            // value={this.state.project_photo}
                             onChange={this.previewFile}
                         />
                     </div>
@@ -120,12 +119,13 @@ class ProjectForm extends React.Component {
                     </button>
                 </div>
                 
+                {this.renderErrors()}
                 <div className='steps-box'>
-                    {this.renderErrors()}
                     <div className='steps'>
                         <StepsIndexContainer />
-                    </div>
-                    <div className='add-step'>
+                        <div>
+                            <AddStepContainer />
+                        </div>
                     </div>
                 </div>
             </div>
