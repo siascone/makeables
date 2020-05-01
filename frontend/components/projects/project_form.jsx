@@ -83,6 +83,23 @@ class ProjectForm extends React.Component {
         if (this.projectImage === true) {
             image = 'show-project-image';
         }
+
+        let label
+        let input
+        if (this.project_photo) {
+            label = <label className="file-field-label">
+                        ✚ Click to Change a Photo
+                    </label>
+            input = null
+        } else {
+            label = <label className="file-field-label">
+                        ✚ Click to Add a Photo
+                    </label>
+            input = <input type="file"
+                        className='file-field'
+                        onChange={this.previewFile}
+                    />
+        }
         
         return (
             <div className='project-main'>

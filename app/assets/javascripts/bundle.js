@@ -1110,6 +1110,25 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         image = 'show-project-image';
       }
 
+      var label;
+      var input;
+
+      if (this.project_photo) {
+        label = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+          className: "file-field-label"
+        }, "\u271A Click to Change a Photo");
+        input = null;
+      } else {
+        label = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+          className: "file-field-label"
+        }, "\u271A Click to Add a Photo");
+        input = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "file",
+          className: "file-field",
+          onChange: this.previewFile
+        });
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.project.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
