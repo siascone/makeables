@@ -1844,9 +1844,7 @@ var Step = /*#__PURE__*/function (_React$Component) {
         body: this.state.body,
         project_id: this.props.project_id
       };
-      this.props.createStep(step).then(function (res) {
-        return console.log(res);
-      });
+      this.props.createStep(step);
     } // componentWillUnmount() {
     //     this.props.clearErrors()
     // }
@@ -2055,10 +2053,10 @@ __webpack_require__.r(__webpack_exports__);
 // import { Link } from 'react-router-dom';
 
 var StepsIndexItem = function StepsIndexItem(props) {
-  var id = props.step.extract.id;
+  var id = props.step.id;
   var numSteps = props.step.length;
 
-  if (props.step.extract.project_id === props.projectId) {
+  if (props.step.project_id === props.projectId) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "step-box"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2067,9 +2065,9 @@ var StepsIndexItem = function StepsIndexItem(props) {
       className: "heading-div"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "heading"
-    }, props.step.extract.heading)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, props.step.heading)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "body"
-    }, props.step.extract.body)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
+    }, props.step.body)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
   } else {
     return null;
   }
@@ -2645,8 +2643,6 @@ var stepErrorsReduccer = function stepErrorsReduccer() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_step_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/step_actions */ "./frontend/actions/step_actions.js");
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 var stepsReducer = function stepsReducer() {
@@ -2660,7 +2656,8 @@ var stepsReducer = function stepsReducer() {
       return action.steps.steps;
 
     case _actions_step_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_STEP"]:
-      return _defineProperty({}, action.step.id, action.step);
+      newState[action.step.id] = action.step;
+      return newState;
 
     case _actions_step_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_STEP"]:
       delete newState[action.stepId];

@@ -12,7 +12,8 @@ const stepsReducer = (state ={}, action) => {
         case RECEIVE_ALL_STEPS:
             return action.steps.steps;
         case RECEIVE_STEP:
-            return {[action.step.id]: action.step};
+            newState[action.step.id] = action.step;
+            return newState
         case REMOVE_STEP:
             delete newState[action.stepId];
             return newState;
