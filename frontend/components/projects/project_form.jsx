@@ -81,14 +81,12 @@ class ProjectForm extends React.Component {
     render() {
         let label
         let input
-        let button
         let photo
 
         if (this.props.project.photoUrl) {
             label = null
             input = null
             photo = <img className="img_preview" src={this.state.photoUrl} alt=""/>
-            button = null
             this.projectImage = true
         } else {
             label = <label className="file-field-label">
@@ -99,11 +97,6 @@ class ProjectForm extends React.Component {
                         onChange={this.previewFile}
                     />
             photo = <img src="" className='img_preview' />
-            button = <button
-                        className='project-button'
-                        onClick={this.handleSubmit}>
-                        Publish
-                    </button>
         }
 
         let image = 'hide-project-image';
@@ -132,7 +125,11 @@ class ProjectForm extends React.Component {
                 </div>
                 <div className='project-nav'>
                     <div></div>
-                    {button}
+                    <button
+                        className='project-button'
+                        onClick={this.handleSubmit}>
+                        Publish
+                    </button>
                 </div>
                 
                 {this.renderErrors()}

@@ -1106,7 +1106,6 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var label;
       var input;
-      var button;
       var photo;
 
       if (this.props.project.photoUrl) {
@@ -1117,7 +1116,6 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
           src: this.state.photoUrl,
           alt: ""
         });
-        button = null;
         this.projectImage = true;
       } else {
         label = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
@@ -1132,10 +1130,6 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
           src: "",
           className: "img_preview"
         });
-        button = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "project-button",
-          onClick: this.handleSubmit
-        }, "Publish");
       }
 
       var image = 'hide-project-image';
@@ -1160,7 +1154,10 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         onChange: this.update('description')
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-nav"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), button), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "project-button",
+        onClick: this.handleSubmit
+      }, "Publish")), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "steps-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "steps"
