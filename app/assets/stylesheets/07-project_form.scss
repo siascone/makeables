@@ -35,6 +35,11 @@
     align-self: flex-start;
 }
 
+.warning {
+    align-self: center;;
+    color: red;
+}
+
 .file-field-label {
     position: relative;
 }
@@ -88,15 +93,26 @@
     
 }
 
-.project-button {
+.edit-buttons {
+    display: flex;
+}
+
+.project-button, .project-delete, .cancle-edits {
     border-radius: 6px;
     height: 34px;
     padding: 6px 12px;
+    margin-left: 5px;
     background: #F6F6F6;
     color: #333333;
 }
 
 .project-button:hover {
+    background-color: rgb(240, 240, 240);
+}
+.project-delete:hover {
+    background-color: rgb(240, 240, 240);
+}
+.cancle-edits:hover {
     background-color: rgb(240, 240, 240);
 }
 

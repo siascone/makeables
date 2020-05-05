@@ -15,6 +15,29 @@
     width: 80%;
     
 }
+
+.project-show-title-by > h2 > link {
+    border-left: 1px solid gray;
+}
+
+.edit-delete-btns {
+    display: flex;
+    // align-items: center;
+    // justify-content: space-between;
+}
+
+.edit-btn-div, .delete-btn-div {
+    margin: 5px
+}
+
+.delete-btn-div > button {
+    display: hidden;
+    border: none;
+    text-decoration: underline;
+    padding: 0;
+}
+
+
 .project-show-image{
     display: flex;
     justify-content: center;

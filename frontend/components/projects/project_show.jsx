@@ -22,11 +22,17 @@ class ProjectShow extends React.Component {
     }
 
     render() {
-        const {project, username, sessionId, userId} = this.props;
-        let edit
+        const {project, projectId, username, sessionId, userId} = this.props;
+        let edit;
+        let del;
         if (sessionId === userId) {
-            edit = <Link to={`/projects/${project.id}/edit`}>Edit</Link>
-                {/* <button onClick={this.remove}>Delete</button> */}
+            edit = <div className="edit-btn-div">
+                        <Link to={`/projects/${projectId}/edit`}>Edit</Link>
+                   </div>
+            del =  <div className='delete-btn-div'>
+                        {/* <label for='delete-button'>Delete</label> */}
+                        <button className="delete-button" onClick={this.remove}>Delete</button>
+                   </div>
                 
         }
         
@@ -35,7 +41,8 @@ class ProjectShow extends React.Component {
             <div className='project-show-main'>
                 <div className='project-show-title-by'>
                     <h1>{project.title}</h1>
-                    <h2>by {username} {edit}</h2>
+                    <h2>by {username}</h2>
+                    <div className='edit-delete-btns'>{edit} {del}</div>
                     
                 </div>
                 <div className='project-show-image'>
