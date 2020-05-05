@@ -1,3 +1,9 @@
+.steps {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
 .step-index-item {
     display: flex;
     flex-direction: column;
@@ -6,6 +12,7 @@
 .step-box {
     display: flex;
     flex-direction: column;
+    align-content: center;
     margin: 10px;
 }
 
@@ -29,6 +36,6 @@
 .body {
     margin: 10px;
     font-size: 16px;
-    width: 80%;
+    // width: 80%;
     align-self: center;
 }

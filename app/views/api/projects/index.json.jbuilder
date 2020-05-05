@@ -1,12 +1,13 @@
 json.projects do
     @projects.each do |project|
         json.set! project.id do 
+            # this is a min issue
             json.extract! project, :id, :title, :user_id, :description
-            if project.project_photo
-                json.photoUrl url_for(project.project_photo)
-            else
-                json.photoUrl  ""
-            end
+            # if project.project_photo
+            json.photoUrl url_for(project.project_photo)
+            # else
+            #     json.photoUrl ''
+            # end
         end
     end
 end

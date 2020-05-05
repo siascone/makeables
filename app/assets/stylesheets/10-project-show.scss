@@ -12,6 +12,7 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    width: 80%;
     
 }
 .project-show-image{
@@ -39,4 +40,19 @@
     line-height: 25px;
     text-align: center;
     margin: 0 0 10px;
+}
+
+.project-show-description {
+    width: 80%;
+    margin: 20px;
+    // padding: 5px;
+}
+
+.project-show-description > p {
+    margin: 20px;
+    padding: 5px
+}
+
+.project-show-steps {
+    width: 80%;
 }

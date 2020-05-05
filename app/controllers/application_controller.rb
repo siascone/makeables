@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include ActionView::Rendering
   helper_method :current_user, :logged_in?
 
   def login!(user)

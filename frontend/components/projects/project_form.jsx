@@ -90,9 +90,7 @@ class ProjectForm extends React.Component {
                 <div className='image-input'>
                     <div className='image-box'>
                         <div className={image}>
-                            <img src=""
-                                className='img_preview'
-                            />
+                            <img src="" className='img_preview' />
                         </div>
                         <label className="file-field-label">
                             ✚ Click to Add a Photo
@@ -103,6 +101,14 @@ class ProjectForm extends React.Component {
                         />
                     </div>
                 </div>
+                <div className='project-nav'>
+                    <div>Be sure to upload an image!</div>
+                    <button
+                        className='project-button'
+                        onClick={this.handleSubmit}>
+                        Publish
+                    </button>
+                </div>
                 <div className="project-description">
                     <label>Project Description</label>
                     <input type='textbox'
@@ -110,20 +116,12 @@ class ProjectForm extends React.Component {
                         onChange={this.update('description')}
                     ></input>
                 </div>
-                <div className='project-nav'>
-                    <div></div>
-                    <button
-                        className='project-button'
-                        onClick={this.handleSubmit}>
-                        Publish
-                    </button>
-                </div>
                 
                 {this.renderErrors()}
                 <div className='steps-box'>
                     <div className='steps'>
                         <StepsIndexContainer />
-                        <div>
+                        <div className="add-step-container-box">
                             <AddStepContainer />
                         </div>
                     </div>
