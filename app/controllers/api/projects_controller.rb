@@ -27,15 +27,20 @@ class Api::ProjectsController < ApplicationController
 
     def update
         @project = selected_project
-        if params[:project][:project_photo]
-            if @project.update(project_params)
-                render :show
-            else
-                render json: @project.errors.full_messages, status: 422
-            end
+        # if params[:project][:project_photo]
+        # if !@project.project_photo
+        #     @project.project_photo = "http://www.example.com/"
+        # end
+
+        if @project.update(project_params)
+            render :show
         else
-            render json: ["Please Include a Photo"], status: 401
+            render json: @project.errors.full_messages, status: 422
         end
+
+        # else
+        #     render json: ["Please Include a Photo"], status: 401
+        # end
     end
 
     def destroy

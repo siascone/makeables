@@ -1104,34 +1104,6 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var label;
-      var input;
-      var photo;
-
-      if (this.props.project.photoUrl) {
-        label = null;
-        input = null;
-        photo = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "img_preview",
-          src: this.state.photoUrl,
-          alt: ""
-        });
-        this.projectImage = true;
-      } else {
-        label = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-          className: "file-field-label"
-        }, "\u271A Click to Add a Photo");
-        input = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-          type: "file",
-          className: "file-field",
-          onChange: this.previewFile
-        });
-        photo = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: "",
-          className: "img_preview"
-        });
-      }
-
       var image = 'hide-project-image';
 
       if (this.projectImage === true) {
@@ -1146,22 +1118,33 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         className: "image-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: image
-      }, photo), label, input)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "",
+        className: "img_preview"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "file-field-label"
+      }, "\u271A Click to Add a Photo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "file",
+        className: "file-field",
+        onChange: this.previewFile
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "project-nav"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Be sure to upload an image!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "project-button",
+        onClick: this.handleSubmit
+      }, "Publish")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-description"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Project Description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "textbox",
         placeholder: this.props.project.description,
         onChange: this.update('description')
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "project-nav"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "project-button",
-        onClick: this.handleSubmit
-      }, "Publish")), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "steps-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "steps"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_steps_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_add_step_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_steps_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "add-step-container-box"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_add_step_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)))));
     }
   }]);
 
@@ -1283,14 +1266,15 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
           username = _this$props.username,
           sessionId = _this$props.sessionId,
           userId = _this$props.userId;
-      var links;
+      var edit;
 
       if (sessionId === userId) {
-        links = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          onClick: this.remove
-        }, "Delete"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        edit = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           to: "/projects/".concat(project.id, "/edit")
-        }, "Edit"));
+        }, "Edit");
+        {
+          /* <button onClick={this.remove}>Delete</button> */
+        }
       }
 
       if (!project) return null;
@@ -1298,7 +1282,7 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
         className: "project-show-main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-show-title-by"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, project.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "by ", username, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, links)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, project.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "by ", username, " ", edit)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-show-image"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: project.photoUrl,
@@ -1871,15 +1855,24 @@ var Step = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Heading"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "add-step-box"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "add-step-heading-box"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Heading"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "add-step-heading",
         type: "text",
         placeholder: "Add a heading to this step",
         onChange: this.update('heading')
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Body"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "add-step-body-box"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Body"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "add-step-body",
         type: "textbox",
         placeholder: "What happens in this step?",
         onChange: this.update('body')
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "add-step-button",
         onClick: this.handleSubmit
       }, "Add Step"));
     }

@@ -23,12 +23,11 @@ class ProjectShow extends React.Component {
 
     render() {
         const {project, username, sessionId, userId} = this.props;
-        let links
+        let edit
         if (sessionId === userId) {
-            links = <div>
-                <button onClick={this.remove}>Delete</button>
-                <Link to={`/projects/${project.id}/edit`}>Edit</Link>
-            </div>
+            edit = <Link to={`/projects/${project.id}/edit`}>Edit</Link>
+                {/* <button onClick={this.remove}>Delete</button> */}
+                
         }
         
         if (!project) return null;
@@ -36,8 +35,8 @@ class ProjectShow extends React.Component {
             <div className='project-show-main'>
                 <div className='project-show-title-by'>
                     <h1>{project.title}</h1>
-                    <h2>by {username} </h2>
-                    <div>{links}</div>
+                    <h2>by {username} {edit}</h2>
+                    
                 </div>
                 <div className='project-show-image'>
                     <img src={project.photoUrl} alt=""/>

@@ -1,0 +1,46 @@
+.add-step-container-box {
+    display: flex;
+    justify-content: center;
+}
+
+.add-step-box {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 80%;
+    align-self: center;
+}
+
+.add-step-heading-box, .add-step-body-box {
+    display: flex;
+}
+
+.add-step-heading-box label{
+    margin: 5px;
+}
+
+.add-step-body-box label {
+    margin: 5px;
+}
+
+.add-step-heading-box input {
+    margin: 5px;
+    width: 65%;
+    height: 15px;
+    border-radius: 5px;
+}
+
+.add-step-body-box input {
+    margin: 5px;
+    width: 65%;
+    border-radius: 5px;
+    height: 15px;
+}
+
+.add-step-button {
+    height: 30px;
+    width: 100px;
+    border-radius: 5px;
+    margin: 5px;
+}

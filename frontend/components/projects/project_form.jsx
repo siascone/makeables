@@ -79,26 +79,6 @@ class ProjectForm extends React.Component {
     }
 
     render() {
-        let label
-        let input
-        let photo
-
-        if (this.props.project.photoUrl) {
-            label = null
-            input = null
-            photo = <img className="img_preview" src={this.state.photoUrl} alt=""/>
-            this.projectImage = true
-        } else {
-            label = <label className="file-field-label">
-                        ✚ Click to Add a Photo
-                    </label>
-            input = <input type="file"
-                        className='file-field'
-                        onChange={this.previewFile}
-                    />
-            photo = <img src="" className='img_preview' />
-        }
-
         let image = 'hide-project-image';
         if (this.projectImage === true) {
             image = 'show-project-image';
@@ -110,11 +90,24 @@ class ProjectForm extends React.Component {
                 <div className='image-input'>
                     <div className='image-box'>
                         <div className={image}>
-                            {photo}
+                            <img src="" className='img_preview' />
                         </div>
-                        {label}
-                        {input}
+                        <label className="file-field-label">
+                            ✚ Click to Add a Photo
+                        </label>
+                        <input type="file"
+                            className='file-field'
+                            onChange={this.previewFile}
+                        />
                     </div>
+                </div>
+                <div className='project-nav'>
+                    <div>Be sure to upload an image!</div>
+                    <button
+                        className='project-button'
+                        onClick={this.handleSubmit}>
+                        Publish
+                    </button>
                 </div>
                 <div className="project-description">
                     <label>Project Description</label>
@@ -123,20 +116,12 @@ class ProjectForm extends React.Component {
                         onChange={this.update('description')}
                     ></input>
                 </div>
-                <div className='project-nav'>
-                    <div></div>
-                    <button
-                        className='project-button'
-                        onClick={this.handleSubmit}>
-                        Publish
-                    </button>
-                </div>
                 
                 {this.renderErrors()}
                 <div className='steps-box'>
                     <div className='steps'>
                         <StepsIndexContainer />
-                        <div>
+                        <div className="add-step-container-box">
                             <AddStepContainer />
                         </div>
                     </div>
