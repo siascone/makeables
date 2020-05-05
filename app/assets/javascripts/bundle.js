@@ -1129,10 +1129,12 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         onChange: this.previewFile
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-nav"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Be sure to upload an image!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "edit-buttons"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "project-button",
         onClick: this.handleSubmit
-      }, "Publish")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Publish"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-description"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Project Description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "textbox",
@@ -1263,18 +1265,25 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           project = _this$props.project,
+          projectId = _this$props.projectId,
           username = _this$props.username,
           sessionId = _this$props.sessionId,
           userId = _this$props.userId;
       var edit;
+      var del;
 
       if (sessionId === userId) {
-        edit = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-          to: "/projects/".concat(project.id, "/edit")
-        }, "Edit");
-        {
-          /* <button onClick={this.remove}>Delete</button> */
-        }
+        edit = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "edit-btn-div"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/projects/".concat(projectId, "/edit")
+        }, "Edit"));
+        del = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "delete-btn-div"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "delete-button",
+          onClick: this.remove
+        }, "Delete"));
       }
 
       if (!project) return null;
@@ -1282,7 +1291,9 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
         className: "project-show-main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-show-title-by"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, project.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "by ", username, " ", edit)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, project.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "by ", username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "edit-delete-btns"
+      }, edit, " ", del)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-show-image"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: project.photoUrl,
@@ -1320,6 +1331,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   var project = state.entities.projects[ownProps.match.params.id];
+  var projectId = ownProps.match.params.id;
   var username = null;
   var userId = null;
   var sessionId = null;
@@ -1331,6 +1343,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 
   return {
     project: project,
+    projectId: projectId,
     username: username,
     userId: userId,
     sessionId: sessionId
@@ -1538,7 +1551,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     loginDemoUser: function loginDemoUser() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["login"])({
-        username: "sixstringsloud",
+        username: "demo",
         password: 'password'
       }));
     },

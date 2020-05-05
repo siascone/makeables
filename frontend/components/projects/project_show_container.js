@@ -4,6 +4,7 @@ import {fetchProject, deleteProject, fetchAllProjects} from '../../actions/proje
 
 const mapStateToProps = (state, ownProps) => {
     let project = state.entities.projects[ownProps.match.params.id]
+    let projectId = ownProps.match.params.id
     let username = null;
     let userId = null;
     let sessionId = null;
@@ -15,6 +16,7 @@ const mapStateToProps = (state, ownProps) => {
     }
     return {
     project: project,
+    projectId: projectId,
     username: username,
     userId: userId,
     sessionId: sessionId

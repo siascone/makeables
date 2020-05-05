@@ -41,7 +41,7 @@ scalloped_frets = Project.create!(user_id: spencer.id, title: "Scallop your Guit
 three_d_printed_snorkel = Project.create!(user_id: spencer.id, title: "3D Printed Snorkel", description: "Snorkeling is sublime. A cheap water activity that makes the incredible world of the ocean available to anyone. It is so wonderful to see young kids surface suddenly after realizing they have seen a fish under them for the first time. Its simplicity of breathing under the ocean surface with a tube masks some of its risks. Sudden Snorkel Death (SSD) -- the loss of life with this activity is surprisingly common. About one death every two weeks here in Hawaii. The common interpretation of why this happens is usually: Snorkeling While Old. But, how do explain a 30 y.o. snorkeling death that occurred last month here? The easiest way to get a feeling for the risks is to actually perform the experiment everyone things of--take a garden hose down as far as you can in the pool and take a breath. I have done this with a lot of people and none can breath in adequately in a little over a foot of water! This is naturally a curve of breathing that starts off normal at the surface and declines rapidly based on body shape and sucking abilities--the human body unlike a snorkeling elephant is very limited. The other obvious problem is the dead space involved in snorkel design. An average human breath is about 500cc. There is about 150 cc of dead space in each breath--the area of your respiratory system that has expired air still stuck in it and must be cleared before fresh air enters the lungs. The average snorkel adds about 180 cc of dead space to this stack and so way over half of your next breath is old stuff and not the oxygen you need. Your breaths get smaller as you go down and contain less oxygen and the urgency to exhale--because holding a breath in is so much harder--shortens the exhalation time, all causing you to breath much more rapidly. What could go wrong?
 
 Snorkels can be designed to get rid of this dead space by the use of valves that separate incoming from outgoing air. This was first mentioned in one of the original patents on a snorkel from 1941. Snorkels with valves are not common so if you want one and have a 3D printer I will show you how to build one. Disclaimer: Build and use at your own risk---if a simple tube can cause your demise imagine what this design could do.",category_id: three_d_printing.id) 
-chess_table = Project.create!(user_id: spencer.id, title: "How to Make a Chess/Checkers Table", description: "Hi, have I got a fun instructable for your! Today We are making an outdoor checkers/chess table with an old table bottom we found on the side of the road and some plywood leftover from a flooring project.
+chess_table = Project.create!(user_id: alice.id, title: "How to Make a Chess/Checkers Table", description: "Hi, have I got a fun instructable for your! Today We are making an outdoor checkers/chess table with an old table bottom we found on the side of the road and some plywood leftover from a flooring project.
 
 Note: After the table is finished you can either use existing checker pieces or make your own with a few simple tools.
 
@@ -77,7 +77,7 @@ Painters tape
 Outdoor Paint - I used red, black, and white for the table and black, white, gold, and silver for the checkers
 
 Paintbrushes", category_id: furnature.id)
-gopro_nosecone = Project.create!(user_id: spencer.id, title: "Model Rocket With GoPro Nose Cone", description: "Several years ago I made this: GoPro Model Rocket.
+gopro_nosecone = Project.create!(user_id: nemo.id, title: "Model Rocket With GoPro Nose Cone", description: "Several years ago I made this: GoPro Model Rocket.
 
 It was completely scratch-built and very complicated, and I've been nagging myself ever since to make an easier, better version. And this is it!
 
@@ -88,7 +88,7 @@ Modifications were made to the kit to allow carrying a camera, with the main cha
 The design was very simple to create, even with me being a complete novice to 3D designing and printing.
 
 The rocket has been flown successfully many times now. Read on for all the details!",category_id: science.id)
-halfpipe = Project.create!(user_id: spencer.id, title: "Build a Backyard Halfpipe", description: "Let's build a mini ramp! Wait...what is that, exactly?!
+halfpipe = Project.create!(user_id: alec.id, title: "Build a Backyard Halfpipe", description: "Let's build a mini ramp! Wait...what is that, exactly?!
 
 A Mini Ramp is a skateboard ramp, think halfpipe, that is smaller than six feet tall and doesn't contain any vert, meaning that it doesn't go vertical in the sloped transition. The DIY mini ramp we're building here is 3 feet tall, 12 feet wide, and 24 feet long. It's the perfect size for casual skating and is awesome for beginners and experts alike.
 
@@ -123,7 +123,7 @@ Exterior Latex Paint
 1.5 inch Exterior Screws
 1/2 inch Galvanized Bolts/Nuts/Washers
 12x12x8 Concrete Footings", category_id: outdoor.id)
-pergola = Project.create!(user_id: spencer.id, title: "The Perfect Pergola", description: "Building a pergola is a quick way to add a touch of class to your outdoor space, and it's certainly something a homeowner can tackle by him or herself, and can even finish in a couple of days if sufficiently motivated. Additionally, for those who aren't very experienced in building things with wood, this is a good starter project to develop skills that will readily transfer to other projects.
+pergola = Project.create!(user_id: lizzy.id, title: "The Perfect Pergola", description: "Building a pergola is a quick way to add a touch of class to your outdoor space, and it's certainly something a homeowner can tackle by him or herself, and can even finish in a couple of days if sufficiently motivated. Additionally, for those who aren't very experienced in building things with wood, this is a good starter project to develop skills that will readily transfer to other projects.
 
 I'll note right away that I was able to build this pergola in two days; however, I've done this sort of thing a few times now, and I have a lot of power tools that make the job easier. If your skills aren't high and/or you have a limited tool set, it will take longer. Don't despair though - this still makes a great fair-weather weekend project that can be built over a couple weeks.
 
@@ -183,22 +183,22 @@ Hand clamps very helpful for providing third or fourth hands
 Router
 45-deg router chamfer bit
 Flush trim plunge router bit, ~1/2 inch dia. x ~1/2 inch depth", category_id: outdoor.id)
-spool = Project.create!(user_id: spencer.id, title: "How to Spool a Fishing Reel", description: "Hi, I am Josh Gebhart. I have been fishing for 10 years and I have helped people get into fishing. You will feel more confident in reeling that proud angler knowing you spooled the reel correctly. Most people do not know how to spool a reel properly. I will be showing the steps on how to spool a fishing reel. Research shows that there are 49 million anglers in the United States but not all of them know how to spool a reel.", category_id: outdoor.id)
-solar_balloon = Project.create!(user_id: spencer.id, title: "Solar Balloon", description: "Let's make a solar balloon that floats with the power of hot air! This is the perfect backyard activity for a sunny day. A few common trash bags taped together can become a science experiment and entertaining way to spend an afternoon.
+spool = Project.create!(user_id: larry.id, title: "How to Spool a Fishing Reel", description: "Hi, I am Josh Gebhart. I have been fishing for 10 years and I have helped people get into fishing. You will feel more confident in reeling that proud angler knowing you spooled the reel correctly. Most people do not know how to spool a reel properly. I will be showing the steps on how to spool a fishing reel. Research shows that there are 49 million anglers in the United States but not all of them know how to spool a reel.", category_id: outdoor.id)
+solar_balloon = Project.create!(user_id: joe.id, title: "Solar Balloon", description: "Let's make a solar balloon that floats with the power of hot air! This is the perfect backyard activity for a sunny day. A few common trash bags taped together can become a science experiment and entertaining way to spend an afternoon.
 
 The black color of the bags absorbs the sun's energy, heating up the air inside. The color of an object correlates with the wavelengths of light it absorbs and reflects. Black absorbs the most wavelengths, while white absorbs the fewest. Red absorbs all but the red wavelengths, and so forth for other colors. Black is the most efficient color for converting light energy into heat energy, which is then transferred to the air inside the closed balloon. The hot air is less dense than the surrounding air, causing the balloon to float up, supporting its own weight. This same physics powers hot air that balloons you can ride in. It's the principle of buoyancy— once the air inside heats up and expands, our balloon weighs less than the air it displaces because it is less dense. This project demonstrates how solar radiation can be used to create heat, and a fun day outside.
 
 This project is part of my free Solar Class, where you can learn more ways to harness the sun's energy through engraving and solar panels.
 
 To keep up with what I'm working on, follow me on YouTube, Instagram, Twitter, Pinterest, and subscribe to my newsletter.", category_id: science.id)
-wood_trivits = Project.create!(user_id: spencer.id, title: "Make Your Own Trivets", description: "The urge to make some new trivets came upon me...
+wood_trivits = Project.create!(user_id: scott.id, title: "Make Your Own Trivets", description: "The urge to make some new trivets came upon me...
 
 I made some out of solid wood -- those are quite simple and straightforward to make. They were intended as prototypes, but turned out good enough to keep.
 
 The others were a bit more involved to build.
 
 They are made of two layers of laminated strips of wood. One key design choice is that the two layers of wood are arranged so they are oriented perpendicular to each other. This gives an interesting look, but should also help with wood stability, since I have in effect created a custom piece of plywood.", category_id: craft.id)
-arduino_grow_box = Project.create!(user_id: spencer.id , title: "Arduino Aeroponics Growth System", description: "For the Grow Beyond Earth contest, I wanted to design a gardening system that had functionality and efficiency at the forefront of it’s features. This system is enclosed by a plexiglass cube but unlike other traditional bottom-up enclosures this has a floating cylinder center serving as the plant bed. The cylindrical design maximizes plantable surface area and free outward growth in two directions. The hallow cylinder's center serves as the housing for the plant's root systems and the hydroponic mist system. The system is completely sealed unless ventilated to recover unused fluids. For use in gravity, a suction device must be placed on the bottom to drain excess fluids. In space however, a suction pump can be placed opposite of the water lines and feed back into the space stations water recovery system. The watering system is Arduino based and completely automatic to ensure plants only receive the water they need to thrive. I opted for the aeroponics system because they have been known to increase growth speed and yields for vegetative and flowering plants while conserving an incredible amount of water in the process. Aeroponics has a wide range of other benefits including improved disease control, nutrient feeding, and overall usability. This Aeroponics system can be used throughout the entire lifecycle of plants from seed to harvest.
+arduino_grow_box = Project.create!(user_id: jane.id , title: "Arduino Aeroponics Growth System", description: "For the Grow Beyond Earth contest, I wanted to design a gardening system that had functionality and efficiency at the forefront of it’s features. This system is enclosed by a plexiglass cube but unlike other traditional bottom-up enclosures this has a floating cylinder center serving as the plant bed. The cylindrical design maximizes plantable surface area and free outward growth in two directions. The hallow cylinder's center serves as the housing for the plant's root systems and the hydroponic mist system. The system is completely sealed unless ventilated to recover unused fluids. For use in gravity, a suction device must be placed on the bottom to drain excess fluids. In space however, a suction pump can be placed opposite of the water lines and feed back into the space stations water recovery system. The watering system is Arduino based and completely automatic to ensure plants only receive the water they need to thrive. I opted for the aeroponics system because they have been known to increase growth speed and yields for vegetative and flowering plants while conserving an incredible amount of water in the process. Aeroponics has a wide range of other benefits including improved disease control, nutrient feeding, and overall usability. This Aeroponics system can be used throughout the entire lifecycle of plants from seed to harvest.
 
 This design can be scaled for larger operations with multiple cubes. For example, there can be a cube with multiple cylinders with LEDs in between for germination and early plant life. Then a model like this one can be used up until harvest.
 
@@ -234,10 +234,10 @@ Supplies:
 30x 2 inch Net pots
 
 30x 2 inch foam cloning collars", category_id: arduino.id)
-led_shpere = Project.create!(user_id: spencer.id, title: "Freeform LED Sphere", description: "My holiday project is done! Everybody is crazy about LED cubes. I wanted to create one myself, but I wanted to make it an even bigger challenge and since I am not limited by the use of circuit boards, I've decided to make an LED ball.
+led_shpere = Project.create!(user_id: beno.id, title: "Freeform LED Sphere", description: "My holiday project is done! Everybody is crazy about LED cubes. I wanted to create one myself, but I wanted to make it an even bigger challenge and since I am not limited by the use of circuit boards, I've decided to make an LED ball.
 
 It took me 24 hours to solder and one long night to finish. But it was worth it. It's nice when lit and even nicer when not. Enjoy!", category_id: arduino.id)
-nixie_clock = Project.create!(user_id: spencer.id, title: "Make Your Own Retro Nixie Clock!" , description: "In this project I will show you how to create a retro nixie clock. That means I will show you how you can control nixie tubes with a high voltage DC power supply and then I will combine 4 nixie tubes with an Arduino, a Real Time Clock (RTC) and a custom 3D printed enclosure in order to create the nixie clock. Let's get started!", category_id: arduino.id)
+nixie_clock = Project.create!(user_id: hayden.id, title: "Make Your Own Retro Nixie Clock!" , description: "In this project I will show you how to create a retro nixie clock. That means I will show you how you can control nixie tubes with a high voltage DC power supply and then I will combine 4 nixie tubes with an Arduino, a Real Time Clock (RTC) and a custom 3D printed enclosure in order to create the nixie clock. Let's get started!", category_id: arduino.id)
 friendship_bracelet = Project.create!(user_id: spencer.id, title: "Make a Friendship Bracelet", description: "Things to keep in mind:
 
 Scissors are sharp, be careful when using them.
@@ -255,7 +255,7 @@ c. Scissors
 d. Ruler
 
 e. Table", category_id: craft.id)
-analog_synth = Project.create!(user_id: spencer.id, title: "Analog Synthesizer", description: "Analog synthesizers are very cool, but also quite difficult to make.
+analog_synth = Project.create!(user_id: ryan.id, title: "Analog Synthesizer", description: "Analog synthesizers are very cool, but also quite difficult to make.
 
 So I wanted to make one as simple as it can get, so its functioning can be easily understandable.
 
@@ -268,13 +268,13 @@ Stylophone!
 In this instructable we will learn how to make it and we will learn how it works.
 
 The instructable is meant for beginner to intermediate electronics enthusiasts.", category_id: instruments.id)
-bike_chain = Project.create!(user_id: spencer.id, title: "How to Clean a Bike Chain", description: "Disclaimer: Riding a bicycle can be dangerous, never ride out of your limits and always wear the appropriate amount of protective equipment. When handling certain chemicals for chain maintenance follow all manufactures safety precautions and wear proper protective equipment such as safety glasses, gloves etc.
+bike_chain = Project.create!(user_id: christopher.id, title: "How to Clean a Bike Chain", description: "Disclaimer: Riding a bicycle can be dangerous, never ride out of your limits and always wear the appropriate amount of protective equipment. When handling certain chemicals for chain maintenance follow all manufactures safety precautions and wear proper protective equipment such as safety glasses, gloves etc.
 
 A bicycle chain is the direct link between the power you put in through your legs and feet to the pedals and to the rear wheel for forward movement. It is important to keep the chain in good condition to optimize shifting performance and maximize its service life. Without proper cleaning and lubricating the chain will collect dirt and debris causing premature wear which can led to degraded shifting performance and eventually breakage, possibly leaving you stranded miles from home or your car. Intervals of how often the chain should be services depends on your style of riding, riding conditions and usage. Regardless, the following instructions are applicable to all styles of riders and bicycles, including but not limited to road, mountain, BMX, casual etc.
 
 Supplies:
 Safety Glasses, Nitrile Gloves, Chain Pliers, Chain Breaker (Optional), Chain inspection tool, Container such as plastic bottle or old Tupperware Mineral Spirits or other degreaser, Old t-shirt or rag, New chain pin (if not using quick link), Air compressor and air nozzle (Optional), Pliers, Chain Lubricant", category_id: outdoor.id)
-tie_knots = Project.create!(user_id: spencer.id, title: "Knot Training Knot Box", description: "Hi all, this project was the results of several things. My involvement with the Boy Scouts of America, my love for knot tying and lastly and more importantly being unemployed for three months. Its amazing what you can accomplish when you are actively trying to find work.
+tie_knots = Project.create!(user_id: mary.id, title: "Knot Training Knot Box", description: "Hi all, this project was the results of several things. My involvement with the Boy Scouts of America, my love for knot tying and lastly and more importantly being unemployed for three months. Its amazing what you can accomplish when you are actively trying to find work.
 
 I had already made other knot tying stations for the Troop I was involved with along with a few knot boards. I also developed a Knot Sure™ tying program to help scouts and adult leaders too. More about that at the end.
 
@@ -309,23 +309,23 @@ visualizer = Project.create!(user_id: spencer.id, title: "Making a Visualizer", 
 Unfortunately, most of us don't have an expensive oscilloscope lying around. This is where the TV comes in. Because analog televisions and oscilloscope displays operate on the same basic principles, it is possible to repurpose the former into the latter with a bit of wire and some know-how. The result is a very simple oscilloscope that is able to display the audio signals in the range of about 100 to 3000 Hertz. This is why I have dubbed my creation an audio visualizer instead of an oscilloscope.
 
 As always, I encourage you to try this project out yourself, even if you don't have much experience with electronics. The build ended up being super simple and it should only take about an hour or so if you have everything at your disposal.", category_id: science.id)
-extinguisher = Project.create!(user_id: spencer.id, title: "Fire Extinguisher Mini Fridge", description: "Everyone likes to enjoy an ice cold soda on a hot day. Even if that hot day is filled with flames. In this Instructable, I'll show you how to turn an old, empty fire extinguisher into a stylish mini fridge. Full disclosure, don't expect to be putting out any fires with this any time soon.", category_id: science.id)
-gas_turbine = Project.create!(user_id: spencer.id, title: "DIY Gas Turbine", description: "I do not recommend anybody to try any of this, but if you are going to try it, this is the way you should do it.
+extinguisher = Project.create!(user_id: alice.id, title: "Fire Extinguisher Mini Fridge", description: "Everyone likes to enjoy an ice cold soda on a hot day. Even if that hot day is filled with flames. In this Instructable, I'll show you how to turn an old, empty fire extinguisher into a stylish mini fridge. Full disclosure, don't expect to be putting out any fires with this any time soon.", category_id: science.id)
+gas_turbine = Project.create!(user_id: nemo.id, title: "DIY Gas Turbine", description: "I do not recommend anybody to try any of this, but if you are going to try it, this is the way you should do it.
 
 This instructable deals with how to build a gas turbine in 5 steps. Each step deals with an aspect of the project and a suggested design solution, based on what I tried myself that worked.
 
 *Rough* Grabcad model:
 
 https://grabcad.com/library/300mm-flame-tube-funnel-mod-1", category_id: science.id)
-tesla_coil = Project.create!(user_id: spencer.id, title: "Tesla Coil", description: "The Makerspace at Østfold University College were holding an competition where the theme was to make something with an WOW-factor, so our group decided to make an tesla coil.
+tesla_coil = Project.create!(user_id: lizzy.id, title: "Tesla Coil", description: "The Makerspace at Østfold University College were holding an competition where the theme was to make something with an WOW-factor, so our group decided to make an tesla coil.
 
 Just a tl;dr:
 
 the project was built with no prior knowledge on tesla coils so the results were not what we were hoping for, becasue we could only get it to light up halogen light tube.", category_id: science.id)
-stirling_engine = Project.create!(user_id: spencer.id, title: "Stirling Cycle Engine", description: "This Instructable  will describe a model Stirling cycle engine I built. More importantly, it will list design criteria, materials of construction, and tips so that you can build one of your own design.
+stirling_engine = Project.create!(user_id: alec.id, title: "Stirling Cycle Engine", description: "This Instructable  will describe a model Stirling cycle engine I built. More importantly, it will list design criteria, materials of construction, and tips so that you can build one of your own design.
 
 This type engine is called a low temperature difference (LTD) Stirling engine, and there are several ways to build one, some of which are described in other Instructables on this site.", category_id: science.id)
-theremin_organ_synth = Project.create!(user_id: spencer.id, title: "Theremin, Organ and APC Synths", description: "Today, we are going to be using 555 timers to create some musical instruments! We will be building a theremin, organ, and an Atari Punk Console. I used this activity in my classroom to celebrate graduating from discrete components to integrated circuits. This activity made a great segway into the rest of the course after covering the fundamentals of resistor-capacitor (RC) circuits and semiconductors. I had never seen students so frantically solving algebraic equations to compute the perfect capacitance values to tune their instruments to the correct frequencies before the performances. This activity is a lot of fun and teaches many aspects of circuit design. It also taught me the importance of adding volume knobs to circuits that make noise. You learn that very quickly in a room filled with a dozen screeching theremins!
+theremin_organ_synth = Project.create!(user_id: larry.id, title: "Theremin, Organ and APC Synths", description: "Today, we are going to be using 555 timers to create some musical instruments! We will be building a theremin, organ, and an Atari Punk Console. I used this activity in my classroom to celebrate graduating from discrete components to integrated circuits. This activity made a great segway into the rest of the course after covering the fundamentals of resistor-capacitor (RC) circuits and semiconductors. I had never seen students so frantically solving algebraic equations to compute the perfect capacitance values to tune their instruments to the correct frequencies before the performances. This activity is a lot of fun and teaches many aspects of circuit design. It also taught me the importance of adding volume knobs to circuits that make noise. You learn that very quickly in a room filled with a dozen screeching theremins!
 
 This project requires a little bit of hardware knowledge, some knowledge of RC circuits, and some breadboarding. If you aren't familiar with 555 timers, that's fine! I will teach you everything you need to know about 555 timers in the first section.
 
