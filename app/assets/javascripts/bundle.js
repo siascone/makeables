@@ -1181,7 +1181,10 @@ var ProjectIndexItem = function ProjectIndexItem(props) {
       alt: ""
     });
   } else {
-    image = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Image not Rendered");
+    image = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      src: "https://pbs.twimg.com/profile_images/846770514374737920/rKl8JMPT_400x400.jpg",
+      alt: ""
+    });
   }
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
