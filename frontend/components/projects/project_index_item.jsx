@@ -6,7 +6,7 @@ const ProjectIndexItem = props => {
         if (props.project.photoUrl) {
             image = <img src={props.project.photoUrl} alt="" />
         } else {
-            image = <img src='https://pbs.twimg.com/profile_images/846770514374737920/rKl8JMPT_400x400.jpg' alt=""/>
+            image = <p>This project does not have an image associated with it.</p>
         }
     return (
         <div className='project-index-individual'>
