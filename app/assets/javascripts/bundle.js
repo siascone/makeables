@@ -1655,6 +1655,8 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this4 = this;
+
       var message;
       var wrapper;
 
@@ -1691,7 +1693,11 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         onClick: this.handleSubmit
       }, this.props.formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "demo",
-        onClick: this.props.loginDemoUser
+        onClick: function onClick(e) {
+          e.preventDefault();
+
+          _this4.props.loginDemoUser();
+        }
       }, "Guest Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "message"
       }, message), this.renderErrors()));
