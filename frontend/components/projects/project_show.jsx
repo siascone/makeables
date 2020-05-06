@@ -35,6 +35,12 @@ class ProjectShow extends React.Component {
                    </div>
                 
         }
+        // let image
+        // if (project.photoUrl === undefined) {
+        //     image = <img src="https://pbs.twimg.com/profile_images/846770514374737920/rKl8JMPT_400x400.jpg" alt=""/>
+        // } else {
+        //     image = <img src={project.photoUrl} alt="" />
+        // }
         
         if (!project) return null;
         return (
