@@ -109,11 +109,6 @@ class ProjectForm extends React.Component {
                             onClick={this.handleSubmit}>
                             Publish
                         </button>
-                        {/* <button 
-                            className="project-delete"
-                            onClick={this.props.deleteProject(this.props.project)}>
-                                Delete
-                        </button> */}
                     </div>
                 </div>
                 <div className="project-description">

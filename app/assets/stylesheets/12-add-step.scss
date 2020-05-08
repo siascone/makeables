@@ -1,6 +1,7 @@
 .add-step-container-box {
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 .add-step-box {
@@ -8,8 +9,9 @@
     flex-direction: column;
     border: 1px solid gray;
     border-radius: 5px;
-    width: 80%;
+    width: 100%;
     align-self: center;
+    align-content: center;
 }
 
 .add-step-heading-box, .add-step-body-box {
@@ -43,4 +45,8 @@
     width: 100px;
     border-radius: 5px;
     margin: 5px;
+}
+
+.step-box {
+    width: 100%;
 }
