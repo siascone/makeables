@@ -1274,8 +1274,9 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
 
       if (sessionId === userId) {
         edit = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "edit-btn-div"
+          className: "edit-button"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          className: "edit-link",
           to: "/projects/".concat(projectId, "/edit")
         }, "Edit"));
         del = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1284,22 +1285,18 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
           className: "delete-button",
           onClick: this.remove
         }, "Delete"));
-      } // let image
-      // if (project.photoUrl === undefined) {
-      //     image = <img src="https://pbs.twimg.com/profile_images/846770514374737920/rKl8JMPT_400x400.jpg" alt=""/>
-      // } else {
-      //     image = <img src={project.photoUrl} alt="" />
-      // }
-
+      }
 
       if (!project) return null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-show-main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-show-title-by"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, project.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "by ", username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "edit-delete-btns"
-      }, edit, " ", del)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, project.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "username-edit"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "username-show"
+      }, "Published by ", username, ":"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-show-image"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: project.photoUrl,
@@ -1308,7 +1305,9 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
         className: "project-show-description"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, project.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-show-steps"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_steps_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_steps_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "delete-edit-div"
+      }, edit, " ", del));
     }
   }]);
 

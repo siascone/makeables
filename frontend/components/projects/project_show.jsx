@@ -26,29 +26,25 @@ class ProjectShow extends React.Component {
         let edit;
         let del;
         if (sessionId === userId) {
-            edit = <div className="edit-btn-div">
-                        <Link to={`/projects/${projectId}/edit`}>Edit</Link>
+            edit = <div className='edit-button'>
+                    <Link className='edit-link' to={`/projects/${projectId}/edit`}>Edit</Link>
                    </div>
+                   
             del =  <div className='delete-btn-div'>
-                        {/* <label for='delete-button'>Delete</label> */}
                         <button className="delete-button" onClick={this.remove}>Delete</button>
                    </div>
                 
         }
-        // let image
-        // if (project.photoUrl === undefined) {
-        //     image = <img src="https://pbs.twimg.com/profile_images/846770514374737920/rKl8JMPT_400x400.jpg" alt=""/>
-        // } else {
-        //     image = <img src={project.photoUrl} alt="" />
-        // }
+
         
         if (!project) return null;
         return (
             <div className='project-show-main'>
                 <div className='project-show-title-by'>
                     <h1>{project.title}</h1>
-                    <h2>by {username}</h2>
-                    <div className='edit-delete-btns'>{edit} {del}</div>
+                    <div className='username-edit'>
+                        <div className='username-show'>Published by {username}:</div>
+                    </div>
                     
                 </div>
                 <div className='project-show-image'>
@@ -59,6 +55,9 @@ class ProjectShow extends React.Component {
                 </div>
                 <div className='project-show-steps'>
                     <StepsIndexContainer />
+                </div>
+                <div className="delete-edit-div">
+                    {edit} {del}
                 </div>
             </div>
         )

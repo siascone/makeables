@@ -16,25 +16,35 @@
     
 }
 
-.project-show-title-by > h2 > link {
-    border-left: 1px solid gray;
-}
 
-.edit-delete-btns {
+
+.delete-edit-div {
     display: flex;
-    // align-items: center;
-    // justify-content: space-between;
+    min-width: 200px;
+    justify-content: space-between;
+    margin: 7px;
 }
 
-.edit-btn-div, .delete-btn-div {
-    margin: 5px
+
+ .edit-link {
+    text-decoration: none;
+    border-bottom: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 28px;
+    width: 50px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    color: gray;
 }
 
-.delete-btn-div > button {
-    display: hidden;
-    border: none;
-    text-decoration: underline;
-    padding: 0;
+.delete-button {
+    height: 30px;
+    width: 70px;
+    border-radius: 5px;
+    color: gray;
+    border: 1px solid gray;
 }
 
 
@@ -43,7 +53,6 @@
     justify-content: center;
 }
 .project-show-image :first-child {
-    // height:75%;
     width: 75%;
     border-radius: 6px;
     overflow: hidden;
@@ -57,7 +66,7 @@
     text-align: center;
     margin: 0 0 10px;
 }
-.project-show-title-by > h2 {
+.username-show {
     color: #999;
     font-size: 14px;
     line-height: 25px;
@@ -66,16 +75,20 @@
 }
 
 .project-show-description {
-    width: 80%;
-    margin: 20px;
+    max-width: 80%;
+    // margin-top: 25px;
     // padding: 5px;
 }
 
 .project-show-description > p {
-    margin: 20px;
+    margin: 15px;
     padding: 5px
 }
 
 .project-show-steps {
     width: 80%;
+}
+
+.username-edit {
+    display: flex;
 }
