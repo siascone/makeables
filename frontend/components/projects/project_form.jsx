@@ -86,7 +86,7 @@ class ProjectForm extends React.Component {
         
         return (
             <div className='project-main'>
-                <div>{this.props.project.title}</div>
+                <div className='project-title'>{this.props.project.title}</div>
                 <div className='image-input'>
                     <div className='image-box'>
                         <div className={image}>
@@ -112,11 +112,11 @@ class ProjectForm extends React.Component {
                     </div>
                 </div>
                 <div className="project-description">
-                    <label>Project Description</label>
-                    <input type='textbox'
+                    <div>Project Description</div>
+                    <textarea
                         placeholder={this.props.project.description}
                         onChange={this.update('description')}
-                    ></input>
+                    ></textarea>
                 </div>
                 
                 {this.renderErrors()}

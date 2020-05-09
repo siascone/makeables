@@ -1112,7 +1112,9 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-main"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.project.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "project-title"
+      }, this.props.project.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "image-input"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "image-box"
@@ -1136,8 +1138,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         onClick: this.handleSubmit
       }, "Publish"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-description"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Project Description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "textbox",
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Project Description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         placeholder: this.props.project.description,
         onChange: this.update('description')
       })), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
