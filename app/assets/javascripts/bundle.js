@@ -1883,20 +1883,20 @@ var Step = /*#__PURE__*/function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "add-step-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "add-step-fields"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "add-step-heading-box"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Heading"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Heading"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         className: "add-step-heading",
-        type: "text",
         placeholder: "Add a heading to this step",
         onChange: this.update('heading')
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "add-step-body-box"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Body"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Body"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         className: "add-step-body",
-        type: "textbox",
         placeholder: "What happens in this step?",
         onChange: this.update('body')
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "add-step-button",
         onClick: this.handleSubmit
       }, "Add Step"));

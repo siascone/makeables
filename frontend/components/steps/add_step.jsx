@@ -36,19 +36,22 @@ class Step extends React.Component {
 
         return (
             <div className='add-step-box'>
-                <div className="add-step-heading-box">
-                    <label>Heading</label>
-                    <input className="add-step-heading" type="text"
-                        placeholder='Add a heading to this step'
-                        onChange={this.update('heading')}
-                    />
-                </div>
-                <div className="add-step-body-box">
-                <label>Body</label>
-                    <input className="add-step-body" type='textbox'
-                        placeholder='What happens in this step?'
-                        onChange={this.update('body')}
-                    ></input>
+                <div className='add-step-fields'>
+                    <div className="add-step-heading-box">
+                        <div>Heading</div>
+                        <textarea className="add-step-heading"
+                            placeholder='Add a heading to this step'
+                            onChange={this.update('heading')}
+                        >
+                        </textarea>
+                    </div>
+                    <div className="add-step-body-box">
+                    <div>Body</div>
+                        <textarea className="add-step-body"
+                            placeholder='What happens in this step?'
+                            onChange={this.update('body')}
+                        ></textarea>
+                    </div>
                 </div>
                 <button className="add-step-button" onClick={this.handleSubmit}>Add Step</button>
             </div>
