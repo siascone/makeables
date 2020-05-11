@@ -554,12 +554,17 @@ var Footer = /*#__PURE__*/function (_React$Component) {
         className: "links"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "My Sites"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "https://github.com/siascone"
-      }, "GitHub"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fab fa-github"
+      }), "GitHub"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "https://www.linkedin.com/in/spencer-iascone-56b28b62"
-      }, "LinkedIn"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "angel",
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fab fa-linkedin"
+      }), "LinkedIn"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "https://angel.co/u/spencer-iascone"
-      }, "Angel List"))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fab fa-angellist"
+      }), "AngelList"))));
     }
   }]);
 
