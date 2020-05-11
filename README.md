@@ -57,7 +57,8 @@ Once a project is published Rails Active Storage is utilized to access and uploa
 
 ## Planned Future Features
 
-* Steps - Users can add step by step instructions and photos to their projects.
+* Steps Photo - Users can add a photo to their steps.
+* Step Numbering - As users add steps the steps are automatically numbered in assending order.
 * Comments - Users can comment on projects, ask and answer questions and provid feedback.
 * Categories - Users can classify their projects as well as browse projects by subject. 
 * Search - Users can search for projects by keyword(s). 
