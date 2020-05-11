@@ -40,7 +40,7 @@ class Step extends React.Component {
                     <div className="add-step-heading-box">
                         <div>Heading</div>
                         <textarea className="add-step-heading"
-                            placeholder='Add a heading to this step'
+                            placeholder='Step number and title'
                             onChange={this.update('heading')}
                         >
                         </textarea>
@@ -48,12 +48,15 @@ class Step extends React.Component {
                     <div className="add-step-body-box">
                     <div>Body</div>
                         <textarea className="add-step-body"
-                            placeholder='What happens in this step?'
+                            placeholder='Step details'
                             onChange={this.update('body')}
                         ></textarea>
                     </div>
                 </div>
-                <button className="add-step-button" onClick={this.handleSubmit}>Add Step</button>
+                <div className='add-step-submit'>
+                    <div></div>
+                    <button className="add-step-button" onClick={this.handleSubmit}>Add Step</button>
+                </div>
             </div>
         )
     }
