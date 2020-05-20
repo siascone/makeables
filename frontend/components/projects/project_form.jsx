@@ -83,7 +83,15 @@ class ProjectForm extends React.Component {
         if (this.projectImage === true) {
             image = 'show-project-image';
         }
-        
+        let label
+        if (this.props.project.photoUrl) {
+            label = <img className="file-field-label" src={this.props.project.photoUrl} alt=""/>
+        } else {
+            label = <label className="file-field-label">
+                ✚ Click to Add a Photo
+                        </label>
+        }
+       
         return (
             <div className='project-main'>
                 <div className='project-title'>{this.props.project.title}</div>
@@ -92,9 +100,7 @@ class ProjectForm extends React.Component {
                         <div className={image}>
                             <img src="" className='img_preview' />
                         </div>
-                        <label className="file-field-label">
-                            ✚ Click to Add a Photo
-                        </label>
+                        {label}
                         <input type="file"
                             className='file-field'
                             onChange={this.previewFile}
@@ -107,7 +113,7 @@ class ProjectForm extends React.Component {
                         <button
                             className='project-button'
                             onClick={this.handleSubmit}>
-                            Publish
+                            Submit
                         </button>
                     </div>
                 </div>

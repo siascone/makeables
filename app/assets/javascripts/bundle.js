@@ -1118,6 +1118,20 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         image = 'show-project-image';
       }
 
+      var label;
+
+      if (this.props.project.photoUrl) {
+        label = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "file-field-label",
+          src: this.props.project.photoUrl,
+          alt: ""
+        });
+      } else {
+        label = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+          className: "file-field-label"
+        }, "\u271A Click to Add a Photo");
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1131,9 +1145,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "",
         className: "img_preview"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "file-field-label"
-      }, "\u271A Click to Add a Photo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), label, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "file",
         className: "file-field",
         onChange: this.previewFile
@@ -1144,7 +1156,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "project-button",
         onClick: this.handleSubmit
-      }, "Publish"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Submit"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-description"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Project Description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         placeholder: this.props.project.description,
