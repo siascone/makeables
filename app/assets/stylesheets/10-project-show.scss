@@ -75,14 +75,16 @@
 }
 
 .project-show-description {
-    max-width: 80%;
+    width: 80%;
+    line-height: 1.6;
+    text-align: center;
     // margin-top: 25px;
     // padding: 5px;
 }
 
 .project-show-description > p {
     margin: 15px;
-    padding: 5px
+    // padding: 5px
 }
 
 .project-show-steps {

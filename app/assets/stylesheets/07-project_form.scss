@@ -44,6 +44,13 @@
     position: relative;
 }
 
+.file-field-image {
+    position: relative;
+    height: 100px;
+    width: 100px;
+    border-radius: 6px;
+}
+
 
 .file-field:hover {
     cursor: pointer;
@@ -56,6 +63,16 @@
     min-width: 500px;
     position: absolute;
 }
+
+.file-field-no-input {
+    display: hidden;
+    opacity: 0;
+    height: 116px;
+    min-width: 500px;
+    position: absolute;
+}
+
+
 
 
 .hide-project-image {
@@ -89,7 +106,8 @@
     border: 1px solid lightgray;
     border-top: none;
     background: #eee;
-    padding: 0 20px 10px 20px;
+    padding: 10px 10px 10px 10px;
+    border-radius: 0 0 6px 6px;
     
 }
 
@@ -97,13 +115,13 @@
     display: flex;
 }
 
-.project-button, .project-delete, .cancle-edits {
+.project-button, .return {
     border-radius: 6px;
     height: 34px;
     padding: 6px 12px;
     margin-left: 5px;
     background: #F6F6F6;
-    color: #333333;
+    color: gray;
 }
 
 .project-button:hover {
@@ -122,7 +140,7 @@
     align-items: center;
     min-width: 500px;
     border: 1px solid lightgray;
-    border-radius: 0 0 6px 6px;
+    // border-radius: 0 0 6px 6px;
     border-top: none;
     background: white;
     padding-top: 20px;

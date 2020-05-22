@@ -12,7 +12,7 @@ User.destroy_all
 spencer = User.create!(username: 'sixstringsloud', password: 'password')
 alice = User.create!(username: 'alpal', password: 'password')
 nemo = User.create!(username: 'captainNemo', password: 'password')
-demo = User.create!(username: 'demo', password: 'password')
+demo = User.create!(username: 'guest', password: 'password')
 lizzy = User.create!(username: 'lizzy123', password: 'password')
 alec = User.create!(username: 'alec321', password: 'password')
 larry = User.create!(username: 'lalarry', password: 'password')

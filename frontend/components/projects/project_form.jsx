@@ -16,6 +16,7 @@ class ProjectForm extends React.Component {
         this.previewFile = this.previewFile.bind(this);
         this.click = this.click.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
+        this.return = this.return.bind(this)
     }
 
     update(field) {
@@ -37,6 +38,11 @@ class ProjectForm extends React.Component {
             .then((project) => {
                 this.props.history.push(`/projects/${projectId}`)
             });
+    }
+
+    return(e) {
+        e.preventDefault()
+        this.props.history.push(`/projects/${projectId}`)
     }
 
     previewFile(e) {
@@ -80,10 +86,31 @@ class ProjectForm extends React.Component {
 
     render() {
         let image = 'hide-project-image';
+        let photoMessage
         if (this.projectImage === true) {
             image = 'show-project-image';
+            photoMessage = "✚ Click to Change Photo"
+        } else {
+            photoMessage = "✚ Click to Add a Photo"
         }
-        
+
+
+        let label
+        let input
+        if (this.props.project.photoUrl) {
+            label = <img className="file-field-image" src={this.props.project.photoUrl} alt=""/>
+            input = <div className='file-field-no-input'></div>
+        } else {
+            label = <label className="file-field-label">
+                        {photoMessage}
+                    </label>
+            input = <input type="file"
+                        className='file-field'
+                        onChange={this.previewFile}
+                    />
+        }
+
+       
         return (
             <div className='project-main'>
                 <div className='project-title'>{this.props.project.title}</div>
@@ -92,25 +119,11 @@ class ProjectForm extends React.Component {
                         <div className={image}>
                             <img src="" className='img_preview' />
                         </div>
-                        <label className="file-field-label">
-                            ✚ Click to Add a Photo
-                        </label>
-                        <input type="file"
-                            className='file-field'
-                            onChange={this.previewFile}
-                        />
+                        {label}
+                        {input}
                     </div>
                 </div>
-                <div className='project-nav'>
-                    <div></div>
-                    <div className="edit-buttons">
-                        <button
-                            className='project-button'
-                            onClick={this.handleSubmit}>
-                            Publish
-                        </button>
-                    </div>
-                </div>
+                
                 <div className="project-description">
                     <div>Project Description</div>
                     <textarea
@@ -126,6 +139,23 @@ class ProjectForm extends React.Component {
                         <div className="add-step-container-box">
                             <AddStepContainer />
                         </div>
+                    </div>
+                </div>
+
+                <div className='project-nav'>
+                    <div className="edit-buttons">
+                        <button
+                            className='return'
+                            onClick={this.handleSubmit}>
+                            Return
+                        </button>
+                    </div>
+                    <div className="edit-buttons">
+                        <button
+                            className='project-button'
+                            onClick={this.handleSubmit}>
+                            Submit
+                        </button>
                     </div>
                 </div>
             </div>
