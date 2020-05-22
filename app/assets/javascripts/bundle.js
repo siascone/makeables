@@ -1024,6 +1024,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
     _this.previewFile = _this.previewFile.bind(_assertThisInitialized(_this));
     _this.click = _this.click.bind(_assertThisInitialized(_this));
     _this.renderErrors = _this.renderErrors.bind(_assertThisInitialized(_this));
+    _this["return"] = _this["return"].bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1053,6 +1054,12 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
       this.props.updateProject(formData, projectId).then(function (project) {
         _this3.props.history.push("/projects/".concat(projectId));
       });
+    }
+  }, {
+    key: "return",
+    value: function _return(e) {
+      e.preventDefault();
+      this.props.history.push("/projects/".concat(projectId));
     }
   }, {
     key: "previewFile",
@@ -1113,23 +1120,36 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var image = 'hide-project-image';
+      var photoMessage;
 
       if (this.projectImage === true) {
         image = 'show-project-image';
+        photoMessage = "✚ Click to Change Photo";
+      } else {
+        photoMessage = "✚ Click to Add a Photo";
       }
 
       var label;
+      var input;
 
       if (this.props.project.photoUrl) {
         label = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "file-field-label",
+          className: "file-field-image",
           src: this.props.project.photoUrl,
           alt: ""
+        });
+        input = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "file-field-no-input"
         });
       } else {
         label = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
           className: "file-field-label"
-        }, "\u271A Click to Add a Photo");
+        }, photoMessage);
+        input = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "file",
+          className: "file-field",
+          onChange: this.previewFile
+        });
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1145,18 +1165,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "",
         className: "img_preview"
-      })), label, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "file",
-        className: "file-field",
-        onChange: this.previewFile
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "project-nav"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "edit-buttons"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "project-button",
-        onClick: this.handleSubmit
-      }, "Submit"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), label, input)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-description"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Project Description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         placeholder: this.props.project.description,
@@ -1167,7 +1176,19 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         className: "steps"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_steps_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "add-step-container-box"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_add_step_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_add_step_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "project-nav"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "edit-buttons"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "return",
+        onClick: this.handleSubmit
+      }, "Return")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "edit-buttons"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "project-button",
+        onClick: this.handleSubmit
+      }, "Submit"))));
     }
   }]);
 
@@ -1577,7 +1598,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     loginDemoUser: function loginDemoUser() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["login"])({
-        username: "demo",
+        username: "guest",
         password: 'password'
       }));
     },
@@ -1777,7 +1798,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     loginDemoUser: function loginDemoUser() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["login"])({
-        username: "sixstringsloud",
+        username: "guest",
         password: 'password'
       }));
     },
@@ -1892,7 +1913,7 @@ var Step = /*#__PURE__*/function (_React$Component) {
         body: this.state.body,
         project_id: this.props.project_id
       };
-      this.props.createStep(step);
+      this.props.createStep(step); // this.setState({body: "", heading: ""})
     } // componentWillUnmount() {
     //     this.props.clearErrors()
     // }

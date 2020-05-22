@@ -26,6 +26,7 @@ class Step extends React.Component {
         }
 
         this.props.createStep(step)
+        // this.setState({body: "", heading: ""})
     }
 
     // componentWillUnmount() {
