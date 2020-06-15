@@ -15,7 +15,7 @@ class CommentsIndex extends React.Component {
         return (
             <div className='comment-index-main'>
                 {
-                    comments.map((comment, idx) =(
+                    comments.map((comment, idx) => (
                         <CommentIndexItem
                             comment={comment}
                             user={users[comment.user_id]}

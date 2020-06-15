@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import StepsIndexContainer from '../steps/steps_index_container';
+import CommentsIndexContainer from '../comments/comments_index_container';
 
 
 class ProjectShow extends React.Component {
@@ -55,6 +56,9 @@ class ProjectShow extends React.Component {
                 </div>
                 <div className='project-show-steps'>
                     <StepsIndexContainer />
+                </div>
+                <div className='project-comments'>
+                    {/* <CommentsIndexContainer /> */}
                 </div>
                 <div className="delete-edit-div">
                     {edit} {del}
