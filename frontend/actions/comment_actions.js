@@ -59,7 +59,7 @@ export const updateComment = (commentId) => dispatch => {
         });
 };
 
-export const deleteComment = (commentID) => dispatch => {
+export const deleteComment = (commentId) => dispatch => {
     return CommentsApiUtil.deleteComment(commentId)
         .then((comment) = dispatch(removeComment(comment.id)));
 };

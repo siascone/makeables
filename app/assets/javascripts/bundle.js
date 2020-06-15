@@ -184,7 +184,7 @@ var updateComment = function updateComment(commentId) {
     });
   };
 };
-var deleteComment = function deleteComment(commentID) {
+var deleteComment = function deleteComment(commentId) {
   return function (dispatch) {
     return _util_comments_api_util__WEBPACK_IMPORTED_MODULE_1__["deleteComment"](commentId).then(comment = dispatch(removeComment(comment.id)));
   };
