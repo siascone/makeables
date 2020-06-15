@@ -3,7 +3,8 @@ import CommentIndexItem from './comment_index_item';
 
 class CommentsIndex extends React.Component {
     componentDidMount() {
-        this.props.fetchAllComments();
+        // update comments to be nested with projects like steps are
+        this.props.fetchAllComments(this.props.projectId);
     }
 
     render() {

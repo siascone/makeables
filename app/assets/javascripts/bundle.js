@@ -672,7 +672,8 @@ var CommentsIndex = /*#__PURE__*/function (_React$Component) {
   _createClass(CommentsIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchAllComments();
+      // update comments to be nested with projects like steps are
+      this.props.fetchAllComments(this.props.projectId);
     }
   }, {
     key: "render",
