@@ -8,6 +8,7 @@ const mapStateToProps = state => {
         comment: {
             body: ''
         },
+        formType: "New Comment",
         errors: Object.values(state.errors.comment)
     })
 };

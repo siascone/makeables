@@ -8,6 +8,7 @@ const mapStateToProps = (state, ownProps) => {
     return ({
         comment: state.entities.comments,
         errors: Object.values(state.errors.comment),
+        formType: "Edit Comment",
         history: ownProps.history
     });
 };
