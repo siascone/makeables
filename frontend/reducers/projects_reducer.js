@@ -1,5 +1,8 @@
-import { RECEIVE_ALL_PROJECTS, RECEIVE_PROJECT, 
-    REMOVE_PROJECT } from "../actions/project_actions";
+import { 
+    RECEIVE_ALL_PROJECTS, 
+    RECEIVE_PROJECT, 
+    REMOVE_PROJECT 
+} from "../actions/project_actions";
 
 const projectsReducer = (state = {}, action) => {
     Object.freeze(state);
