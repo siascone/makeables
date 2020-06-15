@@ -49,6 +49,16 @@ export const createComment = (comment) => dispatch => {
         });
 };
 
+export const updateComment = (commentId) => dispatch => {
+    return CommentsApiUtil.updateComment(commentId)
+        .then((res) => {
+            dispatch(reciveComment(res))
+            return res.comment
+        }, (errors) => {
+            dispatch(receiveErrors(errors.responseJSON));
+        });
+};
+
 export const deleteComment = (commentID) => dispatch => {
     return CommentsApiUtil.deleteComment(commentId)
         .then((comment) = dispatch(removeComment(comment.id)));
