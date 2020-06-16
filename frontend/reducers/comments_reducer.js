@@ -10,9 +10,10 @@ const commentsReducer = (state = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_ALL_COMMENTS:
-            return action.comments;
+            return action.comments.comments;
         case RECEIVE_COMMENT:
-            return {[action.comment.id]: action.comment};
+            newState[action.comment.id] = action.comment;
+            return newState
         case REMOVE_COMMENT:
             delete newState[action.commentId];
             return newState

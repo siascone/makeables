@@ -3,8 +3,8 @@ import React from 'react';
 // import { Link } from 'react-router-dom';
 
 const StepsIndexItem = props => {
-    let id = props.step.id
-    let numSteps = props.step.length
+    // let id = props.step.id
+    // let numSteps = props.step.length
     if (props.step.project_id === props.projectId) {
         return (
             <div className='step-box'>

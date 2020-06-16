@@ -1,6 +1,5 @@
 import React from 'react';
-import CommentIndexItem from './comment_index_item';
-
+import CommentsIndexItem from './comments_index_item';
 
 class CommentsIndex extends React.Component {
     componentDidMount() {
@@ -8,16 +7,17 @@ class CommentsIndex extends React.Component {
     }
 
     render() {
+        const { comments, projectId } = this.props;
+
         if (this.props.comments.length <= 1) {
             return null;
         }
 
-        const { comments, projectId } = this.props;
         return (
             <div className='comment-index-item'>
                 {
                     comments.map((comment, idx) => (
-                        <CommentIndexItem
+                        <CommentsIndexItem
                             comment={comment}
                             projectId={projectId}
                             key={idx}

@@ -720,33 +720,6 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./frontend/components/comments/comment_index_item.jsx":
-/*!*************************************************************!*\
-  !*** ./frontend/components/comments/comment_index_item.jsx ***!
-  \*************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-
-var CommentIndexItem = function CommentIndexItem(props) {
-  if (props.comment.project_id === props.project_id) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      classname: "comment-box"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "comment-item"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, props.comment.body)));
-  }
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (CommentIndexItem);
-
-/***/ }),
-
 /***/ "./frontend/components/comments/comments_index.jsx":
 /*!*********************************************************!*\
   !*** ./frontend/components/comments/comments_index.jsx ***!
@@ -758,7 +731,7 @@ var CommentIndexItem = function CommentIndexItem(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _comment_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./comment_index_item */ "./frontend/components/comments/comment_index_item.jsx");
+/* harmony import */ var _comments_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./comments_index_item */ "./frontend/components/comments/comments_index_item.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -797,17 +770,18 @@ var CommentsIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this$props = this.props,
+          comments = _this$props.comments,
+          projectId = _this$props.projectId;
+
       if (this.props.comments.length <= 1) {
         return null;
       }
 
-      var _this$props = this.props,
-          comments = _this$props.comments,
-          projectId = _this$props.projectId;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comment-index-item"
       }, comments.map(function (comment, idx) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comment_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           comment: comment,
           projectId: projectId,
           key: idx
@@ -868,6 +842,35 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(_comments_index__WEBPACK_IMPORTED_MODULE_2__["default"])));
+
+/***/ }),
+
+/***/ "./frontend/components/comments/comments_index_item.jsx":
+/*!**************************************************************!*\
+  !*** ./frontend/components/comments/comments_index_item.jsx ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var CommentIndexItem = function CommentIndexItem(props) {
+  if (props.comment.project_id === props.projectId) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      classname: "comment-box"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "comment-item"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, props.comment.body)));
+  } else {
+    return null;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (CommentIndexItem);
 
 /***/ }),
 
@@ -2612,9 +2615,8 @@ __webpack_require__.r(__webpack_exports__);
 // import { Link } from 'react-router-dom';
 
 var StepsIndexItem = function StepsIndexItem(props) {
-  var id = props.step.id;
-  var numSteps = props.step.length;
-
+  // let id = props.step.id
+  // let numSteps = props.step.length
   if (props.step.project_id === props.projectId) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "step-box"
@@ -2943,8 +2945,6 @@ var commentErrorsReducer = function commentErrorsReducer() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/comment_actions */ "./frontend/actions/comment_actions.js");
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 var commentsReducer = function commentsReducer() {
@@ -2955,10 +2955,11 @@ var commentsReducer = function commentsReducer() {
 
   switch (action.type) {
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_COMMENTS"]:
-      return action.comments;
+      return action.comments.comments;
 
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_COMMENT"]:
-      return _defineProperty({}, action.comment.id, action.comment);
+      newState[action.comment.id] = action.comment;
+      return newState;
 
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_COMMENT"]:
       delete newState[action.commentId];
