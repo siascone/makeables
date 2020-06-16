@@ -4,7 +4,7 @@ class CommentForm extends React.Component {
     constructor(props) {
         super(props)
 
-        this.state = this.props.comment
+        this.state = this.props
 
         this.handleSubment = this.handleSubment.bind(this);
 
@@ -17,19 +17,22 @@ class CommentForm extends React.Component {
     }
 
     handleSubment(e) {
-        e.prevenetDefault();
+        e.preventDefault();
 
         let comment = {
             body: this.state.body,
             user_id: this.state.user_id,
             project_id: this.state.project_id
         }
+        debugger
 
-        if (this.state.formType === "New Comment") {
-            this.props.createProject(comment)
-        } else if (this.state.formType === "Edit Comment") {
-            this.props.updateProject(comment)
-        }
+        // if (this.state.formType === "New Comment") {
+        //     this.props.createComment(comment)
+        // } else if (this.state.formType === "Edit Comment") {
+        //     this.props.updateComment(comment)
+        // }
+
+        this.props.createComment(comment)
         
     }
 
@@ -54,10 +57,10 @@ class CommentForm extends React.Component {
     render() {
         return (
             <div className='comments-box'>
-                <p>Comments</p>
-                <div className='comments'>
+                {/* <p>Comments</p> */}
+                {/* <div className='comments'>
                     <CommentsIndexContainer />
-                </div>
+                </div> */}
                 <div className='new-comment-box' >
                     <textarea
                         placeholder='Add your Comment'
@@ -75,3 +78,5 @@ class CommentForm extends React.Component {
         )
     }
 }
+
+export default CommentForm;

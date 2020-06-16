@@ -29,7 +29,7 @@ export const clearErrors = () => ({
     type: CLEAR_ERRORS
 });
 
-export const fetchALLComments = (projectId) => dispatch => {
+export const fetchAllComments = (projectId) => dispatch => {
     return CommentsApiUtil.fetchAllComments(projectId)
         .then((comments) => dispatch(receiveAllComments(comments)));
 };

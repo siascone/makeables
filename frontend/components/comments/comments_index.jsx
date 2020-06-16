@@ -1,25 +1,25 @@
 import React from 'react';
 import CommentIndexItem from './comment_index_item';
 
+
 class CommentsIndex extends React.Component {
     componentDidMount() {
-        // update comments to be nested with projects like steps are
-        this.props.fetchAllComments(this.props.projectId);
+        return this.props.fetchAllComments(this.props.projectId);
     }
 
     render() {
-        if (this.props.comments.length <= 0) {
+        if (this.props.comments.length <= 1) {
             return null;
         }
 
-        const { comments, users } = this.props;
+        const { comments, projectId } = this.props;
         return (
-            <div className='comment-index-main'>
+            <div className='comment-index-item'>
                 {
                     comments.map((comment, idx) => (
                         <CommentIndexItem
                             comment={comment}
-                            user={users[comment.user_id]}
+                            projectId={projectId}
                             key={idx}
                         />
                     ))

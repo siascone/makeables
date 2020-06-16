@@ -2,6 +2,8 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import StepsIndexContainer from '../steps/steps_index_container';
 import CommentsIndexContainer from '../comments/comments_index_container';
+import CreateCommentFormContainer from '../comments/create_comment_form_container'
+import EditCommentFormContainer from '../comments/edit_comment_form_container'
 
 
 class ProjectShow extends React.Component {
@@ -58,7 +60,9 @@ class ProjectShow extends React.Component {
                     <StepsIndexContainer />
                 </div>
                 <div className='project-comments'>
-                    {/* <CommentsIndexContainer /> */}
+                    <CommentsIndexContainer />
+                    <CreateCommentFormContainer />
+                    {/* <EditCommentFormContainer /> */}
                 </div>
                 <div className="delete-edit-div">
                     {edit} {del}

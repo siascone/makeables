@@ -2,14 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import CommentForm from './comment_form';
 import {createComment, clearErrors } from '../../actions/comment_actions';
+import {withRouter} from 'react-router-dom'
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+    debugger
     return ({
-        comment: {
-            body: ''
-        },
-        formType: "New Comment",
-        errors: Object.values(state.errors.comment)
+        // formType: "New Comment",
+        project_id: ownProps.match.params.id,
+        user_id: state.session.id,
+        errors: Object.values(state.errors.comments)
     })
 };
 
@@ -18,5 +19,5 @@ const mapDispatchToProps = dispatch => ({
     clearErrors: () => dispatch(clearErrors())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CommentForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CommentForm));
 

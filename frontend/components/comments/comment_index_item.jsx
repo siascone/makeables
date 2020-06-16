@@ -1,13 +1,19 @@
 import React from 'react';
 const CommentIndexItem = props => {
-    return (
-        <div classname='comment-index-individual'>
-            <div className='comment-index-details'>
-                <p>{props.comment.body}</p>
-                <p>{props.user.username}</p>
+    
+    
+    if (props.comment.project_id === props.project_id) {
+        return (
+            <div classname='comment-box'>
+                <div className='comment-item'>
+                    <p>{props.comment.body}</p>
+                    {/* <p>{props.user.username}</p> */}
+                </div>
             </div>
-        </div>
-    )
+        )
+
+    }
+    
 }
 
 export default CommentIndexItem;
