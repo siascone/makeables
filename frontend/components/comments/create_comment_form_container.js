@@ -5,7 +5,6 @@ import {createComment, clearErrors } from '../../actions/comment_actions';
 import {withRouter} from 'react-router-dom'
 
 const mapStateToProps = (state, ownProps) => {
-    debugger
     return ({
         // formType: "New Comment",
         project_id: ownProps.match.params.id,

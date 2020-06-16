@@ -645,7 +645,7 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(CommentForm).call(this, props));
     _this.state = _this.props;
-    _this.handleSubment = _this.handleSubment.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -659,15 +659,14 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
       };
     }
   }, {
-    key: "handleSubment",
-    value: function handleSubment(e) {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
       e.preventDefault();
       var comment = {
         body: this.state.body,
         user_id: this.state.user_id,
         project_id: this.state.project_id
-      };
-      debugger; // if (this.state.formType === "New Comment") {
+      }; // if (this.state.formType === "New Comment") {
       //     this.props.createComment(comment)
       // } else if (this.state.formType === "Edit Comment") {
       //     this.props.updateComment(comment)
@@ -709,7 +708,7 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
         className: "new-comment-button"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "submit-comment",
-        onClick: this.handleSubment
+        onClick: this.handleSubmit
       }, "Submit"))));
     }
   }]);
@@ -894,7 +893,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  debugger;
   return {
     // formType: "New Comment",
     project_id: ownProps.match.params.id,
@@ -3448,6 +3446,7 @@ var fetchComment = function fetchComment(commentId) {
   });
 };
 var createComment = function createComment(comment) {
+  debugger;
   return $.ajax({
     url: '/api/projects/:project_id/comments',
     method: 'POST',

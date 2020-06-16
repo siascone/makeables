@@ -6,7 +6,7 @@ class CommentForm extends React.Component {
 
         this.state = this.props
 
-        this.handleSubment = this.handleSubment.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
 
     }
 
@@ -16,7 +16,7 @@ class CommentForm extends React.Component {
         }
     }
 
-    handleSubment(e) {
+    handleSubmit(e) {
         e.preventDefault();
 
         let comment = {
@@ -24,7 +24,6 @@ class CommentForm extends React.Component {
             user_id: this.state.user_id,
             project_id: this.state.project_id
         }
-        debugger
 
         // if (this.state.formType === "New Comment") {
         //     this.props.createComment(comment)
@@ -69,7 +68,7 @@ class CommentForm extends React.Component {
                     <div className='new-comment-button'>
                         <button 
                             className='submit-comment'
-                            onClick={this.handleSubment}>
+                            onClick={this.handleSubmit}>
                             Submit
                         </button>
                     </div>
