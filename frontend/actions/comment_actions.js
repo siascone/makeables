@@ -25,12 +25,12 @@ const receiveErrors = (errors) => ({
     type: RECEIVE_ERRORS,
     errors
 });
-const clearErrors = () => ({
+export const clearErrors = () => ({
     type: CLEAR_ERRORS
 });
 
-export const fetchALLComments = () => dispatch => {
-    return CommentsApiUtil.fetchAllComments()
+export const fetchALLComments = (projectId) => dispatch => {
+    return CommentsApiUtil.fetchAllComments(projectId)
         .then((comments) => dispatch(receiveAllComments(comments)));
 };
 
@@ -49,8 +49,8 @@ export const createComment = (comment) => dispatch => {
         });
 };
 
-export const updateComment = (commentId) => dispatch => {
-    return CommentsApiUtil.updateComment(commentId)
+export const updateComment = (comment) => dispatch => {
+    return CommentsApiUtil.updateComment(comment)
         .then((res) => {
             dispatch(reciveComment(res))
             return res.comment

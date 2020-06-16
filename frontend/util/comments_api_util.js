@@ -1,13 +1,13 @@
-export const fetchAllComments = () => (
+export const fetchAllComments = (projectId) => (
     $.ajax({
-        url: '/api/comments',
+        url: `/api/projects/${projectId}/comments`,
         method: 'GET'
     })
 );
 
 export const fetchComment = (commentId) => (
     $.ajax({
-        url: `/api/comments/${commentId}`,
+        url: `/api/projects/:project_id/comments/${commentId}`,
         method: 'GET',
         data: { commentId }
     })
@@ -16,17 +16,17 @@ export const fetchComment = (commentId) => (
 export const createComment = (comment) => {
     return(
         $.ajax({
-            url: '/api/comments',
+            url: '/api/projects/:project_id/comments',
             method: 'POST',
             data: { comment },
         })
     )
 };
 
-export const updateComment = (comment) => {
+export const updateComment = (comment, info) => {
     return (
         $.ajax({
-            url: `/api/comments/${comment.id}`,
+            url: `/api/projects/${info.projectId}/comments/${info.id}`,
             method: 'PATCH',
             data: { comment }
         })
@@ -35,7 +35,7 @@ export const updateComment = (comment) => {
 
 export const deleteComment = (commentId) => (
     $.ajax({
-        url: `/api/comments/${commentId}`,
+        url: `/api/projects/:project_id/comments/${commentId}`,
         method: 'DELETE',
         data: { commentId }
     })

@@ -90,7 +90,7 @@
 /*!*********************************************!*\
   !*** ./frontend/actions/comment_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_ALL_COMMENTS, RECEIVE_COMMENT, REMOVE_COMMENT, RECEIVE_ERRORS, CLEAR_ERRORS, fetchALLComments, fetchComment, createComment, updateComment, deleteComment */
+/*! exports provided: RECEIVE_ALL_COMMENTS, RECEIVE_COMMENT, REMOVE_COMMENT, RECEIVE_ERRORS, CLEAR_ERRORS, clearErrors, fetchALLComments, fetchComment, createComment, updateComment, deleteComment */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -100,6 +100,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_COMMENT", function() { return REMOVE_COMMENT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ERRORS", function() { return RECEIVE_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_ERRORS", function() { return CLEAR_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearErrors", function() { return clearErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchALLComments", function() { return fetchALLComments; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchComment", function() { return fetchComment; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createComment", function() { return createComment; });
@@ -149,10 +150,9 @@ var clearErrors = function clearErrors() {
     type: CLEAR_ERRORS
   };
 };
-
-var fetchALLComments = function fetchALLComments() {
+var fetchALLComments = function fetchALLComments(projectId) {
   return function (dispatch) {
-    return _util_comments_api_util__WEBPACK_IMPORTED_MODULE_1__["fetchAllComments"]().then(function (comments) {
+    return _util_comments_api_util__WEBPACK_IMPORTED_MODULE_1__["fetchAllComments"](projectId).then(function (comments) {
       return dispatch(receiveAllComments(comments));
     });
   };
@@ -174,9 +174,9 @@ var createComment = function createComment(comment) {
     });
   };
 };
-var updateComment = function updateComment(commentId) {
+var updateComment = function updateComment(comment) {
   return function (dispatch) {
-    return _util_comments_api_util__WEBPACK_IMPORTED_MODULE_1__["updateComment"](commentId).then(function (res) {
+    return _util_comments_api_util__WEBPACK_IMPORTED_MODULE_1__["updateComment"](comment).then(function (res) {
       dispatch(reciveComment(res));
       return res.comment;
     }, function (errors) {
@@ -2785,7 +2785,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _sessions_errors_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./sessions_errors_reducer */ "./frontend/reducers/sessions_errors_reducer.js");
 /* harmony import */ var _project_errors_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./project_errors_reducer */ "./frontend/reducers/project_errors_reducer.js");
-/* harmony import */ var _comment_errors_reducer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./comment_errors_reducer */ "./frontend/reducers/comment_errors_reducer.js");
+/* harmony import */ var _comment_errors_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./comment_errors_reducer */ "./frontend/reducers/comment_errors_reducer.js");
 /* harmony import */ var _steps_errors_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./steps_errors_reducer */ "./frontend/reducers/steps_errors_reducer.js");
 
 
@@ -2795,7 +2795,7 @@ __webpack_require__.r(__webpack_exports__);
 var errorsReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   session: _sessions_errors_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   project: _project_errors_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
-  comments: _comment_errors_reducer__WEBPACK_IMPORTED_MODULE_5__["default"],
+  comments: _comment_errors_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
   steps: _steps_errors_reducer__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (errorsReducer);
@@ -3201,15 +3201,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createComment", function() { return createComment; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateComment", function() { return updateComment; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteComment", function() { return deleteComment; });
-var fetchAllComments = function fetchAllComments() {
+var fetchAllComments = function fetchAllComments(projectId) {
   return $.ajax({
-    url: '/api/comments',
+    url: "/api/projects/".concat(projectId, "/comments"),
     method: 'GET'
   });
 };
 var fetchComment = function fetchComment(commentId) {
   return $.ajax({
-    url: "/api/comments/".concat(commentId),
+    url: "/api/projects/:project_id/comments/".concat(commentId),
     method: 'GET',
     data: {
       commentId: commentId
@@ -3218,16 +3218,16 @@ var fetchComment = function fetchComment(commentId) {
 };
 var createComment = function createComment(comment) {
   return $.ajax({
-    url: '/api/comments',
+    url: '/api/projects/:project_id/comments',
     method: 'POST',
     data: {
       comment: comment
     }
   });
 };
-var updateComment = function updateComment(comment) {
+var updateComment = function updateComment(comment, info) {
   return $.ajax({
-    url: "/api/comments/".concat(comment.id),
+    url: "/api/projects/".concat(info.projectId, "/comments/").concat(info.id),
     method: 'PATCH',
     data: {
       comment: comment
@@ -3236,7 +3236,7 @@ var updateComment = function updateComment(comment) {
 };
 var deleteComment = function deleteComment(commentId) {
   return $.ajax({
-    url: "/api/comments/".concat(commentId),
+    url: "/api/projects/:project_id/comments/".concat(commentId),
     method: 'DELETE',
     data: {
       commentId: commentId
