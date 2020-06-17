@@ -7,7 +7,7 @@ const CommentIndexItem = props => {
         return (
             <div classname='comment-box'>
                 <div className='comment-item'>
-                    <p>{props.comment.user_id}</p>
+                    <p>Comment by: {props.comment.user_id}</p>
                     <p>{props.comment.body}</p>
                 </div>
             </div>

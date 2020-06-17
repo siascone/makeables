@@ -870,7 +870,7 @@ var CommentIndexItem = function CommentIndexItem(props) {
       classname: "comment-box"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "comment-item"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, props.comment.user_id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, props.comment.body)));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Comment by: ", props.comment.user_id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, props.comment.body)));
   } else {
     return null;
   }
