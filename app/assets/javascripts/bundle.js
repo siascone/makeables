@@ -772,18 +772,21 @@ var CommentsIndex = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           comments = _this$props.comments,
-          projectId = _this$props.projectId;
+          projectId = _this$props.projectId,
+          users = _this$props.users;
 
       if (this.props.comments.length <= 1) {
         return null;
       }
 
+      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comment-index-item"
       }, comments.map(function (comment, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           comment: comment,
           projectId: projectId,
+          users: users,
           key: idx
         });
       }));
@@ -819,7 +822,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  var project = state.entities.projects[ownProps.match.params.id];
+  var project = state.entities.projects[ownProps.match.params.id]; // debugger
+  // can't get full user list to state here without damaging project show. work on
 
   if (project === undefined) {
     return {
@@ -828,7 +832,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   } else {
     return {
       comments: Object.values(state.entities.comments),
-      projectId: state.entities.projects[ownProps.match.params.id].id
+      projectId: state.entities.projects[ownProps.match.params.id].id,
+      users: state.entities.users
     };
   }
 };
@@ -860,11 +865,12 @@ __webpack_require__.r(__webpack_exports__);
 
 var CommentIndexItem = function CommentIndexItem(props) {
   if (props.comment.project_id === props.projectId) {
+    // debugger
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       classname: "comment-box"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "comment-item"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, props.comment.body)));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, props.comment.user_id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, props.comment.body)));
   } else {
     return null;
   }
@@ -1029,15 +1035,15 @@ var Footer = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "My Sites"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "https://github.com/siascone"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fab fa-github"
+        className: "fab fa-github"
       }), "GitHub"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "https://www.linkedin.com/in/spencer-iascone-56b28b62"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fab fa-linkedin"
+        className: "fab fa-linkedin"
       }), "LinkedIn"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "https://angel.co/u/spencer-iascone"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fab fa-angellist"
+        className: "fab fa-angellist"
       }), "AngelList"))));
     }
   }]);
@@ -1809,6 +1815,12 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
         }, "Delete"));
       }
 
+      var commentEntry = null;
+
+      if (sessionId) {
+        commentEntry = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments_create_comment_form_container__WEBPACK_IMPORTED_MODULE_4__["default"], null);
+      }
+
       if (!project) return null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-show-main"
@@ -1829,7 +1841,7 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
         className: "project-show-steps"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_steps_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-comments"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments_comments_index_container__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments_create_comment_form_container__WEBPACK_IMPORTED_MODULE_4__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Comments", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments_comments_index_container__WEBPACK_IMPORTED_MODULE_3__["default"], null), commentEntry), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "delete-edit-div"
       }, edit, " ", del));
     }
@@ -3447,7 +3459,6 @@ var fetchComment = function fetchComment(commentId) {
   });
 };
 var createComment = function createComment(comment) {
-  debugger;
   return $.ajax({
     url: '/api/projects/:project_id/comments',
     method: 'POST',

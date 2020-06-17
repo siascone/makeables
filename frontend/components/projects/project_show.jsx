@@ -39,6 +39,11 @@ class ProjectShow extends React.Component {
                 
         }
 
+        let commentEntry = null
+        if (sessionId) {
+            commentEntry = <CreateCommentFormContainer />
+        }
+
         
         if (!project) return null;
         return (
@@ -60,8 +65,9 @@ class ProjectShow extends React.Component {
                     <StepsIndexContainer />
                 </div>
                 <div className='project-comments'>
+                    Comments
                     <CommentsIndexContainer />
-                    <CreateCommentFormContainer />
+                    {commentEntry}
                 </div>
                 <div className="delete-edit-div">
                     {edit} {del}

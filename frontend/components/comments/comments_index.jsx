@@ -7,12 +7,12 @@ class CommentsIndex extends React.Component {
     }
 
     render() {
-        const { comments, projectId } = this.props;
+        const { comments, projectId, users } = this.props;
 
         if (this.props.comments.length <= 1) {
             return null;
         }
-
+        debugger
         return (
             <div className='comment-index-item'>
                 {
@@ -20,6 +20,7 @@ class CommentsIndex extends React.Component {
                         <CommentsIndexItem
                             comment={comment}
                             projectId={projectId}
+                            users={users}
                             key={idx}
                         />
                     ))

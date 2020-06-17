@@ -15,9 +15,9 @@ class Footer extends React.Component {
                     </div>
                     <div className='links'>
                         <h3>My Sites</h3>
-                        <a href='https://github.com/siascone'><i class="fab fa-github"></i>GitHub</a>
-                        <a href='https://www.linkedin.com/in/spencer-iascone-56b28b62'><i class="fab fa-linkedin"></i>LinkedIn</a>
-                        <a href="https://angel.co/u/spencer-iascone"><i class="fab fa-angellist"></i>AngelList</a>
+                        <a href='https://github.com/siascone'><i className="fab fa-github"></i>GitHub</a>
+                        <a href='https://www.linkedin.com/in/spencer-iascone-56b28b62'><i className="fab fa-linkedin"></i>LinkedIn</a>
+                        <a href="https://angel.co/u/spencer-iascone"><i className="fab fa-angellist"></i>AngelList</a>
                     </div>
                 </div>
                 {/* <div className='footer-row1'>
