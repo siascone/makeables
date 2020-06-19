@@ -772,21 +772,19 @@ var CommentsIndex = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           comments = _this$props.comments,
-          projectId = _this$props.projectId,
-          users = _this$props.users;
+          projectId = _this$props.projectId;
 
       if (this.props.comments.length <= 1) {
         return null;
-      }
+      } // debugger
 
-      debugger;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comment-index-item"
       }, comments.map(function (comment, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           comment: comment,
           projectId: projectId,
-          users: users,
           key: idx
         });
       }));
@@ -832,8 +830,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   } else {
     return {
       comments: Object.values(state.entities.comments),
-      projectId: state.entities.projects[ownProps.match.params.id].id,
-      users: state.entities.users
+      projectId: state.entities.projects[ownProps.match.params.id].id
     };
   }
 };
@@ -865,12 +862,12 @@ __webpack_require__.r(__webpack_exports__);
 
 var CommentIndexItem = function CommentIndexItem(props) {
   if (props.comment.project_id === props.projectId) {
-    // debugger
+    debugger;
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       classname: "comment-box"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "comment-item"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Comment by: ", props.comment.user_id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, props.comment.body)));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Comment by: ", props.comment.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, props.comment.body)));
   } else {
     return null;
   }

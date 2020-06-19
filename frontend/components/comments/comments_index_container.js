@@ -17,7 +17,6 @@ const mapStateToProps = (state, ownProps) => {
 
             comments: Object.values(state.entities.comments),
             projectId: state.entities.projects[ownProps.match.params.id].id,
-            users: state.entities.users
         }
     }
 

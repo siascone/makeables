@@ -11,7 +11,9 @@ class Api::CommentsController < ApplicationController
     end
 
     def create
+        # debugger
         @comment = Comment.new(comment_params)
+        # @comment.username = User.find_by_credentials(params[:user][:username], params[:user][:password]).username
         if @comment.save
             render :show
         else
@@ -46,6 +48,6 @@ class Api::CommentsController < ApplicationController
     end
 
     def comment_params
-        params.require(:comment).permit(:user_id, :project_id, :body)
+        params.require(:comment).permit(:user_id, :project_id, :body, :username)
     end
 end
