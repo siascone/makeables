@@ -6,10 +6,10 @@ json.comments do
     end
 end
 
-# json.users do 
-#     @comments.each do |comment|
-#         json.set! comment.user.id do
-#             json.extract! comment.user, :id, :username
-#         end
-#     end
-# end
+json.users do 
+    @comments.each do |comment|
+        json.set! comment.user.id do
+            json.extract! comment.user, :id, :username
+        end
+    end
+end

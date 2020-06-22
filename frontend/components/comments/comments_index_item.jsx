@@ -3,7 +3,7 @@ import React from 'react';
 const CommentIndexItem = props => {
 
     if (props.comment.project_id === props.projectId) {
-        debugger
+        // debugger
         return (
             <div classname='comment-box'>
                 <div className='comment-item'>
