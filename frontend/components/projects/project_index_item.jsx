@@ -5,6 +5,7 @@ const ProjectIndexItem = props => {
         let image
         if (props.project.photoUrl) {
             image = <img src={props.project.photoUrl} alt="" />
+                    
         } else {
             image = <p>This project does not have an image associated with it.</p>
         }

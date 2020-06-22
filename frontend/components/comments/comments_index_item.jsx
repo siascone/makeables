@@ -3,8 +3,7 @@ import React from 'react';
 const CommentIndexItem = props => {
     let delCom
     if (props.comment.user_id === props.sessionId) {
-        delCom = <button 
-                    >
+        delCom = <button>
                     Delete
                 </button>
     }
