@@ -11,8 +11,6 @@ class Api::CommentsController < ApplicationController
     end
 
     def create
-        # debugger
-        # @user = User.find_by_credentials(params[:user][:username], params[:user][:password])
         @comment = Comment.new(comment_params)
         @comment.username = current_user.username
         if @comment.save

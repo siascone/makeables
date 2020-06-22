@@ -772,7 +772,9 @@ var CommentsIndex = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           comments = _this$props.comments,
-          projectId = _this$props.projectId;
+          projectId = _this$props.projectId,
+          sessionId = _this$props.sessionId,
+          deleteComment = _this$props.deleteComment;
 
       if (this.props.comments.length <= 1) {
         return null;
@@ -785,6 +787,8 @@ var CommentsIndex = /*#__PURE__*/function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           comment: comment,
           projectId: projectId,
+          sessionId: sessionId,
+          deleteComment: deleteComment,
           key: idx
         });
       }));
@@ -820,8 +824,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  var project = state.entities.projects[ownProps.match.params.id]; // debugger
-  // can't get full user list to state here without damaging project show. work on
+  var project = state.entities.projects[ownProps.match.params.id];
 
   if (project === undefined) {
     return {
@@ -830,6 +833,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   } else {
     return {
       comments: Object.values(state.entities.comments),
+      sessionId: state.session.id,
       projectId: state.entities.projects[ownProps.match.params.id].id
     };
   }
@@ -839,6 +843,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchAllComments: function fetchAllComments(projectId) {
       return dispatch(Object(_actions_comment_actions__WEBPACK_IMPORTED_MODULE_3__["fetchAllComments"])(projectId));
+    },
+    deleteComment: function deleteComment(commentId) {
+      return dispatch(Object(_actions_comment_actions__WEBPACK_IMPORTED_MODULE_3__["deleteComment"])(commentId));
     }
   };
 };
@@ -861,13 +868,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var CommentIndexItem = function CommentIndexItem(props) {
+  var delCom;
+
+  if (props.comment.user_id === props.sessionId) {
+    delCom = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Delete");
+  }
+
   if (props.comment.project_id === props.projectId) {
-    // debugger
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      classname: "comment-box"
+      className: "comment-box"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "comment-item"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Comment by: ", props.comment.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, props.comment.body)));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Comment by: ", props.comment.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, props.comment.body), delCom));
   } else {
     return null;
   }
