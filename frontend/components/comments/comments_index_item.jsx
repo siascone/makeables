@@ -1,9 +1,17 @@
 import React from 'react';
 
 const CommentIndexItem = props => {
+
+    // function deleteCom(e) {
+    //     e.preventDefault();
+    //     props.deleteComment(props.comment.id)
+    // }
+
     let delCom
     if (props.comment.user_id === props.sessionId) {
-        delCom = <button>
+        delCom = <button 
+                    // onClick={deleteCom()}
+                    >
                     Delete
                 </button>
     }

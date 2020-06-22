@@ -186,7 +186,9 @@ var updateComment = function updateComment(comment) {
 };
 var deleteComment = function deleteComment(commentId) {
   return function (dispatch) {
-    return _util_comments_api_util__WEBPACK_IMPORTED_MODULE_1__["deleteComment"](commentId).then(comment = dispatch(removeComment(comment.id)));
+    return _util_comments_api_util__WEBPACK_IMPORTED_MODULE_1__["deleteComment"](commentId).then(function (comment) {
+      return dispatch(removeComment(comment.id));
+    });
   };
 };
 
@@ -868,6 +870,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var CommentIndexItem = function CommentIndexItem(props) {
+  // function deleteCom(e) {
+  //     e.preventDefault();
+  //     props.deleteComment(props.comment.id)
+  // }
   var delCom;
 
   if (props.comment.user_id === props.sessionId) {
