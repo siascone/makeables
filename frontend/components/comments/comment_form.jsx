@@ -4,7 +4,8 @@ class CommentForm extends React.Component {
     constructor(props) {
         super(props)
 
-        this.state = this.props
+        this.state = this.props.comment
+        this.state.body = ""
 
         this.handleSubmit = this.handleSubmit.bind(this);
 
@@ -32,14 +33,16 @@ class CommentForm extends React.Component {
         // }
 
         this.props.createComment(comment)
+
+        this.setState({body: ""})
         
     }
 
     renderErrors() {
-        if (this.props.errors.length > 0) {
+        if (this.props.comment.errors.length > 0) {
             return (
                 <div className='comment-errors'>
-                    {this.props.errors.map((error, i) => (
+                    {this.props.comment.errors.map((error, i) => (
                         <li key={`error ${i}`}>{error}</li>
                     ))}
                 </div>
@@ -50,7 +53,7 @@ class CommentForm extends React.Component {
     }
 
     componentWillUnmount() {
-        this.props.clearErrors()
+        this.props.comment.clearErrors()
     }
 
     render() {
@@ -62,7 +65,8 @@ class CommentForm extends React.Component {
                 </div> */}
                 <div className='new-comment-box' >
                     <textarea
-                        placeholder='Add your Comment'
+                        value={this.state.body}
+                        placeholder='Add your comment'
                         onChange={this.update('body')}>    
                     </textarea>
                     <div className='new-comment-button'>

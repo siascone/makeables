@@ -646,7 +646,8 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, CommentForm);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(CommentForm).call(this, props));
-    _this.state = _this.props;
+    _this.state = _this.props.comment;
+    _this.state.body = "";
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -675,14 +676,17 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
       // }
 
       this.props.createComment(comment);
+      this.setState({
+        body: ""
+      });
     }
   }, {
     key: "renderErrors",
     value: function renderErrors() {
-      if (this.props.errors.length > 0) {
+      if (this.props.comment.errors.length > 0) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "comment-errors"
-        }, this.props.errors.map(function (error, i) {
+        }, this.props.comment.errors.map(function (error, i) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
             key: "error ".concat(i)
           }, error);
@@ -694,7 +698,7 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
-      this.props.clearErrors();
+      this.props.comment.clearErrors();
     }
   }, {
     key: "render",
@@ -704,7 +708,8 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "new-comment-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
-        placeholder: "Add your Comment",
+        value: this.state.body,
+        placeholder: "Add your comment",
         onChange: this.update('body')
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "new-comment-button"
@@ -918,10 +923,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    // formType: "New Comment",
-    project_id: ownProps.match.params.id,
-    user_id: state.session.id,
-    errors: Object.values(state.errors.comments)
+    comment: {
+      project_id: ownProps.match.params.id,
+      user_id: state.session.id,
+      errors: Object.values(state.errors.comments)
+    }
   };
 };
 
@@ -2978,14 +2984,14 @@ var commentsReducer = function commentsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
-  var newState = Object.assign({}, state);
+  var newState = Object.assign({}, state); // debugger
 
   switch (action.type) {
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_COMMENTS"]:
       return action.comments.comments;
 
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_COMMENT"]:
-      newState[action.comment.id] = action.comment;
+      newState[action.comment.comment.id] = action.comment.comment;
       return newState;
 
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_COMMENT"]:

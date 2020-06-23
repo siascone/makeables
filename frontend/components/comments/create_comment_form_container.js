@@ -6,10 +6,11 @@ import {withRouter} from 'react-router-dom'
 
 const mapStateToProps = (state, ownProps) => {
     return ({
-        // formType: "New Comment",
-        project_id: ownProps.match.params.id,
-        user_id: state.session.id,
-        errors: Object.values(state.errors.comments)
+        comment: {
+            project_id: ownProps.match.params.id,
+            user_id: state.session.id,
+            errors: Object.values(state.errors.comments)
+        }
     })
 };
 
