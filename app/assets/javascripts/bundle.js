@@ -698,7 +698,7 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
-      this.props.comment.clearErrors();
+      this.props.clearErrors();
     }
   }, {
     key: "render",
@@ -2428,7 +2428,11 @@ var Step = /*#__PURE__*/function (_React$Component) {
         body: this.state.body,
         project_id: this.props.project_id
       };
-      this.props.createStep(step); // this.setState({body: "", heading: ""})
+      this.props.createStep(step);
+      this.setState({
+        body: "",
+        heading: ""
+      });
     } // componentWillUnmount() {
     //     this.props.clearErrors()
     // }
@@ -2444,12 +2448,14 @@ var Step = /*#__PURE__*/function (_React$Component) {
         className: "add-step-heading-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Heading"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         className: "add-step-heading",
+        value: this.state.heading,
         placeholder: "Step number and title",
         onChange: this.update('heading')
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "add-step-body-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Body"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         className: "add-step-body",
+        value: this.state.body,
         placeholder: "Step details",
         onChange: this.update('body')
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

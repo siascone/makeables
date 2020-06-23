@@ -26,7 +26,7 @@ class Step extends React.Component {
         }
 
         this.props.createStep(step)
-        // this.setState({body: "", heading: ""})
+        this.setState({body: "", heading: ""})
     }
 
     // componentWillUnmount() {
@@ -41,6 +41,7 @@ class Step extends React.Component {
                     <div className="add-step-heading-box">
                         <div>Heading</div>
                         <textarea className="add-step-heading"
+                            value={this.state.heading}
                             placeholder='Step number and title'
                             onChange={this.update('heading')}
                         >
@@ -49,6 +50,7 @@ class Step extends React.Component {
                     <div className="add-step-body-box">
                     <div>Body</div>
                         <textarea className="add-step-body"
+                            value={this.state.body}
                             placeholder='Step details'
                             onChange={this.update('body')}
                         ></textarea>
