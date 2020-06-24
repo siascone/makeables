@@ -4,6 +4,8 @@ import {
     REMOVE_PROJECT 
 } from "../actions/project_actions";
 
+import { RECEIVE_ALL_COMMENTS } from "../actions/comment_actions";
+
 const projectsReducer = (state = {}, action) => {
     Object.freeze(state);
     let newState = Object.assign({}, state);

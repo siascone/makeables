@@ -12,7 +12,6 @@ class CommentsIndex extends React.Component {
         if (this.props.comments.length <= 1) {
             return null;
         }
-        // debugger
         return (
             <div className='comment-index-item'>
                 {

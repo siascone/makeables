@@ -187,7 +187,7 @@ var updateComment = function updateComment(comment) {
 var deleteComment = function deleteComment(commentId) {
   return function (dispatch) {
     return _util_comments_api_util__WEBPACK_IMPORTED_MODULE_1__["deleteComment"](commentId).then(function (comment) {
-      return dispatch(removeComment(comment.id));
+      return dispatch(removeComment(comment.comment.id));
     });
   };
 };
@@ -326,7 +326,7 @@ var updateProject = function updateProject(project, projectId) {
 var deleteProject = function deleteProject(projectId) {
   return function (dispatch) {
     return _util_projects_api_util__WEBPACK_IMPORTED_MODULE_1__["deleteProject"](projectId).then(function (project) {
-      return dispatch(removeProject(project.id));
+      return dispatch(removeProject(project.project.id));
     });
   };
 };
@@ -785,8 +785,7 @@ var CommentsIndex = /*#__PURE__*/function (_React$Component) {
 
       if (this.props.comments.length <= 1) {
         return null;
-      } // debugger
-
+      }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comment-index-item"
@@ -872,29 +871,97 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var CommentIndexItem = function CommentIndexItem(props) {
-  // function deleteCom(e) {
-  //     e.preventDefault();
-  //     props.deleteComment(props.comment.id)
-  // }
-  var delCom;
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-  if (props.comment.user_id === props.sessionId) {
-    delCom = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Delete");
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+ // const CommentIndexItem = props => {
+//     // function deleteCom(e) {
+//     //     e.preventDefault();
+//     //     props.deleteComment(props.comment.id)
+//     // }
+//     let delCom
+//     if (props.comment.user_id === props.sessionId) {
+//         delCom = <button 
+//                     // onClick={deleteCom()}
+//                     >
+//                     Delete
+//                 </button>
+//     }
+//     if (props.comment.project_id === props.projectId) {
+//         return (
+//             <div className='comment-box'>
+//                 <div className='comment-item'>
+//                     <p>Comment by: {props.comment.username}</p>
+//                     <p>{props.comment.body}</p>
+//                     {delCom}
+//                 </div>
+//             </div>
+//         )
+//     } else {
+//         return null
+//     }
+// };
+
+var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
+  _inherits(CommentIndexItem, _React$Component);
+
+  function CommentIndexItem(props) {
+    var _this;
+
+    _classCallCheck(this, CommentIndexItem);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CommentIndexItem).call(this, props));
+    _this.state = _this.props.comment;
+    _this.deleteCom = _this.deleteCom.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
-  if (props.comment.project_id === props.projectId) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "comment-box"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "comment-item"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Comment by: ", props.comment.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, props.comment.body), delCom));
-  } else {
-    return null;
-  }
-};
+  _createClass(CommentIndexItem, [{
+    key: "deleteCom",
+    value: function deleteCom(e) {
+      e.preventDefault();
+      this.props.deleteComment(this.props.comment.id);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var delCom;
+
+      if (this.props.comment.user_id === this.props.sessionId) {
+        delCom = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onClick: this.deleteCom
+        }, "Delete");
+      }
+
+      if (this.props.comment.project_id === this.props.projectId) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "comment-box"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "comment-item"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Comment by: ", this.props.comment.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.comment.body), delCom));
+      } else {
+        return null;
+      }
+    }
+  }]);
+
+  return CommentIndexItem;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (CommentIndexItem);
 
@@ -2990,7 +3057,7 @@ var commentsReducer = function commentsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
-  var newState = Object.assign({}, state); // debugger
+  var newState = Object.assign({}, state);
 
   switch (action.type) {
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_COMMENTS"]:
@@ -3147,7 +3214,9 @@ var projectErrorsReducer = function projectErrorsReducer() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/project_actions */ "./frontend/actions/project_actions.js");
+/* harmony import */ var _actions_comment_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/comment_actions */ "./frontend/actions/comment_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 

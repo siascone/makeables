@@ -33,10 +33,12 @@ export const updateComment = (comment, info) => {
     )
 }
 
-export const deleteComment = (commentId) => (
-    $.ajax({
-        url: `/api/projects/:project_id/comments/${commentId}`,
-        method: 'DELETE',
-        data: { commentId }
-    })
-);
+export const deleteComment = (commentId) => {
+    return (
+        $.ajax({
+            url: `/api/projects/:project_id/comments/${commentId}`,
+            method: 'DELETE',
+            data: { commentId }
+        })
+    )
+};

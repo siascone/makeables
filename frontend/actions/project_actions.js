@@ -64,6 +64,10 @@ export const updateProject = (project, projectId) => dispatch => {
 
 export const deleteProject = (projectId) => dispatch => {
     return ProjectsApiUtil.deleteProject(projectId)
-        .then((project) => dispatch(removeProject(project.id)));
+        .then((project) => {
+            return (
+                dispatch(removeProject(project.project.id))
+            )
+        });
 };
 

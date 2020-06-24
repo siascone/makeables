@@ -33,7 +33,7 @@ class Api::CommentsController < ApplicationController
         @comment = selected_comment
         if @comment
             @comment.destroy
-            render :index
+            render :show
         else
             render json: ['Could not find comment'], status: 400
         end
@@ -43,7 +43,7 @@ class Api::CommentsController < ApplicationController
     private
 
     def selected_comment
-        Comment.find_by(params[:id])
+        Comment.find(params[:id])
     end
 
     def comment_params

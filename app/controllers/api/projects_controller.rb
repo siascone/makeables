@@ -47,7 +47,7 @@ class Api::ProjectsController < ApplicationController
         @project = selected_project
         if @project
             @project.destroy
-            render :index
+            render :show
         else
             render json: ['Could not find project'], status: 400
         end
