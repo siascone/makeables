@@ -70,7 +70,10 @@ class CommentForm extends React.Component {
                         </textarea>
                     </div>
                     <div className='new-comment-button'>
-                        <div></div>
+                        <div>
+                            <p>We have a <span>be nice</span> policy.</p>
+                            <p>Please be positive and constructive.</p>
+                        </div>
                         <button 
                             className='submit-comment'
                             onClick={this.handleSubmit}>

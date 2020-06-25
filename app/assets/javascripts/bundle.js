@@ -721,7 +721,7 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
         onChange: this.update('body')
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "new-comment-button"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "We have a ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "be nice"), " policy."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Please be positive and constructive.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "submit-comment",
         onClick: this.handleSubmit
       }, "Post"))));
@@ -1955,7 +1955,7 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
         className: "delete-edit-div"
       }, edit, " ", del), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-comments"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Comments", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments_comments_index_container__WEBPACK_IMPORTED_MODULE_3__["default"], null)), commentEntry));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Comments from other Makers:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments_comments_index_container__WEBPACK_IMPORTED_MODULE_3__["default"], null)), commentEntry));
     }
   }]);
 

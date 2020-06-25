@@ -10,6 +10,9 @@
 
 .project-comments > :first-child {
     margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
 }
 
 .comment-box {
@@ -69,6 +72,19 @@
     margin: 15px;
 }
 
+.new-comment-button > div {
+    margin: 15px;
+}
+
+.new-comment-button > div > p {
+    color: gray;
+    font-size: 12px;
+}
+
+.new-comment-button > div > p > span {
+    font-weight: bold;
+
+}
 .user-icon {
     display: block;
     border-radius: 25px;

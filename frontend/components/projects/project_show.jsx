@@ -69,7 +69,7 @@ class ProjectShow extends React.Component {
                 </div>
                 <div className='project-comments'>
                     <div>
-                        Comments
+                        Comments from other Makers:
                         <CommentsIndexContainer />
                     </div>
                     {commentEntry}
