@@ -64,13 +64,13 @@ class ProjectShow extends React.Component {
                 <div className='project-show-steps'>
                     <StepsIndexContainer />
                 </div>
+                <div className="delete-edit-div">
+                    {edit} {del}
+                </div>
                 <div className='project-comments'>
                     Comments
                     <CommentsIndexContainer />
                     {commentEntry}
-                </div>
-                <div className="delete-edit-div">
-                    {edit} {del}
                 </div>
             </div>
         )

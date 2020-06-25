@@ -33,7 +33,7 @@ class ProjectForm extends React.Component {
         if (this.state.photoFile) {
             formData.append('project[project_photo]', this.state.photoFile)
         }
-        debugger
+        
         this.props.updateProject(formData, projectId)
             .then((project) => {
                 this.props.history.push(`/projects/${projectId}`)

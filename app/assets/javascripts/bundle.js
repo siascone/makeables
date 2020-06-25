@@ -1619,7 +1619,6 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         formData.append('project[project_photo]', this.state.photoFile);
       }
 
-      debugger;
       this.props.updateProject(formData, projectId).then(function (project) {
         _this3.props.history.push("/projects/".concat(projectId));
       });
@@ -1970,10 +1969,10 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, project.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-show-steps"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_steps_steps_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "project-comments"
-      }, "Comments", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments_comments_index_container__WEBPACK_IMPORTED_MODULE_3__["default"], null), commentEntry), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "delete-edit-div"
-      }, edit, " ", del));
+      }, edit, " ", del), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "project-comments"
+      }, "Comments", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments_comments_index_container__WEBPACK_IMPORTED_MODULE_3__["default"], null), commentEntry));
     }
   }]);
 
