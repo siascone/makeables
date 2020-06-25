@@ -11,7 +11,7 @@ class ProjectIndexItem extends React.Component {
     render() {
         let image
         if (this.state.photoUrl) {
-            image = <a href={`#/projects/${this.state.id}`}><img src={this.state.photoUrl} alt="" /></a>
+            image = <a href={`#/projects/${this.state.id}`}><img id='project-image'src={this.state.photoUrl} alt="" /></a>
 
         } else {
             image = <a href={`#/projects/${this.state.id}`}><p>This project does not have an image associated with it.</p></a>
