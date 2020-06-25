@@ -1,0 +1,87 @@
+// index of comments
+
+.project-comments {
+//all comments in here
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+}
+
+.project-comments > :first-child {
+    margin: 10px;
+}
+
+.comment-box {
+// this div holds the comment and comment data
+}
+
+.comment-item {
+// comment by: username
+// body
+// delete button
+
+
+}
+
+// comment entry
+.new-comment-main {
+    display: flex;
+    justify-content: center;
+    width: 100%;    
+
+}
+
+.new-comment-box {
+    border: solid 1px #ddd;
+    border-radius: 6px;
+    width: 760px;
+    height: 200px;
+    background: #f6f6f6;
+    margin: 10px;
+}
+
+.new-comment-textarea {
+    margin-top: 15px;
+    margin-right: 15px;
+    height: 120px;
+    width: 650px;
+    background: #FFFFFF;
+    color: #333333;
+    border-radius: 6px;
+    resize: none;
+    padding: 5px;
+}
+
+.new-comment-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.new-comment-button > button {
+    height: 30px;
+    width: 50px;
+    border-radius: 5px;
+    color: gray;
+    border: 1px solid gray;
+    margin: 15px;
+}
+
+.user-icon {
+    display: block;
+    border-radius: 25px;
+    height: 50px;
+    width: 50px;
+    background: white;
+    margin: 15px;
+    background-image: url(https://www.instructables.com/assets/img/default/user.TINY.png) 28px, 28px;
+    position: relative;
+    padding: 0;
+}
+
+.icon-and-body {
+    display: flex;
+    flex-direction: row;
+}
+

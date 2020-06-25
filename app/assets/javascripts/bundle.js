@@ -704,19 +704,27 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "comments-box"
+        className: "new-comment-main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "new-comment-box"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "icon-and-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "user-icon",
+        src: "https://www.instructables.com/assets/img/default/user.TINY.png",
+        width: "35px",
+        height: "35px"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        className: "new-comment-textarea",
         value: this.state.body,
         placeholder: "Add your comment",
         onChange: this.update('body')
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "new-comment-button"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "submit-comment",
         onClick: this.handleSubmit
-      }, "Submit"))));
+      }, "Post"))));
     }
   }]);
 
@@ -889,33 +897,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
- // const CommentIndexItem = props => {
-//     // function deleteCom(e) {
-//     //     e.preventDefault();
-//     //     props.deleteComment(props.comment.id)
-//     // }
-//     let delCom
-//     if (props.comment.user_id === props.sessionId) {
-//         delCom = <button 
-//                     // onClick={deleteCom()}
-//                     >
-//                     Delete
-//                 </button>
-//     }
-//     if (props.comment.project_id === props.projectId) {
-//         return (
-//             <div className='comment-box'>
-//                 <div className='comment-item'>
-//                     <p>Comment by: {props.comment.username}</p>
-//                     <p>{props.comment.body}</p>
-//                     {delCom}
-//                 </div>
-//             </div>
-//         )
-//     } else {
-//         return null
-//     }
-// };
+
 
 var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
   _inherits(CommentIndexItem, _React$Component);
@@ -1973,7 +1955,7 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
         className: "delete-edit-div"
       }, edit, " ", del), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-comments"
-      }, "Comments", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments_comments_index_container__WEBPACK_IMPORTED_MODULE_3__["default"], null), commentEntry));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Comments", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments_comments_index_container__WEBPACK_IMPORTED_MODULE_3__["default"], null)), commentEntry));
     }
   }]);
 

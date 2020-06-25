@@ -58,22 +58,23 @@ class CommentForm extends React.Component {
 
     render() {
         return (
-            <div className='comments-box'>
-                {/* <p>Comments</p> */}
-                {/* <div className='comments'>
-                    <CommentsIndexContainer />
-                </div> */}
+            <div className='new-comment-main'>
                 <div className='new-comment-box' >
-                    <textarea
-                        value={this.state.body}
-                        placeholder='Add your comment'
-                        onChange={this.update('body')}>    
-                    </textarea>
+                    <div className='icon-and-body'>
+                        <img className='user-icon' src="https://www.instructables.com/assets/img/default/user.TINY.png" width="35px" height="35px" />
+                        <textarea
+                            className='new-comment-textarea'
+                            value={this.state.body}
+                            placeholder='Add your comment'
+                            onChange={this.update('body')}>    
+                        </textarea>
+                    </div>
                     <div className='new-comment-button'>
+                        <div></div>
                         <button 
                             className='submit-comment'
                             onClick={this.handleSubmit}>
-                            Submit
+                            Post
                         </button>
                     </div>
                 </div>

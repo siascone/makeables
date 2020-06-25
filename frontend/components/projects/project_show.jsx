@@ -68,8 +68,10 @@ class ProjectShow extends React.Component {
                     {edit} {del}
                 </div>
                 <div className='project-comments'>
-                    Comments
-                    <CommentsIndexContainer />
+                    <div>
+                        Comments
+                        <CommentsIndexContainer />
+                    </div>
                     {commentEntry}
                 </div>
             </div>
