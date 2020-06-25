@@ -10,7 +10,7 @@ class ProjectsIndex extends React.Component {
         if (this.props.projects.length <= 1) {
             return null;
         }
-        const { projects, users } = this.props;
+        const { projects, users, hostory} = this.props;
         return (
             <div className='project-index-main'>
                     {
@@ -18,6 +18,7 @@ class ProjectsIndex extends React.Component {
                             <ProjectIndexItem
                                 project={project}
                                 user={users[project.user_id]}
+                                history={history}
                                 key={idx}
                                 />
                         ))
