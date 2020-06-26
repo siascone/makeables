@@ -1893,3 +1893,91 @@ https://github.com/mjdargen
 https://www.instructables.com/member/mjdargen/", project_id: theremin_organ_synth.id)
 
 Comment.destroy_all
+
+scalloped_comment_1 = Comment.create!(user_id: alice.id, project_id: scalloped_frets.id, body: "This is really cool!", username: alice.username )
+scalloped_comment_2 = Comment.create!(user_id: nemo.id, project_id: scalloped_frets.id, body: "I have since scallped my own frets and I am getting some really cool sounds. Thanks for sharing!!", username: nemo.username)
+scalloped_comment_3 = Comment.create!(user_id: lizzy.id, project_id: scalloped_frets.id, body: "I've shared this with my roommate and they are going to attempt scalloping their guitar this weekend. We will post an updated comment once they're finished.", username: lizzy.username)
+
+three_d_printed_snorkel_comment_1 = Comment.create!(user_id: alec.id, project_id: three_d_printed_snorkel.id, body: , username: alec.username)
+three_d_printed_snorkel_comment_2 = Comment.create!(user_id: larry.id, project_id: three_d_printed_snorkel.id, body: , username: larry.username)
+three_d_printed_snorkel_comment_3 = Comment.create!(user_id: jane.id, project_id: three_d_printed_snorkel.id, body: , username: jane.username)
+
+chess_table_comment_1 = Comment.create!(user_id: joe.id , project_id: chess_table.id, body: , username: joe.username)
+chess_table_comment_2 = Comment.create!(user_id: scott.id, project_id: chess_table.id, body: , username: scott.username)
+chess_table_comment_3 = Comment.create!(user_id: jane.id, project_id: chess_table.id, body: , username: jane.username)
+
+gopro_nosecone_comment_1 = Comment.create!(user_id: beno.id, project_id: gopro_nosecone.id, body: , username: beno.id)
+gopro_nosecone_comment_2 = Comment.create!(user_id: hayden.id, project_id: gopro_nosecone.id, body: , username: hayden.id)
+gopro_nosecone_comment_3 = Comment.create!(user_id: ryan.id, project_id: gopro_nosecone.id, body: , username: ryan.id)
+
+halfpipe_comment_1 = Comment.create!(user_id: christopher.id, project_id: halfpipe.id, body: , username: christopher.username)
+halfpipe_comment_2 = Comment.create!(user_id: mary.id, project_id: halfpipe.id, body: , username: mary.username)
+halfpipe_comment_3 = Comment.create!(user_id: spencer.id, project_id: halfpipe.id, body: , username: spencer.username)
+
+pergola_comment_1 = Comment.create!(user_id: alice.id, project_id: pergola.id, body: , username: alice.username)
+pergola_comment_2 = Comment.create!(user_id: nemo.id, project_id: pergola.id, body: , username: nemo.username)
+pergola_comment_3 = Comment.create!(user_id: alec.id, project_id: pergola.id, body: , username: alec.username)
+
+spool_comment_1 = Comment.create!(user_id: lizzy.id, project_id: spool.id, body: , username: lizzy.username)
+spool_comment_2 = Comment.create!(user_id: joe.id, project_id: spool.id, body: , username: joe.username)
+spool_comment_3 = Comment.create!(user_id: scott.id, project_id: spool.id, body: , username: scott.username)
+
+solar_balloon_comment_1 = Comment.create!(user_id: larry.id, project_id: solar_balloon.id, body: , username: larry.username)
+solar_balloon_comment_2 = Comment.create!(user_id: jane.id, project_id: solar_balloon.id, body: , username: jane.username)
+solar_balloon_comment_3 = Comment.create!(user_id: beno.id, project_id: solar_balloon.id, body: , username: beno.username)
+
+wood_trivits_comment_1 = Comment.create!(user_id: hayden.id, project_id: wood_trivits.id, body: , username: hayden.username)
+wood_trivits_comment_2 = Comment.create!(user_id: ryan.id, project_id: wood_trivits.id, body: , username: ryan.username)
+wood_trivits_comment_3 = Comment.create!(user_id: christopher.id, project_id: wood_trivits.id, body: , username: christopher.username)
+
+arduino_grow_box_comment_1 = Comment.create!(user_id: mary.id, project_id: arduino_grow_box.id, body: , username: mary.username)
+arduino_grow_box_comment_2 = Comment.create!(user_id: spencer.id, project_id: arduino_grow_box.id, body: , username: spencer.username)
+arduino_grow_box_comment_3 = Comment.create!(user_id: alice.id, project_id: arduino_grow_box.id, body: , username: alice.username)
+
+led_shpere_comment_1 = Comment.create!(user_id: nemo.id, project_id: led_shpere.id, body: , username: nemo.username)
+led_shpere_comment_2 = Comment.create!(user_id: lizzy.id, project_id: led_shpere.id, body: , username: lizzy.username)
+led_shpere_comment_3 = Comment.create!(user_id: alec.id, project_id: led_shpere.id, body: , username: alec.username)
+
+nixie_clock_comment_1 = Comment.create!(user_id: larry.id, project_id: nixie_clock.id, body: , username: larry.username)
+nixie_clock_comment_2 = Comment.create!(user_id: joe.id, project_id: nixie_clock.id, body: , username: joe.username)
+nixie_clock_comment_3 = Comment.create!(user_id: scott.id, project_id: nixie_clock.id, body: , username: scott.username)
+
+friendship_bracelet_comment_1 = Comment.create!(user_id: jane.id, project_id: friendship_bracelet.id, body: , username: jane.username)
+friendship_bracelet_comment_2 = Comment.create!(user_id: beno.id, project_id: friendship_bracelet.id, body: , username: beno.username)
+friendship_bracelet_comment_3 = Comment.create!(user_id: hayden.id, project_id: friendship_bracelet.id, body: , username: hayden.username)
+
+analog_synth_comment_1 = Comment.create!(user_id: christopher.id, project_id: analog_synth.id, body: , username: christopher.username)
+analog_synth_comment_2 = Comment.create!(user_id: mary.id, project_id: analog_synth.id, body: , username: mary.username)
+analog_synth_comment_3 = Comment.create!(user_id: spencer.id, project_id: analog_synth.id, body: , username: spencer.username)
+
+bike_chain_comment_1 = Comment.create!(user_id: ryan.id, project_id: bike_chain.id, body: , username: ryan.username)
+bike_chain_comment_2 = Comment.create!(user_id: alice.id, project_id: bike_chain.id, body: , username: alice.username)
+bike_chain_comment_3 = Comment.create!(user_id: nemo.id, project_id: bike_chain.id, body: , username: nemo.username)
+
+tie_knots_comment_1 = Comment.create!(user_id: lizzy.id, project_id: tie_knots.id, body: , username: lizzy.username)
+tie_knots_comment_2 = Comment.create!(user_id: alec.id, project_id: tie_knots.id, body: , username: alec.username)
+tie_knots_comment_3 = Comment.create!(user_id: larry.id, project_id: tie_knots.id, body: , username: larry.username)
+
+visualizer_comment_1 = Comment.create!(user_id: joe.id, project_id: visualizer.id, body: , username: joe.username)
+visualizer_comment_2 = Comment.create!(user_id: scott.id, project_id: visualizer.id, body: , username: scott.username)
+visualizer_comment_3 = Comment.create!(user_id: jane.id, project_id: visualizer.id, body: , username: jane.username)
+
+extinguisher_comment_1 = Comment.create!(user_id: beno.id, project_id: extinguisher.id, body: , username: beno.username)
+extinguisher_comment_2 = Comment.create!(user_id: hayden.id, project_id: extinguisher.id, body: , username: hayden.username)
+extinguisher_comment_3 = Comment.create!(user_id: ryan.id, project_id: extinguisher.id, body: , username: ryan.username)
+
+gas_turbine_comment_1 = Comment.create!(user_id: christopher.id, project_id: gas_turbine.id, body: , username: christopher.username)
+gas_turbine_comment_2 = Comment.create!(user_id: mary.id, project_id: gas_turbine.id, body: , username: mary.username)
+gas_turbine_comment_3 = Comment.create!(user_id: spencer.id, project_id: gas_turbine.id, body: , username: spencer.username)
+
+tesla_coil_comment_1 = Comment.create!(user_id: alice.id, project_id: tesla_coil.id, body: , username: alice.username)
+tesla_coil_comment_2 = Comment.create!(user_id: nemo.id, project_id: tesla_coil.id, body: , username: nemo.username)
+tesla_coil_comment_3 = Comment.create!(user_id: alec.id, project_id: tesla_coil.id, body: , username: alec.username)
+
+stirling_engine_comment_1 = Comment.create!(user_id: lizzy.id, project_id: stirling_engine.id, body: , username: lizzy.username)
+stirling_engine_comment_2 = Comment.create!(user_id: larry.id, project_id: stirling_engine.id, body: , username: larry.username)
+stirling_engine_comment_3 = Comment.create!(user_id: joe.id, project_id: stirling_engine.id, body: , username: joe.username)
+
+theremin_organ_synth_comment_1 = Comment.create!(user_id: scott.id, project_id: theremin_organ_synth.id, body: , username: scott.username)
+theremin_organ_synth_comment_2 = Comment.create!(user_id: jane.id, project_id: theremin_organ_synth.id, body: , username: jane.username)
+theremin_organ_synth_comment_3 = Comment.create!(user_id: beno.id, project_id: theremin_organ_synth.id, body: , username: beno.username)
