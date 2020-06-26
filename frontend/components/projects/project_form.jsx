@@ -109,7 +109,6 @@ class ProjectForm extends React.Component {
                         onChange={this.previewFile}
                     />
         }
-
        
         return (
             <div className='project-main'>
@@ -127,7 +126,8 @@ class ProjectForm extends React.Component {
                 <div className="project-description">
                     <div>Project Description</div>
                     <textarea
-                        placeholder={this.props.project.description}
+                        value={this.state.description}
+                        placeholder="Add a description to your project..."
                         onChange={this.update('description')}
                     ></textarea>
                 </div>

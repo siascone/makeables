@@ -1730,7 +1730,8 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
       })), label, input)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-description"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Project Description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
-        placeholder: this.props.project.description,
+        value: this.state.description,
+        placeholder: "Add a description to your project...",
         onChange: this.update('description')
       })), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "steps-box"
