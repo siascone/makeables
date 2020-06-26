@@ -44,7 +44,6 @@ class ProjectShow extends React.Component {
             commentEntry = <CreateCommentFormContainer />
         }
 
-        
         if (!project) return null;
         return (
             <div className='project-show-main'>
@@ -68,8 +67,10 @@ class ProjectShow extends React.Component {
                     {edit} {del}
                 </div>
                 <div className='project-comments'>
-                    <div>
-                        Comments from other Makers:
+                    <div className='comments-count-and-container'>
+                        <div className='comments-count'>
+                            Comments
+                        </div>
                         <CommentsIndexContainer />
                     </div>
                     {commentEntry}

@@ -703,6 +703,7 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "new-comment-main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -934,8 +935,19 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "comment-box"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "commenter-details"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "commenter"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "user-icon",
+          src: "https://www.instructables.com/assets/img/default/user.TINY.png",
+          width: "35px",
+          height: "35px"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.props.comment.username), " on ", this.props.comment.created_at.split("-")[1], "/", this.props.comment.created_at.split("-")[2].slice(0, 2), "/", this.props.comment.created_at.split("-")[0])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "delete-comment"
+        }, delCom)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "comment-item"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Comment by: ", this.props.comment.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.comment.body), delCom));
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.comment.body)));
       } else {
         return null;
       }
@@ -1955,7 +1967,11 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
         className: "delete-edit-div"
       }, edit, " ", del), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-comments"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Comments from other Makers:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments_comments_index_container__WEBPACK_IMPORTED_MODULE_3__["default"], null)), commentEntry));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "comments-count-and-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "comments-count"
+      }, "Comments"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments_comments_index_container__WEBPACK_IMPORTED_MODULE_3__["default"], null)), commentEntry));
     }
   }]);
 

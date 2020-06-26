@@ -1,30 +1,66 @@
 // index of comments
 
 .project-comments {
-//all comments in here
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 80%;
 }
 
-.project-comments > :first-child {
-    margin: 10px;
+.comments-count-and-container {
+    margin: 10px 10px 10px 10px;
     display: flex;
     flex-direction: column;
     align-content: center;
 }
 
+.comments-count {
+    align-self: center;
+    font-size: 30px;
+    font-weight: bolder;
+}
+
 .comment-box {
-// this div holds the comment and comment data
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-top: 1px solid #ddd;
+}
+
+.commenter-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.commenter {
+    display: flex;
+    flex-direction: row;
+}
+
+.commenter > p {
+    margin-top: 30px;
+}
+
+.commenter > p > span {
+    color: #DA7300;
+}
+
+.delete-comment > button {
+    height: 35px;
+    width: 70px;
+    border-radius: 5px;
+    color: gray;
+    border: 1px solid gray;
+    margin-top: 15px;
 }
 
 .comment-item {
-// comment by: username
-// body
-// delete button
-
-
+    margin-right: 15px;
+    margin-left: 15px;
 }
 
 // comment entry
@@ -69,7 +105,7 @@
     border-radius: 5px;
     color: gray;
     border: 1px solid gray;
-    margin: 15px;
+    margin: 15px 17px 10px 15px;
 }
 
 .new-comment-button > div {

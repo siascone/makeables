@@ -1,5 +1,6 @@
 json.comment do
-    json.extract! @comment, :id, :user_id, :project_id, :body, :username
+    json.extract! @comment, :id, :user_id, :project_id, :body, :username, :created_at
+    
 end
 
 json.project do 
