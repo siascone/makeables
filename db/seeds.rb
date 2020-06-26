@@ -1891,3 +1891,5 @@ https://dargenio.dev/
 https://github.com/mjdargen
 
 https://www.instructables.com/member/mjdargen/", project_id: theremin_organ_synth.id)
+
+Comment.destroy_all
