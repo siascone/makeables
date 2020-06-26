@@ -1815,9 +1815,9 @@ var ProjectIndexItem = /*#__PURE__*/function (_React$Component) {
 
       if (this.state.photoUrl) {
         image = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          className: "project-image",
           href: "#/projects/".concat(this.state.id)
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          id: "project-image",
           src: this.state.photoUrl,
           alt: ""
         }));
