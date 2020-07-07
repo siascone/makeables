@@ -40,12 +40,23 @@ const Splash = () => (
             </div>
         </div>
         <br/>
-        {/* <div className='exp-projs'>
-            <h3>Explore projects</h3>
-            <div>
-        
+        <div classname="featured-projects">
+            <li>FEATURED PROJECTS</li>
+            <div className='featured'>
+                <div>
+                    project 1
+                </div>
+                <div>
+                    project 2
+                </div>
+                <div>
+                    project 3
+                </div>
+                <div>
+                    project 4
+                </div>
             </div>
-        </div> */}
+        </div>
         
     </div>
 )
