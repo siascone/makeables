@@ -23,3 +23,4 @@ const mapDispatchToProps = dispatch => ({
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CommentForm));
 
 // make a modal for editing/ or perhaps have text turn into text box with submit button.
+// consider adding photos to comments so that people can show their version of projects.
