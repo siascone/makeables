@@ -62,3 +62,5 @@ const Splash = () => (
 )
 
 export default Splash;
+
+// Don't forget to select at least 4 featured projects. maybe randomize them?
