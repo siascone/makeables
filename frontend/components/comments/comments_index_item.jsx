@@ -7,6 +7,7 @@ class CommentIndexItem extends React.Component {
         this.state = this.props.comment
 
         this.deleteCom = this.deleteCom.bind(this)
+        this.editComment = this.editComment.bind(this)
     }
 
     deleteCom(e) {
@@ -14,14 +15,22 @@ class CommentIndexItem extends React.Component {
         this.props.deleteComment(this.props.comment.id)
     }
 
+    editComment(e) {
+        e.preventDefault();
+    }
+
     render() {
         
         let delCom
+        let editCom
         if (this.props.comment.user_id === this.props.sessionId) {
             delCom = <button
                         onClick={this.deleteCom}
                     >
                     Delete
+                    </button>
+            editCom = <button onClick={this.editComment} >
+                    Edit
                     </button>
         }
         if (this.props.comment.project_id === this.props.projectId) {
@@ -34,6 +43,9 @@ class CommentIndexItem extends React.Component {
                         </div>
                         <div className="delete-comment">
                             {delCom}
+                        </div>
+                        <div className="edit-comment">
+                            {editCom}
                         </div>
                     </div>
                     <div className="comment-item">

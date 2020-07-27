@@ -1,4 +1,5 @@
-import { RECEIVE_ERRORS, RECEIVE_PROJECT, CLEAR_ERRORS } from '../actions/comment_actions';
+import { RECEIVE_ERRORS, CLEAR_ERRORS } from '../actions/comment_actions';
+import { RECEIVE_PROJECT } from '../actions/project_actions'
 import projectErrorsReducer from './project_errors_reducer';
 
 const commentErrorsReducer = (state = [], action) => {

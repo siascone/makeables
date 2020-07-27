@@ -703,7 +703,6 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "new-comment-main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -911,6 +910,7 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(CommentIndexItem).call(this, props));
     _this.state = _this.props.comment;
     _this.deleteCom = _this.deleteCom.bind(_assertThisInitialized(_this));
+    _this.editComment = _this.editComment.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -921,14 +921,23 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
       this.props.deleteComment(this.props.comment.id);
     }
   }, {
+    key: "editComment",
+    value: function editComment(e) {
+      e.preventDefault();
+    }
+  }, {
     key: "render",
     value: function render() {
       var delCom;
+      var editCom;
 
       if (this.props.comment.user_id === this.props.sessionId) {
         delCom = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           onClick: this.deleteCom
         }, "Delete");
+        editCom = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onClick: this.editComment
+        }, "Edit");
       }
 
       if (this.props.comment.project_id === this.props.projectId) {
@@ -945,7 +954,9 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
           height: "35px"
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.props.comment.username), " on ", this.props.comment.created_at.split("-")[1], "/", this.props.comment.created_at.split("-")[2].slice(0, 2), "/", this.props.comment.created_at.split("-")[0])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "delete-comment"
-        }, delCom)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, delCom), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "edit-comment"
+        }, editCom)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "comment-item"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.comment.body)));
       } else {
@@ -1054,7 +1065,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(_comment_form__WEBPACK_IMPORTED_MODULE_3__["default"])));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(_comment_form__WEBPACK_IMPORTED_MODULE_3__["default"]))); // make a modal for editing/ or perhaps have text turn into text box with submit button.
+// consider adding photos to comments so that people can show their version of projects.
 
 /***/ }),
 
@@ -2473,7 +2485,7 @@ var Splash = function Splash() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "project 1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "project 2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "project 3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "project 4"))));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Splash);
+/* harmony default export */ __webpack_exports__["default"] = (Splash); // Don't forget to select at least 4 featured projects. maybe randomize them?
 
 /***/ }),
 
@@ -3063,7 +3075,9 @@ document.addEventListener("DOMContentLoaded", function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/comment_actions */ "./frontend/actions/comment_actions.js");
-/* harmony import */ var _project_errors_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./project_errors_reducer */ "./frontend/reducers/project_errors_reducer.js");
+/* harmony import */ var _actions_project_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/project_actions */ "./frontend/actions/project_actions.js");
+/* harmony import */ var _project_errors_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./project_errors_reducer */ "./frontend/reducers/project_errors_reducer.js");
+
 
 
 
@@ -3076,7 +3090,7 @@ var commentErrorsReducer = function commentErrorsReducer() {
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ERRORS"]:
       return action.errors;
 
-    case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PROJECT"]:
+    case _actions_project_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_PROJECT"]:
       return [];
 
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__["CLEAR_ERRORS"]:

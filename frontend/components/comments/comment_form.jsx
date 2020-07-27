@@ -57,7 +57,6 @@ class CommentForm extends React.Component {
     }
 
     render() {
-        debugger
         return (
             <div className='new-comment-main'>
                 <div className='new-comment-box' >
