@@ -7,7 +7,7 @@ class CommentsIndex extends React.Component {
     }
 
     render() {
-        const { comments, projectId, sessionId, deleteComment } = this.props;
+        const { comments, projectId, sessionId, deleteComment, updateComment } = this.props;
 
         if (this.props.comments.length <= 1) {
             return null;
@@ -21,6 +21,7 @@ class CommentsIndex extends React.Component {
                             projectId={projectId}
                             sessionId={sessionId}
                             deleteComment={deleteComment}
+                            updateComment={updateComment}
                             key={idx}
                         />
                     ))

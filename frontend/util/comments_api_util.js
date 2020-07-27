@@ -23,10 +23,10 @@ export const createComment = (comment) => {
     )
 };
 
-export const updateComment = (comment, info) => {
+export const updateComment = (comment, projectId) => {
     return (
         $.ajax({
-            url: `/api/projects/${info.projectId}/comments/${info.id}`,
+            url: `/api/projects/${projectId}/comments/${comment.id}`,
             method: 'PATCH',
             data: { comment }
         })

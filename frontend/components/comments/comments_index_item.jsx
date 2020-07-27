@@ -5,9 +5,10 @@ class CommentIndexItem extends React.Component {
         super(props)
 
         this.state = this.props.comment
-
+        this.edit = false
         this.deleteCom = this.deleteCom.bind(this)
         this.editComment = this.editComment.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     deleteCom(e) {
@@ -17,6 +18,22 @@ class CommentIndexItem extends React.Component {
 
     editComment(e) {
         e.preventDefault();
+        this.edit = true
+        this.forceUpdate()
+    }
+
+    update(field) {
+        return e => {
+            this.setState({ [field]: e.currentTarget.value });
+        }
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        this.props.updateComment(this.state, this.state.projectId )
+        this.edit = false
+        this.forceUpdate()
+
     }
 
     render() {
@@ -24,15 +41,49 @@ class CommentIndexItem extends React.Component {
         let delCom
         let editCom
         if (this.props.comment.user_id === this.props.sessionId) {
-            delCom = <button
+            delCom = <li
                         onClick={this.deleteCom}
                     >
                     Delete
-                    </button>
-            editCom = <button onClick={this.editComment} >
+                    </li>
+            editCom = <li onClick={this.editComment} >
                     Edit
-                    </button>
+                    </li>
         }
+
+        let com
+        if (this.edit == false) {
+            com = <p>{this.props.comment.body}</p>
+        } else {
+            com = 
+                // <div className='edit-comment-main'>
+                    <div className='edit-comment-main'>
+                        <div className='edit-comment-box' >
+                            <div className='icon-and-body'>
+                                <img className='user-icon' src="https://www.instructables.com/assets/img/default/user.TINY.png" width="35px" height="35px" />
+                                <textarea
+                                    className='new-comment-textarea'
+                                    value={this.state.body}
+                                    placeholder='Add your comment'
+                                    onChange={this.update('body')}>
+                                </textarea>
+                            </div>
+                            <div className='new-comment-button'>
+                                <div>
+                                    <p>We have a <span>be nice</span> policy.</p>
+                                    <p>Please be positive and constructive.</p>
+                                </div>
+                                <button
+                                    className='submit-edited-comment'
+                                    onClick={this.handleSubmit}>
+                                    Save
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                // </div>
+        }
+
         if (this.props.comment.project_id === this.props.projectId) {
             return (
                 <div className='comment-box'>
@@ -41,15 +92,17 @@ class CommentIndexItem extends React.Component {
                             <img className='user-icon' src="https://www.instructables.com/assets/img/default/user.TINY.png" width="35px" height="35px" />
                             <p><span>{this.props.comment.username}</span> on {this.props.comment.created_at.split("-")[1]}/{this.props.comment.created_at.split("-")[2].slice(0, 2)}/{this.props.comment.created_at.split("-")[0]}</p>
                         </div>
-                        <div className="delete-comment">
-                            {delCom}
-                        </div>
-                        <div className="edit-comment">
-                            {editCom}
+                        <div className='delete-edit-buttons'>
+                            <div className="edit-comment">
+                                {editCom}
+                            </div>
+                            <div className="delete-comment">
+                                {delCom}
+                            </div>
                         </div>
                     </div>
-                    <div className="comment-item">
-                        <p>{this.props.comment.body}</p>
+                    <div className='comment-item'>
+                        {com}
                     </div>
                 </div>
             )

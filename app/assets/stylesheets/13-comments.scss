@@ -49,13 +49,23 @@
     color: #DA7300;
 }
 
-.delete-comment > button {
-    height: 35px;
-    width: 70px;
-    border-radius: 5px;
-    color: gray;
-    border: 1px solid gray;
-    margin-top: 15px;
+.delete-edit-buttons {
+    display: flex;
+    margin-top: 20px;
+}
+
+.delete-comment > li:hover {
+    border-bottom: 1px solid black;
+    cursor: pointer;
+}
+
+.edit-comment > li:hover {
+    border-bottom: 1px solid black;
+    cursor: pointer; 
+}
+
+.edit-comment {
+    margin-right: 10px;
 }
 
 .comment-item {
@@ -103,9 +113,10 @@
     height: 30px;
     width: 50px;
     border-radius: 5px;
-    color: gray;
+    color: white;
     border: 1px solid gray;
     margin: 15px 17px 10px 15px;
+    background-color: #faac18;
 }
 
 .new-comment-button > div {
@@ -138,3 +149,17 @@
     flex-direction: row;
 }
 
+.edit-comment-main {
+    display: flex;
+    justify-content: center;
+    // width: 80%;   
+}
+
+.edit-comment-box {
+    border: solid 1px #ddd;
+    border-radius: 6px;
+    width: 760px;
+    height: 200px;
+    background: #f6f6f6;
+    margin: 10px;
+}

@@ -49,8 +49,8 @@ export const createComment = (comment) => dispatch => {
         });
 };
 
-export const updateComment = (comment) => dispatch => {
-    return CommentsApiUtil.updateComment(comment)
+export const updateComment = (comment, project) => dispatch => {
+    return CommentsApiUtil.updateComment(comment, project)
         .then((res) => {
             dispatch(reciveComment(res))
             return res.comment

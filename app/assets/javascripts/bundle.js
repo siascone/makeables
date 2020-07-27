@@ -174,9 +174,9 @@ var createComment = function createComment(comment) {
     });
   };
 };
-var updateComment = function updateComment(comment) {
+var updateComment = function updateComment(comment, project) {
   return function (dispatch) {
-    return _util_comments_api_util__WEBPACK_IMPORTED_MODULE_1__["updateComment"](comment).then(function (res) {
+    return _util_comments_api_util__WEBPACK_IMPORTED_MODULE_1__["updateComment"](comment, project).then(function (res) {
       dispatch(reciveComment(res));
       return res.comment;
     }, function (errors) {
@@ -789,7 +789,8 @@ var CommentsIndex = /*#__PURE__*/function (_React$Component) {
           comments = _this$props.comments,
           projectId = _this$props.projectId,
           sessionId = _this$props.sessionId,
-          deleteComment = _this$props.deleteComment;
+          deleteComment = _this$props.deleteComment,
+          updateComment = _this$props.updateComment;
 
       if (this.props.comments.length <= 1) {
         return null;
@@ -803,6 +804,7 @@ var CommentsIndex = /*#__PURE__*/function (_React$Component) {
           projectId: projectId,
           sessionId: sessionId,
           deleteComment: deleteComment,
+          updateComment: updateComment,
           key: idx
         });
       }));
@@ -860,6 +862,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     deleteComment: function deleteComment(commentId) {
       return dispatch(Object(_actions_comment_actions__WEBPACK_IMPORTED_MODULE_3__["deleteComment"])(commentId));
+    },
+    updateComment: function updateComment(comment) {
+      return dispatch(Object(_actions_comment_actions__WEBPACK_IMPORTED_MODULE_3__["updateComment"])(comment));
     }
   };
 };
@@ -880,6 +885,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -909,8 +916,10 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(CommentIndexItem).call(this, props));
     _this.state = _this.props.comment;
+    _this.edit = false;
     _this.deleteCom = _this.deleteCom.bind(_assertThisInitialized(_this));
     _this.editComment = _this.editComment.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -924,6 +933,25 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
     key: "editComment",
     value: function editComment(e) {
       e.preventDefault();
+      this.edit = true;
+      this.forceUpdate();
+    }
+  }, {
+    key: "update",
+    value: function update(field) {
+      var _this2 = this;
+
+      return function (e) {
+        _this2.setState(_defineProperty({}, field, e.currentTarget.value));
+      };
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      this.props.updateComment(this.state, this.state.projectId);
+      this.edit = false;
+      this.forceUpdate();
     }
   }, {
     key: "render",
@@ -932,12 +960,42 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
       var editCom;
 
       if (this.props.comment.user_id === this.props.sessionId) {
-        delCom = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        delCom = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           onClick: this.deleteCom
         }, "Delete");
-        editCom = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        editCom = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           onClick: this.editComment
         }, "Edit");
+      }
+
+      var com;
+
+      if (this.edit == false) {
+        com = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.comment.body);
+      } else {
+        com = // <div className='edit-comment-main'>
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "edit-comment-main"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "edit-comment-box"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "icon-and-body"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "user-icon",
+          src: "https://www.instructables.com/assets/img/default/user.TINY.png",
+          width: "35px",
+          height: "35px"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+          className: "new-comment-textarea",
+          value: this.state.body,
+          placeholder: "Add your comment",
+          onChange: this.update('body')
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "new-comment-button"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "We have a ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "be nice"), " policy."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Please be positive and constructive.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "submit-edited-comment",
+          onClick: this.handleSubmit
+        }, "Save")))); // </div>
       }
 
       if (this.props.comment.project_id === this.props.projectId) {
@@ -953,12 +1011,14 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
           width: "35px",
           height: "35px"
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.props.comment.username), " on ", this.props.comment.created_at.split("-")[1], "/", this.props.comment.created_at.split("-")[2].slice(0, 2), "/", this.props.comment.created_at.split("-")[0])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "delete-comment"
-        }, delCom), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "delete-edit-buttons"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "edit-comment"
-        }, editCom)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, editCom), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "delete-comment"
+        }, delCom))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "comment-item"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.comment.body)));
+        }, com));
       } else {
         return null;
       }
@@ -3627,9 +3687,9 @@ var createComment = function createComment(comment) {
     }
   });
 };
-var updateComment = function updateComment(comment, info) {
+var updateComment = function updateComment(comment, projectId) {
   return $.ajax({
-    url: "/api/projects/".concat(info.projectId, "/comments/").concat(info.id),
+    url: "/api/projects/".concat(projectId, "/comments/").concat(comment.id),
     method: 'PATCH',
     data: {
       comment: comment
