@@ -25,6 +25,7 @@ class CommentIndexItem extends React.Component {
 
     cancleEdit(e) {
         e.preventDefault();
+        this.state.body = this.props.comment.body
         this.edit = false
         this.forceUpdate()
     }
@@ -83,7 +84,7 @@ class CommentIndexItem extends React.Component {
                                     <button
                                         className='cancle-edit-button'
                                         onClick={this.cancleEdit}>
-                                        Cancle
+                                        Cancel
                                     </button>
                                     <button
                                         className='submit-edited-comment'

@@ -941,6 +941,7 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
     key: "cancleEdit",
     value: function cancleEdit(e) {
       e.preventDefault();
+      this.state.body = this.props.comment.body;
       this.edit = false;
       this.forceUpdate();
     }
@@ -1006,7 +1007,7 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "cancle-edit-button",
           onClick: this.cancleEdit
-        }, "Cancle"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "submit-edited-comment",
           onClick: this.handleSubmit
         }, "Save")))));
