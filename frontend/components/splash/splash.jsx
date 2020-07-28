@@ -39,8 +39,8 @@ const Splash = () => (
                 </p>
             </div>
         </div>
-        <br/>
-        <div classname="featured-projects">
+        {/* <br/>
+        <div className="featured-projects">
             <li>FEATURED PROJECTS</li>
             <div className='featured'>
                 <div>
@@ -56,7 +56,7 @@ const Splash = () => (
                     project 4
                 </div>
             </div>
-        </div>
+        </div> */}
         
     </div>
 )

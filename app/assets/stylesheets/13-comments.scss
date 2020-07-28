@@ -52,6 +52,7 @@
 .delete-edit-buttons {
     display: flex;
     margin-top: 20px;
+    margin-right: 20px;
 }
 
 .delete-comment > li:hover {
@@ -109,15 +110,15 @@
   justify-content: space-between;
 }
 
-.new-comment-button > button {
-    height: 30px;
-    width: 50px;
-    border-radius: 5px;
-    color: white;
-    border: 1px solid gray;
-    margin: 15px 17px 10px 15px;
-    background-color: #faac18;
-}
+// .new-comment-button > button {
+//     height: 30px;
+//     width: 50px;
+//     border-radius: 5px;
+//     color: white;
+//     border: 1px solid gray;
+//     margin: 15px 17px 10px 15px;
+//     background-color: #faac18;
+// }
 
 .new-comment-button > div {
     margin: 15px;
@@ -155,6 +156,29 @@
     // width: 80%;   
 }
 
+.cancle-edit-button {
+    height: 30px;
+    width: 70px;
+    border-radius: 5px;
+    color: black;
+    font-size: 14px;
+    border: 1px solid lightgray;
+    margin: 15px 2.5px 10px 15px;
+    // background-color: white;
+}
+
+.submit-edited-comment, .submit-comment {
+    height: 30px;
+    width: 50px;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    border: 1px solid rgb(229, 153, 30);
+    margin: 15px 17px 10px 2.5px;
+    background-color: #faac18;
+}
+
+
 .edit-comment-box {
     border: solid 1px #ddd;
     border-radius: 6px;
@@ -162,4 +186,28 @@
     height: 200px;
     background: #f6f6f6;
     margin: 10px;
+}
+
+.cancle-submit-buttons {
+    display: flex;
+}
+
+.edit-comment-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.be-nice-message {
+    margin: 15px;
+}
+
+.edit-comment-button > div > p {
+    color: gray;
+    font-size: 12px;
+}
+
+.edit-comment-button > div > p > span {
+    font-weight: bold;
+
 }

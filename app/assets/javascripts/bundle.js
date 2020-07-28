@@ -919,6 +919,7 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
     _this.edit = false;
     _this.deleteCom = _this.deleteCom.bind(_assertThisInitialized(_this));
     _this.editComment = _this.editComment.bind(_assertThisInitialized(_this));
+    _this.cancleEdit = _this.cancleEdit.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -934,6 +935,13 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
     value: function editComment(e) {
       e.preventDefault();
       this.edit = true;
+      this.forceUpdate();
+    }
+  }, {
+    key: "cancleEdit",
+    value: function cancleEdit(e) {
+      e.preventDefault();
+      this.edit = false;
       this.forceUpdate();
     }
   }, {
@@ -973,8 +981,7 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
       if (this.edit == false) {
         com = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.comment.body);
       } else {
-        com = // <div className='edit-comment-main'>
-        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        com = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "edit-comment-main"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "edit-comment-box"
@@ -991,11 +998,19 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
           placeholder: "Add your comment",
           onChange: this.update('body')
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "new-comment-button"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "We have a ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "be nice"), " policy."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Please be positive and constructive.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "edit-comment-button"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "be-nice-message"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "We have a ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "be nice"), " policy."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Please be positive and constructive.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "cancle-submit-buttons"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "cancle-edit-button",
+          onClick: this.cancleEdit
+        }, "Cancle"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "submit-edited-comment",
           onClick: this.handleSubmit
-        }, "Save")))); // </div>
+        }, "Save")))));
+        editCom = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null);
       }
 
       if (this.props.comment.project_id === this.props.projectId) {
@@ -2538,11 +2553,7 @@ var Splash = function Splash() {
     className: "splash-about"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "step-by-step"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "STEP-BY-STEP"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "We make it easy to learn how to make anything, one step at a time. From the stovetop to the workshop, you are sure to be inspired by the awesome projects that are shared everyday.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "MADE BY YOU"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Instructables are created by you. No matter who you are, we all have secret skills to share. Come join our community of curious makers, innovators, teachers, and life long learners who love to share what they make.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "A HAPPY PLACE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Making things makes people happy. We can't prove it, but we know it to be true. Find your happy place, and join one of the friendliest online communities anywhere."))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    classname: "featured-projects"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "FEATURED PROJECTS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "featured"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "project 1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "project 2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "project 3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "project 4"))));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "STEP-BY-STEP"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "We make it easy to learn how to make anything, one step at a time. From the stovetop to the workshop, you are sure to be inspired by the awesome projects that are shared everyday.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "MADE BY YOU"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Instructables are created by you. No matter who you are, we all have secret skills to share. Come join our community of curious makers, innovators, teachers, and life long learners who love to share what they make.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "A HAPPY PLACE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Making things makes people happy. We can't prove it, but we know it to be true. Find your happy place, and join one of the friendliest online communities anywhere."))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Splash); // Don't forget to select at least 4 featured projects. maybe randomize them?

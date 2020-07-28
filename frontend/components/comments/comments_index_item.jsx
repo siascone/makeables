@@ -8,6 +8,7 @@ class CommentIndexItem extends React.Component {
         this.edit = false
         this.deleteCom = this.deleteCom.bind(this)
         this.editComment = this.editComment.bind(this)
+        this.cancleEdit = this.cancleEdit.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
@@ -19,6 +20,12 @@ class CommentIndexItem extends React.Component {
     editComment(e) {
         e.preventDefault();
         this.edit = true
+        this.forceUpdate()
+    }
+
+    cancleEdit(e) {
+        e.preventDefault();
+        this.edit = false
         this.forceUpdate()
     }
 
@@ -56,7 +63,6 @@ class CommentIndexItem extends React.Component {
             com = <p>{this.props.comment.body}</p>
         } else {
             com = 
-                // <div className='edit-comment-main'>
                     <div className='edit-comment-main'>
                         <div className='edit-comment-box' >
                             <div className='icon-and-body'>
@@ -68,20 +74,27 @@ class CommentIndexItem extends React.Component {
                                     onChange={this.update('body')}>
                                 </textarea>
                             </div>
-                            <div className='new-comment-button'>
-                                <div>
+                            <div className='edit-comment-button'>
+                                <div className='be-nice-message'>
                                     <p>We have a <span>be nice</span> policy.</p>
                                     <p>Please be positive and constructive.</p>
                                 </div>
-                                <button
-                                    className='submit-edited-comment'
-                                    onClick={this.handleSubmit}>
-                                    Save
-                                </button>
+                                <div className='cancle-submit-buttons'>
+                                    <button
+                                        className='cancle-edit-button'
+                                        onClick={this.cancleEdit}>
+                                        Cancle
+                                    </button>
+                                    <button
+                                        className='submit-edited-comment'
+                                        onClick={this.handleSubmit}>
+                                        Save
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                // </div>
+            editCom = <li></li>
         }
 
         if (this.props.comment.project_id === this.props.projectId) {
