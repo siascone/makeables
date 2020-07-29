@@ -1,6 +1,7 @@
 import React from 'react';
 import AddStepContainer from '../steps/add_step_container';
 import StepsIndexContainer from '../steps/steps_index_container';
+import {Redirect} from 'react-router-dom'
 
 
 class ProjectForm extends React.Component {
@@ -36,7 +37,8 @@ class ProjectForm extends React.Component {
         
         this.props.updateProject(formData, projectId)
             .then((project) => {
-                this.props.history.push(`/projects/${projectId}`)
+                this.props.history.push(`/projects/${project.id}`)
+                // <Redirect to=`/projects/${project.id}` />
             });
     }
 
