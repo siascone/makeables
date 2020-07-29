@@ -12,6 +12,7 @@ class StepsIndexItem extends React.Component {
         this.edit = false
         this.editStep = this.editStep.bind(this)
         this.deleteStep = this.deleteStep.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     editStep(e) {
@@ -25,6 +26,20 @@ class StepsIndexItem extends React.Component {
         this.props.deleteStep(this.state.id)
         this.edit = false
         this.forceUpdate()
+    }
+
+    update(field) {
+        return e => {
+            this.setState({ [field]: e.currentTarget.value})
+        }
+    }
+
+    handleSubmit(e) {
+        e.preventDefault()
+        this.props.updateStep(this.state, this.state.projectId)
+        this.edit = false
+        this.forceUpdate()
+
     }
 
     render() {
@@ -46,10 +61,10 @@ class StepsIndexItem extends React.Component {
                     </li>
         }
 
-        if (this.state.project_id == this.props.projectId) {
-            return (
-                <div className='step-box'>
-                    <div className='step-item'>
+        let step
+
+        if (this.edit == false) {
+            step = <div className='step-item'>
                         <div className="heading-div">
                             <div className="heading">{this.state.heading}</div>
                         </div>
@@ -59,6 +74,38 @@ class StepsIndexItem extends React.Component {
                             {editStep}
                         </div>
                     </div>
+        } else {
+            step = <div className='add-step-box'>
+                        <div className='add-step-fields'>
+                            <div className="add-step-heading-box">
+                                <div>Heading</div>
+                                <textarea className="add-step-heading"
+                                    value={this.state.heading}
+                                    placeholder='Step number and title'
+                                    onChange={this.update('heading')}
+                                >
+                                </textarea>
+                            </div>
+                            <div className="add-step-body-box">
+                                <div>Body</div>
+                                <textarea className="add-step-body"
+                                value={this.state.body}
+                                placeholder='Step details'
+                                onChange={this.update('body')}
+                                ></textarea>
+                            </div>
+                        </div>
+                        <div className='add-step-submit'>
+                            <div></div>
+                            <button className="add-step-button" onClick={this.handleSubmit}>Add Step</button>
+                        </div>
+                    </div>
+        }
+
+        if (this.state.project_id == this.props.projectId) {
+            return (
+                <div className='step-box'>
+                    {step}
                     <br />
                 </div>
             )

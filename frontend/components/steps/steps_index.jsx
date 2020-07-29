@@ -1,5 +1,6 @@
 import React from 'react';
 import StepsIndexItem from './steps_index_item';
+import { updateStep } from '../../util/steps_api_util';
 
 class StepsIndex extends React.Component {
     componentDidMount() {
@@ -7,7 +8,7 @@ class StepsIndex extends React.Component {
     }
 
     render() {
-        const { steps, projectId, deleteStep, history } = this.props;
+        const { steps, projectId, deleteStep, history, updateStep } = this.props;
 
         if (this.props.steps.length <= 1) {
             return null;
@@ -22,6 +23,7 @@ class StepsIndex extends React.Component {
                             step={step}
                             projectId={projectId}
                             deleteStep={deleteStep}
+                            updateStep={updateStep}
                             history={history}
                             key={idx}
                         />

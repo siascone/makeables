@@ -26,13 +26,16 @@ export const createStep = (step) => {
     )
 };
 
-export const updateStep = (step, info) => (
-    $.ajax({
-        url: `/api/projecs/${info.projectId}/project_steps/${info.id}`,
-        method: 'PATCH',
-        data: { step }
-    })
-);
+export const updateStep = (step, projectId) => {
+    debugger
+    return (
+        $.ajax({
+            url: `/api/projecs/${projectId}/project_step/${step.id}`,
+            method: 'PATCH',
+            data: { step }
+        })
+    )
+};
 
 export const deleteStep = (stepId) => {
     return (

@@ -50,8 +50,8 @@ export const createStep = (step) => dispatch => {
         })
 };
 
-export const updateStep = (step) => dispatch => {
-    return StepsApiUtil.updateStep(step)
+export const updateStep = (step, projectId) => dispatch => {
+    return StepsApiUtil.updateStep(step, projectId)
         .then((step) => dispatch(receiveStep(step)));
 };
 

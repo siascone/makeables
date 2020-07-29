@@ -499,9 +499,9 @@ var createStep = function createStep(step) {
     });
   };
 };
-var updateStep = function updateStep(step) {
+var updateStep = function updateStep(step, projectId) {
   return function (dispatch) {
-    return _util_steps_api_util__WEBPACK_IMPORTED_MODULE_1__["updateStep"](step).then(function (step) {
+    return _util_steps_api_util__WEBPACK_IMPORTED_MODULE_1__["updateStep"](step, projectId).then(function (step) {
       return dispatch(receiveStep(step));
     });
   };
@@ -2730,6 +2730,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _steps_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./steps_index_item */ "./frontend/components/steps/steps_index_item.jsx");
+/* harmony import */ var _util_steps_api_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../util/steps_api_util */ "./frontend/util/steps_api_util.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2747,6 +2748,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -2772,7 +2774,8 @@ var StepsIndex = /*#__PURE__*/function (_React$Component) {
           steps = _this$props.steps,
           projectId = _this$props.projectId,
           deleteStep = _this$props.deleteStep,
-          history = _this$props.history;
+          history = _this$props.history,
+          updateStep = _this$props.updateStep;
 
       if (this.props.steps.length <= 1) {
         return null;
@@ -2785,6 +2788,7 @@ var StepsIndex = /*#__PURE__*/function (_React$Component) {
           step: step,
           projectId: projectId,
           deleteStep: deleteStep,
+          updateStep: updateStep,
           history: history,
           key: idx
         });
@@ -2841,6 +2845,9 @@ var mDTP = function mDTP(dispatch) {
     },
     deleteStep: function deleteStep(stepId) {
       return dispatch(Object(_actions_step_actions__WEBPACK_IMPORTED_MODULE_2__["deleteStep"])(stepId));
+    },
+    updateStep: function updateStep(step, projectId) {
+      return dispatch(Object(_actions_step_actions__WEBPACK_IMPORTED_MODULE_2__["updateStep"])(step, projectId));
     }
   };
 };
@@ -2861,6 +2868,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2894,6 +2903,7 @@ var StepsIndexItem = /*#__PURE__*/function (_React$Component) {
     _this.edit = false;
     _this.editStep = _this.editStep.bind(_assertThisInitialized(_this));
     _this.deleteStep = _this.deleteStep.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2913,6 +2923,23 @@ var StepsIndexItem = /*#__PURE__*/function (_React$Component) {
       this.forceUpdate();
     }
   }, {
+    key: "update",
+    value: function update(field) {
+      var _this2 = this;
+
+      return function (e) {
+        _this2.setState(_defineProperty({}, field, e.currentTarget.value));
+      };
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      this.props.updateStep(this.state, this.state.projectId);
+      this.edit = false;
+      this.forceUpdate();
+    }
+  }, {
     key: "render",
     value: function render() {
       var path = this.props.history.location.pathname.split('/').pop();
@@ -2928,10 +2955,10 @@ var StepsIndexItem = /*#__PURE__*/function (_React$Component) {
         }, "Edit");
       }
 
-      if (this.state.project_id == this.props.projectId) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "step-box"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      var step;
+
+      if (this.edit == false) {
+        step = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "step-item"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "heading-div"
@@ -2941,7 +2968,38 @@ var StepsIndexItem = /*#__PURE__*/function (_React$Component) {
           className: "body"
         }, this.state.body), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "edit-delete-steps"
-        }, delStep, editStep)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
+        }, delStep, editStep));
+      } else {
+        step = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "add-step-box"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "add-step-fields"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "add-step-heading-box"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Heading"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+          className: "add-step-heading",
+          value: this.state.heading,
+          placeholder: "Step number and title",
+          onChange: this.update('heading')
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "add-step-body-box"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Body"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+          className: "add-step-body",
+          value: this.state.body,
+          placeholder: "Step details",
+          onChange: this.update('body')
+        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "add-step-submit"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "add-step-button",
+          onClick: this.handleSubmit
+        }, "Add Step")));
+      }
+
+      if (this.state.project_id == this.props.projectId) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "step-box"
+        }, step, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
       } else {
         return null;
       }
@@ -4000,9 +4058,10 @@ var createStep = function createStep(step) {
     }
   });
 };
-var updateStep = function updateStep(step, info) {
+var updateStep = function updateStep(step, projectId) {
+  debugger;
   return $.ajax({
-    url: "/api/projecs/".concat(info.projectId, "/project_steps/").concat(info.id),
+    url: "/api/projecs/".concat(projectId, "/project_step/").concat(step.id),
     method: 'PATCH',
     data: {
       step: step

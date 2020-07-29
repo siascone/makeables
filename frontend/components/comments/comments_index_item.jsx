@@ -5,6 +5,7 @@ class CommentIndexItem extends React.Component {
         super(props)
 
         this.state = this.props.comment
+        
         this.edit = false
         this.deleteCom = this.deleteCom.bind(this)
         this.editComment = this.editComment.bind(this)

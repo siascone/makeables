@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'; 
 import StepsIndex from './steps_index';
-import { fetchAllSteps, deleteStep } from '../../actions/step_actions';
+import { fetchAllSteps, deleteStep, updateStep } from '../../actions/step_actions';
 import { withRouter } from 'react-router-dom';
 
 const mSTP = (state, ownProps) => {
@@ -23,7 +23,8 @@ const mSTP = (state, ownProps) => {
 
 const mDTP = dispatch => ({
     fetchAllSteps: ((projectId) => dispatch(fetchAllSteps(projectId))),
-    deleteStep: ((stepId) => dispatch(deleteStep(stepId)))
+    deleteStep: ((stepId) => dispatch(deleteStep(stepId))),
+    updateStep: ((step, projectId) => dispatch(updateStep(step, projectId)))
 });
 
 export default withRouter(connect(mSTP, mDTP)(StepsIndex))
