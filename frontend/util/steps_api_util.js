@@ -30,7 +30,7 @@ export const updateStep = (step, projectId) => {
     debugger
     return (
         $.ajax({
-            url: `/api/projecs/${projectId}/project_step/${step.id}`,
+            url: `/api/projects/${projectId}/project_steps/${step.id}`,
             method: 'PATCH',
             data: { step }
         })

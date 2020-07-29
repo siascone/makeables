@@ -4073,7 +4073,7 @@ var createStep = function createStep(step) {
 var updateStep = function updateStep(step, projectId) {
   debugger;
   return $.ajax({
-    url: "/api/projecs/".concat(projectId, "/project_step/").concat(step.id),
+    url: "/api/projects/".concat(projectId, "/project_steps/").concat(step.id),
     method: 'PATCH',
     data: {
       step: step
