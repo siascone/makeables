@@ -42,7 +42,7 @@ class Step extends React.Component {
                         <div>Heading</div>
                         <textarea className="add-step-heading"
                             value={this.state.heading}
-                            placeholder='Step number and title'
+                            placeholder='Please provide a step number and/or heading'
                             onChange={this.update('heading')}
                         >
                         </textarea>
@@ -51,7 +51,7 @@ class Step extends React.Component {
                     <div>Body</div>
                         <textarea className="add-step-body"
                             value={this.state.body}
-                            placeholder='Step details'
+                            placeholder='List details about this step here'
                             onChange={this.update('body')}
                         ></textarea>
                     </div>

@@ -115,22 +115,33 @@
     display: flex;
 }
 
-.project-button, .return {
+.return {
     border-radius: 6px;
     height: 34px;
     padding: 6px 12px;
     margin-left: 5px;
     background: #F6F6F6;
     color: gray;
+    border: 1px solid gray;
+}
+
+.project-button {
+    border-radius: 6px;
+    height: 34px;
+    padding: 6px 12px;
+    margin-left: 5px;
+    border: solid 1px rgb(229, 153, 30);
+    background: #faac18;
+    color: white;
 }
 
 .project-button:hover {
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(229, 153, 30);
 }
 .project-delete:hover {
     background-color: rgb(240, 240, 240);
 }
-.cancle-edits:hover {
+.return:hover {
     background-color: rgb(240, 240, 240);
 }
 

@@ -60,11 +60,13 @@
     width: 100px;
     border-radius: 5px;
     margin: 5px;
-    background-color: #F6F6F6;
+    border: 1px solid rgb(229, 153, 30);
+    background-color: #faac18;
+    color: white;
 }
 
 .add-step-button:hover {
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(229, 153, 30);
 }
 
 .add-step-fields {
@@ -78,4 +80,44 @@
 .add-step-submit {
     display: flex;
     justify-content: space-between;
+}
+
+//edit step
+
+.edit-step-box {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 90%;
+    align-self: center;
+    background-color: #eee;
+}
+
+.edit-step-button {
+    height: 30px;
+    width: 80px;
+    border-radius: 5px;
+    margin: 5px;
+    border: 1px solid rgb(229, 153, 30);
+    background-color: #faac18;
+    color: white;
+}
+
+.cancle-step-edit-button {
+    height: 30px;
+    width: 80px;
+    border-radius: 5px;
+    margin: 5px;
+    border: 1px solid gray;
+    background-color: #F6F6F6;
+    color: gray;
+}
+
+.cancle-step-edit-button:hover {
+    background-color: rgb(240, 240, 240);
+}
+
+.edit-step-button:hover {
+    background-color: rgb(229, 153, 30);
 }

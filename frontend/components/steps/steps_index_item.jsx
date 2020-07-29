@@ -11,6 +11,7 @@ class StepsIndexItem extends React.Component {
 
         this.edit = false
         this.editStep = this.editStep.bind(this)
+        this.cancleEdit = this.cancleEdit.bind(this)
         this.deleteStep = this.deleteStep.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
@@ -18,6 +19,13 @@ class StepsIndexItem extends React.Component {
     editStep(e) {
         e.preventDefault()
         this.edit = true
+        this.forceUpdate()
+    }
+
+    cancleEdit(e) {
+        e.preventDefault()
+        this.state.body = this.props.step.body
+        this.edit = false
         this.forceUpdate()
     }
 
@@ -70,12 +78,12 @@ class StepsIndexItem extends React.Component {
                         </div>
                         <div className='body'>{this.state.body}</div>
                         <div className='edit-delete-steps'>
-                            {delStep}
                             {editStep}
+                            {delStep}
                         </div>
                     </div>
         } else {
-            step = <div className='add-step-box'>
+            step = <div className='edit-step-box'>
                         <div className='add-step-fields'>
                             <div className="add-step-heading-box">
                                 <div>Heading</div>
@@ -96,8 +104,12 @@ class StepsIndexItem extends React.Component {
                             </div>
                         </div>
                         <div className='add-step-submit'>
-                            <div></div>
-                            <button className="add-step-button" onClick={this.handleSubmit}>Add Step</button>
+                            <button
+                                className='cancle-step-edit-button'
+                                onClick={this.cancleEdit}>
+                                Cancel
+                                </button>
+                            <button className="edit-step-button" onClick={this.handleSubmit}>Update</button>
                         </div>
                     </div>
         }

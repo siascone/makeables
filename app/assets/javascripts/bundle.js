@@ -2650,14 +2650,14 @@ var Step = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Heading"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         className: "add-step-heading",
         value: this.state.heading,
-        placeholder: "Step number and title",
+        placeholder: "Please provide a step number and/or heading",
         onChange: this.update('heading')
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "add-step-body-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Body"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         className: "add-step-body",
         value: this.state.body,
-        placeholder: "Step details",
+        placeholder: "List details about this step here",
         onChange: this.update('body')
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "add-step-submit"
@@ -2902,6 +2902,7 @@ var StepsIndexItem = /*#__PURE__*/function (_React$Component) {
     _this.state = _this.props.step;
     _this.edit = false;
     _this.editStep = _this.editStep.bind(_assertThisInitialized(_this));
+    _this.cancleEdit = _this.cancleEdit.bind(_assertThisInitialized(_this));
     _this.deleteStep = _this.deleteStep.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
@@ -2912,6 +2913,14 @@ var StepsIndexItem = /*#__PURE__*/function (_React$Component) {
     value: function editStep(e) {
       e.preventDefault();
       this.edit = true;
+      this.forceUpdate();
+    }
+  }, {
+    key: "cancleEdit",
+    value: function cancleEdit(e) {
+      e.preventDefault();
+      this.state.body = this.props.step.body;
+      this.edit = false;
       this.forceUpdate();
     }
   }, {
@@ -2968,10 +2977,10 @@ var StepsIndexItem = /*#__PURE__*/function (_React$Component) {
           className: "body"
         }, this.state.body), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "edit-delete-steps"
-        }, delStep, editStep));
+        }, editStep, delStep));
       } else {
         step = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "add-step-box"
+          className: "edit-step-box"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "add-step-fields"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2990,10 +2999,13 @@ var StepsIndexItem = /*#__PURE__*/function (_React$Component) {
           onChange: this.update('body')
         }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "add-step-submit"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "add-step-button",
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "cancle-step-edit-button",
+          onClick: this.cancleEdit
+        }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "edit-step-button",
           onClick: this.handleSubmit
-        }, "Add Step")));
+        }, "Update")));
       }
 
       if (this.state.project_id == this.props.projectId) {
