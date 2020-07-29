@@ -509,7 +509,7 @@ var updateStep = function updateStep(step) {
 var deleteStep = function deleteStep(stepId) {
   return function (dispatch) {
     return _util_steps_api_util__WEBPACK_IMPORTED_MODULE_1__["deleteStep"](stepId).then(function (step) {
-      return dispatch(removeStep(step.id));
+      return dispatch(removeStep(step.step.id));
     });
   };
 };
@@ -2893,6 +2893,7 @@ var StepsIndexItem = /*#__PURE__*/function (_React$Component) {
     _this.state = _this.props.step;
     _this.edit = false;
     _this.editStep = _this.editStep.bind(_assertThisInitialized(_this));
+    _this.deleteStep = _this.deleteStep.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2906,15 +2907,15 @@ var StepsIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "deleteStep",
     value: function deleteStep(e) {
-      e.preventDefault(); // this.props.deleteStep(this.state.id)
-      // this.edit = false
-      // this.forceUpdate
+      e.preventDefault();
+      this.props.deleteStep(this.state.id);
+      this.edit = false;
+      this.forceUpdate();
     }
   }, {
     key: "render",
     value: function render() {
       var path = this.props.history.location.pathname.split('/').pop();
-      debugger;
       var delStep;
       var editStep;
 
@@ -4009,7 +4010,7 @@ var updateStep = function updateStep(step, info) {
   });
 };
 var deleteStep = function deleteStep(stepId) {
-  $.ajax({
+  return $.ajax({
     url: "/api/projects/:project_id/project_steps/".concat(stepId),
     method: 'DELETE',
     data: {

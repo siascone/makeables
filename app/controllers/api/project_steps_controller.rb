@@ -33,7 +33,7 @@ class Api::ProjectStepsController < ApplicationController
         @step = selected_step
         if @step
             @step.destroy
-            render :index
+            render :show
         else
             render json: ['Could not find project step'], status: 400
         end

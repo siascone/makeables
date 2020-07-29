@@ -57,5 +57,9 @@ export const updateStep = (step) => dispatch => {
 
 export const deleteStep = (stepId) => dispatch => {
     return StepsApiUtil.deleteStep(stepId)
-        .then((step) => dispatch(removeStep(step.id)));
+        .then((step) => {
+            return (
+                dispatch(removeStep(step.step.id))
+            )
+        });
 };

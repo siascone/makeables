@@ -11,6 +11,7 @@ class StepsIndexItem extends React.Component {
 
         this.edit = false
         this.editStep = this.editStep.bind(this)
+        this.deleteStep = this.deleteStep.bind(this)
     }
 
     editStep(e) {
@@ -21,16 +22,15 @@ class StepsIndexItem extends React.Component {
 
     deleteStep(e) {
         e.preventDefault()
-        // this.props.deleteStep(this.state.id)
-        // this.edit = false
-        // this.forceUpdate
+        this.props.deleteStep(this.state.id)
+        this.edit = false
+        this.forceUpdate()
     }
 
     render() {
-
         
         let path = this.props.history.location.pathname.split('/').pop()
-        debugger
+
         let delStep
         let editStep 
 

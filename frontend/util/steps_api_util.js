@@ -35,9 +35,11 @@ export const updateStep = (step, info) => (
 );
 
 export const deleteStep = (stepId) => {
-    $.ajax({
-        url: `/api/projects/:project_id/project_steps/${stepId}`,
-        method: 'DELETE',
-        data: { stepId }
-    })
+    return (
+        $.ajax({
+            url: `/api/projects/:project_id/project_steps/${stepId}`,
+            method: 'DELETE',
+            data: { stepId }
+        })
+    )
 };
