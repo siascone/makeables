@@ -4196,7 +4196,8 @@ var configureStore = function configureStore() {
   var middleware = [redux_thunk__WEBPACK_IMPORTED_MODULE_3__["default"]];
 
   if (true) {
-    middleware = [].concat(_toConsumableArray(middleware), [redux_logger__WEBPACK_IMPORTED_MODULE_2___default.a]);
+    // middleware = [...middleware, logger];
+    middleware = _toConsumableArray(middleware);
   }
 
   return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_1__["default"], preloadedState, redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"].apply(void 0, _toConsumableArray(middleware)));
