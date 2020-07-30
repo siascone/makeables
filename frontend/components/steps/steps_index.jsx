@@ -9,7 +9,6 @@ class StepsIndex extends React.Component {
 
     render() {
         const { steps, projectId, deleteStep, history, updateStep } = this.props;
-
         if (this.props.steps.length <= 1) {
             return null;
         }
@@ -25,6 +24,7 @@ class StepsIndex extends React.Component {
                             deleteStep={deleteStep}
                             updateStep={updateStep}
                             history={history}
+                            // handler={handler}
                             key={idx}
                         />
                     ))

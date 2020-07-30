@@ -6,6 +6,7 @@ import { fetchAllSteps } from '../../actions/step_actions';
 const mapStateToProps = (state, ownProps) => {
     let project = state.entities.projects[ownProps.match.params.id]
     let projectId = ownProps.match.params.id
+    let steps = state.entities.steps
     let username = null;
     let userId = null;
     let sessionId = null;
@@ -20,7 +21,8 @@ const mapStateToProps = (state, ownProps) => {
     projectId: projectId,
     username: username,
     userId: userId,
-    sessionId: sessionId
+    sessionId: sessionId,
+    steps: steps
     };
 };
 

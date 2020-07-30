@@ -12,7 +12,7 @@ class ProjectForm extends React.Component {
         this.state["photoFile"] = null;
         this.cName = false;
         this.projectImage = false;
-    
+        
         this.handleSubmit = this.handleSubmit.bind(this);
         this.previewFile = this.previewFile.bind(this);
         this.click = this.click.bind(this);
@@ -41,7 +41,6 @@ class ProjectForm extends React.Component {
                 // let redirect = `/projects/${project.id}`
                 // return <Redirect to={redirect}/>
             });
-        // return <Redirect to='#/projects' />
     }
 
     return(e) {

@@ -1707,7 +1707,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         _this3.props.history.push("/projects/".concat(project.id)); // let redirect = `/projects/${project.id}`
         // return <Redirect to={redirect}/>
 
-      }); // return <Redirect to='#/projects' />
+      });
     }
   }, {
     key: "return",
@@ -1987,13 +1987,17 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
 
     _classCallCheck(this, ProjectShow);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProjectShow).call(this, props)); // this.handler = this.handler.bind(this);
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProjectShow).call(this, props));
+    _this.state = {
+      update: false
+    }; // this.state = {updated: false}
+    // this.handler = this.handler.bind(this);
 
     _this.remove = _this.remove.bind(_assertThisInitialized(_this));
     return _this;
   } // handler() {
   //     this.setState({
-  //         steps: 
+  //         updated: !this.state.updated
   //     })
   // }
 
@@ -2002,7 +2006,13 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchProject(this.props.match.params.id);
-    }
+    } // componentDidUpdate(prevProps) {
+    //     if (prevProps.steps != this.props.steps) {
+    //         this.props.fetchAllSteps(this.props.projectId)
+    //             .then(this.setState({update: true}))
+    //     }
+    // }
+
   }, {
     key: "remove",
     value: function remove(e) {
@@ -2102,6 +2112,7 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   var project = state.entities.projects[ownProps.match.params.id];
   var projectId = ownProps.match.params.id;
+  var steps = state.entities.steps;
   var username = null;
   var userId = null;
   var sessionId = null;
@@ -2116,7 +2127,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     projectId: projectId,
     username: username,
     userId: userId,
-    sessionId: sessionId
+    sessionId: sessionId,
+    steps: steps
   };
 };
 
@@ -2804,7 +2816,8 @@ var StepsIndex = /*#__PURE__*/function (_React$Component) {
           projectId: projectId,
           deleteStep: deleteStep,
           updateStep: updateStep,
-          history: history,
+          history: history // handler={handler}
+          ,
           key: idx
         });
       }));
@@ -2959,7 +2972,10 @@ var StepsIndexItem = /*#__PURE__*/function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
-      this.props.updateStep(this.state, this.state.projectId);
+      this.props.updateStep(this.state, this.state.projectId); // .then( () => {
+      //     this.props.handler()
+      // })
+
       this.edit = false;
     }
   }, {
