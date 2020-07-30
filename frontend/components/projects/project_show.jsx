@@ -10,12 +10,21 @@ class ProjectShow extends React.Component {
     constructor(props) {
         super(props)
 
+
+        // this.handler = this.handler.bind(this);
         this.remove = this.remove.bind(this);
     }
+
+    // handler() {
+    //     this.setState({
+    //         steps: 
+    //     })
+    // }
 
     componentDidMount() {
         this.props.fetchProject(this.props.match.params.id);
     }
+
 
     remove(e) {
         e.preventDefault();
@@ -25,6 +34,7 @@ class ProjectShow extends React.Component {
     }
 
     render() {
+        
         const {project, projectId, username, sessionId, userId} = this.props;
         let edit;
         let del;

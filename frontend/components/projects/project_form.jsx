@@ -38,8 +38,10 @@ class ProjectForm extends React.Component {
         this.props.updateProject(formData, projectId)
             .then((project) => {
                 this.props.history.push(`/projects/${project.id}`)
-                // <Redirect to=`/projects/${project.id}` />
+                // let redirect = `/projects/${project.id}`
+                // return <Redirect to={redirect}/>
             });
+        // return <Redirect to='#/projects' />
     }
 
     return(e) {

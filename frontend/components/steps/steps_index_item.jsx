@@ -44,9 +44,9 @@ class StepsIndexItem extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault()
+        
         this.props.updateStep(this.state, this.state.projectId)
         this.edit = false
-        this.forceUpdate()
 
     }
 

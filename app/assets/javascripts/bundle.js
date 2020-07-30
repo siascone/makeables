@@ -1704,9 +1704,10 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
       }
 
       this.props.updateProject(formData, projectId).then(function (project) {
-        _this3.props.history.push("/projects/".concat(project.id)); // <Redirect to=`/projects/${project.id}` />
+        _this3.props.history.push("/projects/".concat(project.id)); // let redirect = `/projects/${project.id}`
+        // return <Redirect to={redirect}/>
 
-      });
+      }); // return <Redirect to='#/projects' />
     }
   }, {
     key: "return",
@@ -1986,10 +1987,16 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
 
     _classCallCheck(this, ProjectShow);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProjectShow).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProjectShow).call(this, props)); // this.handler = this.handler.bind(this);
+
     _this.remove = _this.remove.bind(_assertThisInitialized(_this));
     return _this;
-  }
+  } // handler() {
+  //     this.setState({
+  //         steps: 
+  //     })
+  // }
+
 
   _createClass(ProjectShow, [{
     key: "componentDidMount",
@@ -2086,6 +2093,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _project_show__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./project_show */ "./frontend/components/projects/project_show.jsx");
 /* harmony import */ var _actions_project_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/project_actions */ "./frontend/actions/project_actions.js");
+/* harmony import */ var _actions_step_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/step_actions */ "./frontend/actions/step_actions.js");
+
 
 
 
@@ -2121,6 +2130,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     deleteProject: function deleteProject(projectId) {
       return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_2__["deleteProject"])(projectId));
+    },
+    fetchAllSteps: function fetchAllSteps(projectId) {
+      return dispatch(Object(_actions_step_actions__WEBPACK_IMPORTED_MODULE_3__["fetchAllSteps"])(projectId));
     }
   };
 };
@@ -2949,7 +2961,6 @@ var StepsIndexItem = /*#__PURE__*/function (_React$Component) {
       e.preventDefault();
       this.props.updateStep(this.state, this.state.projectId);
       this.edit = false;
-      this.forceUpdate();
     }
   }, {
     key: "render",
@@ -3501,7 +3512,7 @@ var projectErrorsReducer = function projectErrorsReducer() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/project_actions */ "./frontend/actions/project_actions.js");
-/* harmony import */ var _actions_comment_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/comment_actions */ "./frontend/actions/comment_actions.js");
+/* harmony import */ var _actions_step_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/step_actions */ "./frontend/actions/step_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
@@ -3523,6 +3534,8 @@ var projectsReducer = function projectsReducer() {
     case _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_PROJECT"]:
       delete newState[action.projectId];
       return newState;
+    // case RECEIVE_ALL_STEPS:
+    //     return action.steps.steps;
 
     default:
       return state;
@@ -4074,7 +4087,6 @@ var createStep = function createStep(step) {
   });
 };
 var updateStep = function updateStep(step, projectId) {
-  debugger;
   return $.ajax({
     url: "/api/projects/".concat(projectId, "/project_steps/").concat(step.id),
     method: 'PATCH',
