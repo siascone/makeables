@@ -5,7 +5,7 @@ import SignupFormContainer from './session_form/signup_form_container';
 import GreetingContainer from '../components/greeting/greeting_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import SubHeader from '../components/sub_header/sub_header';
-import Splash from './splash/splash';
+import SplashContainer from './splash/splash_container';
 import Footer from './footer/footer';
 import ProjectsIndexContainer from '../components/projects/projects_index_container';
 import ProjectShowContainer from '../components/projects/project_show_container';
@@ -34,7 +34,7 @@ const App = () => (
                 <ProtectedRoute exact path='/projects/new' component={CreateProjectFormContainer} />
                 <Route exact path='/projects/:id' component={ProjectShowContainer} />
                 <ProtectedRoute exact path='/projects/:id/edit' component={EditProjectFormContainer} />
-                <Route exact path='/' component={Splash} />
+                <Route exact path='/' component={SplashContainer} />
                 <Redirect to='/'/>
             </Switch>
             <Footer />

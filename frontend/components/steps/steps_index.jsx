@@ -3,8 +3,21 @@ import StepsIndexItem from './steps_index_item';
 import { updateStep } from '../../util/steps_api_util';
 
 class StepsIndex extends React.Component {
+    constructor(props) {
+        super(props)
+
+        // this.state = {steps: this.props.steps}
+    }
+
     componentDidMount() {
         return this.props.fetchAllSteps(this.props.projectId);
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.steps !== this.props.steps) {
+            // this.setState({steps: prevProps.steps})
+            this.props.fetchAllSteps(this.props.projectId)
+        }
     }
 
     render() {

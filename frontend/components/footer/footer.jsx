@@ -12,6 +12,7 @@ class Footer extends React.Component {
                     <div className='contact'>
                         <h3>Spencer Iascone</h3>
                         <li>spencer.iascone@gmail.com</li>
+                        <li><a href='http://spenceriascone.com/'>spenceriascone.com</a></li>
                     </div>
                     <div className='links'>
                         <h3>My Sites</h3>

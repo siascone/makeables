@@ -9,26 +9,18 @@ import EditCommentFormContainer from '../comments/edit_comment_form_container'
 class ProjectShow extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {update: false}
-        // this.state = {updated: false}
-        // this.handler = this.handler.bind(this);
+        this.state
         this.remove = this.remove.bind(this);
     }
-
-    // handler() {
-    //     this.setState({
-    //         updated: !this.state.updated
-    //     })
-    // }
 
     componentDidMount() {
         this.props.fetchProject(this.props.match.params.id);
     }
 
     // componentDidUpdate(prevProps) {
-    //     if (prevProps.steps != this.props.steps) {
-    //         this.props.fetchAllSteps(this.props.projectId)
-    //             .then(this.setState({update: true}))
+    //     if (this.props.steps !== prevProps.steps) {
+        
+    //         this.setState({steps: prevProps.steps})
     //     }
     // }
 
@@ -78,7 +70,6 @@ class ProjectShow extends React.Component {
                     <p>{project.description}</p>
                 </div>
                 <div className='project-show-steps'>
-                    {/* <StepsIndexContainer handler={this.handler}/> */}
                     <StepsIndexContainer />
                 </div>
                 <div className="delete-edit-div">

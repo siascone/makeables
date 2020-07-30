@@ -25,7 +25,7 @@ class ProjectForm extends React.Component {
             this.setState({[field]: e.currentTarget.value});
         }
     }
-    
+
     handleSubmit(e) {
         e.preventDefault();
         let projectId = this.state.id

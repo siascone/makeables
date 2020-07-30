@@ -4,8 +4,6 @@ import {
     REMOVE_PROJECT 
 } from "../actions/project_actions";
 
-import { RECEIVE_ALL_STEPS } from '../actions/step_actions'
-
 const projectsReducer = (state = {}, action) => {
     Object.freeze(state);
     let newState = Object.assign({}, state);
@@ -18,8 +16,6 @@ const projectsReducer = (state = {}, action) => {
         case REMOVE_PROJECT:
             delete newState[action.projectId];
             return newState;
-        // case RECEIVE_ALL_STEPS:
-        //     return action.steps.steps;
         default:
             return state;
     }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ProjectsIndex from './projects_index';
+import FeaturedProjectsIndex from './featured_projects_index';
 import { fetchAllProjects } from '../../actions/project_actions';
 import { withRouter } from 'react-router-dom';
 
@@ -17,4 +17,4 @@ const mapDispatchToProps = dispatch => ({
     fetchAllProjects: (() => dispatch(fetchAllProjects()))
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProjectsIndex));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FeaturedProjectsIndex));
