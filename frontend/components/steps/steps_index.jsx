@@ -15,7 +15,6 @@ class StepsIndex extends React.Component {
 
     componentDidUpdate(prevProps) {
         if (prevProps.steps !== this.props.steps) {
-            // this.setState({steps: prevProps.steps})
             this.props.fetchAllSteps(this.props.projectId)
         }
     }

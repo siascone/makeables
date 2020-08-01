@@ -3128,7 +3128,6 @@ var StepsIndex = /*#__PURE__*/function (_React$Component) {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
       if (prevProps.steps !== this.props.steps) {
-        // this.setState({steps: prevProps.steps})
         this.props.fetchAllSteps(this.props.projectId);
       }
     }
