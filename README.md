@@ -57,7 +57,7 @@ Once a project is published Rails Active Storage is utilized to access and uploa
 
 ### Steps
 
-Users can add step by step instructions to their published projects as well as edit and remove any steps that they would like to change or correct. Thier changes are intanly reflected upon submission and return to the corresponding Project's show page. As the Steps Component is nested within the parent component of the Project itslef, this update is handled with componentDidUpdate() and a call to fetchAllSteps on the condition that the current state of the Steps Component's properties no longer matches the previous state of the Steps Component's properties. This can be seen in the code snippet below.
+Users can add step by step instructions to their published projects as well as edit and remove any steps that they would like to change or correct. Thier changes are instantly reflected upon submission and return to the corresponding Project's show page. As the Steps Component is nested within the parent component of the Project itslef, this update is handled with componentDidUpdate() and a call to fetchAllSteps on the condition that the current state of the Steps Component's properties no longer matches the previous state of the Steps Component's properties. This can be seen in the code snippet below.
 
     componentDidUpdate(prevProps) {
         if (prevProps.steps !== this.props.steps) {
@@ -67,7 +67,7 @@ Users can add step by step instructions to their published projects as well as e
 
 ### Comments
 
-Provided a user is logged in they can add comments to published projects. They can also edit and delete their comments.
+Logged in users can comment on published projects. Should the commenter wish to edit or remove their comment they have the ability to do so.
 
 ## Planned Future Features
 
