@@ -55,10 +55,22 @@ Users can easily publish titled personal projects along with a photo of the fini
 
 Once a project is published Rails Active Storage is utilized to access and upload a user's photo which is in turn stored via Amazon's AWS S3 cloud storage system.
 
+### Steps
+
+Users can add step by step instructions to their published projects as well as edit and remove any steps that they would like to change or correct. Thier changes are intanly reflected upon submission and return to the corresponding Project's show page. As the Steps Component is nested within the parent component of the Project itslef, this update is handled with componentDidUpdate() and a call to fetchAllSteps on the condition that the current state of the Steps Component's properties no longer matches the previous state of the Steps Component's properties. This can be seen in the code snippet below.
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.steps !== this.props.steps) {
+            this.props.fetchAllSteps(this.props.projectId)
+        }
+    }
+
+### Comments
+
+Provided a user is logged in they can add comments to published projects. They can also edit and delete their comments.
+
 ## Planned Future Features
 
 * Steps Photo - Users can add a photo to their steps.
 * Step Numbering - As users add steps the steps are automatically numbered in assending order.
-* Comments - Users can comment on projects, ask and answer questions and provid feedback.
-* Categories - Users can classify their projects as well as browse projects by subject. 
 * Search - Users can search for projects by keyword(s). 
