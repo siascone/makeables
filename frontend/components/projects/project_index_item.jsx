@@ -11,7 +11,7 @@ class ProjectIndexItem extends React.Component {
     render() {
         let image
         if (this.state.photoUrl) {
-            image = <a className='project-image' href={`#/projects/${this.state.id}`}><img src={this.state.photoUrl} alt="" /></a>
+            image = <a className='project-image' href={`#/projects/${this.state.id}`}><img src={this.state.photoUrl} onClick={() => this.props.toTop()} alt="" /></a>
 
         } else {
             image = <a href={`#/projects/${this.state.id}`}><p>This project does not have an image associated with it.</p></a>
@@ -23,7 +23,7 @@ class ProjectIndexItem extends React.Component {
                     {image}
                 </div>
                 <div className='project-index-details'>
-                    <Link to={`/projects/${this.state.id}`}>{this.state.title}</Link>
+                    <Link to={`/projects/${this.state.id}`} onClick={() => this.props.toTop()}>{this.state.title}</Link>
                     <p>by: {this.props.user.username}</p>
                 </div>
             </div>

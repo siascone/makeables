@@ -24,6 +24,8 @@
 .project-index-image :first-child {
     height: 306px;
     width: 306px;
+    object-fit: cover;
+    object-position: top;
 }
 
 // .project-image {
@@ -32,10 +34,10 @@
 //     display: block;
 // }
 
-.project-index-image p {
-    text-align: center;
-    margin-top: 15px;
-}
+// .project-index-image p {
+//     text-align: center;
+//     margin-top: 15px;
+// }
 
 .project-index-details {
     display: flex;
@@ -92,15 +94,23 @@
     
 }
 
+.featured-project-index-image {
+    display: flex;
+    // flex-direction: column;
+    align-content: flex-start;
+}
+
 .featured-project-index-image :first-child {
     height: 306px;
     width: 306px;
+    object-fit: cover;
+    object-position: top;
 }
 
-.featured-project-index-image p {
-    text-align: center;
-    margin-top: 15px;
-}
+// .featured-project-index-image p {
+//     text-align: center;
+//     margin-top: 15px;
+// }
 
 .featured-project-index-details {
     display: flex;

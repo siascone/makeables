@@ -1645,9 +1645,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -1660,10 +1660,14 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 var FeaturedProjectsIndex = /*#__PURE__*/function (_React$Component) {
   _inherits(FeaturedProjectsIndex, _React$Component);
 
-  function FeaturedProjectsIndex() {
+  function FeaturedProjectsIndex(props) {
+    var _this;
+
     _classCallCheck(this, FeaturedProjectsIndex);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(FeaturedProjectsIndex).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(FeaturedProjectsIndex).call(this, props));
+    _this.toTop = _this.toTop.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(FeaturedProjectsIndex, [{
@@ -1672,8 +1676,15 @@ var FeaturedProjectsIndex = /*#__PURE__*/function (_React$Component) {
       this.props.fetchAllProjects();
     }
   }, {
+    key: "toTop",
+    value: function toTop() {
+      $('html, body').scrollTop(0);
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       if (this.props.projects.length <= 1) {
         return null;
       }
@@ -1693,11 +1704,17 @@ var FeaturedProjectsIndex = /*#__PURE__*/function (_React$Component) {
         href: "#/projects/".concat(projects[0].id)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: projects[0].photoUrl,
+        onClick: function onClick() {
+          return _this2.toTop();
+        },
         alt: ""
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-project-index-details"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: "/projects/".concat(projects[0].id)
+        to: "/projects/".concat(projects[0].id),
+        onClick: function onClick() {
+          return _this2.toTop();
+        }
       }, projects[0].title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "by: ", users[projects[0].user_id].username))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-index-individual"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1707,11 +1724,17 @@ var FeaturedProjectsIndex = /*#__PURE__*/function (_React$Component) {
         href: "#/projects/".concat(projects[4].id)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: projects[4].photoUrl,
+        onClick: function onClick() {
+          return _this2.toTop();
+        },
         alt: ""
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-project-index-details"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: "/projects/".concat(projects[4].id)
+        to: "/projects/".concat(projects[4].id),
+        onClick: function onClick() {
+          return _this2.toTop();
+        }
       }, projects[4].title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "by: ", users[projects[4].user_id].username))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-index-individual"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1721,11 +1744,17 @@ var FeaturedProjectsIndex = /*#__PURE__*/function (_React$Component) {
         href: "#/projects/".concat(projects[13].id)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: projects[13].photoUrl,
+        onClick: function onClick() {
+          return _this2.toTop();
+        },
         alt: ""
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-project-index-details"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: "/projects/".concat(projects[13].id)
+        to: "/projects/".concat(projects[13].id),
+        onClick: function onClick() {
+          return _this2.toTop();
+        }
       }, projects[13].title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "by: ", users[projects[13].user_id].username))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-index-individual"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1735,11 +1764,17 @@ var FeaturedProjectsIndex = /*#__PURE__*/function (_React$Component) {
         href: "#/projects/".concat(projects[19].id)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: projects[19].photoUrl,
+        onClick: function onClick() {
+          return _this2.toTop();
+        },
         alt: ""
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-project-index-details"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: "/projects/".concat(projects[19].id)
+        to: "/projects/".concat(projects[19].id),
+        onClick: function onClick() {
+          return _this2.toTop();
+        }
       }, projects[19].title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "by: ", users[projects[19].user_id].username))));
     }
   }]);
@@ -2159,6 +2194,8 @@ var ProjectIndexItem = /*#__PURE__*/function (_React$Component) {
   _createClass(ProjectIndexItem, [{
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var image;
 
       if (this.state.photoUrl) {
@@ -2167,6 +2204,9 @@ var ProjectIndexItem = /*#__PURE__*/function (_React$Component) {
           href: "#/projects/".concat(this.state.id)
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: this.state.photoUrl,
+          onClick: function onClick() {
+            return _this2.props.toTop();
+          },
           alt: ""
         }));
       } else {
@@ -2182,7 +2222,10 @@ var ProjectIndexItem = /*#__PURE__*/function (_React$Component) {
       }, image), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-index-details"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/projects/".concat(this.state.id)
+        to: "/projects/".concat(this.state.id),
+        onClick: function onClick() {
+          return _this2.props.toTop();
+        }
       }, this.state.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "by: ", this.props.user.username)));
     }
   }]);
@@ -2421,9 +2464,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -2435,10 +2478,14 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 var ProjectsIndex = /*#__PURE__*/function (_React$Component) {
   _inherits(ProjectsIndex, _React$Component);
 
-  function ProjectsIndex() {
+  function ProjectsIndex(props) {
+    var _this;
+
     _classCallCheck(this, ProjectsIndex);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(ProjectsIndex).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProjectsIndex).call(this, props));
+    _this.toTop = _this.toTop.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(ProjectsIndex, [{
@@ -2447,8 +2494,15 @@ var ProjectsIndex = /*#__PURE__*/function (_React$Component) {
       this.props.fetchAllProjects();
     }
   }, {
+    key: "toTop",
+    value: function toTop() {
+      $('html, body').scrollTop(0);
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       if (this.props.projects.length <= 1) {
         return null;
       }
@@ -2456,7 +2510,7 @@ var ProjectsIndex = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           projects = _this$props.projects,
           users = _this$props.users,
-          hostory = _this$props.hostory;
+          history = _this$props.history;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-index-main"
       }, projects.map(function (project, idx) {
@@ -2464,6 +2518,7 @@ var ProjectsIndex = /*#__PURE__*/function (_React$Component) {
           project: project,
           user: users[project.user_id],
           history: history,
+          toTop: _this2.toTop,
           key: idx
         });
       }));
@@ -3640,7 +3695,8 @@ document.addEventListener("DOMContentLoaded", function () {
     store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])();
   }
 
-  window.getState = store.getState;
+  window.getState = store.getState; // window.scrollTop(0);
+
   var root = document.getElementById('root');
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
     store: store

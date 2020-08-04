@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     window.getState = store.getState;
+    // window.scrollTop(0);
 
     const root = document.getElementById('root');
     ReactDOM.render(<Root store={store} />, root);
